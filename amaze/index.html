@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!-- Set render engine for 360 browser -->
+  		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>Amazeui测试</title>
+		<link rel="stylesheet" type="text/css" href="http://cdn.amazeui.org/amazeui/2.4.0/css/amazeui.min.css"/>
+		<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.js"></script>
+		<script src="http://cdn.amazeui.org/amazeui/2.4.0/js/amazeui.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.Absolute-Center {
+			  margin: auto;
+			  position: absolute;
+			  top: 0; left: 0; bottom: 0; right: 0;
+			}
+			.boxes {
+			  width: 300px;
+			}
+			
+			.boxes .box {
+			  height: 100px;
+			  color: #eee;
+			  line-height: 100px;
+			  text-align: center;
+			  font-weight: bold;
+			  transition: all .2s ease;
+			}
+			
+			.boxes .box:hover {
+			  font-size: 250%;
+			  transform: rotate(360deg);
+			}
+			
+			.box-1 {
+			  background-color: red;
+			}
+			
+			.box-2 {
+			  background-color: orange;
+			}
+			
+			.box-3 {
+			  background-color: #0000ff;
+			}
+			
+			.box-4 {
+			  background-color: #008000;
+			}
+			
+			.box-5 {
+			  background-color: red;
+			}
+			
+			.box-6 {
+			  background-color: orange;
+			}
+			
+			.box-7 {
+			  background-color: #0000ff;
+			}
+			
+			.box-8 {
+			  background-color: #008000;
+			}
+			
+			.box-9 {
+			  background-color: red;
+			}
+
+		</style>
+		<script type="text/javascript">
+			$(function() {
+			  $('#doc-modal-list').find('.am-icon-close').add('#doc-confirm-toggle').
+			    on('click', function() {
+			      $('#my-confirm').modal({
+			        relatedTarget: this,
+			        onConfirm: function(options) {
+			          var $link = $(this.relatedTarget).prev('a');
+			          var msg = $link.length ? '你要删除的链接 ID 为 ' + $link.data('id') :
+			            '确定了，但不知道要整哪样';
+			          alert(msg);
+			        },
+			        // closeOnConfirm: false,
+			        onCancel: function() {
+			          alert('算求，不弄了');
+			        }
+			      });
+			    });
+			});
+		</script>
+	</head>
+	<body>
+		<div class="am-container">
+			<hr />
+			<ol class="am-breadcrumb">
+			  <li><a href="#">首页</a></li>
+			  <li><a href="#">技术测试</a></li>
+			  <li class="am-active">cshi</li>
+			</ol>
+			<hr />
+			<blockquote>
+			  <p>无论走到哪里，都应该记住，过去都是假的，回忆是一条没有尽头的路，一切以往的春天都不复存在，就连那最坚韧而又狂乱的爱情归根结底也不过是一种转瞬即逝的现实。</p>
+			  <small>马尔克斯 ——《百年孤独》</small>
+			</blockquote>
+			<pre><br />
+				<span class="am-badge am-badge-danger">2.4</span>
+				http://cdn.amazeui.org/amazeui/2.4.0/css/amazeui.css
+				http://cdn.amazeui.org/amazeui/2.4.0/css/amazeui.min.css
+				http://cdn.amazeui.org/amazeui/2.4.0/js/amazeui.js
+				http://cdn.amazeui.org/amazeui/2.4.0/js/amazeui.min.js
+				http://cdn.amazeui.org/amazeui/2.4.0/js/amazeui.legacy.js
+				http://cdn.amazeui.org/amazeui/2.4.0/js/amazeui.legacy.min.js
+				http://cdn.amazeui.org/amazeui/2.4.0/js/amazeui.widgets.helper.js
+				http://cdn.amazeui.org/amazeui/2.4.0/js/amazeui.widgets.helper.min.js
+			</pre>
+			<ul>
+				<li><code>amazeui.css</code> / <code>amazeui.js</code>：包含 Amaze UI 所有的 CSS、JS。</li>
+				<li><code>amazeui.flat.css</code>：圆角版 Amaze UI CSS，演示参见 <code>1.x</code>。</li>
+				<li><code>amazeui.legacy.js</code>：为 IE 8 打包的 JS。</li>
+				<li><code>amazeui.widgets.helper.js</code>： <strong>供使用 Handlebars 的用户使用，其他用户请忽略</strong>，内含 Web 组件必须的 Handlebars helper 及 Web 组件模板 partials。</li>
+			</ul>
+			<hr />等分图片展示
+			<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 am-thumbnails">
+			  <li><img class="am-thumbnail" src="http://s.amazeui.org/media/i/demos/bing-1.jpg" /></li>
+			  <li><img class="am-thumbnail" src="http://s.amazeui.org/media/i/demos/bing-2.jpg" /></li>
+			  <li><img class="am-thumbnail" src="http://s.amazeui.org/media/i/demos/bing-3.jpg" /></li>
+			  <li><img class="am-thumbnail" src="http://s.amazeui.org/media/i/demos/bing-4.jpg" /></li>
+			  <li><img class="am-thumbnail" src="http://s.amazeui.org/media/i/demos/bing-1.jpg" /></li>
+			  <li><img class="am-thumbnail" src="http://s.amazeui.org/media/i/demos/bing-2.jpg" /></li>
+			  <li><img class="am-thumbnail" src="http://s.amazeui.org/media/i/demos/bing-3.jpg" /></li>
+			  <li><img class="am-thumbnail" src="http://s.amazeui.org/media/i/demos/bing-4.jpg" /></li>
+			</ul>
+			<hr />九宫格
+			<ul class="am-avg-sm-3 boxes">
+			  <li class="box box-1">1</li>
+			  <li class="box box-2">2</li>
+			  <li class="box box-3">3</li>
+			  <li class="box box-4">4</li>
+			  <li class="box box-5">5</li>
+			  <li class="box box-6">6</li>
+			  <li class="box box-7">7</li>
+			  <li class="box box-8">8</li>
+			  <li class="box box-9">9</li>
+			</ul>
+			<hr />
+			<p class="am-text-primary">千万不要因为走得太久，而忘记了我们为什么出发。...</p>
+			<p class="am-text-secondary">千万不要因为走得太久，而忘记了我们为什么出发。...</p>
+			<p class="am-text-success">千万不要因为走得太久，而忘记了我们为什么出发。...</p>
+			<p class="am-text-warning">千万不要因为走得太久，而忘记了我们为什么出发。...</p>
+			<p class="am-text-danger">千万不要因为走得太久，而忘记了我们为什么出发。...</p>
+			<hr />
+			<button type="button" class="am-btn am-btn-default">默认样式</button>
+			<button type="button" class="am-btn am-btn-primary am-radius">am-radius主色按钮</button>
+			<button type="button" class="am-btn am-btn-secondary">次色按钮</button>
+			<button type="button" class="am-btn am-btn-success">绿色按钮</button>
+			<button type="button" class="am-btn am-btn-warning">橙色按钮</button>
+			<button type="button" class="am-btn am-btn-danger am-round">am-round红色按钮</button>
+			<a class="am-btn am-btn-link">链接</a>
+			<a class="am-btn am-btn-danger" href="http://www.bing.com" target="_blank">应用按钮样式的链接</a>
+			<hr />
+ 			<button type="button" class="am-btn am-btn-success"><i class="am-icon-shopping-cart"></i> 结账</button>
+ 			<hr />
+ 			<p><input type="text" class="am-form-field am-radius" placeholder="圆角表单域" /></p>
+			<p><input type="text" class="am-form-field am-round" placeholder="椭圆表单域"/></p>
+			
+			<div class="am-animation-fade am-animation-reverse">动画</div>
+			
+			<button class="am-btn am-btn-primary" data-am-collapse="{target: '#collapse-nav'}">Menu <i class="am-icon-bars"></i></button>
+			<nav>
+			  <ul id="ollapse-nav" class="am-nav am-collapse">
+			    <li><a href="">开始使用</a></li>
+			    <li><a href="">CSS 介绍</a></li>
+			    <li class="am-active"><a href="">JS 介绍</a></li>
+			    <li><a href="">功能定制</a></li>
+			  </ul>
+			</nav>
+
+			<hr />
+			<button class="am-btn am-btn-warning" id="doc-confirm-toggle">Confirm</button>
+			
+			<ul class="am-list confirm-list" id="doc-modal-list">
+			  <li><a data-id="1" href="#">每个人都有一个死角， 自己走不出来，别人也闯不进去。</a><i class="am-icon-close"></i></li>
+			  <li><a data-id="2" href="#">我把最深沉的秘密放在那里。</a><i class="am-icon-close"></i></li>
+			  <li><a data-id="3" href="#">你不懂我，我不怪你。</a><i class="am-icon-close"></i></li>
+			  <li><a data-id="4" href="#">每个人都有一道伤口， 或深或浅，盖上布，以为不存在。</a><i class="am-icon-close"></i></li>
+			</ul>
+			
+			<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+			  <div class="am-modal-dialog">
+			    <div class="am-modal-hd">Amaze UI</div>
+			    <div class="am-modal-bd">
+			      你，确定要删除这条记录吗？
+			    </div>
+			    <div class="am-modal-footer">
+			      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+			      <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+			    </div>
+			  </div>
+			</div>
+			<hr />
+			<p><input type="text" class="am-form-field" placeholder="日历组件" data-am-datepicker readonly/></p>
+
+		</div>
+	</body>
+</html>
