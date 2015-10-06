@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>Bootbox.js-demo</title>
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.js"></script>
+		<script src="http://cdn.bootcss.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		<script src="js/bootbox.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			function simpleAlert() {
+				bootbox.alert("Hello world!");
+			}
+
+			function pmpt() {
+				bootbox.prompt({
+					title: "What is your real name?",
+					value: "makeusabrew",
+					callback: function(result) {
+						if (result === null) {
+							alert("Prompt dismissed");
+						} else {
+							alert("Hi <b>" + result + "</b>");
+						}
+					}
+				});
+			}
+			
+			function cnm() {
+				bootbox.confirm({
+					title: "What is your real name?",
+					value: "makeusabrew",
+					callback: function(result) {
+						if (result === null) {
+							alert("Prompt dismissed");
+						} else {
+							alert("Hi <b>" + result + "</b>");
+						}
+					}
+				});
+			}
+			
+			function dialogtest() {
+				bootbox.dialog({
+					message: "I am a custom dialog",
+					title: "Custom title",
+					buttons: {
+						success: {
+							label: "Success!",
+							className: "btn-success",
+							callback: function() {
+								alert("great success");
+							}
+						},
+						danger: {
+							label: "Danger!",
+							className: "btn-danger",
+							callback: function() {
+								alert("uh oh, look out!");
+							}
+						},
+						main: {
+							label: "Click ME!",
+							className: "btn-primary",
+							callback: function() {
+								alert("Primary button");
+							}
+						}
+					}
+				});
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="page-header">
+				<h1>Bootbox.js -简单实用</h1>
+			</div>
+			<button class="btn btn-primary" onclick="simpleAlert();">简单弹窗</button>
+			<button class="btn btn-info" onclick="pmpt();">询问</button>
+			<button class="btn btn-warning" onclick="dialogtest();">dialogtest</button>
+			<button class="btn btn-primary">简单</button>
+			<span>显示内容</span>
+		</div>
+	</body>
+
+</html>
