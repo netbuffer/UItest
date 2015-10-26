@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>loadgo.js，用logo作为进度展示</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<!--<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.js"></script>-->
+		<script src="http://franverona.com/loadgo/js/libs/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/loadgo.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+//				'bgcolor':'yellow'
+				$('#cocacola').loadgo({'direction':'tb'});
+			});
+			var cocacolaInterval;
+			function mainDemo () {
+			  var p = 0;
+			  $('#cocacola').loadgo('resetprogress');   // reset progress to start again
+			  cocacolaInterval = window.setInterval(function (){
+			  	console.log($('#cocacola').loadgo('getprogress'));
+			    if ($('#cocacola').loadgo('getprogress') == 100) {
+			      // When progress completes, we have to clear the interval
+			      window.clearInterval(cocacolaInterval);
+			    }
+			    else {
+			      var prog = p*10;
+			      $('#cocacola').loadgo('setprogress', prog);
+			      p++;
+			    }
+			  }, 150);
+			}
+			var cocacolaInterval, disneyInterval, supermanInterval, batmanInterval, 
+    jurassicIntervalLR, jurassicIntervalRL, jurassicIntervalBT, jurassicIntervalTB,
+    spidermanSepiaInterval, spidermanBlurInterval, spidermanInvertInterval, spidermanOpacityInterval, spidermanHueInterval, spidermanGrayscaleInterval;
+    
+			function playDemo (_id, index, interval) {
+			  $('#demo-msg-' + index).animate({
+			    'opacity': '0'
+			  });
+			  $('#demo-progress-' + index).animate({
+			    'opacity': '1'
+			  });
+			  var p = 0;
+			  $('#' + _id).loadgo('resetprogress');
+			  $('#demo-progress-' + index).html('0%');
+			  window.setTimeout(function () {
+			    interval = window.setInterval(function (){
+			      if ($('#' + _id).loadgo('getprogress') == 100) {
+			        window.clearInterval(interval);
+			        $('#demo-msg-' + index).animate({
+			          'opacity': '1'
+			        });
+			        $('#demo-progress-' + index).animate({
+			          'opacity': '0'
+			        });
+			      }
+			      else {
+			        var prog = p*10;
+			        $('#' + _id).loadgo('setprogress', prog);
+			        $('#demo-progress-' + index).html(prog + '%');
+			        p++;
+			      }
+			    }, 150);
+			  }, 300);
+			}
+
+			function lup(){
+				$('#cocacola').loadgo('loop', 10);
+			}
+		</script>
+	</head>
+	<!--bgcolor="cadetblue"-->
+	<body>
+		<div style="width: 300px;margin: 0 auto;"></div>
+		<img id="cocacola" style="width:200px;height: 200px;" src="img/cocacola.png"/>
+		<div style="background-color: rgb(1, 174, 240); opacity: 0.2; width: 0px; height: 211px; margin-right: 15px; top: 0px; position: absolute; right: 0px;" class="loadgo-overlay"></div>
+		<div id="demo-progress-2" style="margin-bottom: 10px; font-size: 16px; opacity: 0; font-weight: bold;">100%</div>
+		<div style="opacity: 1;" id="demo-msg-2">
+            <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;Start
+          </button>
+        </div>
+		<button onclick="playDemo('cocacola',2,disneyInterval);">点击开始</button>
+		<button onclick="lup();">点击loop</button>
+	</body>
+</html>
