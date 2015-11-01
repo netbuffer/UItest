@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<title>地图坐标使用</title>
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css" />
+		<style>
+			.clickable-area {
+				display: block;
+				width: 100%;
+				height: 800px;
+				background-color: #CCFFCC;
+			}
+			.clickable-area:focus {
+				outline: 0;
+			}
+		</style>
+		<script src="js/jquery1.10.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.mobile-1.4.5.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				//				$.mobile.loading("show", {
+				//					text: 'test'
+				//				});
+			});
+			$.mobile.document.on("click", "#open-popupArrow", function(evt) {
+				$("#popupArrow").popup("open", {
+					x: evt.pageX,
+					y: evt.pageY
+				});
+				evt.preventDefault();
+			});
+
+			function closeLoading() {
+				$.mobile.loading('hide');
+			}
+		</script>
+	</head>
+
+	<body>
+		<div data-role="page" data-fullscreen="true" id="one" data-theme="a">
+			<div data-role="header">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left ui-btn-icon-notext">Back</a>
+				<h1>地图坐标使用</h1>
+			</div>
+			<div data-role="ui-content" data-theme="d">
+
+				<div data-role="popup" id="popupArrow" data-arrow="true" style="filter:alpha(opacity=50);-moz-opacity:0.5;-khtml-opacity: 0.5;opacity: 0.5;">
+					<p>弹出层A paragraph inside the popup with an arrow.</p>
+					<p>This second paragraph serves to increase the height of the popup</p>
+				</div>
+				<a href="#" id="open-popupArrow" class="clickable-area"></a>
+
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h6>友情链接：<a href="http://www.duonafanli.com">www.duonafanli.com</a></h6>
+			</div>
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+		<title>jq</title>
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css"/>
+		<script src="js/jquery1.10.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.mobile-1.4.5.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div data-role="page" data-fullscreen="true" id="one" data-theme="a">
+			<div data-role="header">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left ui-btn-icon-notext">Back</a>
+				<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-gear">Button</a>
+				<h1>标题</h1>
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#two" class="ui-btn-active ui-state-persist">操作1</a></li>
+						<li><a href="grid.html" data-transition="slide">grid使用</a></li>
+						<li><a href="#">操作3</a></li>
+					</ul>
+				</div>
+				<div data-role="navbar" data-grid="d">
+				    <ul>
+				        <li><a href="#" class="ui-btn-active">One</a></li>
+				        <li><a href="#">Two</a></li>
+				        <li><a href="#">Three</a></li>
+				        <li><a href="#">Four</a></li>
+				        <li><a href="#">Five</a></li>
+				    </ul>
+				</div><!-- /navbar -->
+				<div data-role="navbar">
+		            <ul>
+		                <li><a href="#" data-icon="grid">Summary</a></li>
+		                <li><a href="#" data-icon="star" class="ui-btn-active">Favs</a></li>
+		                <li><a href="#" data-icon="gear">Setup</a></li>
+		            </ul>
+		        </div><!-- /navbar -->
+				
+			</div>
+			<div data-role="content" class="ui-body ui-body-a ui-corner-all">
+				内容
+				<a href="#two" data->跳转</a>
+				<h1>Panels使用-触摸效果</h1>
+				<a href="#panel-reveal" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-mini">Reveal</a>
+				<a href="#panel-overlay" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-mini">Overlay</a>
+				<a href="#panel-push" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-mini">Push</a>
+				<div id="ui-bar-test" class="ui-bar ui-bar-a ui-corner-all" style="margin-bottom:1em;">
+				<p>I am a div with classes ui-bar, ui-bar-<span class="theme">a</span> and ui-corner-all. <a href="#">I am a link</a></p>
+				</div>
+				<h1>listview</h1>
+				<ul data-role="listview" data-inset="true">
+					<li>列表内容1</li>
+					<li data-role="list-divider">测试<span class="ui-li-count">3</span></li>
+					<li>列表内容1</li>
+					<li>列表内容1<span class="ui-li-count">6</span></li>
+				</ul>
+				<ul data-role="listview" data-split-icon="gear" data-inset="true">
+					<li><a href="#"><img src="img/logo.jpg">
+						<h2>H2级标题</h2>
+						<p>加一些描述</p></a>
+						<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+					</li>
+					<li><a href="#"><img src="img/logo.jpg">
+						<h2>Warning</h2>
+						<p>Hot Chip</p></a>
+						<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+					</li>
+					<li><a href="#">
+						<img src="img/logo.jpg"><h2>Wolfgang Amadeus Phoenix</h2>
+						<p>Phoenix</p></a>
+						<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+					</li>
+				</ul>
+				
+				<!--
+                	作者：opev@foxmail.com
+                	时间：2015-01-31
+                	描述：form使用测试
+                -->
+				<form action="">
+					<div class="ui-field-contain">
+						<label for="name2">Text Input:</label>
+						<input type="text" name="name2" id="name2" value="" data-clear-btn="true" placeholder="test">
+					</div>
+					<div class="ui-field-contain">
+						<label for="textarea2">Textarea:</label>
+						<textarea cols="40" rows="8" name="textarea2" id="textarea2"></textarea>
+					</div>
+					<div class="ui-field-contain">
+						<label for="flip2">Flip switch:</label>
+						<select name="flip2" id="flip2" data-role="flipswitch">
+							<option value="off">Off</option>
+							<option value="on">On</option>
+						</select>
+					</div>
+					<div class="ui-field-contain">
+						<label for="slider2">Slider:</label>
+						<input type="range" name="slider2" id="slider2" value="30" min="0" max="100" data-highlight="true">
+					</div>
+					<div class="ui-field-contain">
+						<fieldset data-role="controlgroup">
+							<legend>Checkbox:</legend>
+							<input type="checkbox" name="checkbox-v-1a" id="checkbox-v-1a">
+							<label for="checkbox-v-1a">One</label>
+							<input type="checkbox" name="checkbox-v-1b" id="checkbox-v-1b">
+							<label for="checkbox-v-1b">Two</label>
+							<input type="checkbox" name="checkbox-v-1c" id="checkbox-v-1c">
+							<label for="checkbox-v-1c">Three</label>
+						</fieldset>
+					</div>
+					<div class="ui-field-contain">
+						<fieldset data-role="controlgroup">
+							<legend>Radio:</legend>
+							<input type="radio" name="radio-v-2" id="radio-v-1a" checked>
+							<label for="radio-v-1a">One</label>
+							<input type="radio" name="radio-v-1" id="radio-v-1b">
+							<label for="radio-v-1b">Two</label>
+							<input type="radio" name="radio-v-1" id="radio-v-1c">
+							<label for="radio-v-1c">Three</label>
+						</fieldset>
+					</div>
+					<div class="ui-field-contain">
+						<fieldset data-role="controlgroup" data-type="horizontal">
+							<legend>Controlgroup:</legend>
+							<button class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-right">One</button>
+							<input type="button" data-icon="back" data-iconpos="right" value="Two">
+							<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-right">Three</a>
+						</fieldset>
+					</div>
+					<div class="ui-field-contain">
+						<label for="select-choice-1" class="select">Custom select:</label>
+						<select name="select-choice-1" id="select-choice-1" data-native-menu="false" multiple="multiple">
+							<option value="standard">Standard: 7 day</option>
+							<option value="rush">Rush: 3 days</option>
+							<option value="express">Express: next day</option>
+							<option value="overnight">Overnight</option>
+						</select>
+					</div>
+					<div class="ui-field-contain">
+						<label for="submit-1">Send form:</label>
+						<input type="submit" id="submit-1" value="Send">
+					</div>
+				</form>
+				<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-gear ui-btn-icon-left ui-btn-active">Active button</a>
+				
+				<div data-role="collapsible" data-content-theme="a">
+					<h4>Heading</h4>
+				<p>I'm the collapsible content with a themed content block set to "<span class="theme">a</span>".</p>
+				</div>
+		
+				<div data-role="collapsibleset" data-content-theme="b">
+					<div data-role="collapsible">
+						<h3>Section 1</h3>
+					<p>I'm the collapsible content for section 1</p>
+					</div>
+					<div data-role="collapsible">
+						<h3>Section 2</h3>
+					<p>I'm the collapsible content for section 2</p>
+					</div>
+					<div data-role="collapsible">
+						<h3>Section 3</h3>
+					<p>I'm the collapsible content for section 3</p>
+					</div>
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<!--<a href="#" class="ui-btn ui-btn-inline">Anchor</a>
+				<button class="ui-btn ui-btn-a ui-btn-inline">Button</button>
+				<a href="#" class="ui-btn ui-btn-b ui-btn-inline">ui-btn-b </a>
+				<button class="ui-btn ui-mini  ui-btn-inline">ui-mini</button>-->
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#">Menu item 1</a></li>
+						<li><a href="#" class="ui-btn-active ui-state-persist">Menu item 2</a></li>
+						<li><a href="#">Menu item 3</a></li>
+					</ul>
+				</div>
+				<h4 style="display:none;">Footer</h4>
+			</div>
+			
+			<!--
+            	作者：opev@foxmail.com
+            	时间：2015-01-31
+            	描述：panels
+            -->
+			<div data-role="panel" id="panel-reveal">
+				<ul data-role="listview">
+					<li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
+					<li><a href="#">List item</a></li>
+					<li><a href="#">List item</a></li>
+					<li><a href="#">List item</a></li>
+				</ul>
+				<br><br>
+				<button class="ui-btn ui-corner-all ui-shadow">Button</button>
+			</div>
+		
+			<div data-role="panel" id="panel-overlay" data-display="overlay">
+				<ul data-role="listview">
+					<li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
+					<li><a href="#">List item</a></li>
+					<li><a href="#">List item</a></li>
+					<li><a href="#">List item</a></li>
+				</ul>
+				<br><br>
+				<button class="ui-btn ui-corner-all ui-shadow">Button</button>
+			</div>
+		
+			<div data-role="panel" id="panel-push" data-display="push">
+				<ul data-role="listview">
+					<li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
+					<li><a href="#">List item</a></li>
+					<li><a href="#">List item</a></li>
+					<li><a href="#">List item</a></li>
+				</ul>
+				<br><br>
+				<button class="ui-btn ui-corner-all ui-shadow ui-state-disabled">Button</button>
+			</div>
+		</div>
+		
+		<!--
+        	作者：opev@foxmail.com
+        	时间：2015-01-31
+        	描述：第二个页面
+        -->
+        <div data-role="page" data-fullscreen="true" id="two">
+			<div data-role="header">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left ui-btn-icon-notext">Back</a>
+				<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-gear">Button</a>
+				<h1>标题2</h1>
+			</div>
+			<div data-role="content">
+				内容2
+				<input type="text" data-role="date" data-inline="true">
+				<form>
+				    <div data-role="rangeslider">
+				        <label for="range-1a">Rangeslider:</label>
+				        <input type="range" name="range-1a" id="range-1a" min="0" max="100" value="40">
+				        <label for="range-1b">Rangeslider:</label>
+				        <input type="range" name="range-1b" id="range-1b" min="0" max="100" value="80">
+				    </div>
+				</form>
+			</div>
+			<div data-role="footer">
+				<a href="#" class="ui-btn ui-btn-inline">Anchor</a>
+				<button class="ui-btn ui-btn-a ui-btn-inline">Button</button>
+				<a href="#" class="ui-btn ui-btn-b ui-btn-inline">ui-btn-b </a>
+				<button class="ui-btn ui-mini  ui-btn-inline">ui-mini</button>
+			</div>
+		</div>
+		
+	</body>
+</html>
