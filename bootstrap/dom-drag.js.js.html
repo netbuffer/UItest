@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<title>dom-drag.js使用示例</title>
+		<script src="js/dom-drag.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body{
+				background-color:black;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 style="color: white;">被拖动的元素position要为relative</h1>
+		<img id="cocacola" style="position: relative;width:200px;height: 200px;" src="img/cocacola.png"/>
+		<script type="text/javascript">
+			Drag.init(document.getElementById("cocacola"));
+		</script>
+	</body>
+</html>
