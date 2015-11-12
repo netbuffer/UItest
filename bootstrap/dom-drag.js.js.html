@@ -18,5 +18,24 @@
 		<script type="text/javascript">
 			Drag.init(document.getElementById("cocacola"));
 		</script>
+		
+		<div id="thumb" style="position: relative;width: 50px; left:0; top:0;background-color: #66CC33;">限制拖拽的区域</div>
+		<script language="javascript">
+			var aThumb = document.getElementById("thumb");
+			Drag.init(aThumb, null, 0, 300, 0, 0);
+			aThumb.onDragStart=function(x,y){
+				console.log("x:"+x+",y:"+y);
+			}
+			aThumb.onDrag=function(x,y){
+				console.log("x:"+x+",y:"+y);
+			}
+			aThumb.onDragEnd=function(x,y){
+				console.log("x:"+x+",y:"+y);
+			}
+//			.onDragStart(x,y)
+//			.onDragEnd(x,y)
+//			.onDrag(x,y)
+		</script>
+		
 	</body>
 </html>
