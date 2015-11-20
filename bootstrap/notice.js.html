@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name='viewport' content="width=device-width,initial-scale=1,maximum-scale=1">
+		<title>Notie Test Page</title>
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<!-- Font -->
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+	</head>
+
+	<body>
+
+		<div class="container text-center">&emsp;
+			<div class="panel panel-info">
+				<span>测试notice.js使用</span>
+				<br>
+				<button onclick="success();" class="btn btn-success">Success</button>
+				<button onclick="warning();" class="btn btn-warning">Warning</button>
+				<button onclick="error();" class="btn btn-danger">Error</button>
+				<br>
+				<button onclick="info();" class="btn btn-info">Information</button>
+				<button onclick="confirm();" class="btn btn-default">Confirm</button>
+				<button onclick="input();" class="btn btn-default">Input</button>
+				<br>
+				<br>
+				<span class="label label-default">Official page:</span>
+				<br>
+				<a href="https://jaredreich.com/projects/notie.js" target="_blank">https://jaredreich.com/projects/notie</a>
+
+			</div>
+		</div>
+
+		<script>
+			function success() {
+				notie.alert(1, 'Success!', 2);
+			}
+
+			function warning() {
+				notie.alert(2, 'Warning<br><b>with</b><br><i>HTML</i><br><u>included.</u>', 2);
+			}
+
+			function error() {
+				notie.alert(3, 'Error.', 2);
+			}
+
+			function info() {
+				notie.alert(4, 'Information.', 2);
+			}
+
+			function confirm() {
+				notie.confirm('Are you sure you want to do that?<br><b>That\'s a bold move...</b>', 'Yes', 'Cancel', function() {
+					notie.alert(1, 'Good choice!', 2);
+				});
+			}
+
+			function input() {
+				notie.input('Please enter your email address:', 'Submit', 'Cancel', 'email', 'name@example.com', function(value_entered) {
+					notie.alert(1, 'You entered: ' + value_entered, 2);
+				});
+			}
+		</script>
+
+		<!-- JavaScript -->
+		<script src="js/notie.js"></script>
+
+	</body>
+
+</html>
