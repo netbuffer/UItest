@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Unslider测试-支持触屏</title>
+		<link rel="stylesheet" type="text/css" href="css/unslider.css"/>
+		<link rel="stylesheet" type="text/css" href="css/unslider-dots.css"/>
+		<script src="../weui/js/jquery1.10.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.event.move.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.event.swipe.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/unslider-min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jQuery.event.swipe.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			/*.banner { position: relative; overflow: auto; }
+    		.banner li { list-style: none; }
+        	.banner ul li { float: left; }*/
+		</style>
+		<script type="text/javascript">
+			$(function() {
+			    $('.banner').unslider({
+			    	speed: 500,
+			    	arrows:false
+			    });
+			    $('.banner').unslider('initSwipe');
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="banner">
+			<ul>
+				<li><img src="t (1).jpg" style="width:50%" /></li>
+				<li><img src="t (2).jpg" style="width:50%" /></li>
+				<li><img src="t (3).jpg" style="width:50%" /></li>
+			</ul>
+		</div>
+	</body>
+
+</html>
