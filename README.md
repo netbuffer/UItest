@@ -1,9 +1,7 @@
 #前端框架使用-demo
 ---
-* bootstrap
+* bootstrap(metro-bootstrap)
 * amazeui
 * jquerymobile
-* metro-bootstrap
 * sui
 * weui
-* 
