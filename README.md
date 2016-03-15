@@ -5,3 +5,4 @@
 * jquerymobile
 * sui
 * weui
+* agile
