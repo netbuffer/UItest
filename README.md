@@ -6,3 +6,4 @@
 * sui
 * weui
 * agile
+* easyui

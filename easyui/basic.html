@@ -1,0 +1,122 @@
+<script type="text/javascript">
+	$(function() {
+		$('#test_tab').tabs({
+			border: true,
+			onSelect: function(title) {
+				alert(title + ' is selected');
+			}
+		});
+		$('test_tab').tabs('add', {
+			title: 'New Tab',
+			content: 'Tab Body',
+			closable: true,
+			tools: [{
+				iconCls: 'icon-mini-refresh',
+				handler: function() {
+					alert('refresh');
+				}
+			}]
+		});
+	});
+</script>
+<div id="test_tab" class="easyui-tabs" style="width:100%;height:100%;">
+	<div title="Tab1" style="padding:20px;">
+		tab1
+		<div id="p" class="easyui-progressbar" data-options="value:60" style="width:400px;"></div>
+	</div>
+	<div title="Tab2" data-options="closable:true" style="overflow:auto;padding:20px;">
+		tab2
+		<div class="panel" style="display: block; width: 400px;">
+			<div class="panel-header" style="width: 388.4px;">
+				<div class="panel-title">New Topic</div>
+				<div class="panel-tool"></div>
+			</div>
+			<div style="width: 398.4px;" title="" class="easyui-panel panel-body">
+				<div style="padding:10px 60px 20px 60px">
+					<form method="post" id="ff">
+						<table cellpadding="5">
+							<tbody>
+								<tr>
+									<td>Name:</td>
+									<td>
+										<input type="text" data-options="required:true" class="easyui-textbox textbox-f" style="display: none;" textboxname="name"><span class="textbox textbox-invalid" style="width: 150.4px; height: 20.4px;"><input type="text" autocomplete="off" class="textbox-text validatebox-text textbox-prompt validatebox-invalid" placeholder="" style="margin-left: 0px; margin-right: 0px; padding-top: 2px; padding-bottom: 2px; width: 142.4px;" title=""><input type="hidden" class="textbox-value" name="name" value=""></span></td>
+								</tr>
+								<tr>
+									<td>Email:</td>
+									<td>
+										<input type="text" data-options="required:true,validType:'email'" class="easyui-textbox textbox-f" style="display: none;" textboxname="email"><span class="textbox textbox-invalid" style="width: 150.4px; height: 20.4px;"><input type="text" autocomplete="off" class="textbox-text validatebox-text textbox-prompt validatebox-invalid" placeholder="" style="margin-left: 0px; margin-right: 0px; padding-top: 2px; padding-bottom: 2px; width: 142.4px;" title=""><input type="hidden" class="textbox-value" name="email" value=""></span></td>
+								</tr>
+								<tr>
+									<td>Subject:</td>
+									<td>
+										<input type="text" data-options="required:true" class="easyui-textbox textbox-f" style="display: none;" textboxname="subject"><span class="textbox textbox-invalid" style="width: 150.4px; height: 20.4px;"><input type="text" autocomplete="off" class="textbox-text validatebox-text textbox-prompt validatebox-invalid" placeholder="" style="margin-left: 0px; margin-right: 0px; padding-top: 2px; padding-bottom: 2px; width: 142.4px;" title=""><input type="hidden" class="textbox-value" name="subject" value=""></span></td>
+								</tr>
+								<tr>
+									<td>Message:</td>
+									<td>
+										<input style="height: 60px; display: none;" data-options="multiline:true" class="easyui-textbox textbox-f" textboxname="message"><span class="textbox" style="width: 150.4px; height: 58.4px;"><textarea autocomplete="off" class="textbox-text validatebox-text textbox-prompt" placeholder="" style="margin-left: 0px; margin-right: 0px; height: 50.4px; width: 142.4px;"></textarea><input type="hidden" class="textbox-value" name="message" value=""></span></td>
+								</tr>
+								<tr>
+									<td>Language:</td>
+									<td>
+										<select class="easyui-combobox combobox-f combo-f textbox-f" style="display: none;" textboxname="language" comboname="language">
+											<option value="ar">Arabic</option>
+											<option value="bg">Bulgarian</option>
+											<option value="ca">Catalan</option>
+											<option value="zh-cht">Chinese Traditional</option>
+											<option value="cs">Czech</option>
+											<option value="da">Danish</option>
+											<option value="nl">Dutch</option>
+											<option selected="selected" value="en">English</option>
+											<option value="et">Estonian</option>
+											<option value="fi">Finnish</option>
+											<option value="fr">French</option>
+											<option value="de">German</option>
+											<option value="el">Greek</option>
+											<option value="ht">Haitian Creole</option>
+											<option value="he">Hebrew</option>
+											<option value="hi">Hindi</option>
+											<option value="mww">Hmong Daw</option>
+											<option value="hu">Hungarian</option>
+											<option value="id">Indonesian</option>
+											<option value="it">Italian</option>
+											<option value="ja">Japanese</option>
+											<option value="ko">Korean</option>
+											<option value="lv">Latvian</option>
+											<option value="lt">Lithuanian</option>
+											<option value="no">Norwegian</option>
+											<option value="fa">Persian</option>
+											<option value="pl">Polish</option>
+											<option value="pt">Portuguese</option>
+											<option value="ro">Romanian</option>
+											<option value="ru">Russian</option>
+											<option value="sk">Slovak</option>
+											<option value="sl">Slovenian</option>
+											<option value="es">Spanish</option>
+											<option value="sv">Swedish</option>
+											<option value="th">Thai</option>
+											<option value="tr">Turkish</option>
+											<option value="uk">Ukrainian</option>
+											<option value="vi">Vietnamese</option>
+										</select><span class="textbox combo" style="width: 121.4px; height: 20.4px;"><span class="textbox-addon textbox-addon-right" style="right: 0px;"><a tabindex="-1" icon-index="0" class="textbox-icon combo-arrow" href="javascript:void(0)" style="width: 18px; height: 20.4px;"></a></span>
+										<input
+										type="text" autocomplete="off" class="textbox-text validatebox-text" placeholder="" style="margin-left: 0px; margin-right: 18px; padding-top: 2px; padding-bottom: 2px; width: 95.4px;">
+											<input type="hidden" class="textbox-value" name="language" value="en">
+											</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+					<div style="text-align:center;padding:5px">
+						<a onclick="submitForm()" class="easyui-linkbutton l-btn l-btn-small" href="javascript:void(0)" group="" id=""><span class="l-btn-left"><span class="l-btn-text">Submit</span></span></a>
+						<a onclick="clearForm()" class="easyui-linkbutton l-btn l-btn-small" href="javascript:void(0)" group="" id=""><span class="l-btn-left"><span class="l-btn-text">Clear</span></span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div title="Tab3" data-options="iconCls:'icon-reload',closable:true" style="padding:20px;">
+		tab3
+	</div>
+</div>

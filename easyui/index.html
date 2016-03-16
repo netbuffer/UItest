@@ -5,6 +5,28 @@
 		<meta charset="UTF-8">
 		<title>easyui测试</title>
 		<link rel="stylesheet" type="text/css" href="lib/themes/default/easyui.css" />
+		<!--
+        	描述：图标
+        -->
+		<link rel="stylesheet" type="text/css" href="lib/themes/icon.css"/>
+		<!--
+        	作者：netbuffer
+        	时间：2016-03-16
+        	描述：bootstrap主题
+        -->
+		<!--<link rel="stylesheet" type="text/css" href="lib/themes/bootstrap/easyui.css" />-->
+		<!--
+        	描述：gray主题
+        -->
+		<!--<link rel="stylesheet" type="text/css" href="lib/themes/gray/easyui.css" />-->
+		<!--
+        	描述：black主题
+        -->
+		<!--<link rel="stylesheet" type="text/css" href="lib/themes/black/easyui.css" />-->
+		<!--
+        	描述：metro主题
+        -->
+		<!--<link rel="stylesheet" type="text/css" href="lib/themes/metro/easyui.css" />-->
 		<script src="lib/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="lib/jquery.easyui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script language="JavaScript" type="text/javascript">
@@ -25,14 +47,14 @@
 							fit:true,
 							border:false,
 							noheader:false, 
-							href:'index.html'
+							href:'basic.html'
 				});
 			});
 		</script>
 	</head>
 
 	<body class="easyui-layout">
-		<div data-options="region:'north',border:true" style="height:35px;background:#C1C1C1;padding:5px; text-align:right;overflow:hidden;">
+		<div data-options="region:'north',split:true,border:true" style="height:55px;background:#C1C1C1;padding:5px; text-align:right;overflow:hidden;">
 			<div style=" float:left;COLOR: #fff; FONT-SIZE: 22px; FONT-WEIGHT: bold">jQuery EasyUI测试</div>
 			<div style="COLOR: #fff">
 				<A href="http://www.jeasyui.com/" target="_blank" style="COLOR: #fff; TEXT-DECORATION: none">jQuery EasyUI 官网</A>
@@ -212,7 +234,7 @@
 					<li data-options="id:1"> <span>关于EasyUI</span> </li>
 			</ul>
 		</div>
-		<div class="calendar-menu-month" style="height:50px;background:#EBEBEB;padding:5px;overflow:hidden; text-align:right;color:#0066FF" data-options="region:'south',border:false"> 底部声明</div>
+		<div class="calendar-menu-month" style="height:50px;background:#EBEBEB;padding:5px;overflow:hidden; text-align:right;color:#0066FF" data-options="region:'south',split:true,border:true"> 底部声明</div>
 		<div data-options="region:'center'" style=" padding:10px; text-align:left;">
 			<div id="show_win"></div>
 		</div>
