@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>easyui测试</title>
+		<link rel="stylesheet" type="text/css" href="lib/themes/default/easyui.css" />
+		<script src="lib/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/jquery.easyui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script language="JavaScript" type="text/javascript">
+			$(function(){
+				$('#help_tree').tree({
+					checkbox: false,
+					animate:true,
+					lines:true,
+					onClick:function(node){
+						if(node.id){
+							$('#show_win').panel('refresh',node.id+'.html');
+						}else{
+							$('#help_tree').tree('expand',node.target);
+						}
+					}
+				});
+				$('#show_win').panel({
+							fit:true,
+							border:false,
+							noheader:false, 
+							href:'index.html'
+				});
+			});
+		</script>
+	</head>
+
+	<body class="easyui-layout">
+		<div data-options="region:'north',border:true" style="height:35px;background:#C1C1C1;padding:5px; text-align:right;overflow:hidden;">
+			<div style=" float:left;COLOR: #fff; FONT-SIZE: 22px; FONT-WEIGHT: bold">jQuery EasyUI测试</div>
+			<div style="COLOR: #fff">
+				<A href="http://www.jeasyui.com/" target="_blank" style="COLOR: #fff; TEXT-DECORATION: none">jQuery EasyUI 官网</A>
+			</div>
+		</div>
+		</div>
+		<div data-options="region:'west',split:true,title:'这是导航窗口操作菜单',iconCls:'icon-help'" style="width:248px;padding:5px; text-align:left;">
+			<ul id="help_tree">
+
+				<li data-options="id:1"> <span>演示范例</span>
+					<ul>
+						<li data-options="id:null,state:'closed'"> <span>拖动与菜单</span>
+							<ul>
+								<li data-options="id:'draggable'">一般拖动 - Draggable</li>
+								<li data-options="id:'droppable'">拖放 - DragDrop</li>
+								<li data-options="id:'droppable1'">拖放二 - DragDrop</li>
+								<li data-options="id:'droppable2'">拖放三 - DragDrop</li>
+								<li data-options="id:'Resizable'">缩放 - Resizable</li>
+								<li data-options="id:'Slider'">滑动条 - Slider</li>
+								<li data-options="id:'menu'">菜单 - Menu</li>
+								<li data-options="id:'menubutton'">菜单按钮 - MenuButton</li>
+								<li data-options="id:'SplitButton'">分隔按钮 - SplitButton</li>
+								<li data-options="id:'Tree'">树形菜单 - Tree/li>
+									<li data-options="id:'Tree2'">可编辑树形菜单 - Editable Tree</li>
+							</ul>
+							</li>
+							<li data-options="id:null,state:'closed'"> <span>按钮与布局</span>
+								<ul>
+									<li data-options="id:'linkbutton'">链接按钮 - LinkButton</li>
+									<li data-options="id:'SplitButton'">分隔按钮 - SplitButton</li>
+									<li data-options="id:'easyloader'">简单的布局面板 - EasyLoader</li>
+									<li data-options="id:'layout'">页面布局 - Border Layout</li>
+									<li data-options="id:'layout2'">在控制面板上布局 - Border Layout on Panel</li>
+									<li data-options="id:'Panel'">控制面板 - Panel</li>
+									<li data-options="id:'Panel2'">控制面板与工具 - Panel With Tools</li>
+									<li data-options="id:'layout1'">复杂的页面布局 - Complex Layout</li>
+									<li data-options="id:'accordion'">折叠面板-accordion</li>
+									<li data-options="id:'Tabs'">选项卡 - Tabs</li>
+								</ul>
+							</li>
+							<li data-options="id:null,state:'closed'"> <span>数据表格</span>
+								<ul>
+									<li data-options="id:'datagrid'">数据表格 - Complex DataGrid</li>
+									<li data-options="id:'datagrid2'">可编辑数据表格 - Editable DataGrid</li>
+									<li data-options="id:'datagrid3'">带右键菜单的数据表格 - DataGrid ContextMenu</li>
+									<li data-options="id:'datagrid4'">数据表格行样式 - DataGrid Custom Row Style</li>
+									<li data-options="id:'datagrid5'">数据表格页脚行 - DataGridFooter Row</li>
+									<li data-options="id:'TreeGrid'">树形数据表格 - TreeGrid</li>
+									<li data-options="id:'TreeGrid2'">数据表格显示页脚 - TreeGrid</li>
+									<li data-options="id:'TreeGrid3'">带分页的树形数据表格 -TreeGrid</li>
+									<li data-options="id:'PropertyGrid'">属性表格 - PropertyGrid</li>
+								</ul>
+							</li>
+							<li data-options="id:null,state:'closed'"> <span>窗口应用</span>
+								<ul>
+									<li data-options="id:'window'">窗口 - Window</li>
+									<li data-options="id:'dialog'">对话框 - Dialog</li>
+									<li data-options="id:'messager'">消息窗口 - Messager</li>
+
+								</ul>
+							</li>
+							<li data-options="id:null,state:'closed'"> <span>表单相关</span>
+								<ul>
+									<li data-options="id:'form'">表单 - Form Demo</li>
+									<li data-options="id:'calendar'">日历 - Calendar</li>
+									<li data-options="id:'combo'">下拉选择框 - Custom Combo</li>
+									<li data-options="id:'combobox'">下拉组合框 - ComboBox</li>
+									<li data-options="id:'combogrid'">数据表格下拉框 - ComboGrid</li>
+									<li data-options="id:'combotree'">树形下拉框 - ComboTree</li>
+									<li data-options="id:'datebox'">日期输入框 - DateBox</li>
+									<li data-options="id:'datetimebox'">日期时间输入框 - DateTimeBox</li>
+									<li data-options="id:'NumberBox'">数字输入框 - NumberBox</li>
+									<li data-options="id:'NumberBox2'">格式化数字输入框 - Format NumberBox</li>
+									<li data-options="id:'NumberSpinner'">数字调节器 - NumberSpinner</li>
+									<li data-options="id:'ProgressBar'">进度条 - ProgressBar</li>
+									<li data-options="id:'SearchBox'">搜索框 - SearchBox</li>
+									<li data-options="id:'TimeSpinner'">时间调节器 - TimeSpinner</li>
+									<li data-options="id:'ValidateBox'">输入框验证 - ValidateBox</li>
+								</ul>
+							</li>
+					</ul>
+					</li>
+					<li data-options="id:1"> <span>应用教程</span>
+						<ul>
+							<li data-options="id:null,state:'closed'"> <span>应用与拖动</span>
+								<ul>
+									<li data-options="id:3001">创建CRUD应用</li>
+									<li data-options="id:3002">创建CRUD数据表格</li>
+									<li data-options="id:3003">创建展开行详细编辑应用</li>
+									<li data-options="id:3004">创建RSS Feed阅读器</li>
+									<li data-options="id:3005">创建拖动和放置</li>
+									<li data-options="id:3006">创建拖放的购物车</li>
+									<li data-options="id:3007">创建一个课程表</li>
+									<li data-options="id:3008">创建简单的菜单</li>
+								</ul>
+							</li>
+							<li data-options="id:null,state:'closed'"> <span>按钮与布局</span>
+								<ul>
+									<li data-options="id:3009">创建Link Button</li>
+									<li data-options="id:3010">创建Menu Button</li>
+									<li data-options="id:3011">创建Split Button</li>
+									<li data-options="id:3012">创建border layout</li>
+									<li data-options="id:3013">在panel中创建复杂布局</li>
+									<li data-options="id:3014">创建折叠面板</li>
+									<li data-options="id:3015">创建Tabs标签 </li>
+									<li data-options="id:3016">创建和动态添加tabs组件</li>
+									<li data-options="id:3017">创建自动播放tab</li>
+									<li data-options="id:3018">创建XP风格左侧面板</li>
+								</ul>
+							</li>
+							<li data-options="id:null,state:'closed'"> <span>数据表格</span>
+								<ul>
+									<li data-options="id:3019">转换table到数据表格</li>
+									<li data-options="id:3020">数据表格添加分页组件</li>
+									<li data-options="id:3021">数据表格添加查询功能</li>
+									<li data-options="id:3022">数据表格添加工具条</li>
+									<li data-options="id:3023">数据表格设置冻结列</li>
+									<li data-options="id:3024">动态改变数据表格列</li>
+									<li data-options="id:3025">格式化数据表格列 </li>
+									<li data-options="id:3026">数据表格设置排序</li>
+									<li data-options="id:3027">数据表格自定义排序</li>
+									<li data-options="id:3028">数据表格添加复选框</li>
+									<li data-options="id:3029">数据表格自定分页工具栏</li>
+									<li data-options="id:3030">数据表格行内编辑器</li>
+									<li data-options="id:3031">扩展数据表格行内编辑器</li>
+									<li data-options="id:3032">数据表格列运算</li>
+									<li data-options="id:3033">合并数据表格单元格</li>
+									<li data-options="id:3034">创建自定义视图</li>
+									<li data-options="id:3035">创建数据表格页底摘要</li>
+									<li data-options="id:3036">条件设置数据表行背景</li>
+									<li data-options="id:3037">创建折叠数据表格</li>
+									<li data-options="id:3038">折叠数据表格应用</li>
+									<li data-options="id:3039">折叠数据表格中套用数据表格</li>
+									<li data-options="id:3040">数据表格处理海量数据方法</li>
+								</ul>
+							</li>
+							<li data-options="id:null,state:'closed'"> <span>窗口应用</span>
+								<ul>
+									<li data-options="id:3041">创建简单窗口</li>
+									<li data-options="id:3042">创建窗口工具栏</li>
+									<li data-options="id:3043">窗口与布局</li>
+									<li data-options="id:3044">创建对话框窗口</li>
+									<li data-options="id:3045">自定义工具条和按钮</li>
+								</ul>
+							</li>
+							<li data-options="id:null,state:'closed'"> <span>树形菜单</span>
+								<ul>
+									<li data-options="id:3046">使用标签创建树形菜单</li>
+									<li data-options="id:3047">创建异步树形菜单</li>
+									<li data-options="id:3048">添加树形菜单结点</li>
+									<li data-options="id:3049">创建带复选框的树形菜单</li>
+									<li data-options="id:3050">树形菜单拖动控制</li>
+									<li data-options="id:3051">非标准数据转换</li>
+									<li data-options="id:3052">创建基础树形数据表格</li>
+									<li data-options="id:3053">创建复杂树形数据表格</li>
+								</ul>
+							</li>
+							<li data-options="id:null,state:'closed'"> <span>表单应用</span>
+								<ul>
+									<li data-options="id:3054">创建异步提交表单</li>
+									<li data-options="id:3055">创建树形下拉框</li>
+									<li data-options="id:3056">表单验证</li>
+									<li data-options="id:3057">格式化下拉框</li>
+									<li data-options="id:3058">动态下拉数据表格</li>
+									<li data-options="id:3059">创建简单的菜单</li>
+									<li data-options="id:3060">创建简单的菜单</li>
+								</ul>
+							</li>
+							<li data-options="id:null,state:'closed'"> <span>扩展应用</span>
+								<ul>
+									<li data-options="id:3059">组件加载</li>
+									<li data-options="id:3060">easyUI 主题 </li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li data-options="id:1"> <span>关于EasyUI</span> </li>
+			</ul>
+		</div>
+		<div class="calendar-menu-month" style="height:50px;background:#EBEBEB;padding:5px;overflow:hidden; text-align:right;color:#0066FF" data-options="region:'south',border:false"> 底部声明</div>
+		<div data-options="region:'center'" style=" padding:10px; text-align:left;">
+			<div id="show_win"></div>
+		</div>
+	</body>
+
+</html>
