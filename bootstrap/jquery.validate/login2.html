@@ -47,14 +47,14 @@
 					debug: true,
 					rules: {
 						username: {
-//							required: true,
-//							minlength: 2,
-//							maxlength: 10,
+							//							required: true,
+							//							minlength: 2,
+							//							maxlength: 10,
 							/**
 							 * jquery.validate会发送remote.json?username=abd到这个路径
 							 * 远程返回true，或者false来判断是否校验成功
 							 */
-							remote:"remote.json"
+							remote: "remote.json"
 						},
 						password: {
 							required: true,
@@ -80,6 +80,13 @@
 						"confirm-password": {
 							equalTo: "两次输入密码不一致"
 						}
+					},
+					//自定义errorclass样式
+					errorClass: "text-warning",
+					//校验通过样式控制
+					success: function(label) {
+						label.html("<div class='form-group has-success'><label class='control-label'>校验通过<span class='glyphicon glyphicon-ok'></span></label></div>");
+						$(label).fadeOut();
 					},
 					highlight: function(element, errorClass, validClass) {
 						$(element).addClass(errorClass).removeClass(validClass);
