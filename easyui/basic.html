@@ -18,10 +18,17 @@
 			}]
 		});
 	});
+	function opd(){
+		$('#dialog_test').dialog();
+	}
 </script>
 <div id="test_tab" class="easyui-tabs" style="width:100%;height:100%;">
 	<div title="Tab1" style="padding:20px;">
 		tab1
+		<a href="#" class="easyui-linkbutton" onclick="opd();" data-options="plain:true,iconCls:'icon-ok'">Cancel</a>
+		<div id="dialog_test" title="My Dialog" style="width:400px;height:200px;">
+	        Dialog Content.
+	    </div>
 		<div id="p" class="easyui-progressbar" data-options="value:60" style="width:400px;"></div>
 	</div>
 	<div title="Tab2" data-options="closable:true" style="overflow:auto;padding:20px;">
