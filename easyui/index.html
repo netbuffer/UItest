@@ -8,7 +8,7 @@
 		<!--
         	描述：图标
         -->
-		<link rel="stylesheet" type="text/css" href="lib/themes/icon.css"/>
+		<link rel="stylesheet" type="text/css" href="lib/themes/icon.css" />
 		<!--
         	作者：netbuffer
         	时间：2016-03-16
@@ -30,24 +30,24 @@
 		<script src="lib/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="lib/jquery.easyui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script language="JavaScript" type="text/javascript">
-			$(function(){
+			$(function() {
 				$('#help_tree').tree({
 					checkbox: false,
-					animate:true,
-					lines:true,
-					onClick:function(node){
-						if(node.id){
-							$('#show_win').panel('refresh',node.id+'.html');
-						}else{
-							$('#help_tree').tree('expand',node.target);
+					animate: true,
+					lines: true,
+					onClick: function(node) {
+						if (node.id) {
+							$('#show_win').panel('refresh', node.id + '.html');
+						} else {
+							$('#help_tree').tree('expand', node.target);
 						}
 					}
 				});
 				$('#show_win').panel({
-							fit:true,
-							border:false,
-							noheader:false, 
-							href:'basic.html'
+					fit: true,
+					border: false,
+					noheader: false,
+					href: 'basic.html'
 				});
 			});
 		</script>

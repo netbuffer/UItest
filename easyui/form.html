@@ -1,0 +1,58 @@
+<script type="text/javascript">
+	$(function() {
+		$('#test_tab').tabs({
+			border: true,
+			onSelect: function(title) {
+				console.log(title + ' is selected');
+			}
+		});
+		$('test_tab').tabs('add', {
+			title: 'New Tab',
+			content: 'Tab Body',
+			closable: true,
+			tools: [{
+				iconCls: 'icon-mini-refresh',
+				handler: function() {
+					alert('refresh');
+				}
+			}]
+		});
+	});
+	function opendialog(){
+		$('#dialog_test').dialog();
+	}
+	function closedialog(){
+		$('#dialog_test').dialog("close");
+	}
+	function confirmtest(msg) {  
+	    $.messager.confirm("确认", msg, function (r) {  
+	        if (r) {  
+	            return true;  
+	        }  
+	    });  
+	    return false;  
+	}
+	
+	    //Load  
+    function loading() {  
+        $("<div class=\"datagrid-mask\"></div>").css({ display: "block", width: "100%", height: $(window).height() }).appendTo("body");  
+        $("<div class=\"datagrid-mask-msg\"></div>").html("正在运行，请稍候。。。").appendTo("body").css({ display: "block", left: ($(document.body).outerWidth(true) - 190) / 2, top: ($(window).height() - 45) / 2 });  
+    }  
+      
+    //hidden Load  
+    function removeLoading() {  
+        $(".datagrid-mask").remove();  
+        $(".datagrid-mask-msg").remove();  
+    }
+</script>
+<form id="ff" method="post">
+	<div>
+		<label for="name">Name:</label>
+		<input class="easyui-validatebox" type="text" name="name" data-options="required:true" />
+	</div>
+	<div>
+		<label for="email">Email:</label>
+		<input class="easyui-validatebox" type="text" name="email" data-options="validType:'email'" />
+	</div>
+	...
+</form>

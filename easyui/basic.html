@@ -1,3 +1,5 @@
+<script src="moment.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="moment.zh-cn.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	$(function() {
 		$('#test_tab').tabs({
@@ -6,7 +8,7 @@
 				console.log(title + ' is selected');
 			}
 		});
-		$('test_tab').tabs('add', {
+		$('#test_tab').tabs('add', {
 			title: 'New Tab',
 			content: 'Tab Body',
 			closable: true,
@@ -44,10 +46,30 @@
         $(".datagrid-mask").remove();  
         $(".datagrid-mask-msg").remove();  
     }
+    
+    function addFormTab(){
+    	$('#test_tab').tabs('add', {
+			title: 'FormTab',
+			content: '<iframe src="form.html"></iframe>',
+			closable: true,
+			tools: [{
+				iconCls: 'icon-mini-refresh',
+				handler: function() {
+					alert('refresh');
+				}
+			}]
+		});
+    }
+    
+    function dateFormatter(date){
+    	return moment(date).format("YYYY-MM-DD");
+    }
 </script>
+
 <div id="test_tab" class="easyui-tabs" style="width:100%;height:100%;">
 	<div title="Tab1" style="padding:20px;">
 		tab1<hr/>
+		<a href="#" class="easyui-linkbutton" onclick="addFormTab();" data-options="plain:true,iconCls:'icon-ok'">打开form表单</a>
 		<a href="#" class="easyui-linkbutton" onclick="opendialog();" data-options="plain:true,iconCls:'icon-ok'">弹dialog</a>
 		<a href="#" class="easyui-linkbutton" onclick="closedialog();" data-options="plain:true,iconCls:'icon-undo'">关闭dialog</a>
 		<a href="#" class="easyui-linkbutton" onclick="confirmtest('测试信息');" data-options="plain:true,iconCls:'icon-edit'">确认框</a>
@@ -60,6 +82,61 @@
 	</div>
 	<div title="Tab2" data-options="closable:true" style="overflow:auto;padding:20px;">
 		tab2
+		<input class="easyui-slider" value="12"  style="width:300px"  data-options="showTip:true,rule:[0,'|',25,'|',50,'|',75,'|',100]" /><br /> 
+		测试:<input class="easyui-validatebox" type="text" name="name" data-options="required:false" />
+		<select id="cc" class="easyui-combobox" name="state" style="width:200px;" data-options="required:true">
+			<option value="AL">Alabama</option>
+			<option value="AK">Alaska</option>
+			<option value="AZ">Arizona</option>
+			<option value="AR">Arkansas</option>
+			<option value="CA">California</option>
+			<option value="CO">Colorado</option>
+			<option value="CT">Connecticut</option>
+			<option value="DE">Delaware</option>
+			<option value="FL">Florida</option>
+			<option value="GA">Georgia</option>
+			<option value="HI">Hawaii</option>
+			<option value="ID">Idaho</option>
+			<option value="IL">Illinois</option>
+			<option value="IN">Indiana</option>
+			<option value="IA">Iowa</option>
+			<option value="KS">Kansas</option>
+			<option value="KY">Kentucky</option>
+			<option value="LA">Louisiana</option>
+			<option value="ME">Maine</option>
+			<option value="MD">Maryland</option>
+			<option value="MA">Massachusetts</option>
+			<option value="MI">Michigan</option>
+			<option value="MN">Minnesota</option>
+			<option value="MS">Mississippi</option>
+			<option value="MO">Missouri</option>
+			<option value="MT">Montana</option>
+			<option value="NE">Nebraska</option>
+			<option value="NV">Nevada</option>
+			<option value="NH">New Hampshire</option>
+			<option value="NJ">New Jersey</option>
+			<option value="NM">New Mexico</option>
+			<option value="NY">New York</option>
+			<option value="NC">North Carolina</option>
+			<option value="ND">North Dakota</option>
+			<option value="OH" selected>Ohio</option>
+			<option value="OK">Oklahoma</option>
+			<option value="OR">Oregon</option>
+			<option value="PA">Pennsylvania</option>
+			<option value="RI">Rhode Island</option>
+			<option value="SC">South Carolina</option>
+			<option value="SD">South Dakota</option>
+			<option value="TN">Tennessee</option>
+			<option value="TX">Texas</option>
+			<option value="UT">Utah</option>
+			<option value="VT">Vermont</option>
+			<option value="VA">Virginia</option>
+			<option value="WA">Washington</option>
+			<option value="WV">West Virginia</option>
+			<option value="WI">Wisconsin</option>
+			<option value="WY">Wyoming</option>
+		</select>
+		日期选择:<input class="easyui-datebox" name="startDate" data-options="formatter:dateFormatter" style="width: 200px;"/>
 		<div class="panel" style="display: block; width: 400px;">
 			<div class="panel-header" style="width: 388.4px;">
 				<div class="panel-title">New Topic</div>
