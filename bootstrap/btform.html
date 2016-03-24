@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>Bootbox.js-demo</title>
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.js"></script>
+		<script src="http://cdn.bootcss.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		<script src="js/bootbox.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function($){  
+		        $.fn.serializeJson=function(){  
+		            var serializeObj={};  
+		            var array=this.serializeArray();  
+		            var str=this.serialize();  
+		            $(array).each(function(){  
+		                if(serializeObj[this.name]){  
+		                    if($.isArray(serializeObj[this.name])){  
+		                        serializeObj[this.name].push(this.value);  
+		                    }else{  
+		                        serializeObj[this.name]=[serializeObj[this.name],this.value];  
+		                    }  
+		                }else{  
+		                    serializeObj[this.name]=this.value;   
+		                }  
+		            });  
+		            return serializeObj;  
+		        };  
+		    })(jQuery);  
+			
+			function formtest(){
+				alert($("#form_test").serialize());
+				alert(JSON.stringify($("#form_test").serializeJson()));
+			}
+		
+		</script>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="page-header">
+				<h1>Bootstrap-form</h1>
+			</div>
+			<button class="btn btn-primary" onclick="formtest();">test</button>
+			<form class="form-control" id="form_test">
+				<div class="form-group has-success">
+					<label class="control-label" for="inputSuccess1">Input with success</label>
+					<input type="text" name="input1" class="form-control" id="inputSuccess1">
+				</div>
+				<div class="form-group has-warning">
+					<label class="control-label" for="inputWarning1">Input with warning</label>
+					<input type="text" name="input2" class="form-control" id="inputWarning1">
+				</div>
+				<div class="form-group has-error">
+					<label class="control-label" for="inputError1">Input with error</label>
+					<input type="text" name="input3" class="form-control" id="inputError1">
+				</div>
+				<div class="has-success">
+					<div class="checkbox">
+						<label>
+					      <input type="checkbox" name="ck1" id="checkboxSuccess" value="option1">
+					      Checkbox with success
+					    </label>
+					</div>
+				</div>
+				<div class="has-warning">
+					<div class="checkbox">
+						<label>
+					      <input type="checkbox" name="ck2" id="checkboxWarning" value="option1">
+					      Checkbox with warning
+					    </label>
+					</div>
+				</div>
+				<div class="has-error">
+					<div class="checkbox">
+						<label>
+					      <input type="checkbox" name="ck3" id="checkboxError" value="option1">
+					      Checkbox with error
+					    </label>
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+
+</html>
