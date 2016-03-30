@@ -10,7 +10,6 @@
 		<script src="js/jquery.event.move.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/jquery.event.swipe.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/unslider-min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/jQuery.event.swipe.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
 			/*.banner { position: relative; overflow: auto; }
     		.banner li { list-style: none; }
@@ -19,10 +18,30 @@
 		<script type="text/javascript">
 			$(function() {
 			    $('.banner').unslider({
-			    	speed: 500,
-			    	arrows:false
+			    	autoplay:true,
+			    	arrows:false,
 			    });
-			    $('.banner').unslider('initSwipe');
+			    /**
+			     *异步加载 jquery.event.move.js、jquery.event.swipe.js需要调用这个方法，
+			     * 页面直接引用了js文件无需手动调用该方法
+			     */
+//			    $('.banner').unslider('initSwipe');
+//				//  Let's say we want to use $.getScript to load our scripts for some reason
+//				var scripts = [
+//					'http://stephband.info/jquery.event.move/js/jquery.event.move.js',
+//					'http://stephband.info/jquery.event.swipe/js/jquery.event.swipe.js'
+//				];
+//				
+//				$.getScript(scripts[0]);
+//				
+//				//  Once our script is loaded, we can initSwipe to add swipe support
+//				$.getScript(scripts[1], function() {
+//					$('.sliderman').unslider('initSwipe');
+//				});
+			    $('.banner').on('unslider.change', function(event, index, slide) {
+					console.log('改变索引' + index);
+				});
+			    
 			});
 		</script>
 	</head>
