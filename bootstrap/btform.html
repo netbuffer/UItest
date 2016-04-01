@@ -41,6 +41,11 @@
 			function serialize_all(){
 				alert($("#form_test").serialize());
 			}
+			
+			function add_select(){
+				var option=$("<option>").val("test").text("测试").attr("selected","selected");
+				$("#select_test").append(option);
+			}
 		</script>
 	</head>
 
@@ -51,6 +56,7 @@
 			</div>
 			<button class="btn btn-primary" onclick="formtest();">test</button>&emsp;<button class="btn btn-success" onclick="serialize_test();">serialize部分</button>&emsp;
 			<button class="btn btn-warning" onclick="serialize_all();">serialize全部</button>&emsp;
+			<button class="btn btn-warning" onclick="add_select();">添加select并选中</button>&emsp;
 			<form class="" id="form_test">
 				<div id="serialize_test">
 					<div class="form-group has-success">
@@ -90,6 +96,13 @@
 					    </label>
 					</div>
 				</div>
+				<select id="select_test" class="form-control">
+				  <option>1</option>
+				  <option>2</option>
+				  <option>3</option>
+				  <option>4</option>
+				  <option>5</option>
+				</select>
 			</form>
 		</div>
 	</body>
