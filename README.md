@@ -1,4 +1,4 @@
-#demo页
+#UI test demo pages
 ---
 * bootstrap
 * amazeui
