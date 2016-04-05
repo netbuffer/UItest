@@ -9,8 +9,257 @@
 		<title>Ratchet UI</title>
 		<link rel="stylesheet" href="assets/agile/css/agile.layout.css">
 		<link rel="stylesheet" href="assets/agile/css/ratchet/css/ratchet.min.css">
+		<style type="text/css">
+			body,html{
+			    margin:0px;
+			    height:100%;
+			    position: relative;
+			}
+		</style>
 	</head>
 	<body>
+		<ul class="table-view">
+		    <li class="table-view-cell">Item 1</li>
+		    <li class="table-view-cell table-view-cell">Item 2</li>
+		    <li class="table-view-divider">Divider</li>
+		    <li class="table-view-cell">Item 3</li>
+		</ul>
+		
+		<ul class="table-view">
+		    <li class="table-view-cell">
+		        <a class="navigate-right">
+		            Item 1
+		        </a>
+		    </li>
+		    <li class="table-view-cell">
+		        <a class="navigate-right">
+		            Item 2
+		        </a>
+		    </li>
+		    <li class="table-view-cell">
+		        <a class="navigate-right">
+		            Item 3
+		        </a>
+		    </li>
+		</ul>
+		
+		<ul class="table-view">
+		    <li class="table-view-cell media">
+		        <a class="navigate-right">
+		            <span class="media-object pull-left icon icon-trash"></span>
+		            <div class="media-body">
+		            Item 1
+		            </div>
+		        </a>
+		    </li>
+		    <li class="table-view-cell media">
+		        <a class="navigate-right">
+		            <span class="media-object pull-left icon icon-gear"></span>
+		            <div class="media-body">
+		            Item 2
+		            </div>
+		        </a>
+		    </li>
+		    <li class="table-view-cell media">
+		        <a class="navigate-right">
+		            <span class="media-object pull-left icon icon-pages"></span>
+		            <div class="media-body">
+		            Item 3
+		            </div>
+		        </a>
+		    </li>
+		</ul>
+		
+		<ul class="table-view">
+		    <li class="table-view-cell media">
+		        <a class="navigate-right">
+		            <img class="media-object pull-left" style="width:100px;" src="../bootstrap/img/cocacola.png">
+		            <div class="media-body">
+		                Item 1
+		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet.</p>
+		            </div>
+		        </a>
+		    </li>
+		    <li class="table-view-cell media">
+		        <a class="navigate-right">
+		            <img class="media-object pull-left" style="width:100px;" src="../bootstrap/img/cocacola.png">
+		            <div class="media-body">
+		                Item 1
+		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet.</p>
+		            </div>
+		        </a>
+		    </li>
+		    <li class="table-view-cell media">
+		        <a class="navigate-right">
+		            <img class="media-object pull-left" style="width:100px;" src="../bootstrap/img/cocacola.png">
+		            <div class="media-body">
+		                Item 1
+		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet.</p>
+		            </div>
+		        </a>
+		    </li>
+		</ul>
+		
+		<h1>卡片列表</h1>
+		<div class="card">
+		    <ul class="table-view">
+		        <li class="table-view-cell">Item 1</li>
+		        <li class="table-view-cell">Item 2</li>
+		        <li class="table-view-cell table-view-divider">Divider</li>
+		        <li class="table-view-cell">Item 3</li>
+		        <li class="table-view-cell">Item 4</li>
+		    </ul>
+		</div>
+		<h1>表单</h1>
+		<div class="scroller demo-btn">
+		    <form>
+		        <input type="text" placeholder="姓名">
+		        <input type="search" placeholder="搜索">
+		        <textarea rows="5"></textarea>
+		        <div data-role="select">
+		            <select>
+		                <option>请选择公司</option>
+		                <option>烽火通信股份有限公司</option>
+		                <option>烽火星空通信发展有限公司</option>
+		            </select>
+		        </div>
+		        <div class="split-div-large"></div>
+		        <div class="card" style="margin:0px;">
+		            <ul class="table-view">
+		                <li class="table-view-cell">
+		                    <font class="sliver">爱好</font>
+		                </li>
+		                <li class="table-view-cell">
+		                    <a href="#" data-role="checkbox">
+		                        <label for="cb1" class="checkbox-label">篮球</label><input type="checkbox" id="cb1"/>
+		                    </a>
+		                </li>
+		                <li class="table-view-cell">
+		                    <a href="#" data-role="checkbox">
+		                        <label for="cb2" class="checkbox-label">足球</label><input type="checkbox" id="cb2"/>
+		                    </a>
+		                </li>
+		            </ul>
+		        </div>
+		        <div class="split-div-large"></div>
+		        <div class="card" style="margin:0px;">
+		            <ul class="table-view">
+		                <li class="table-view-cell">
+		                    <font class="sliver">性别</font>
+		                </li>
+		                <li class="table-view-cell">
+		                    <a href="#" data-role="radio">
+		                        <label for="cb3" class="radio-label">男</label><input type="radio" name="sex" id="cb3"/>
+		                    </a>
+		                </li>
+		                <li class="table-view-cell">
+		                    <a href="#" data-role="radio">
+		                        <label for="cb4" class="radio-label">女</label><input type="radio" name="sex" id="cb4"/>
+		                    </a>
+		                </li>
+		            </ul>
+		        </div>
+		
+		        <div class="split-div-large"></div>
+		
+		        <div data-role="file">
+		            <label>请选择文件</label>
+		            <input name="file" type="hidden">
+		        </div>
+		
+		        <div class="split-div-large"></div>
+		
+		        <div data-role="date">
+		            <label>请选择日期</label>
+		            <input type="hidden"/>
+		        </div>
+		
+		        <div class="split-div-large"></div>
+		
+		        <div data-role="time">
+		            <label>请选择时间</label>
+		            <input type="hidden"/>
+		        </div>
+		
+		        <div class="split-div-large"></div>
+		        <button class="btn btn-positive btn-block">提交</button>
+		    </form>
+		</div>
+		
+		
+		<form class="input-group">
+		    <div class="input-row">
+		        <label>姓名</label>
+		        <input type="text" placeholder="请输入姓名">
+		    </div>
+		    <div class="input-row">
+		        <label>Email</label>
+		        <input type="email" placeholder="请输入邮箱">
+		    </div>
+		    <div class="input-row">
+		        <label>用户名</label>
+		        <input type="text" placeholder="请输入用户名">
+		    </div>
+		    <div class="input-row">
+		        <label>在职</label>
+		        <div class="toggle" data-on="是" data-on-value="1" data-off="否" data-off-value="0"></div>
+		    </div>
+		
+		    <div class="input-row">
+		        <label>公司</label>
+		        <div data-role="select">
+		            <select>
+		                <option>请选择公司</option>
+		                <option>烽火通信股份有限公司</option>
+		                <option>烽火星空通信发展有限公司</option>
+		            </select>
+		        </div>
+		    </div>
+		
+		    <div class="input-row">
+		        <label>兴趣</label>
+		        <div class="control-container">
+		            <label for="bb" class="checkbox-label"><input type="checkbox" id="bb"/>篮球</label>
+		            <label for="fb" class="checkbox-label"><input type="checkbox" id="fb"/>足球</label>
+		            <label for="vb" class="checkbox-label"><input type="checkbox" id="vb"/>排球</label>
+		        </div>
+		    </div>
+		
+		    <div class="input-row">
+		        <label>性别</label>
+		        <div class="control-container">
+		            <label for="nan" class="radio-label"><input type="radio" name="sexy" id="nan"/>男</label>
+		            <label for="nv" class="radio-label"><input type="radio" name="sexy" id="nv"/>女</label>
+		        </div>
+		    </div>
+		
+		    <div class="input-row">
+		        <label>基本情况</label>
+		        <textarea rows="4" placeholder="请输入基本情况"></textarea>
+		    </div>
+		    <div class="input-row">
+		        <label>日期</label>
+		        <div data-role="date">
+		            <label>请选择日期</label>
+		            <input type="hidden"/>
+		        </div>
+		    </div>
+		    <div class="input-row">
+		        <label>时间</label>
+		        <div data-role="time">
+		            <label>请选择时间</label>
+		            <input type="hidden"/>
+		        </div>
+		    </div>
+		    <div class="input-row">
+		        <label>文件</label>
+		        <div data-role="file">
+		            <label>请选择文件</label>
+		            <input type="hidden"/>
+		        </div>
+		    </div>
+		
+		</form>
 		
 		印刷样式
 		印刷样式主要是通过字体的样式来实现的，已经内置的印刷样式如下
@@ -170,8 +419,8 @@
 		    </div>
 		</header>-->
 		
-		
-		<nav class="bar bar-tab">
+		<!--底部导航-->
+		<!--<nav class="bar bar-tab">
 		    <a class="tab-item active" href="#">
 		        <span class="icon icon-home"></span>
 		        <span class="tab-label">Home</span>
@@ -192,7 +441,23 @@
 		        <span class="icon icon-gear"></span>
 		        <span class="tab-label">Settings</span>
 		    </a>
-		</nav>
+		</nav>-->
+		
+		<!--<header class="bar bar-nav">
+		    <button class="btn pull-left">
+		    Left
+		    </button>
+		    <button class="btn pull-right">
+		    Right
+		    </button>
+		    <div class="segmented-control">
+		        <a class="control-item active">One</a>
+		        <a class="control-item">Two</a>
+		        <a class="control-item">Three</a>
+		    </div>
+		</header>-->
+		
+		
 	</body>
 	<!--- third --->
 	
