@@ -6,3 +6,5 @@
 * metro-bootstrap
 * sui
 * weui
+* easyui
+* agile

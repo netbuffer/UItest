@@ -1,0 +1,125 @@
+<!-- HTML5文件 -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta content="telephone=no" name="format-detection" /> 
+		<title>CRM主页</title>
+		<link rel="stylesheet" href="assets/agile/css/agile.layout.css">
+		<link rel="stylesheet" href="assets/agile/css/ratchet/css/ratchet.min.css">
+		<link rel="stylesheet" href="assets/app/css/app.css">
+		<link href="//cdn.bootcss.com/colors/1.0/colors.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="aside_container">
+			<aside id="category_aside" data-position="left" data-transition="push">
+				<script id="categoryAsideTmpl" src="categoryAsideTmpl.html" type="text/html"></script>
+			</aside>
+		</div>
+		<div id="section_container">
+			<section id="index_section" data-role="section" class="active">
+				<header class="bar bar-nav">
+				  	<a class="icon icon-bars pull-left" data-toggle="aside" href="#category_aside"></a>
+				  	<a class="icon icon-search pull-right" data-toggle="section" href="#search_section"></a>
+				  	<h1 class="title bg-black"><span class="text-white">主页</span></h1>
+				</header>
+				<article data-role="article" id="index_article" data-scroll="pulldown" class="active" style="top:44px;bottom:50px;">
+					<div class="scroller">
+						<div id="slide" data-role="slider" class="full-width" style="heigh:154px;overflow: hidden;">
+							<div class="scroller" id="sliderContent">
+								
+							</div>
+						</div>
+						<ul class="mygrid">
+							<li class="bg-peter-river">
+								<a data-toggle="section" href="category_section.html?id=1&name=葡萄酒">葡萄酒</a>
+							</li>
+							<li class="bg-emerland">
+								<a data-toggle="section" href="category_section.html?id=49&name=白酒">白酒</a>
+							</li>
+							<li class="bg-carrot">
+								<a data-toggle="section" href="category_section.html?id=35&name=洋酒">洋酒</a>
+							</li>
+							<li class="bg-alizarin">
+								<a data-toggle="section" href="category_section.html?id=76&name=保健酒">保健酒</a>
+							</li>
+						</ul>
+						
+						<script id="jiuTmpl" src="mainTmpl.html" type="text/html"></script>
+					
+					</div>
+				</article>
+				
+				<article data-role="article" id="star_article" data-scroll="pulldown" style="top:44px;bottom:50px;">
+					<div class="scroller">
+						<ul class="jiulist">
+							<script id="starTmpl" src="jiuTmpl.html" type="text/html"></script>
+						</ul>
+					</div>
+				</article>
+				
+				<article data-role="article" id="carts_article" data-scroll="pulldown" style="top:44px;bottom:50px;">
+					<div class="scroller">
+						<script id="cartsTmpl" src="cartsTmpl.html" type="text/html"></script>
+					</div>
+				</article>
+				
+				<article data-role="article" id="person_article" data-scroll="verticle" style="top:44px;bottom:50px;">
+					<div class="scroller" style="height: 100%;">
+						<script id="myTmpl" src="myTmpl.html" type="text/html"></script>
+						
+						<div class="bg-wet-asphalt white" style="width:100%;line-height: 40px; position: absolute;bottom:0;left: 0;text-align: center;">Powered By Agile Lite</div>
+					</div>
+				</article>
+
+				<nav class="bar bar-tab">
+				  	<a class="tab-item active" data-role="tab" data-toggle="article" href="#index_article">
+				    	<span class="icon icon-home"></span>
+				    	<span class="tab-label">首页</span>
+				  	</a>
+				  	<a class="tab-item" data-role="tab" data-toggle="article" href="#star_article">
+				    	<span class="icon icon-star-filled"></span>
+				    	<span class="tab-label">精品推荐</span>
+				  	</a>
+				  	<a class="tab-item" data-role="tab" data-toggle="article" href="#carts_article">
+				    	<span class="icon icon-download"></span>
+				    	<span class="tab-label">购物车</span>
+				  	</a>
+				  	<a class="tab-item" data-role="tab" data-toggle="article" href="#person_article">
+				    	<span class="icon icon-person"></span>
+				    	<span class="tab-label">个人中心</span>
+				  	</a>
+				</nav>
+			</section>
+				
+			<section id="search_section" data-role="section">
+				<header class="bar bar-nav">
+					<a class="icon icon-left-nav pull-left" data-toggle="back" href="#"></a>
+				  	<a id="search" class="icon icon-search pull-right"></a>
+				  	<div style="width:100%;height: 100%;width:200px;margin:4px auto;">
+				  		<input type="text" id="keyword" placeholder="请输入您要搜索的商品" style="display:block;width:100%;"></input>
+				  	</div>
+				  	
+				</header>
+				<article data-role="article" id="search_article" data-scroll="pullup" class="active" style="top:44px;bottom:0px;">
+					<div class="scroller">
+						<ul class="jiulist">
+							<script id="searchTmpl" src="jiuTmpl.html" type="text/html"></script>
+						</ul>
+					</div>
+				</article>
+				
+			</section>
+		</div>
+		<!--- third --->
+		<script src="assets/third/zepto/zepto.min.js"></script>
+		<script src="assets/third/iscroll/iscroll-probe.js"></script>
+		<script src="assets/third/arttemplate/template-native.js"></script>	
+		<!-- agile -->
+		<script type="text/javascript" src="assets/agile/js/agile.js"></script>		
+		<!-- app -->
+		<script type="text/javascript" src="assets/app/js/app.js"></script>
+	</body>
+</html>
