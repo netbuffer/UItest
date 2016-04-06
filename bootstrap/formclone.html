@@ -50,6 +50,41 @@
 					     }
 				 	}
 				 });
+				 
+				$("#test_samename").validate({
+					rules:{
+				 		"foo_1":{
+				 			required: true
+				 		},
+				 		"foo_2":{
+				 			required: true
+				 		},
+						"foo_3":{
+				 			required: true
+				 		}
+				 	},
+				 	messages:{
+				 		"foo_1":{
+				 			required: "must"
+				 		},
+				 		"foo_2":{
+				 			required:  "must"
+				 		},
+						"foo_3":{
+				 			required:  "must"
+				 		}
+				 	}
+				});
+				$('#test_samename input[type=submit]').click(function() {
+			        if ($('#test_samename').valid()) {
+			            $('#test_samename input[name^=foo_]').each(function() {
+			                $(this).attr('name', 'foo');
+			            });
+			            return true;
+			        }
+			        return false;
+			    });
+				 
 			});
 			function formser(){
 				alert(JSON.stringify($("#simple-clone").serializeJSON()));
@@ -80,6 +115,16 @@
 				  </div>
 			  </div>
 			</form>
+			<hr />
+			
+			<form action="#" id="test_samename">
+			  <input type="text" name="foo_1" class="required" />
+			  <input type="text" name="foo_2" class="required" />
+			  <input type="text" name="foo_3" class="required" />
+			  <input type="submit" />
+			</form>
+			
+			
 		</div>
 	</body>
 
