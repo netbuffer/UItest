@@ -9,8 +9,50 @@
 		<script src="js/bootbox.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="//cdn.bootcss.com/jquery.serializeJSON/2.7.2/jquery.serializejson.min.js"></script>
 		<script src="js/jquery-cloneya.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- 百度地图 -->
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=sNd9DQ51ZzwzYwy5x8FkesjB"></script>
 		<script type="text/javascript">
-			(function($){  
+			$(function(){
+				
+			});
+			
+			function openMap(){
+				if (BMap.Map) {
+					var map = new BMap.Map('baiduMap');
+					var lit = '';
+					var lat = '';
+					if (lit != '' && lat != '') {
+						load(lit, lat);
+					} else {
+						var x = '', y = '';
+						if (x != '' && y != '') {
+							load(x, y);
+						} else {
+							defaultLoad();
+						}
+					}
+				}
+			}
+			
+			function defaultLoad() {
+				load(116.404, 39.915);
+			}
+	
+			function load(x, y) {
+				if (BMap.Map) {
+					var map = new BMap.Map('baiduMap');
+					map.centerAndZoom(new BMap.Point(x, y), 15);
+					map.addControl(new BMap.NavigationControl());
+					map.addControl(new BMap.ScaleControl());
+					map.addEventListener('click', function(data) {
+						console.log(data);
+						$('#longitude').val(data.point.lng);
+						$('#latitude').val(data.point.lat);
+					});
+				}
+			}
+			
+			(function($){
 		        $.fn.serializeJson=function(){  
 		            var serializeObj={};  
 		            var array=this.serializeArray();  
@@ -48,6 +90,7 @@
 				var option=$("<option>").val("test").text("测试").attr("selected","selected");
 				$("#select_test").append(option);
 			}
+			
 		</script>
 	</head>
 
@@ -106,6 +149,43 @@
 				  <option>5</option>
 				</select>
 			</form>
+			<hr />
+			<button class="btn btn-primary" onclick="openMap();">选择地图</button>
+			<input name="longitude" id="longitude" type="text" readonly="readonly" value="114.518735" />,
+			<input name="latitude" id="latitude" type="text" readonly="readonly" value="38.067555" />
+			<div id="baiduMap" class="col-xs-12" style="height: 600px;"></div>
+			<!--<script>
+				if(BMap.Map){
+					var map = new BMap.Map('baiduMap');
+					var lit = '114.518735';
+					var lat = '38.067555';
+					if(lit != '' && lat != ''){
+						load(lit,lat);
+					} else {
+						var x = '',y = '';
+						if(x != '' && y != ''){
+							load(x, y);
+						} else {
+							defaultLoad();
+						}
+					}
+				}
+				
+				function defaultLoad(){
+					load(116.404, 39.915);
+				}
+				
+				function load(x, y){
+					map.centerAndZoom(new BMap.Point(x, y), 15);
+					map.addControl(new BMap.NavigationControl());
+					map.addControl(new BMap.ScaleControl());
+					map.addEventListener('click',function(data){
+						$('#longitude').val(data.point.lng);
+						$('#latitude').val(data.point.lat);
+					});
+				}
+			</script>-->
+			
 		</div>
 	</body>
 
