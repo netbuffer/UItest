@@ -64,10 +64,11 @@
 		                <div class="item-title label">收货地址</div>
 		                <div class="item-input">
 		                  <input type="text" value="四川 内江 东兴区" id="city-picker" placeholder="" readonly="">
+		                  <input type="text" value="钱 明 小姐" id="picker-name" placeholder="选择称呼" readonly="">
 		                </div>
 		              </div>
 		            </div>
-		            
+		            <p><a href="#" class="button button-fill button-success" onclick="test();">Fill Button </a></p>
 		          </li>
 		        </ul>
 		      </div>
@@ -123,7 +124,32 @@
 			    </header>'
 			});
 			
+			$("#picker-name").picker({
+				  toolbarTemplate: '<header class="bar bar-nav">\
+				  <button class="button button-link pull-right close-picker">确定</button>\
+				  <h1 class="title">请选择称呼</h1>\
+				  </header>',
+				  cols: [
+				    {
+				      textAlign: 'center',
+				      values: ['赵', '钱', '孙', '李', '周', '吴', '郑', '王']
+				      //如果你希望显示文案和实际值不同，可以在这里加一个displayValues: [.....]
+				    },
+				    {
+				      textAlign: 'center',
+				      values: ['杰伦', '磊', '明', '小鹏', '燕姿', '菲菲', 'Baby']
+				    },
+				    {
+				      textAlign: 'center',
+				      values: ['先生', '小姐']
+				    }
+				  ]
+		    });
+			
 		});
+		function test(){
+			alert($("#picker-name").val());
+		}
 	</script>
 
 </html>
