@@ -97,6 +97,20 @@
 									</div>
 								</div>
 							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="icon icon-form-calendar"></i></div>
+									<div class="item-inner">
+										<div class="item-title label">地址</div>
+										<div class="item-input">
+											<input type="text" name="cp" id="cp" placeholder="地址" value="">
+											<input type="hidden" name="province"  value="">
+											<input type="hidden" name="city"  value="">
+											<input type="hidden" name="county" value="">
+										</div>
+									</div>
+								</div>
+							</li>
 							<li class="align-top">
 								<div class="item-content">
 									<div class="item-media"><i class="icon icon-form-comment"></i></div>
@@ -149,6 +163,14 @@
 			//			    nodata:"none" //当子集无数据时，隐藏select 
 			//			});  
 			
+			$("#cp").cityPicker({
+			    toolbarTemplate: '<header class="bar bar-nav">\
+			    <button class="button button-link pull-right close-picker">确定</button>\
+			    <h1 class="title">选择地址</h1>\
+			    </header>'
+			});
+			
+			
 			$("#datee").calendar({
 			    value: ['2016-04-21'],
 			    inputReadOnly:false,
@@ -171,6 +193,7 @@
 				url: "lib/city.min.js",
 				prov: "湖南"
 			});
+			
 			jq("#validate_test").validate({
 				rules: {
 					"name": {
@@ -189,6 +212,9 @@
 						email: true
 					},
 					"datee":{
+						required:true
+					},
+					"cp":{
 						required:true
 					}
 				},
@@ -209,9 +235,16 @@
 					},
 					"datee":{
 						"required":"请选择生日"
+					},
+					"cp":{
+						required:"请选择地址"
 					}
 				},
 				submitHandler: function(form) {
+					var cps=jq("#cp").val().split(" ");
+					jq("input[name='province']").val(cps[0]);
+					jq("input[name='city']").val(cps[1]);
+					jq("input[name='county']").val(cps[2]);
 					$.showPreloader("保存中...");
 					setTimeout(function() {
 						$.hidePreloader();
