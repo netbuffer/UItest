@@ -1,3 +1,5 @@
+$.toast("a");
 $.config = {
-   router:false
+   router:false,
+   showPageLoadingIndicator:false
 };
