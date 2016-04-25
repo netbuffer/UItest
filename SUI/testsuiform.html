@@ -122,7 +122,12 @@
 									</div>
 								</div>
 							</li>
-
+							<li class="align-top">
+								 <div id="" class="row">
+								 	<div class="col-50"><a href="javascript:void(0);" onclick="$.popup('#popupcustomer');" class="button button-big button-fill button-danger">添加客户</a></div>
+        							<div class="col-50"><a href="javascript:void(0);" onclick="$.popup('#popupcontact');" class="button button-big button-fill button-success">添加联系人</a></div>	
+								 </div>
+							</li>
 						</ul>
 					</div>
 
@@ -136,6 +141,132 @@
 			</div>
 
 		</div>
+		
+		<div id="popupcustomer" class="popup popup-about">
+		  <div class="content-block">
+		    <p>添加客户</p>
+		    <p><a href="#" class="close-popup">关闭</a></p>
+		    <li>
+				<div class="item-content">
+					<div class="item-media"><i class="icon icon-form-name"></i></div>
+					<div class="item-inner">
+						<div class="item-title label">姓名</div>
+						<div class="item-input">
+							<input type="text" name="name" placeholder="Your name">
+						</div>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="item-content">
+					<div class="item-media"><i class="icon icon-form-email"></i></div>
+					<div class="item-inner">
+						<div class="item-title label">邮箱</div>
+						<div class="item-input">
+							<input type="email" name="email" placeholder="E-mail">
+						</div>
+					</div>
+				</div>
+			</li>
+		  </div>
+		</div>
+		
+		<div id="popupcontact" class="popup popup-about">
+		  <div class="content-block">
+		    <p>添加联系人</p>
+		    <p><a href="#" class="close-popup">关闭</a></p>
+		    <form id="validate_popup_test">
+		    	<li>
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-form-name"></i></div>
+						<div class="item-inner">
+							<div class="item-title label">姓名</div>
+							<div class="item-input">
+								<input type="text" name="name" placeholder="Your name">
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-form-email"></i></div>
+						<div class="item-inner">
+							<div class="item-title label">手机</div>
+							<div class="item-input">
+								<input type="text" name="phone" placeholder="email">
+							</div>
+						</div>
+					</div>
+				</li><li>
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-form-name"></i></div>
+						<div class="item-inner">
+							<div class="item-title label">姓名</div>
+							<div class="item-input">
+								<input type="text" name="name" placeholder="Your name">
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-form-email"></i></div>
+						<div class="item-inner">
+							<div class="item-title label">手机</div>
+							<div class="item-input">
+								<input type="text" name="phone" placeholder="email">
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-form-name"></i></div>
+						<div class="item-inner">
+							<div class="item-title label">姓名</div>
+							<div class="item-input">
+								<input type="text" name="custestname" placeholder="Your name">
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-form-email"></i></div>
+						<div class="item-inner">
+							<div class="item-title label">手机</div>
+							<div class="item-input">
+								<input type="text" name="custestphone" placeholder="email">
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-form-name"></i></div>
+						<div class="item-inner">
+							<div class="item-title label">姓名</div>
+							<div class="item-input">
+								<input type="text" name="contestname" placeholder="Your name">
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-form-email"></i></div>
+						<div class="item-inner">
+							<div class="item-title label">手机</div>
+							<div class="item-input">
+								<input type="text" name="contestphone" placeholder="email">
+							</div>
+						</div>
+					</div>
+				</li>
+		    </form>
+		  </div>
+		</div>
+		
 	</body>
 	<!-- 你的html代码 -->
 
@@ -162,6 +293,36 @@
 			//			    dist:"岳麓区", //区县 
 			//			    nodata:"none" //当子集无数据时，隐藏select 
 			//			});  
+			
+			jq("#validate_popup_test").validate({
+				rules: {
+					"custestname": {
+						//限制必须填写
+						required: true,
+						maxlength: 3
+							//			                    postcode : "中国"
+					},
+					"custestphone": {
+						required: true,
+						minlength: 2,
+						maxlength: 16
+					}
+				},
+				messages: {
+					"custestname": {
+						required: "必须填写用户名",
+						maxlength: "最长三位",
+						remote: "用户名不存在"
+					},
+					"custestphone": {
+						required: "必须填写密码",
+						minlength: "密码最小为2位",
+						maxlength: "密码最大为16位"
+					}
+				},
+				submitHandler: function(form) {
+				}
+			});
 			
 			$("#cp").cityPicker({
 			    toolbarTemplate: '<header class="bar bar-nav">\

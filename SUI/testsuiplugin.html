@@ -82,23 +82,28 @@
 		                <div class="item-input">
 		                  <input type="text" value="" id="city-picker" placeholder="" readonly="">
 		                  <input type="text" value="钱 明 小姐" id="picker-name" placeholder="选择称呼" readonly="">
-		                  	<input type="hidden" value="钱" name="chenghu">
+		                  <input type="hidden" value="钱" name="chenghu">
 		                </div>
 		              </div>
 		            </div>
 		            <p><a href="#" class="button button-fill button-success" onclick="test();">Fill Button </a></p>
 		          </li>
+		          <li>
+		          	<p><a href="#" class="open-about" onclick="$.popup('#testopopup');">打开popup </a></p>
+		          </li>
 		        </ul>
 		      </div>
 		    </div>
 	    	
-	    	
-	    	
-	    	
 		</div>
-		<br />
 		
-		
+		<div id="testopopup" class="popup popup-about">
+		  <div class="content-block">
+		    <p>About</p>
+		    <p><a href="#" class="close-popup">Close popup</a></p>
+		    <p>Lorem ipsum dolor ...</p>
+		  </div>
+		</div>
 
 	</body>
 	<!-- 你的html代码 -->
@@ -127,6 +132,13 @@
 //			    dist:"岳麓区", //区县 
 //			    nodata:"none" //当子集无数据时，隐藏select 
 //			});  
+			
+			$(document).on('open','#testopopup', function () {
+			  console.log('About Popup is open')
+			});
+			$(document).on('close','#testopopup', function () {
+			  console.log('About Popup is close')
+			});
 			
 			jq("#cityselect").citySelect({  
 			    url:"lib/city.min.js",  
