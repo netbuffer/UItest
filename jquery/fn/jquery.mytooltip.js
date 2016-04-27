@@ -8,6 +8,24 @@
         init: function (options) {
             // this
             console.log("%cmytooltip init","color:green;font-size:30px;");
+            return this.each(function () {
+//              $(window).bind('resize.tooltip', methods.reposition);
+				var $this = $(this),
+                data = $this.data('tooltip'),
+                tooltip = $('<div />', {
+                    text: $this.attr('title')
+                });
+                // If the plugin hasn't been initialized yet
+                if (!data) {
+                    /*
+                     Do more setup stuff here
+                     */
+                    $(this).data('tooltip', {
+                        target: $this,
+                        tooltip: tooltip
+                    });
+                }
+            });
         },
         show: function () {
             // is
@@ -20,6 +38,20 @@
         update: function (content) {
             // !!!
             console.log("%cmytooltip update with param:"+content,"color:silver;font-size:30px;");
+        },
+        destroy: function () {
+        	console.log("destroy");
+            return this.each(function () {
+                var $this = $(this),data = $this.data('tooltip');
+                // Namespacing FTW
+                $(window).unbind('.tooltip');
+                data.tooltip.remove();
+                $this.removeData('tooltip');
+            })
+ 
+        },
+        reposition: function () {
+            console.log("reposition");
         }
     };
  
