@@ -8,3 +8,4 @@
 * agile
 * easyui
 * mui
+* vconsole
