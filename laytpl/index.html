@@ -33,7 +33,11 @@
 			{{# for(var i=0;i<5;i++){ }}
 				{{i}}
 			{{# } }}
+			{{# if(d){ }}
+				<p>数据非空</p>
+			{{# } }}
 			<h1>{{ d.title }}</h1>--<h1>{{ new Date() }}</h1>--<h2>调用js方法{{ moment(new Date()).format("YYYY-MM-DD HH:mm:ss") }}</h2>
+			
 			<ul>
 			{{# for(var i = 0, len = d.list.length; i < len; i++){ }}
 			    <li>
