@@ -9,3 +9,4 @@
 * easyui
 * agile
 * mui
+* jquery-datetime

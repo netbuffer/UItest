@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 
@@ -107,4 +108,115 @@
 
 	</body>
 
+=======
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>jQuery Validation 插件</title>
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="style.css" />
+	</head>
+
+	<body>
+		<form id="demoForm" class="form-control">
+			<fieldset>
+				<legend>用户登录</legend>
+				<p id="info"></p>
+				<p id="info2" style="display: none">输入错误</p>
+				<p>
+					<label for="username">用户名</label>
+					<input type="text" id="username" class="form-control" name="username" />
+				</p>
+
+				<p>
+					<label for="password">密码</label>
+					<input type="password" id="password" class="form-control" name="password" />
+				</p>
+
+				<p>
+					<label for="confirm-password">确认密码</label>
+					<input type="password" id="confirm-password" class="form-control" name="confirm-password" />
+				</p>
+
+				<p>
+					<button id="check" class="btn btn-default">检查表单</button>
+				</p>
+				<p>
+					<input type="submit" class="btn btn-default" value="登录" />
+				</p>
+			</fieldset>
+		</form>
+
+		<script src="vendor/jquery-1.10.0.js"></script>
+		<script src="vendor/jquery.validate-1.13.1.js"></script>
+		<script>
+			var validator1;
+			$(document).ready(function() {
+				validator1 = $("#demoForm").validate({
+					debug: true,
+					rules: {
+						username: {
+							//							required: true,
+							//							minlength: 2,
+							//							maxlength: 10,
+							/**
+							 * jquery.validate会发送remote.json?username=abd到这个路径
+							 * 远程返回true，或者false来判断是否校验成功
+							 */
+							remote: "remote.json"
+						},
+						password: {
+							required: true,
+							minlength: 2,
+							maxlength: 16
+						},
+						"confirm-password": {
+							equalTo: "#password"
+						}
+					},
+					messages: {
+						username: {
+							required: '请输入用户名',
+							minlength: '用户名不能小于2个字符',
+							maxlength: '用户名不能超过10个字符',
+							remote: '用户名不存在'
+						},
+						password: {
+							required: '请输入密码',
+							minlength: '密码不能小于2个字符',
+							maxlength: '密码不能超过16个字符'
+						},
+						"confirm-password": {
+							equalTo: "两次输入密码不一致"
+						}
+					},
+					//自定义errorclass样式
+					errorClass: "text-warning",
+					//校验通过样式控制
+					success: function(label) {
+						label.html("<div class='form-group has-success'><label class='control-label'>校验通过<span class='glyphicon glyphicon-ok'></span></label></div>");
+						$(label).fadeOut();
+					},
+					highlight: function(element, errorClass, validClass) {
+						$(element).addClass(errorClass).removeClass(validClass);
+						$(element).fadeOut().fadeIn();
+					},
+					unhighlight: function(element, errorClass, validClass) {
+						$(element).removeClass(errorClass).addClass(validClass);
+					},
+					submitHandler: function(form) {
+						console.log($(form).serialize())
+					}
+				});
+				$("#check").click(function() {
+					console.log($("#demoForm").valid() ? "填写正确" : "填写不正确");
+				});
+			});
+		</script>
+
+	</body>
+
+>>>>>>> refs/heads/master
 </html>
