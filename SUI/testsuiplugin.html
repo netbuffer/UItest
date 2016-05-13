@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>sui</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link rel="shortcut icon" href="/favicon.ico">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="lib/sm.min.css">
+		<link rel="stylesheet" href="lib/sm-extend.min.css">
+	</head>
+	<body>
+		
+		<div class="page">
+			<a href="testsuiform.html" external>跳转</a>&emsp;<a href="testsuiform.html" class="external">跳转</a><br />
+			<a href="testsuiform.html">跳转3</a>&emsp;<a href="testsuiform.html">跳转4</a>
+			<div class="item-inner">
+            	<div class="item-title label">性别</div>
+	            <div class="item-input">
+	              <select>
+	                <option>Male发生地方</option>
+	                <option>Female1</option>
+	                <option>Female2</option>
+	                <option>Female3</option>
+	                <option>Female4</option>
+	              </select>
+	              <select>
+	                <option>城市</option>
+	                <option>Fem发生的发生的ale1</option>
+	                <option>Female2</option>
+	                <option>Female3</option>
+	                <option>Female4</option>
+	              </select>
+	            </div>
+         	 </div>
+         	 
+         	 <div class="content-block">
+		      <div class="list-block">
+		        <ul>
+		          <!-- Text inputs -->
+		          <li>
+		            <div class="item-content">
+		              <div class="item-inner">
+		                <div class="item-title label">时间日期</div>
+		                <div class="item-input">
+		                  <input type="text" id="datetime-picker" placeholder="" readonly="">
+		                </div>
+		              </div>
+		            </div>
+		          </li>
+		          <li>
+		            <div class="item-content">
+		              <div class="item-inner">
+		                <div class="item-title label">jquery.cityselect</div>
+		                <div class="item-input">
+	                  		<!--<input type="text" id="cityselect" placeholder="" readonly="">-->
+		                  	<div id="cityselect">
+							  <select class="prov"></select>
+							  <select class="city"></select>
+							  <select class="dist"></select>
+							</div>
+		                </div>
+		              </div>
+		            </div>
+		          </li>
+		          <li>
+		            <div class="item-content">
+		              <div class="item-inner">
+		                <div class="item-title label">选择日历</div>
+		                <div class="item-input">
+		                  <input id="my-input"" type="text"/>
+		                </div>
+		              </div>
+		            </div>
+		            
+		            <div class="item-content">
+		              <div class="item-inner">
+		                <div class="item-title label">收货地址</div>
+		                <div class="item-input">
+		                  <input type="text" value="" id="city-picker" value="浙江 杭州 拱墅区" placeholder="" readonly="">
+		                  <input type="text" value="钱 明 小姐" id="picker-name" placeholder="选择称呼" readonly="">
+		                  <input type="hidden" value="钱" name="chenghu">
+		                </div>
+		              </div>
+		            </div>
+		            <p><a href="#" class="button button-fill button-success" onclick="test();">Fill Button </a></p>
+		          </li>
+		          <li>
+		          	<p><a href="#" class="open-about" onclick="$.popup('#testopopup');">打开popup </a></p>
+		          </li>
+		        </ul>
+		      </div>
+		    </div>
+	    	
+		</div>
+		
+		<div id="testopopup" class="popup popup-about">
+		  <div class="content-block">
+		    <p>About</p>
+		    <p><a href="#" class="close-popup">点击关闭</a></p>
+		    <p>Lorem ipsum dolor ...</p>
+		  </div>
+		</div>
+
+	</body>
+	<!-- 你的html代码 -->
+	
+	<script src="lib/zepto.min.js"></script>
+	<script src="../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		var jq=$.noConflict();
+	</script>
+	<script src="../bootstrap/jquery.validate/vendor/jquery.validate-1.13.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../bootstrap/jquery.validate/vendor/additional-methods.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="lib/sm.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="lib/smconfig.js"></script>
+	<script src="lib/sm-extend.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="lib/sm-city-picker.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="lib/jquery.cityselect.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../easyui/moment.min.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript">
+		$(function(){
+			
+//			jq("#cityselect").citySelect({  
+//			    url:"lib/city.min.js",  
+//			    prov:"湖南", //省份 
+//			    city:"长沙", //城市 
+//			    dist:"岳麓区", //区县 
+//			    nodata:"none" //当子集无数据时，隐藏select 
+//			});  
+			
+			$(document).on('open','#testopopup', function () {
+			  console.log('About Popup is open')
+			});
+			$(document).on('close','#testopopup', function () {
+			  console.log('About Popup is close')
+			});
+			
+			jq("#cityselect").citySelect({  
+			    url:"lib/city.min.js",  
+			    prov:"湖南"
+			});
+			
+			console.log($.device);
+//			$.showPreloader();
+//		    setTimeout(function () {
+//		        $.hidePreloader();
+//		    }, 2000);
+			//绑定时间选择
+			$("#datetime-picker").datetimePicker({
+//			    value: ['1985', '12', '04', '9', '34']
+			});
+			//绑定日期选择
+			$("#my-input").calendar({
+			    value: ['2016-04-21'],
+			    inputReadOnly:false,
+			    minDate:"2016-03",
+			    maxDate:"2016-05",
+			    onChange:function(p, values, displayValues){
+			    	console.log(values);
+			    	console.log(displayValues);
+			    },
+			    onOpen:function(p){
+			    	console.log("打开");
+			    },
+			    onClose:function(p){
+			    	console.log("关闭");
+			    }
+			});
+			
+			$("#city-picker").cityPicker({
+			    toolbarTemplate: '<header class="bar bar-nav">\
+			    <button class="button button-link pull-right close-picker">确定</button>\
+			    <h1 class="title">选择地址</h1>\
+			    </header>'
+			});
+			
+			$("#picker-name").picker({
+				  toolbarTemplate: '<header class="bar bar-nav">\
+				  <button class="button button-link pull-right close-picker">确定</button>\
+				  <h1 class="title">请选择称呼</h1>\
+				  </header>',
+				  cols: [
+				    {
+				      textAlign: 'center',
+				      values: ['赵', '钱', '孙', '李', '周', '吴', '郑', '王']
+				      //如果你希望显示文案和实际值不同，可以在这里加一个displayValues: [.....]
+				    },
+				    {
+				      textAlign: 'center',
+				      values: ['杰伦', '磊', '明', '小鹏', '燕姿', '菲菲', 'Baby']
+				    },
+				    {
+				      textAlign: 'center',
+				      displayValues: ['先生', '小姐'],
+				      values:[1,2]
+				    }
+					  ],
+				  onClose:function(d){
+				    console.log(d);
+				  },
+				  formatValue:function (picker, value, displayValue){
+				  	console.log("v:"+value);
+				  	console.log("d:"+displayValue);
+					jq("input[name='chenghu']").val(value);
+				  }
+		    });
+			
+		});
+		
+		function test(){
+			alert($("#picker-name").val());
+		}
+		function testTimePicker(){
+			var m=moment($("#datetime-picker").val());
+			var dm=new Date(m);
+			console.log(m);
+			console.log(dm);
+		}
+	</script>
+
+</html>

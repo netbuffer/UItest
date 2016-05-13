@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>datetime</title>
+		<link rel="stylesheet" type="text/css" href="lib/DateTimePicker.min.css"/>
+		<script src="../../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/DateTimePicker.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/i18n/DatetimePicker-i18n-zh-CN.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+ 				$("#dtBox").DateTimePicker({
+ 					language:"zh-CN"
+ 				});
+			});
+		</script>
+	</head>
+	<body>
+		<!--  Date Input  --> 
+		 <p>Date : </p>
+		 <input type="text" data-field="date" readonly>
+			
+		 <!--  Time Input  -->
+		 <p>Time : </p>
+		 <input type="text" data-field="time" readonly>
+			
+		 <!--  DateTime Input  -->
+		 <p>DateTime : </p>
+		 <input type="text" data-field="datetime" readonly>
+		
+			
+			
+		 <div id="dtBox"></div>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery</title>
+		<script src="../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="fn/jquery.myfn.js" type="text/javascript" charset="utf-8"></script>
+		<script src="fn/jquery.mytooltip.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#test").myfn({'location': 'right'}).css("font-size","30px");
+				//调用init方法
+				$('tt').mytooltip();
+				 
+				//调用init方法
+				$('tt').mytooltip({
+				    foo: 'bar'
+				});
+				 
+				// 调用hide方法
+				$('tt').mytooltip('hide');
+				 
+				//调用Update方法
+				$('tt').mytooltip('update', 'This is the new tooltip content!');
+
+			});
+		</script>
+	</head>
+	<body>
+		<p id="test"></p>
+		<div id="tt"></div>
+	</body>
+</html>
