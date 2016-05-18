@@ -31,12 +31,22 @@
 				</div>
 			</fieldset>
 		</form>
-
 		<script src="vendor/jquery-1.10.0.js"></script>
 		<script src="vendor/jquery.validate-1.13.1.js"></script>
+		<script src="../fn/jquery.enter-submit.js" type="text/javascript" charset="utf-8"></script>
+		
 		<script>
 			var validator;
 			$(document).ready(function() {
+				
+				$("input[name='pn']").keypress(function(event) {
+					console.log(event);
+					if(event.keyCode==13){
+						alert("提交");
+					}
+					
+				});
+				
 				$.validator.setDefaults({
 					debug: true
 				});

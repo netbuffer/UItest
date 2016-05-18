@@ -6131,9 +6131,16 @@ Device/OS Detection
         }
 
     }
-    $.attachInfiniteScroll = function(infiniteContent) {
-        $.getScroller(infiniteContent).on('scroll', handleInfiniteScroll);
-    };
+    // $.attachInfiniteScroll = function(infiniteContent) {
+    //     $.getScroller(infiniteContent).on('scroll', handleInfiniteScroll);
+    // };
+    //当有多个class="content"时,官方只对第一容器起作用,这里修改成所有容器都支持无限滚动
+    $.attachInfiniteScroll = function (infiniteContent) {
+		for (var i = 0; i < infiniteContent.length; i++){
+			$.getScroller($(infiniteContent[i])).on('scroll', handleInfiniteScroll);
+		}
+	};
+
     $.detachInfiniteScroll = function(infiniteContent) {
         $.getScroller(infiniteContent).off('scroll', handleInfiniteScroll);
     };
