@@ -22,7 +22,11 @@
 				 
 				//调用Update方法
 				$('tt').mytooltip('update', 'This is the new tooltip content!');
-
+				function callback(){
+					console.log("回调");
+					alert("回调");
+				}
+				setTimeout(callback,2000);
 			});
 		</script>
 	</head>

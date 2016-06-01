@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>jquery-cloneya克隆表单</title>
+		<meta charset="utf-8" />
+		<script src="../../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="jquery-cloneya.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#simple-clone').cloneya();
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="simple-clone" class="demo-wrap">
+			<form class="form" method="post">
+				<div class="toclone">
+					<p class="name">
+						<input type="text" name="name[]" id="sname" />
+						<label for="name">Name</label>
+					</p>
+					<p class="email">
+						<input type="text" name="email[]" id="semail" />
+						<label for="email">E-mail</label>
+					</p>
+					<p class="web">
+						<input type="text" name="web[]" id="sweb" />
+						<label for="web">Website</label>
+					</p>
+					<a href="#" class="clone">clone</a>
+					<a href="#" class="delete">delete</a>
+				</div>
+				<p class="submit">
+					<input type="submit" value="Save" />
+				</p>
+			</form>
+		</div>
+	</body>
+
+</html>

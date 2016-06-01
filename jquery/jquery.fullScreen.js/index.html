@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery.fullScreen.js</title>
+		<script src="../../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="jquery.fullScreen.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(function() {
+					if ($.support.fullscreen) {
+						$('#btn').click(function(e) {
+							$('.mod').fullScreen();
+						});
+					}
+				})
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="mod" style="color: white;">
+			<p>全屏测试</p>
+			<button id="btn"> 点击全屏 </button>
+		</div>
+	</body>
+
+</html>

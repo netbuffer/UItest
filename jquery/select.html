@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery</title>
+		<script src="../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			
+		</script>
+	</head>
+
+	<body>
+		两次触发事件
+		<div id="test">
+		　 <input type="checkbox" name="abc" id="abc"/>
+		    <label for="abc">aa</label>
+		</div>
+		<script type="text/javascript">
+		    document.getElementById("test").onclick = function(ev) {
+		        console.log(ev.target);
+		    }
+		</script>
+
+	</body>
+
+</html>

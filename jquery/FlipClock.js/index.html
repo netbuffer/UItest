@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>FlipClock.js使用demo</title>
+		<link rel="stylesheet" type="text/css" href="flipclock.css"/>
+		<script src="../../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="flipclock.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="zh-cn.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var clock = $('.your-clock').FlipClock(60,{
+					autoStart:true,//自动计时
+					countdown:true,//倒计时
+					//语言
+					language:"chinese"
+				});
+				clock.setTime(60);
+			});
+		</script>
+	</head>
+	<body>
+		<br />
+		<div class="your-clock"></div>
+	</body>
+</html>
+
