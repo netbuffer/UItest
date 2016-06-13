@@ -97,6 +97,88 @@
 				}
 				return false;
 			}
+			
+//			console.log(testCheck1());
+			
+			function testCheck1(){
+				$.ajax({
+		    		type:"GET",
+		    		url: "data.json", 
+		    	    cache:false, 
+		    	    async:false, 
+		    	    dataType: "json",
+		    	    success: function(data){
+		    	    	console.log(data);
+		        		if(data.ispass){
+		        			return true;
+		        		}else{
+		        			alert("阻止跳转");
+		        			return false;
+		        		}
+		    	    }  
+		    	});
+			}
+			
+			function testCheck2(){
+				$.ajax({
+		    		type:"GET",
+		    		url: "data.json", 
+		    	    cache:false, 
+		    	    async:false, 
+		    	    dataType: "json",
+		    	    success: function(data){
+		        		if(data.ispass){
+		        			return true;
+		        		}else{
+		        			alert("阻止跳转");
+		        			return false;
+		        		}
+		    	    },
+		    	    complete:function(data){
+		    	    	console.log(data.responseText);
+		    	    	console.log(data.responseJSON);
+		    	    	console.log(data.responseJSON.ispass);
+		    	    }
+		    	});
+			}
+			
+			function checkFromServer(){
+//				$.ajax({
+//		    		type:"GET",
+//		    		url: "data.json", 
+//		    	    cache:false, 
+//		    	    async:false, 
+//		    	    dataType: "json",
+//		    	    success: function(data){
+//		    	    	console.log(data);
+//		        		if(data.ispass){
+//		        			return true;
+//		        		}else{
+//		        			alert("阻止跳转");
+//		        			return false;
+//		        		}
+//		    	    }  
+//		    	});
+
+				var isPass=false;
+				$.ajax({
+		    		type:"GET",
+		    		url: "data.json", 
+		    	    cache:false, 
+		    	    async:false, 
+		    	    dataType: "json",
+		    	    success: function(data){
+		    	    	console.log(data);
+		        		if(data.ispass){
+		        			isPass=true;
+		        		}else{
+		        			alert("阻止跳转");
+		        		}
+		    	    }  
+		    	});
+				return isPass;
+			}
+			
 		</script>
 	</head>
 
@@ -106,6 +188,7 @@
 				<h1>Bootstrap-form</h1>
 			</div>
 			<a href="http://www.baidu.com" onclick="return check();">百度</a>
+			<a href="http://www.baidu.com" onclick="return checkFromServer();">远程校验是否允许跳转</a><hr />
 			<button class="btn btn-primary" onclick="formtest();">test</button>&emsp;<button class="btn btn-success" onclick="serialize_test();">serialize部分</button>&emsp;
 			<button class="btn btn-warning" onclick="serialize_all();">serialize全部</button>&emsp;
 			<button class="btn btn-warning" onclick="add_select();">添加select并选中</button>&emsp;
