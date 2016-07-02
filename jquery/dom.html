@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>dom</title>
+		<script type="text/javascript">
+			window.onload=function(){
+				var arr=document.getElementsByTagName("img");
+				for(var i=0;i<arr.length;i++){
+				  console.log(arr[i].outerHTML);
+				  console.log(arr[i].src);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<img src="../agile/assets/app/img/slide3.jpg" /><br />
+		<img src="../agile/assets/app/img/slide3.jpg" /><br />
+		<img src="../agile/assets/app/img/slide3.jpg" />
+	</body>
+</html>
