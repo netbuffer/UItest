@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>jquery.validationEngine</title>
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<link href="//cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/validationEngine.jquery.min.css" rel="stylesheet">
+		<script src="../../agile/assets/third/jquery/jquery-2.1.3.js"></script>
+		<script src="//cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/languages/jquery.validationEngine-zh_CN.min.js"></script>
+		<script src="//cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/jquery.validationEngine.min.js"></script>
+		<style type="text/css">
+			.formError .formErrorContent {
+				background-color: #00ABA9;
+			}
+		</style>
+		<script>
+			$(document).ready(function() {
+				$("#demoForm").validationEngine('attach', {
+					"custom_error_messages": {
+						"#email": {
+							'required': {
+								'message': "邮件必填"
+							},
+							'custom[email]': {
+								'message': "邮件格式错误"
+							}
+						}
+					},
+					promptPosition: "top",
+					scroll: false,
+					onValidationComplete: function(form, status) {
+						//可以通过这里阻止表单提交
+						console.log("The form status is: " + status + ", it will never submit");
+						if (status) {
+							if (confirm("是否允许提交")) {
+								return true;
+							}
+							return false;
+						}
+					}
+				});
+				//				$("#demoForm").validationEngine().css({border : "2px solid green"})
+				$("#check").click(function() {
+					console.log($("#demoForm").validationEngine('validate'));
+				});
+			});
+
+			function checkNum(field, rules, i, options) {
+				if (field.val() < 0) {
+					return "该输入必须大于0";
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<!--文档地址:http://posabsolute.github.io/jQuery-Validation-Engine/#custom_error_messages-->
+		<div class="container">
+			<form id="demoForm" action="http://127.0.0.1" class="form-control" method="get">
+				<fieldset>
+					<fieldset>
+						<legend id="legendid">Email</legend>
+						<a href="#" onclick="$('#legendid').validationEngine('showPrompt', 'This a custom msg', 'load')">Show prompt</a>
+					</fieldset>
+					<legend>用户登录</legend>
+					<p id="info"></p>
+					<p id="info2" style="display: none">输入错误</p>
+					<p>
+						<label for="username">用户名</label>
+						<input type="text" id="username" class="form-control validate[required]" name="username" />
+					</p>
+
+					<p>
+						<label for="password">密码</label>
+						<input type="password" id="password" class="form-control" name="password" />
+					</p>
+
+					<p>
+						<label for="confirm-password">确认密码</label>
+						<input type="password" id="confirm-password" class="form-control" name="confirm-password" />
+					</p>
+
+					<p>
+						<label for="confirm-password">邮件</label>
+						<input id="email" type="text" class="form-control validate[required,custom[email],minSize[3],maxSize[10]]" name="email" />
+					</p>
+
+					<p>
+						<label for="confirm-password">自定义函数验证</label>
+						<input id="num" type="text" class="form-control validate[required,custom[number],funcCall[checkNum],min[1],max[100.05]]" name="num" />
+					</p>
+					<p>
+						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck1" value="5"/>
+						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck2" value="3"/>
+						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck3" value="9"/><hr />
+						<input value="" type="text" name="creditcard" id="creditcard" />
+						<input class="validate[condRequired[creditcard]]" type="text" id="ccv" name="ccv"/>
+					</p>
+					<p>
+						<button id="check" class="btn btn-default">检查表单</button>
+					</p>
+					<p>
+						<input type="submit" class="btn btn-default" value="登录" />
+					</p>
+				</fieldset>
+			</form>
+		</div>
+	</body>
+
+</html>
