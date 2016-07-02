@@ -9,12 +9,21 @@
 			   console.log("e:",e);
 			}, false);
 			function test(){
+//				alert(event);//ff/chrome中可以直接引用
 				document.dispatchEvent(event);
+			}
+			function testevent(event){
+				alert(event.type);
 			}
 		</script>
 	</head>
 	<body>
 		<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events">https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events</a>
-		<button onclick="test();">test</button>
+		<button onclick="test();">test</button><br />
+		<input type="button" value="Click Me" onclick="alert(event.type)"><br />
+		<!--
+        	描述：传递event变量
+        -->
+		<input type="button" value="Click Me event" onclick="testevent(event)"><br />
 	</body>
 </html>
