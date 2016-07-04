@@ -4,4 +4,4 @@
 
 * jquery.validate校验插件
 
-* 
+* js base64 base64.html
