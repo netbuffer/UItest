@@ -94,13 +94,18 @@
 						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck1" value="5"/>
 						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck2" value="3"/>
 						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck3" value="9"/><hr />
-						<input value="" type="text" name="creditcard" id="creditcard" />
+						condrequired(两者需要同时填写/或者不写):<input value="" type="text" name="creditcard" class="validate[condRequired[ccv]]" id="creditcard" />
 						<input class="validate[condRequired[creditcard]]" type="text" id="ccv" name="ccv"/>
 					</p>
 					<p>
 						<button id="check" class="btn btn-default">检查表单</button>
 					</p>
 					<p>
+						<input value="" class="validate[groupRequired[payments]]" type="text" name="creditcard" id="creditcard" />
+						<input class="validate[groupRequired[payments]]" type="text" id="paypal" name="paypal"/>
+					</p>
+					<p>
+						<a href="#" onclick="$('#legendid').validationEngine('showPrompt', 'This a custom msg', 'load')">Show prompt</a>
 						<input type="submit" class="btn btn-default" value="登录" />
 					</p>
 				</fieldset>
