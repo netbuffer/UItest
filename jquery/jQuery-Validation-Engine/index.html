@@ -85,7 +85,12 @@
 						<label for="confirm-password">邮件</label>
 						<input id="email" type="text" class="form-control validate[required,custom[email],minSize[3],maxSize[10]]" name="email" />
 					</p>
-
+					
+					<p>
+						<label for="confirm-password">手机</label>
+						<input id="phone" type="text" class="form-control validate[required,custom[phone],minSize[11],maxSize[11]]" maxlength="11" name="phone" />
+					</p>
+					
 					<p>
 						<label for="confirm-password">自定义函数验证</label>
 						<input id="num" type="text" class="form-control validate[required,custom[number],funcCall[checkNum],min[1],max[100.05]]" name="num" />
