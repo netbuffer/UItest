@@ -15,6 +15,9 @@
 			function testevent(event){
 				alert(event.type);
 			}
+			function aaaa(callback){
+				callback("a");
+			}
 		</script>
 	</head>
 	<body>
@@ -25,5 +28,7 @@
         	描述：传递event变量
         -->
 		<input type="button" value="Click Me event" onclick="testevent(event)"><br />
+		
+		<button onclick="aaaa(function(a){alert(a);console.log('a');});">aaaa</button>
 	</body>
 </html>
