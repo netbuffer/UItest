@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery-jsonp</title>
+		<script src="../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function testjsonp(){
+				$.ajax({ 
+					url:"http://localhost:8080/ssmbootstrap_table/jsonp/tj/1.json", 
+					dataType:"jsonp",
+					data:{"productType":"01",productId:"16"}, 
+					jsonp: "callback", 
+					success: function(data) {
+						console.log("成功");
+						console.log(data);
+						$("#test").html(JSON.stringify(data));
+					}, 
+					error: function(jqXHR){ 
+						console.log(jqXHR); 
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="testjsonp();">jsonp-test</button>
+		<hr />
+		<div id="test" style="height: 200px;color: #00CCFF;"></div>
+		<div id="test2" style="height: 200px;color:#25A245"></div>
+		<script type="text/javascript">
+			function testj(data){
+				alert(JSON.stringify(data));
+				$("#test2").html(JSON.stringify(data));
+			}
+		</script>
+		<script src="http://localhost:8080/ssmbootstrap_table/jsonp/tj/1.json?callback=testj" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
