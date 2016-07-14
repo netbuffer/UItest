@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery-url-parser</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="//cdn.bootcss.com/jquery-url-parser/2.3.1/purl.min.js"></script>
+	</head>
+	<body>
+		<a href="https://github.com/allmarkedup/purl">https://github.com/allmarkedup/purl</a><hr />
+		<pre>
+			source	The whole url being parsed
+			protocol	eg. http, https, file, etc
+			host	eg. www.mydomain.com, localhost etc
+			port	eg. 80
+			relative	The relative path to the file including the querystring (eg. /folder/dir/index.html?item=value)
+			path	The path to the file (eg. /folder/dir/index.html)
+			directory	The directory part of the path (eg. /folder/dir/)
+			file	The basename of the file eg. index.html
+			query	The entire query string if it exists, eg. item=value&item2=value2
+			fragment or anchor	The entire string after the # symbol
+		</pre>
+		<script type="text/javascript">
+			var url = $.url('http://allmarkedup.com/folder/dir/index.html?item=value'); // jQuery version
+			console.log(url.attr('protocol'));
+			console.log(url.attr('path'));
+			console.log(url.param('item'));
+		</script>
+	</body>
+</html>
