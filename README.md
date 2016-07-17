@@ -8,5 +8,6 @@
 * agile
 * easyui
 * mui
+* mzui
 * vconsole
 * laytpl
