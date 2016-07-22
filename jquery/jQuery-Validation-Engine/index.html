@@ -73,12 +73,12 @@
 
 					<p>
 						<label for="password">密码</label>
-						<input type="password" id="password" class="form-control" name="password" />
+						<input type="password" id="password" class="form-control validate[required]" name="password" />
 					</p>
 
 					<p>
 						<label for="confirm-password">确认密码</label>
-						<input type="password" id="confirm-password" class="form-control" name="confirm-password" />
+						<input type="password" id="confirm-password" class="form-control validate[required,equals[password]]" name="confirm-password" />
 					</p>
 
 					<p>
