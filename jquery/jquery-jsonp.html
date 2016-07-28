@@ -21,6 +21,31 @@
 					}
 				});
 			}
+			
+			function testgetrtxt(){
+				$.get("data.txt",{"name":"a"},function(data){
+					alert(data);
+				},"text");
+//				    $.get(url,data,fn)
+//					参数	描述
+//					url	必需。请求地址
+//					data	可选。发送的数据
+//					fn	可选。发送请求成功后的回调函数
+//					type	可选。返回数据的类型。可以是：string或json类型
+			}
+			
+			function testpostrjson(){
+				$.post("data.json",{"name":"a"},function(data){
+					alert(data);
+				},"json");
+//				    $.post(url,data,fn,type)
+//					参数	描述
+//					url	必需。请求地址
+//					data	必需。发送的数据
+//					fn	必需。发送请求成功后的回调函数
+//					type	可选。返回数据的类型。可以是：string或json类型
+			}
+			
 		</script>
 	</head>
 	<body>
