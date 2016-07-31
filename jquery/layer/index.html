@@ -14,7 +14,9 @@
 						this.layerIndex = layer.load(0, { shade: [0.5, '#003399'] });
 					},
 					complete: function () {
-						setTimeout("layer.close(this.layerIndex)",2000);
+						layindex=this.layerIndex;
+						alert(layindex);
+						setTimeout("layer.close(layindex)",2000);
 					},
 					error: function () {
 						layer.alert('...', {
