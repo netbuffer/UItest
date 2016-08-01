@@ -14,7 +14,16 @@
 		      }]
 		    });
 	  });
-
+		
+		$(document).on("click", "#show-toptips", function() {
+//	    	$.toptip(text, [duration, type]);
+//				示例：
+//				$.toptip('操作成功', 'success');
+				$.toptip('操作失败', 'error');
+//				$.toptip('警告', 'warning');
+//				$.toptip('操作成功', 2000, 'success');  //设置显示时间
+	  });
+	  
 	  $(document).on("click", "#show-toast", function() {
 	    $.toast("操作成功");
 	  });
