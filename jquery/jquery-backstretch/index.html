@@ -9,14 +9,21 @@
 		  $(function(){
 		  	  // To attach Backstrech as the body's background
 //			  $.backstretch("https://aecpm.alicdn.com/simba/img/TB1.W_gLXXXXXXfaXXXSutbFXXX.jpg");
+			  $.backstretch([
+				      "http://dl.dropbox.com/u/515046/www/outside.jpg"
+				    , "http://dl.dropbox.com/u/515046/www/garfield-interior.jpg"
+				    , "http://dl.dropbox.com/u/515046/www/cheers.jpg"
+			  ], {duration: 3000, fade: 750});
+			  
 			  // You may also attach Backstretch to a block-level element
 	//		  $(".foo").backstretch("https://aecpm.alicdn.com/simba/img/TB1.W_gLXXXXXXfaXXXSutbFXXX.jpg");
 	//		  // Or, to start a slideshow, just pass in an array of images
-			  $(".foo").backstretch([
-			    "https://aecpm.alicdn.com/simba/img/TB1.W_gLXXXXXXfaXXXSutbFXXX.jpg",
-			    "https://aecpm.alicdn.com/simba/img/TB1i7YJKpXXXXcrXXXXSutbFXXX.jpg",
-			    "https://aecpm.alicdn.com/simba/img/TB18UTWLXXXXXX0XXXXSutbFXXX.jpg"    
-			  ], {duration: 4000});
+//			  $(".foo").backstretch([
+//			    "https://aecpm.alicdn.com/simba/img/TB1.W_gLXXXXXXfaXXXSutbFXXX.jpg",
+//			    "https://aecpm.alicdn.com/simba/img/TB1i7YJKpXXXXcrXXXXSutbFXXX.jpg",
+//			    "https://aecpm.alicdn.com/simba/img/TB18UTWLXXXXXX0XXXXSutbFXXX.jpg"    
+//			  ], {duration: 4000});
+			  
 		  });
 		</script>
 	</head>
