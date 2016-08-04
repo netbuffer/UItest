@@ -46,10 +46,27 @@
 //					type	可选。返回数据的类型。可以是：string或json类型
 			}
 			
+			//java 后端使用cors-filter开放跨域调用 http://software.dzhuvinov.com/cors-filter-installation.html
+			function testjsonp2(){
+				$.ajax({ 
+					url:"http://localhost:8080/ssmbootstrap_table/jsonp/tj/1.json", 
+					data:{"productType":"01",productId:"16"}, 
+					jsonp: "callback", 
+					success: function(data) {
+						console.log("成功");
+						console.log(data);
+						$("#test").html(JSON.stringify(data));
+					}, 
+					error: function(jqXHR){ 
+						console.log(jqXHR); 
+					}
+				});
+			}
+			
 		</script>
 	</head>
 	<body>
-		<button onclick="testjsonp();">jsonp-test</button>
+		<button onclick="testjsonp();">jsonp-test</button>&emsp;<button onclick="testjsonp2();">testjsonp2</button>
 		<hr />
 		<div id="test" style="height: 200px;color: #00CCFF;"></div>
 		<div id="test2" style="height: 200px;color:#25A245"></div>
