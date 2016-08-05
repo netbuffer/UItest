@@ -8,6 +8,16 @@
 		<script src="//cdn.bootcss.com/layer/2.4/layer.min.js"></script>
 		<script type="text/javascript">
 			$(function(){
+				$("#h").mouseenter(function(){
+					var index =layer.tips('在上面',$(this), {
+					  tips :2,
+					  time: 0,
+					  offset: '100px'
+					});	
+				}).mouseleave(function(){
+					layer.closeAll('tips');
+				});
+				
 				$.ajaxSetup({
 					layerIndex:-1,
 					beforeSend: function () {
@@ -32,9 +42,15 @@
 					console.log(data);
 				},"text");
 			}
+			
+			function a(){
+				layer.alert('酷毙了', {icon: 1,offset: '-50px'});
+			}
 		</script>
 	</head>
 	<body>
-		<button onclick="test();">test1</button>
+		<button onclick="test();">test1</button>&emsp;<button onclick="a();">layer.alert</button>
+		<hr />
+		<div id="h" style="width:100px;height: 100px;background-color: #285E8E;margin: 100px;"></div>
 	</body>
 </html>
