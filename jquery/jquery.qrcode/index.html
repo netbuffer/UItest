@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery.qrcode</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="//cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#qrcode').qrcode({width: 64,height: 64,text: "size doesn't matter",render:"canvas"});
+				$('#span').qrcode({width: 64,height: 64,text: "size doesn't matter",render:"table"});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="qrcode" style="height: 200px;width: 200px;"></div>
+		
+		<span id="span" style="height: 200px;width: 200px;"></span>
+		
+	</body>
+</html>
