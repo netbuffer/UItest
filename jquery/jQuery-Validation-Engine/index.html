@@ -65,7 +65,8 @@
 
 			//检测域名 www.baidu.com格式
 			function validDomain(domain) {
-				if(/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain)) {
+//				/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{1,})+$/
+				if(/^[a-zA-Z0-9-]{1,61}(?:\.[a-zA-Z]{1,})+$/.test(domain)) {
 					console.log("Valid Domain Name");
 					return true;
 				} else {
