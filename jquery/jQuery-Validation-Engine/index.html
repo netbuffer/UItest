@@ -17,6 +17,7 @@
 		<script>
 			$(document).ready(function() {
 				$("#demoForm").validationEngine('attach', {
+					showOneMessage: true,
 					"custom_error_messages": {
 						"#email": {
 							'required': {
@@ -32,8 +33,8 @@
 					onValidationComplete: function(form, status) {
 						//可以通过这里阻止表单提交
 						console.log("The form status is: " + status + ", it will never submit");
-						if (status) {
-							if (confirm("是否允许提交")) {
+						if(status) {
+							if(confirm("是否允许提交")) {
 								return true;
 							}
 							return false;
@@ -47,9 +48,58 @@
 			});
 
 			function checkNum(field, rules, i, options) {
-				if (field.val() < 0) {
+				if(field.val() < 0) {
 					return "该输入必须大于0";
 				}
+			}
+
+			function checkDomain(field, rules, i, options) {
+				if(!validDomain(field.val())) {
+					return "请输入正确的domain";
+				}
+			}
+
+			function CheckIsValidDomain(domain) {
+				return /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain);
+			}
+
+			//检测域名 www.baidu.com格式
+			function validDomain(domain) {
+				if(/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain)) {
+					console.log("Valid Domain Name");
+					return true;
+				} else {
+					console.log("Enter Valid Domain Name");
+					return false;
+				}
+			}
+
+			function getHostName(url) {
+				var match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
+				if(match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) {
+					return match[2];
+				} else {
+					return null;
+				}
+			}
+
+			function getDomain(url) {
+				var hostName = getHostName(url);
+				var domain = hostName;
+
+				if(hostName != null) {
+					var parts = hostName.split('.').reverse();
+
+					if(parts != null && parts.length > 1) {
+						domain = parts[1] + '.' + parts[0];
+
+						if(hostName.toLowerCase().indexOf('.co.uk') != -1 && parts.length > 2) {
+							domain = parts[2] + '.' + domain;
+						}
+					}
+				}
+
+				return domain;
 			}
 		</script>
 	</head>
@@ -85,29 +135,34 @@
 						<label for="confirm-password">邮件</label>
 						<input id="email" type="text" class="form-control validate[required,custom[email],minSize[3],maxSize[10]]" name="email" />
 					</p>
-					
+
 					<p>
 						<label for="confirm-password">手机</label>
 						<input id="phone" type="text" class="form-control validate[required,custom[phone],minSize[11],maxSize[11]]" maxlength="11" name="phone" />
 					</p>
-					
+
 					<p>
 						<label for="confirm-password">自定义函数验证</label>
 						<input id="num" type="text" class="form-control validate[required,custom[number],funcCall[checkNum],min[1],max[100.05]]" name="num" />
 					</p>
 					<p>
-						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck1" value="5"/>
-						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck2" value="3"/>
-						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck3" value="9"/><hr />
-						condrequired(两者需要同时填写/或者不写):<input value="" type="text" name="creditcard" class="validate[condRequired[ccv]]" id="creditcard" />
-						<input class="validate[condRequired[creditcard]]" type="text" id="ccv" name="ccv"/>
+						<label for="confirm-password">domain</label>
+						<input type="text" class="form-control validate[required,funcCall[checkDomain]]" name="domain" />
+					</p>
+					<p>
+						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck1" value="5" />
+						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck2" value="3" />
+						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck3" value="9" />
+						<hr /> condrequired(两者需要同时填写/或者不写):
+						<input value="" type="text" name="creditcard" class="validate[condRequired[ccv]]" id="creditcard" />
+						<input class="validate[condRequired[creditcard]]" type="text" id="ccv" name="ccv" />
 					</p>
 					<p>
 						<button id="check" class="btn btn-default">检查表单</button>
 					</p>
 					<p>
 						<input value="" class="validate[groupRequired[payments]]" type="text" name="creditcard" id="creditcard" />
-						<input class="validate[groupRequired[payments]]" type="text" id="paypal" name="paypal"/>
+						<input class="validate[groupRequired[payments]]" type="text" id="paypal" name="paypal" />
 					</p>
 					<p>
 						<a href="#" onclick="$('#legendid').validationEngine('showPrompt', 'This a custom msg', 'load')">Show prompt</a>
