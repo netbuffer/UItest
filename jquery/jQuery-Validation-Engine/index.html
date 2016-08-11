@@ -151,6 +151,10 @@
 						<input id="num" type="text" class="form-control validate[required,custom[number],funcCall[checkNum],min[1],max[100.05]]" name="num" />
 					</p>
 					<p>
+						<label for="confirm-file">文件</label>
+						<input id="file" type="file" class="form-control validate[required]" name="file" />
+					</p>
+					<p>
 						<label for="confirm-password">domain</label>
 						<input type="text" class="form-control validate[required,funcCall[checkDomain]]" id="domain" name="domain" />
 						<a class="btn btn-warning" onclick="checkField('domain');">手动验证该字段</a>
