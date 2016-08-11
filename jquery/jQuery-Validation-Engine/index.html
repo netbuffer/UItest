@@ -29,17 +29,17 @@
 						}
 					},
 					promptPosition: "top",
-					scroll: false,
-					onValidationComplete: function(form, status) {
-						//可以通过这里阻止表单提交
-						console.log("The form status is: " + status + ", it will never submit");
-						if(status) {
-							if(confirm("是否允许提交")) {
-								return true;
-							}
-							return false;
-						}
-					}
+					scroll: false
+//					onValidationComplete: function(form, status) {
+//						//可以通过这里阻止表单提交
+//						console.log("The form status is: " + status + ", it will never submit");
+//						if(status) {
+//							if(confirm("是否允许提交")) {
+//								return true;
+//							}
+//							return false;
+//						}
+//					}
 				});
 				//				$("#demoForm").validationEngine().css({border : "2px solid green"})
 				$("#check").click(function() {
@@ -67,10 +67,10 @@
 			function validDomain(domain) {
 //				/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{1,})+$/
 				if(/^[a-zA-Z0-9-]{1,61}(?:\.[a-zA-Z]{1,})+$/.test(domain)) {
-					console.log("Valid Domain Name");
+//					console.log("Valid Domain Name");
 					return true;
 				} else {
-					console.log("Enter Valid Domain Name");
+//					console.log("Enter Valid Domain Name");
 					return false;
 				}
 			}
@@ -101,6 +101,10 @@
 				}
 
 				return domain;
+			}
+			
+			function checkField(id){
+				console.log("校验结果:%s",$("#"+id).validationEngine('validate'));
 			}
 		</script>
 	</head>
@@ -148,7 +152,8 @@
 					</p>
 					<p>
 						<label for="confirm-password">domain</label>
-						<input type="text" class="form-control validate[required,funcCall[checkDomain]]" name="domain" />
+						<input type="text" class="form-control validate[required,funcCall[checkDomain]]" id="domain" name="domain" />
+						<a class="btn btn-warning" onclick="checkField('domain');">手动验证该字段</a>
 					</p>
 					<p>
 						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck1" value="5" />
