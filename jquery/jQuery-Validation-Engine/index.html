@@ -16,6 +16,16 @@
 		</style>
 		<script>
 			$(document).ready(function() {
+
+				$('#file').on('change',function(){
+					alert('值已改变'+$(this).val());
+					$('#testhiddenfile').val($(this).val()).trigger("change");
+				});
+		 
+		 		$('#testhiddenfile').on('change',function(){
+					alert('hidden值已改变'+$(this).val());
+				});
+		 		
 				$("#demoForm").validationEngine('attach', {
 					showOneMessage: true,
 					"custom_error_messages": {
@@ -106,6 +116,7 @@
 			function checkField(id){
 				console.log("校验结果:%s",$("#"+id).validationEngine('validate'));
 			}
+			
 		</script>
 	</head>
 
@@ -152,7 +163,8 @@
 					</p>
 					<p>
 						<label for="confirm-file">文件</label>
-						<input id="file" type="file" class="form-control validate[required]" name="file" />
+						<input id="file" type="file" class="form-control validate[required,custom[number],funcCall[checkNum],min[1],max[100.05]]" name="file" />
+						<input type="hidden" value="" id="testhiddenfile" />
 					</p>
 					<p>
 						<label for="confirm-password">domain</label>
