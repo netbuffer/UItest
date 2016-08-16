@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery.BlackAndWhite</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="//cdn.bootcss.com/jQuery.BlackAndWhite/0.3.7/jquery.BlackAndWhite.min.js"></script>
+		<style type="text/css">
+			.bwWrapper {
+			    position:relative;
+			    display:block;
+			}
+		</style>
+		<script type="text/javascript">
+			 $(function(){
+			 	$('.bwWrapper').BlackAndWhite({
+			        hoverEffect : true, // default true
+			        // set the path to BnWWorker.js for a superfast implementation
+			        webworkerPath : false,
+			        // to invert the hover effect
+			        invertHoverEffect: false,
+			        // this option works only on the modern browsers ( on IE lower than 9 it remains always 1)
+			        intensity:1,
+			        speed: { //this property could also be just speed: value for both fadeIn and fadeOut
+			            fadeIn: 200, // 200ms for fadeIn animations
+			            fadeOut: 800 // 800ms for fadeOut animations
+			        },
+			        onImageReady:function(img) {
+			            // this callback gets executed anytime an image is converted
+			        }
+			    });	
+			 });
+		</script>
+	</head>
+	<body>
+		<a href="#" class="bwWrapper">
+			<img src="../../agile/assets/app/img/allogo.png" />
+		</a><br />
+		<a href="#" class="bwWrapper">
+			<img src="../../agile/assets/app/img/slide3.jpg" />	
+		</a>
+	</body>
+</html>
