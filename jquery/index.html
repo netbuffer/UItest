@@ -8,6 +8,7 @@
 		<script src="fn/jquery.mytooltip.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(function(){
+				console.log("document.domain:%s",document.domain)
 				$("#test").myfn({'location': 'right'}).css("font-size","30px");
 				//调用init方法
 				$('tt').mytooltip();
