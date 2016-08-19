@@ -8,3 +8,4 @@
 * jquery-mockjax 模拟服务器响应
 * loading/pace.js.html pace.js h5页面加载进度条
 * jQuery.BlackAndWhite 图片加灰特效
+* jquery.browser/userAgent.js 判断ua,浏览器版本等
