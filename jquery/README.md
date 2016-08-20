@@ -8,3 +8,4 @@
 * jquery-mockjax 模拟服务器响应
 * loading/pace.js.html pace.js h5页面加载进度条
 * jQuery.BlackAndWhite 图片加灰特效
+* regex.html 正则测试，console对象使用测试
