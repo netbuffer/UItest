@@ -55,6 +55,8 @@
 				$("#check").click(function() {
 					console.log($("#demoForm").validationEngine('validate'));
 				});
+				console.log("typeof($(\"#username\").attr(\"disabled\"))==\"undefined\"：%s",typeof($("#username").attr("disabled"))=="undefined");
+				console.log("typeof($(\"#email\").attr(\"disabled\"))==\"undefined\"：%s",typeof($("#email").attr("disabled"))=="undefined");
 			});
 
 			function checkNum(field, rules, i, options) {
@@ -134,7 +136,7 @@
 					<p id="info2" style="display: none">输入错误</p>
 					<p>
 						<label for="username">用户名</label>
-						<input type="text" id="username" class="form-control validate[required]" name="username" />
+						<input type="text" id="username" disabled="disabled" class="form-control validate[required]" name="username" />
 					</p>
 
 					<p>
