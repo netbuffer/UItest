@@ -57,6 +57,9 @@
 				});
 				console.log("typeof($(\"#username\").attr(\"disabled\"))==\"undefined\"：%s",typeof($("#username").attr("disabled"))=="undefined");
 				console.log("typeof($(\"#email\").attr(\"disabled\"))==\"undefined\"：%s",typeof($("#email").attr("disabled"))=="undefined");
+				$("#maxcheck1").change(function(){
+					alert($(this).prop("checked"));
+				});
 			});
 
 			function checkNum(field, rules, i, options) {
