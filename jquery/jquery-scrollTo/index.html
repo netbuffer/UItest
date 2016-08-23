@@ -3,7 +3,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>jquery.scrollTo.js</title>
-		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<!--测试发现不支持1.7.2以下-->
+		<!--<script src="//cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>-->
+		<script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 		<!--<script src="//cdn.bootcss.com/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>-->
 		<script src="jquery-scrollto.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
@@ -35,6 +37,17 @@
 				    duration: 300,
 				    easing: 'linear'
 				});
+			}
+			
+			function testtop(){
+				$("#top1_txt").scrollTop();
+			}
+			//http://blog.csdn.net/wmsjlihuan/article/details/11974047 滚动到指定元素
+			function mScroll(id) {
+				$("html,body").stop(true);
+				$("html,body").animate({
+					scrollTop: $("#" + id).offset().top
+				}, 1000);
 			}
 		</script>
 	</head>
