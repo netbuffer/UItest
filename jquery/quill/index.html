@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>quill富文本编辑器使用</title>
+	</head>
+	<body>
+		<a href="https://quilljs.com/docs/configuration/" target="_blank"><h1>https://quilljs.com/docs/configuration/</h1></a>
+		<!-- Include Quill stylesheet -->
+		<link href="http://cdn.quilljs.com/1.0.0-rc.0/quill.snow.css" rel="stylesheet">
+		<!-- Create the toolbar container -->
+		<div id="toolbar" style="display: none;">
+		  <button class="ql-bold">Bold</button>
+		  <button class="ql-italic">Italic</button>
+		</div>
+		<button class="ql-italic" onclick="getContent();">getContent</button>
+		<div id="editor"><!--<p>Hello World!</p>--></div>
+		<!-- Include the Quill library -->
+		<script src="http://cdn.quilljs.com/1.0.0-rc.0/quill.js"></script>
+		<!-- Initialize Quill editor -->
+		<script>
+//		  var editor = new Quill('#editor', {
+//		    modules: { toolbar: '#toolbar' },
+//		    theme: 'snow'
+//		  });
+			var editor = new Quill('#editor', {
+			    modules: { toolbar: true },
+			    theme: 'snow',
+			    placeholder: '随便输入点~',
+			    debug:true
+			});
+			function getContent(){
+				alert(JSON.stringify(editor.getContents()));
+			}
+		</script>
+	</body>
+</html>
