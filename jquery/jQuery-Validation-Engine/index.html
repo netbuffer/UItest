@@ -27,7 +27,7 @@
 				});
 		 		
 				$("#demoForm").validationEngine('attach', {
-					showOneMessage: true,
+					showOneMessage: false,
 					"custom_error_messages": {
 						"#email": {
 							'required': {
@@ -180,6 +180,10 @@
 						<label for="domain">domain</label>
 						<input type="text" class="form-control validate[required,funcCall[checkDomain]]" id="domain" name="domain" />
 						<a class="btn btn-warning" onclick="checkField('domain');">手动验证该字段</a>
+					</p>
+					<p>
+						<label for="domain">textarea</label>
+						<textarea name="textarea" id="textarea" class="form-control validate[required,minSize[1],maxSize[10]]"></textarea>
 					</p>
 					<p>
 						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck1" value="5" />
