@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>parent</title>
+		<script src="//cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
+		<script src="jquery.ba-postmessage.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$.receiveMessage(
+				  function(e){
+				    alert(e.data);
+				    $("#show").text(e.data);
+				  },
+				  'http://127.0.0.1:8020'
+				);
+			});
+		</script>
+	</head>
+	<body>
+		<a href="http://benalman.com/code/projects/jquery-postmessage/docs/files/jquery-ba-postmessage-js.html" target="_blank">
+			<h1>http://benalman.com/code/projects/jquery-postmessage/docs/files/jquery-ba-postmessage-js.html</h1>
+		</a>
+		<div id="show" style="color:#044062">
+			
+		</div>
+		<iframe src="iframe.html" width="" height=""></iframe>
+	</body>
+</html>

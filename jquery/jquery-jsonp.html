@@ -63,6 +63,12 @@
 				});
 			}
 			
+			function testParam(){
+				var params = { width:1900, height:1200 };
+				var str = jQuery.param(params);
+				alert(str);
+				alert($.param({a:"testa",b:"testb"}));
+			}
 		</script>
 	</head>
 	<body>
