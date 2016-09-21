@@ -7,7 +7,13 @@
 		<script src="jquery.ba-postmessage.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(function(){
-				
+				$.receiveMessage(
+				  function(e){
+				    alert(e.data);
+				    $("#showi").text(e.data);
+				  },
+				  'http://127.0.0.1:8020'
+				);
 			});
 			function pm(){
 				$.postMessage(
@@ -21,6 +27,7 @@
 	</head>
 	<body>
 		<div id="">
+			<div id="showi"></div>
 			<button onclick="pm();">发送信息</button>
 		</div>
 	</body>

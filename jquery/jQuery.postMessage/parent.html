@@ -15,6 +15,15 @@
 				  'http://127.0.0.1:8020'
 				);
 			});
+			var iframe=$("#testframe").get(0);
+			
+			function send(){
+				$.postMessage(
+				  'hello world to iframe！',
+				  'http://127.0.0.1:8020',
+				   window.frames[0]
+				);
+			}
 		</script>
 	</head>
 	<body>
@@ -24,6 +33,7 @@
 		<div id="show" style="color:#044062">
 			
 		</div>
-		<iframe src="iframe.html" width="" height=""></iframe>
+		<iframe src="iframe.html" width="" height="" id="testframe"></iframe>
+		<button onclick="send();">send</button>
 	</body>
 </html>
