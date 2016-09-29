@@ -24,3 +24,4 @@
 * datetime jquery时间选择插件
 * quill富文本编辑器
 * jQuery.postMessage iframe跨域窗口间通信
+* js事件冒泡测试  `cancel_bubble.html`
