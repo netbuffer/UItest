@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>dom</title>
+		<script src="//cdn.bootcss.com/randomcolor/0.4.4/randomColor.min.js"></script>
 		<script type="text/javascript">
 			window.onload=function(){
 				var arr=document.getElementsByTagName("img");
@@ -11,6 +12,12 @@
 				  console.log(arr[i].src);
 				}
 			}
+			function change_bg_color(){
+				var color=randomColor();
+				console.log("change color:%s",color); 
+				document.getElementsByTagName('body')[0].style["background-color"]=color;
+			}
+			setInterval("change_bg_color()",3000);
 		</script>
 	</head>
 	<body>
