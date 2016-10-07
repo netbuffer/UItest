@@ -122,7 +122,8 @@
 //			teststr();
 //			testnum();
 //			testboolean();
-			testdate();
+//			testdate();
+			testArr();
 			
 			/**
 			 * 测试boolean类型数据
@@ -151,6 +152,20 @@
 				console.log("date.constructor:%s",date.constructor);
 				date.echo();
 				console.log("date.constructor==Date:%s",date.constructor==Date);
+				console.log("typeof date.constructor:%s",typeof date.constructor);
+			}
+			
+			function testArr(){
+				var arr=new Array(3);
+				arr[0]=1;
+				arr[1]=2;
+				arr[2]=3;
+				arr[3]=4;
+				console.log("arr:%s",arr);
+				var arr2=new Array(1,2,3,"a","b");
+				arr2[5]="c";
+				console.log("arr2:%s",arr2);
+				console.log("arr.length:%s",arr.length);
 				
 			}
 		</script>
