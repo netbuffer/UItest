@@ -17,6 +17,9 @@
 				  console.log(arr[i].src);
 				}
 				document.onmousedown=mouseev;
+				document.linkColor="black";
+				document.vlinkColor="black";
+				document.alinkColor="black";
 			}
 			function change_bg_color(){
 				var color=randomColor();
@@ -180,16 +183,36 @@
 				arr2.sort();
 				console.log("arr2-sort:%s",arr2);
 			}
+			
+			function getimgstate(){
+				var img1=document.getElementById("img1");
+				alert(img1.readyState);
+			}
+			
+			function createdocument(){
+				var dw=window.open();
+				dw.document.open();
+				dw.document.writeln("test");
+				dw.document.close();
+			}
+			
 		</script>
 	</head>
 	<body onkeydown="keyev()">
+		<a href="log4javascript.html" target="_blank">log4javascript</a>
 		<script type="text/javascript">
 			document.writeln("<h1>hello</h1>");
 			document.writeln("<h1>world</h1>");
+			document.writeln("document.fileCreatedDate:"+document.fileCreatedDate+"<br/>");
+			document.writeln("document.fileModifiedDate："+document.fileModifiedDate+"<br/>");
+			document.writeln("document.lastModified:"+document.lastModified+"<br/>");
+			document.writeln("document.fileSize:"+document.fileSize+"<br/>");
+			document.writeln("document.readyState:"+document.readyState+"<br/>");
 			document.writeln("<iframe src=\"adapter.html\" width=\"100%\" height=\"200\"></iframe>");
 		</script>
-		
-		<img src="../agile/assets/app/img/slide3.jpg" /><br />
+		<button onclick="getimgstate()">getimgstate</button><br />
+		<button onclick="createdocument()">createdocument</button><br />
+		<img id="img1" src="../agile/assets/app/img/slide3.jpg" /><br />
 		<img src="../agile/assets/app/img/slide3.jpg" /><br />
 		<img src="../agile/assets/app/img/slide3.jpg" />
 	</body>
