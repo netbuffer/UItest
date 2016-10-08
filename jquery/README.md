@@ -26,3 +26,4 @@
 * jQuery.postMessage iframe跨域窗口间通信
 * js事件冒泡测试  `cancel_bubble.html`
 * js dom test
+* log4javascript js日志框架使用

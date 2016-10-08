@@ -5,6 +5,11 @@
 		<title>dom</title>
 		<script src="//cdn.bootcss.com/randomcolor/0.4.4/randomColor.min.js"></script>
 		<script type="text/javascript">
+			//出现js错误的处理
+			window.onerror=function(){
+				alert("系统发生错误");
+				return true;
+			}
 			window.onload=function(){
 				var arr=document.getElementsByTagName("img");
 				for(var i=0;i<arr.length;i++){
@@ -166,7 +171,14 @@
 				arr2[5]="c";
 				console.log("arr2:%s",arr2);
 				console.log("arr.length:%s",arr.length);
-				
+				Array.prototype.echo=function(){
+					console.log(this.join("^_^"));
+				}
+				arr2.echo();
+				console.log("arr2.concat(\"test1\",\"test2\"):%s",arr2.concat("test1","test2"));
+				console.log("arr.reverse():%s",arr.reverse());//逆序排列
+				arr2.sort();
+				console.log("arr2-sort:%s",arr2);
 			}
 		</script>
 	</head>
