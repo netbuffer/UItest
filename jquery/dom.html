@@ -11,6 +11,7 @@
 				return true;
 			}
 			window.onload=function(){
+//				window.open('//www.baidu.com','_blank');//会被浏览器拦截
 				var arr=document.getElementsByTagName("img");
 				for(var i=0;i<arr.length;i++){
 				  console.log(arr[i].outerHTML);
@@ -21,6 +22,19 @@
 				document.vlinkColor="black";
 				document.alinkColor="black";
 			}
+			
+			function newWin(url, id) {
+              var a = document.createElement('a');
+              a.setAttribute('href', url);
+              a.setAttribute('target', '_blank');
+              a.setAttribute('id', id);
+              // 防止反复添加
+              if(!document.getElementById(id)) {                     
+                  document.body.appendChild(a);
+              }
+              a.click();
+  			}
+			
 			function change_bg_color(){
 				var color=randomColor();
 				console.log("change color:%s",color); 
@@ -184,7 +198,7 @@
 				console.log("arr2.length:%s",arr2.length);
 				console.log("arr2.shift():%s",arr2.shift());
 				console.log("arr2.pop():%s",arr2.pop());
-				console.log("arr2.unshift():%s",arr2.unshift());
+				console.log("arr2.unshift(\"ui\",\"test\"):%s",arr2.unshift("ui","test"));
 				console.log("arr2.push(4):%s",arr2.push(4));
 				console.log("arr2.push(4,5,6):%s",arr2.push(4,5,6));
 				console.log("arr2.toString():%s",arr2.toString());
@@ -202,7 +216,9 @@
 			function createdocument(){
 				var dw=window.open();
 				dw.document.open();
-				dw.document.writeln("test");
+				dw.document.writeln("test<br/>");
+				console.log(dw.opener);
+				dw.document.writeln(dw.opener);
 				dw.document.close();
 			}
 			
@@ -218,13 +234,25 @@
 					console.log("finally");					
 				}
 			}
+			function testscreen(){
+				console.log("screen.width:%s",screen.width);
+				console.log("screen.height:%s",screen.height);
+				console.log("屏幕可用高度screen.availHeight:%s",screen.availHeight);
+				console.log("screen.availTop:%s",screen.availTop);
+				console.log("screen.availLeft:%s",screen.availLeft);
+				console.log("屏幕可用宽度screen.availWidth:%s",screen.availWidth);
+				console.log("screen.pixelDepth:%s",screen.pixelDepth);
+				console.log("屏幕色深screen.colorDepth:%s",screen.colorDepth);
+			}
+			
 //			testtypeof();
 //			teststr();
 //			testnum();
 //			testboolean();
 //			testdate();
 //			testArr();
-			testerror();
+//			testerror();
+			testscreen();
 		</script>
 	</head>
 	<body onkeydown="keyev()">
