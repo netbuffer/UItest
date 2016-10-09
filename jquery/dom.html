@@ -27,18 +27,21 @@
 				document.getElementsByTagName('body')[0].style["background-color"]=color;
 			}
 //			setInterval("change_bg_color()",3000);
-			var i_a=1;
-			var s_s="s";
-			var b_b=true;
-			var o_curdate=new Date;
-			var f_f=change_bg_color;
-			//typeof返回值是字符串类型
-			console.log("typeof i_a:%s",typeof i_a);
-			console.log("typeof s_s:%s",typeof s_s);
-			console.log("typeof b_b:%s",typeof b_b);
-			console.log("typeof o_curdate:%s",typeof o_curdate);
-			console.log("typeof f_f:%s",typeof f_f);
-			console.log("(typeof typeof f_f):%s",(typeof typeof f_f));
+			
+			function testtypeof(){
+				var i_a=1;
+				var s_s="s";
+				var b_b=true;
+				var o_curdate=new Date;
+				var f_f=change_bg_color;
+				//typeof返回值是字符串类型
+				console.log("typeof i_a:%s",typeof i_a);
+				console.log("typeof s_s:%s",typeof s_s);
+				console.log("typeof b_b:%s",typeof b_b);
+				console.log("typeof o_curdate:%s",typeof o_curdate);
+				console.log("typeof f_f:%s",typeof f_f);
+				console.log("(typeof typeof f_f):%s",(typeof typeof f_f));
+			}
 			
 			function getEvent(){
 			     if(window.event)    {return window.event;}
@@ -127,11 +130,6 @@
 				console.log("num.toExponential(3):%s",num.toExponential(3));
 				console.log("num.toPrecision(2):%s",num.toPrecision(2));	
 			}
-//			teststr();
-//			testnum();
-//			testboolean();
-//			testdate();
-			testArr();
 			
 			/**
 			 * 测试boolean类型数据
@@ -182,6 +180,18 @@
 				console.log("arr.reverse():%s",arr.reverse());//逆序排列
 				arr2.sort();
 				console.log("arr2-sort:%s",arr2);
+//				arr2.length=10;				
+				console.log("arr2.length:%s",arr2.length);
+				console.log("arr2.shift():%s",arr2.shift());
+				console.log("arr2.pop():%s",arr2.pop());
+				console.log("arr2.unshift():%s",arr2.unshift());
+				console.log("arr2.push(4):%s",arr2.push(4));
+				console.log("arr2.push(4,5,6):%s",arr2.push(4,5,6));
+				console.log("arr2.toString():%s",arr2.toString());
+				console.log("arr2.toLocaleString():%s",arr2.toLocaleString());
+				console.log("arr2.join(\"-\"):%s",arr2.join("-"));
+				console.log("arr2.splice(2):%s",arr2.splice(2));
+				console.log("arr2:%s",arr2);
 			}
 			
 			function getimgstate(){
@@ -196,6 +206,25 @@
 				dw.document.close();
 			}
 			
+			function testerror(){
+				var i;
+				try{
+					i=1/0;
+					k
+				}catch(e){
+					console.log(e);
+					throw new Error(e);
+				}finally{
+					console.log("finally");					
+				}
+			}
+//			testtypeof();
+//			teststr();
+//			testnum();
+//			testboolean();
+//			testdate();
+//			testArr();
+			testerror();
 		</script>
 	</head>
 	<body onkeydown="keyev()">
