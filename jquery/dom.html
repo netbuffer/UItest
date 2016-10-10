@@ -18,6 +18,8 @@
 				  console.log(arr[i].src);
 				}
 				document.onmousedown=mouseev;
+				document.onkeydown=keybind;
+				document.oncontextmenu=denyrightclick;
 				document.linkColor="black";
 				document.vlinkColor="black";
 				document.alinkColor="black";
@@ -27,6 +29,77 @@
 				}else{
 					img1.addEventListener("click",imgclick);
 					setTimeout(img1.removeEventListener("click",function(){}),3000);
+				}
+			}
+			
+			function denyrightclick(){
+				var e=getEvent();
+				e.returnValue=false;
+				alert("屏蔽右键");
+			}
+			
+			function keybind(){
+				var e=getEvent();
+				var kc=e.keyCode;
+				console.log("event对象:%s",e.srcElement?e.srcElement.tagName:e.target.tagName);
+				if(e.ctrlKey){
+					console.log("ctrl键%s",e.keyCode);
+				}else if(e.altKey){
+					console.log("alt键%s",e.keyCode);
+				}else if(e.shiftKey){
+					console.log("shift键%s",e.keyCode);
+				}
+				console.log("键盘键位:%s",kc);
+				switch (kc){
+					case 8:
+						alert("当前设置不允许使用退格");
+						e.keyCode=0;
+						e.returnValue=false;
+						break;
+					case 13:
+						alert("当前设置不允许使用回车");
+						e.keyCode=0;
+						e.returnValue=false;
+						break;
+					case 116:
+						alert("当前设置不允许使用F5刷新");
+						e.keyCode=0;
+						e.returnValue=false;
+						break;
+					case 37:
+						if(e.altKey){
+							alert("当前设置不允许使用ALT+方向键");
+							e.returnValue=false;
+							break;
+						}
+					case 38:
+						if(e.altKey){
+							alert("当前设置不允许使用ALT+方向键");
+							e.returnValue=false;
+							break;
+						}
+					case 39:
+						if(e.altKey){
+							alert("当前设置不允许使用ALT+方向键");
+							e.returnValue=false;
+							break;
+						}
+					case 40:
+						if(e.altKey){
+							alert("当前设置不允许使用ALT+方向键");
+							e.returnValue=false;
+							break;
+						}
+					default:
+						break;
+				}
+				if(e.ctrlKey&&e.keyCode==78){
+					e.returnValue=false;
+					alert("当前设置不允许使用CTRL+N新建窗口");
+				}
+				if(e.shiftKey&&e.keyCode==91){
+					e.returnValue=false;
+					alert("当前设置不允许使用SHIFT+F10");
 				}
 			}
 			
@@ -84,14 +157,6 @@
 			         func=func.caller;
 			     }
 			     return null;
-			}
-			
-			function keyev(){
-				event=getEvent();
-				console.log("event对象:%s",event.srcElement?event.srcElement.tagName:event.target.tagName);
-				if(event.ctrlKey){
-					console.log("ctrl键");
-				}
 			}
 			
 			function mouseev(){
@@ -303,29 +368,49 @@
 //			testscreen();
 			testwindow();
 			
-			function denycopy(){ 
+			function denycopy(){
 				alert('禁止复制!'); 
 				return false;
 			}
 			
+			function drag_change_title(){
+				var event=getEvent();
+				document.title=event.type;
+			}
+			
 			function imgdragstart(){
+				console.log("dragstart");
 				var event=getEvent();
 				document.title=event.type;
 			}
 			
 			function imgdragend(){
-				var event=getEvent();
-				document.title=event.type;
+				console.log("dragend");
+				drag_change_title();
 			}
 			
 			function imgdrag(){
-				var event=getEvent();
-				document.title=event.type;
+				console.log("drag");
+				drag_change_title();
 			}
+			
+			function imgdragenter(){
+				console.log("dragenter");
+				drag_change_title();
+			}
+			function imgdragover(){
+				console.log("dragover");
+				drag_change_title();
+			}
+			function imgdragleave(){
+				console.log("dragleave");
+				drag_change_title();
+			}
+			
 			
 		</script>
 	</head>
-	<body onkeydown="keyev()" onunload="alert('onunload');" oncopy="return denycopy();" onbeforecopy="return denycopy();" onselectstart="alert('选择操作');">
+	<body onunload="alert('onunload');" oncopy="return denycopy();" onbeforecopy="return denycopy();" onselectstart="alert('选择操作');">
 		<a href="log4javascript.html" target="_blank">log4javascript</a>
 		<script type="text/javascript">
 			document.writeln("<h1>hello</h1>");
@@ -339,7 +424,10 @@
 		</script>
 		<button onclick="getimgstate()">getimgstate</button><br />
 		<button onclick="createdocument()">createdocument</button><br />
-		<img id="img1" src="../agile/assets/app/img/slide3.jpg" ondrag="imgdrag();" ondragend="imgdragend();" ondragstart="imgdragstart();"/><br />
+		<img id="img1" src="../agile/assets/app/img/slide3.jpg" 
+			ondrag="imgdrag();" ondragend="imgdragend();" ondragstart="imgdragstart();"
+			ondragenter="imgdragenter()" ondragover="imgdragover()" ondragleave="imgdragleave()" 
+			/><br />
 		<img src="../agile/assets/app/img/slide3.jpg" /><br />
 		<img src="../agile/assets/app/img/slide3.jpg" />
 		<!--onbeforepaste的返回值是无效的-->
