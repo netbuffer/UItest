@@ -21,6 +21,17 @@
 				document.linkColor="black";
 				document.vlinkColor="black";
 				document.alinkColor="black";
+				if(typeof img1.attachEvent=="function"){
+					img1.attachEvent("onclick",imgclick);
+					setTimeout(img1.detachEvent("onclick",function(){}),3000);
+				}else{
+					img1.addEventListener("click",imgclick);
+					setTimeout(img1.removeEventListener("click",function(){}),3000);
+				}
+			}
+			
+			function imgclick(){
+				alert("单击图片");	
 			}
 			
 			function newWin(url, id) {
@@ -77,6 +88,7 @@
 			
 			function keyev(){
 				event=getEvent();
+				console.log("event对象:%s",event.srcElement?event.srcElement.tagName:event.target.tagName);
 				if(event.ctrlKey){
 					console.log("ctrl键");
 				}
@@ -244,16 +256,19 @@
 				oper_win=openwin("highlight.html","高亮显示代码页面","width="+screen.availWidth/2+",height="+screen.availHeight/2+",top=10,left=20,scrollbars,resizable,toolbar,menubar,status,location,directories,copyhistory");
 				console.log("oper_win：%s",oper_win);
 				setTimeout("window.moveTo(300,500)",1000);
-				setTimeout("closewin()",2000);
+				setTimeout(closewin(oper_win),2000);
 //				window.scroll(300,400);
 //				window.scrollTo(300,400)
 //				window.scrollBy(30,40)
 //				window.showModalDialog("highlight.html",window,"dialogHeight:100px;center:yes;help:no;resizable:yes;status:yes");
 			}
 			
-			function closewin(){
-				console.log("close_win:%s",oper_win);
-				oper_win.close();
+			function closewin(operwin){
+				operwin.close();
+//				return function(){
+//					console.log("close_win:%s",operwin);
+//					operwin.close();
+//				}
 			}
 			
 			function testhistory(){
@@ -287,9 +302,30 @@
 //			testerror();
 //			testscreen();
 			testwindow();
+			
+			function denycopy(){ 
+				alert('禁止复制!'); 
+				return false;
+			}
+			
+			function imgdragstart(){
+				var event=getEvent();
+				document.title=event.type;
+			}
+			
+			function imgdragend(){
+				var event=getEvent();
+				document.title=event.type;
+			}
+			
+			function imgdrag(){
+				var event=getEvent();
+				document.title=event.type;
+			}
+			
 		</script>
 	</head>
-	<body onkeydown="keyev()">
+	<body onkeydown="keyev()" onunload="alert('onunload');" oncopy="return denycopy();" onbeforecopy="return denycopy();" onselectstart="alert('选择操作');">
 		<a href="log4javascript.html" target="_blank">log4javascript</a>
 		<script type="text/javascript">
 			document.writeln("<h1>hello</h1>");
@@ -297,14 +333,18 @@
 			document.writeln("document.fileCreatedDate:"+document.fileCreatedDate+"<br/>");
 			document.writeln("document.fileModifiedDate："+document.fileModifiedDate+"<br/>");
 			document.writeln("document.lastModified:"+document.lastModified+"<br/>");
-			document.writeln("document.fileSize:"+document.fileSize+"<br/>");
+			document.writeln("document.fileSize:"+document.fileSize+"<br/>");        
 			document.writeln("document.readyState:"+document.readyState+"<br/>");
 			document.writeln("<iframe src=\"adapter.html\" width=\"100%\" height=\"200\"></iframe>");
 		</script>
 		<button onclick="getimgstate()">getimgstate</button><br />
 		<button onclick="createdocument()">createdocument</button><br />
-		<img id="img1" src="../agile/assets/app/img/slide3.jpg" /><br />
+		<img id="img1" src="../agile/assets/app/img/slide3.jpg" ondrag="imgdrag();" ondragend="imgdragend();" ondragstart="imgdragstart();"/><br />
 		<img src="../agile/assets/app/img/slide3.jpg" /><br />
 		<img src="../agile/assets/app/img/slide3.jpg" />
+		<!--onbeforepaste的返回值是无效的-->
+		<textarea name="area" oncut="return false" onbeforepaste="return false;" onpaste="return false">
+			testtesttesttesttesttesttesttesttesttesttesttesttest
+		</textarea>
 	</body>
 </html>
