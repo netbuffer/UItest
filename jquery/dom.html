@@ -7,7 +7,7 @@
 		<script type="text/javascript">
 			//出现js错误的处理
 			window.onerror=function(){
-				alert("系统发生错误");
+				console.log("系统发生错误");
 				return true;
 			}
 			window.onload=function(){
@@ -234,6 +234,39 @@
 					console.log("finally");					
 				}
 			}
+			
+			function testwindow(){
+				/**
+				 * Window是不需要使用new运算符创建的对象。因此，在使用Window对象时，只要直接使用"window"来引用Window对象即可
+				 */
+				console.log("parent:%s",parent);
+				console.log("self:%s",self);
+				oper_win=openwin("highlight.html","高亮显示代码页面","width="+screen.availWidth/2+",height="+screen.availHeight/2+",top=10,left=20,scrollbars,resizable,toolbar,menubar,status,location,directories,copyhistory");
+				console.log("oper_win：%s",oper_win);
+				setTimeout("window.moveTo(300,500)",1000);
+				setTimeout("closewin()",2000);
+//				window.scroll(300,400);
+//				window.scrollTo(300,400)
+//				window.scrollBy(30,40)
+//				window.showModalDialog("highlight.html",window,"dialogHeight:100px;center:yes;help:no;resizable:yes;status:yes");
+			}
+			
+			function closewin(){
+				console.log("close_win:%s",oper_win);
+				oper_win.close();
+			}
+			
+			function testhistory(){
+				console.log("history:%s",history);
+//				history.back();
+//				history.forward();
+//				history.go(history.length);
+			}
+			
+			function openwin(url,title,param){
+				return window.open(url,title,param);
+			}
+			
 			function testscreen(){
 				console.log("screen.width:%s",screen.width);
 				console.log("screen.height:%s",screen.height);
@@ -252,7 +285,8 @@
 //			testdate();
 //			testArr();
 //			testerror();
-			testscreen();
+//			testscreen();
+			testwindow();
 		</script>
 	</head>
 	<body onkeydown="keyev()">

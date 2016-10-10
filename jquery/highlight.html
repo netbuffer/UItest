@@ -9,12 +9,17 @@
 		<script src="//cdn.bootcss.com/highlight.js/9.5.0/highlight.min.js"></script>
 		<script type="text/javascript">
 			hljs.initHighlightingOnLoad();
+			function parentWin(){
+				window.opener.location.reload();
+				window.close();
+			}
 		</script>
 		<!--<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/solarized_dark.min.css">
 		<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>-->
 		
 	<body>
+		<button onclick="parentWin();">parentWin</button>
 		<pre>
 			<code class="html hljs xml">
 				&lt;link rel="stylesheet" href="https://obgudq4u6.qnssl.com/wp-content/monokai_sublime.min.css"/&gt;
