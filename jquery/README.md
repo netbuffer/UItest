@@ -27,3 +27,4 @@
 * js事件冒泡测试  `cancel_bubble.html`
 * js dom test
 * log4javascript js日志框架使用
+* mousetrap.html 键盘事件监听，快捷键库
