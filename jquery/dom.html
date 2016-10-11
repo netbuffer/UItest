@@ -36,8 +36,12 @@
 				var e=getEvent();
 				e.returnValue=false;
 				alert("屏蔽右键");
+				return false;
 			}
 			
+			/**
+			 * 有的浏览器有默认的冲突快捷键，js这里拿不到通知，就不会执行了...
+			 */
 			function keybind(){
 				var e=getEvent();
 				var kc=e.keyCode;
@@ -55,9 +59,9 @@
 					e.returnValue=false;
 					alert("当前设置不允许使用CTRL+N新建窗口");
 				}
-				if(e.shiftKey&&e.keyCode==91){
+				if(e.shiftKey&&e.keyCode==65){
 					e.returnValue=false;
-					alert("当前设置不允许使用SHIFT+F10");
+					alert("当前设置不允许使用SHIFT+A");
 				}
 				switch (kc){
 					case 8:
