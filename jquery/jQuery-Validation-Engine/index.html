@@ -122,13 +122,26 @@
 				console.log("校验结果:%s",$("#"+id).validationEngine('validate'));
 			}
 			
+			function testform(){
+				console.log("document.forms[0]:%o",document.forms[0]);
+				console.log("document.forms.demoForm:%o",document.forms.demoForm);
+				console.log("document.demoForm:%o",document.demoForm);
+				console.log("document.getElementById(\"demoForm\"):%o",document.getElementById("demoForm"));
+			}
+			
+			function testinput(){
+				console.log("document.forms[0].username:%o",document.forms[0].username);
+				console.log("document.forms[0].elements[0]):%o",document.forms[0].elements[0]);
+				console.log("document.forms[0].elements[\"username\"]:%o",document.forms[0].elements["username"]);
+			}
+			
 		</script>
 	</head>
 
 	<body>
 		<!--文档地址:http://posabsolute.github.io/jQuery-Validation-Engine/#custom_error_messages-->
 		<div class="container">
-			<form id="demoForm" action="http://127.0.0.1" class="form-control" method="get">
+			<form id="demoForm" name="demoForm" action="http://127.0.0.1" class="form-control" method="get">
 				<fieldset>
 					<fieldset>
 						<legend id="legendid">Email</legend>
@@ -203,6 +216,8 @@
 					<p>
 						<a href="#" onclick="$('#legendid').validationEngine('showPrompt', 'This a custom msg', 'load')">Show prompt</a>
 						<input type="submit" class="btn btn-default" value="登录" />
+						<input type="button" class="btn btn-default" value="获取表单" onclick="testform();"/>
+						<input type="button" class="btn btn-default" value="获取表单域" onclick="testinput();"/>
 					</p>
 				</fieldset>
 			</form>

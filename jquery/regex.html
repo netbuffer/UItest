@@ -13,6 +13,8 @@
 			console.log("/\(?0\d{2}[) -]?\d{8}/.test(\"(010)88886666\"):%s",/\(?0\d{2}[) -]?\d{8}/.test("(010)88886666"));
 			console.log(/\(?0\d{2}[) -]?\d{8}/.test("(01088886666"));
 			console.log(/\(?0\d{2}[) -]?\d{8}/.test("010)88886666"));
+//			字符（%s）、整数（%d或%i）、浮点数（%f）和对象（%o）
+			//打印对象
 			console.log( " Body tag is %o " , document.body);
 			//http://www.360doc.com/content/14/0917/16/14663225_410219222.shtml console用法
 			$(function(){
@@ -28,9 +30,12 @@
 			//输出对象的所有属性
 			console.dir(document);
 //			console.clear(); //清屏
+			console.dirxml(document.getElementsByName("pre"));
+//			console.count（这个方法非常实用哦）当你想统计代码被执行的次数
 		</script>
 	</head>
 	<body>
+		<a href="http://www.mamicode.com/info-detail-611316.html" target="_blank"><h1>console对象使用</h1></a>
 		<h1>正则表达式30分钟入门:<a href="http://deerchao.net/tutorials/regex/regex.htm#mission" target="_blank">http://deerchao.net/tutorials/regex/regex.htm#mission</a></h1>
 		<pre><code id="code"></code></pre>
 		<pre>
