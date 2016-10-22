@@ -7,6 +7,11 @@
 		<title>测试laytpl</title>
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 		<link rel="shortcut icon" href="/favicon.ico">
+		<style type="text/css">
+			.z{color: #999999;font-weight: bolder;}
+			.nan{color: #3399CC;font-weight: bolder;}
+			.nv{color: #CC6666;font-weight: bolder;}
+		</style>
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<script src="../easyui/moment.min.js" type="text/javascript" charset="utf-8"></script>
@@ -23,6 +28,12 @@
 				var gettpl = $('#demo').html();
 				laytpl(gettpl).render(data, function(html){
 				    $('#view').html(html);
+				});
+				var gettpl = $('#demoflow').html();
+				$.getJSON("data.json",function(data){
+					laytpl(gettpl).render(data, function(html){
+					    $('#viewflow').html(html);
+					});	
 				});
 			});
 		</script>
@@ -51,10 +62,29 @@
 			</ul>
 		</script>
 		
+		<script id="demoflow" type="text/html">
+			{{# for(var i=0;i<d.length;i++){ }}
+				<hr /><span>姓名:<span>{{d[i].name}}</span></span><br />
+				<span>年龄:<span>{{d[i].age*100}}</span></span><br />
+				<span>性别:
+					{{# if(d[i].sex==0) { }}
+						<span class="z">-</span>
+					{{# }else if(d[i].sex==1){ }}
+						<span class="nan">男</span>
+					{{# }else if(d[i].sex==2){ }}
+						<span class="nv">女</span>
+					{{# }else{ }}
+						<span class="z">^_^</span>
+					{{# } }}
+				</span>
+			{{# } }}
+			</ul>
+		</script>
+		
 		//第二步：建立视图。用于呈现渲染结果。
 		<div id="view"></div>
-
-
+		<hr />
+		<div id="viewflow"></div>
 	</body>
 
 </html>
