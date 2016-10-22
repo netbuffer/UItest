@@ -28,6 +28,22 @@
 				});
 			}
 			
+			function simpletest(){
+				bootbox.dialog({
+					message: "<textarea class='form-control' id='awo_check_fail_reason'></textarea>",
+					title: "请输入拒绝原因",
+					buttons: {
+						main: {
+							label: "确定",
+							className: "btn-primary",
+							callback: function() {
+								alert("ok");
+							}
+						}
+					}
+				});
+			}
+			
 			function cnm() {
 				bootbox.confirm({
 					title: "What is your real name?",
@@ -78,11 +94,12 @@
 		<div class="container">
 			<div class="page-header">
 				<h1>Bootbox.js -简单实用</h1>
+				<a href="http://bootboxjs.com/" target="_blank">http://bootboxjs.com/</a>
 			</div>
 			<button class="btn btn-primary" onclick="simpleAlert();">简单弹窗</button>
 			<button class="btn btn-info" onclick="pmpt();">询问</button>
 			<button class="btn btn-warning" onclick="dialogtest();">dialogtest</button>
-			<button class="btn btn-primary">简单</button>
+			<button class="btn btn-primary" onclick="simpletest();">简单</button>
 			<span>显示内容</span>
 		</div>
 	</body>
