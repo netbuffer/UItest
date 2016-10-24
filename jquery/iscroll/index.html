@@ -3,6 +3,7 @@
 
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>iscroll使用</title>
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<script src="//cdn.bootcss.com/iScroll/5.2.0/iscroll.min.js" type="text/javascript" charset="utf-8"></script>
@@ -15,9 +16,16 @@
 				var myScroll = new IScroll('#wrapper',config);
 				myScroll.on('scrollEnd', function () {
     				console.log("thiss:%o",this);
+    				console.log("this.x:%o",this.x);
     				if ( this.x < -1000 ) {
     					
 				    }
+				});
+				myScroll.on('beforeScrollStart', function () {
+					console.log("beforeScrollStart");
+				});
+				myScroll.on('scrollCancel', function () {
+					console.log("scrollCancel");
 				});
 			});
 		</script>
@@ -26,9 +34,15 @@
 	<body>
 		<div id="wrapper">
 			<ul>
-				<li>test1</li>
-				<li>test2</li>
-				<li>test3</li>
+				<li>test1
+					<img src="../../agile/assets/app/img/slide3.jpg"/>
+				</li>
+				<li>test2
+					<img src="../../agile/assets/app/img/slide3.jpg"/>
+				</li>
+				<li>test3
+					<img src="../../agile/assets/app/img/slide3.jpg"/>
+				</li>
 			</ul>
 		</div>
 	</body>
