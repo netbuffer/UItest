@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>iscroll使用</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="//cdn.bootcss.com/iScroll/5.2.0/iscroll.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var config={
+					mouseWheel: true,
+    				scrollbars: true
+				};
+				var myScroll = new IScroll('#wrapper',config);
+				myScroll.on('scrollEnd', function () {
+    				console.log("thiss:%o",this);
+    				if ( this.x < -1000 ) {
+    					
+				    }
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="wrapper">
+			<ul>
+				<li>test1</li>
+				<li>test2</li>
+				<li>test3</li>
+			</ul>
+		</div>
+	</body>
+
+</html>
