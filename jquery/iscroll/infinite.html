@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 		<title>iScroll demo: infinite scrolling</title>
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-		<script src="//cdn.bootcss.com/iScroll/5.2.0/iscroll.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="//cdn.bootcss.com/iScroll/5.2.0/iscroll.min.js" type="text/javascript" charset="utf-8"></script>-->
 		<script src="//cdn.bootcss.com/iScroll/5.2.0/iscroll-infinite.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			/******************************************************************************
@@ -57,20 +57,25 @@
 					//infiniteLimit: 2000,
 					dataset: requestData,
 					dataFiller: updateContent,
-					cacheSize: 1000
+					cacheSize: 1
 				});
 			}
 
 			function requestData(start, count) {
+				if(isNaN(start)){
+					start=0;
+				}
 				ajax('data.json?start=' + +start + '&count=' + +count, {
 					callback: function(data) {
 						data = JSON.parse(data);
+						console.log("receive data:%o",data);
 						myScroll.updateCache(start, data);
 					}
 				});
 			}
 
 			function updateContent(el, data) {
+				console.log("data:%o",data);
 				el.innerHTML = data;
 			}
 //			document.addEventListener('touchmove', function(e) {

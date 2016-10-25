@@ -5,45 +5,162 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>iscroll使用</title>
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<style type="text/css">
+			/* Styled scrollbars */
+			.iScrollHorizontalScrollbar {
+				position: absolute;
+				z-index: 9999;
+				height: 5px;
+				left: 2px;
+				right: 2px;
+				bottom: 2px;
+				overflow: hidden;
+			}
+			.iScrollHorizontalScrollbar.iScrollBothScrollbars {
+				right: 18px;
+			}
+			.iScrollVerticalScrollbar {
+				position: absolute;
+				z-index: 9999;
+				width: 16px;
+				bottom: 2px;
+				top: 2px;
+				right: 2px;
+				overflow: hidden;
+			}
+			.iScrollVerticalScrollbar.iScrollBothScrollbars {
+				bottom: 18px;
+			}
+			
+			.iScrollIndicator {
+				position: absolute;
+				background: #cc3f6e;
+				border-width: 1px;
+				border-style: solid;
+				border-color: #EB97B4 #7C2845 #7C2845 #EB97B4;
+				border-radius: 8px;
+			}
+			.iScrollHorizontalScrollbar .iScrollIndicator {
+				height: 100%;
+				background: -moz-linear-gradient(left,  #cc3f6e 0%, #93004e 100%);
+				background: -webkit-linear-gradient(left,  #cc3f6e 0%,#93004e 100%);
+				background: -o-linear-gradient(left,  #cc3f6e 0%,#93004e 100%);
+				background: -ms-linear-gradient(left,  #cc3f6e 0%,#93004e 100%);
+				background: linear-gradient(to right,  #cc3f6e 0%,#93004e 100%);
+			}
+			.iScrollVerticalScrollbar .iScrollIndicator {
+				width: 100%;
+				background: -moz-linear-gradient(top, #cc3f6e 0%, #93004e 100%);
+				background: -webkit-linear-gradient(top,  #cc3f6e 0%,#93004e 100%);
+				background: -o-linear-gradient(top, #cc3f6e 0%,#93004e 100%);
+				background: -ms-linear-gradient(top, #cc3f6e 0%,#93004e 100%);
+				background: linear-gradient(to bottom,  #cc3f6e 0%,#93004e 100%);
+			}
+			/* end */
+		</style>
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<script src="//cdn.bootcss.com/iScroll/5.2.0/iscroll.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			$(function(){
-				var config={
-					mouseWheel: true,
-    				scrollbars: true
-				};
-				var myScroll = new IScroll('#wrapper',config);
-				myScroll.on('scrollEnd', function () {
-    				console.log("thiss:%o",this);
-    				console.log("this.x:%o",this.x);
-    				if ( this.x < -1000 ) {
-    					
-				    }
+			var myScroll,myScroll2;
+			$(function() {
+				$(document).on("click", "#wrapper ul li,#wrapper_h .row .col-md-2",function() {
+					console.log("obj:%o", this);
+//					alert($(this).html());
 				});
-				myScroll.on('beforeScrollStart', function () {
+				var config = {
+					mouseWheel: false,
+					scrollbars: false,
+					click: true,
+//					disableMouse: true, //鼠标、指针事件
+//					disablePointer: true,
+					disableTouch: true
+				};
+				myScroll = new IScroll('#wrapper', config);
+				myScroll.on('scrollEnd', function() {
+					console.log("thiss:%o", this);
+					console.log("this.x:%o", this.x);
+					if(this.x < -1000) {
+
+					}
+				});
+				myScroll.on('beforeScrollStart', function() {
 					console.log("beforeScrollStart");
 				});
-				myScroll.on('scrollCancel', function () {
+				myScroll.on('scrollCancel', function() {
 					console.log("scrollCancel");
 				});
+				
+				var config2 = {
+					mouseWheel: true,
+					scrollbars: true,
+					click: true,
+					eventPassthrough:true,
+					scrollX: true, 
+					scrollY: false, 
+					preventDefault: false,
+					scrollbars: 'custom'
+				};
+				myScroll2= new IScroll('#wrapper_h', config2);
 			});
+			function refresh2(){
+				setTimeout(function () {
+			        myScroll2.refresh();
+			    }, 0);
+			}
 		</script>
 	</head>
 
 	<body>
-		<div id="wrapper">
-			<ul>
-				<li>test1
-					<img src="../../agile/assets/app/img/slide3.jpg"/>
-				</li>
-				<li>test2
-					<img src="../../agile/assets/app/img/slide3.jpg"/>
-				</li>
-				<li>test3
-					<img src="../../agile/assets/app/img/slide3.jpg"/>
-				</li>
-			</ul>
+		<div class="container">
+			<div class="page-header">
+				<h1>
+				  <a href="https://iiunknown.gitbooks.io/iscroll-5-api-cn/content/basicfeatures.html" target="_blank">文档地址</a>
+			      <small>iscroll5</small>
+			   </h1>
+			</div>
+			<div id="" class="row">
+				<div class="col-md-6">
+					<button class="btn btn-default btn-block" onclick="refresh2();">
+						<span class="glyphicon glyphicon-refresh"></span>&emsp;refresh
+					</button>
+				</div>
+				<div class="col-md-6">
+					<button class="btn btn-default btn-block">refresh</button>
+				</div>
+			</div>
+			<div id="wrapper">
+				<ul class="list-group">
+					<li class="list-group-item" >
+						<div id="wrapper_h" style="background-color: #00DDFF;">
+							<div class="row">
+								<div class="col-md-2">
+									<img src="../../agile/assets/app/img/slide3.jpg" class="img-responsive img-thumbnail" />		
+								</div>
+								<div class="col-md-2">
+									<img src="../../agile/assets/app/img/slide3.jpg" class="img-responsive img-thumbnail" />		
+								</div>
+								<div class="col-md-2">
+									<img src="../../agile/assets/app/img/slide3.jpg" class="img-responsive img-thumbnail" />		
+								</div>
+								<div class="col-md-2">
+									<img src="../../agile/assets/app/img/slide3.jpg" class="img-responsive img-thumbnail" />		
+								</div>
+								<div class="col-md-2">
+									<img src="../../agile/assets/app/img/slide3.jpg" class="img-responsive img-thumbnail" />		
+								</div>
+								<div class="col-md-2">
+									<img src="../../agile/assets/app/img/slide3.jpg" class="img-responsive img-thumbnail" />		
+								</div>
+							</div>	
+						</div>
+					</li>
+					<li class="list-group-item">Dapibus ac facilisis in</li>
+					<li class="list-group-item"><img src="../../agile/assets/app/img/slide3.jpg" class="img-responsive img-thumbnail" /></li>
+					<li class="list-group-item">Porta ac consectetur ac</li>
+					<li class="list-group-item"><img src="../../agile/assets/app/img/slide3.jpg" class="img-responsive img-thumbnail" /></li>
+				</ul>	
+			</div>
 		</div>
 	</body>
 
