@@ -11,6 +11,13 @@
 				return true;
 			}
 			window.onload=function(){
+				//预加载图片
+				var img=new Image();  
+			    img.id="img-not-bad";
+				img.src="../Unslider/t (1).jpg";
+			    img.onload=function(){alert("img is loaded")};
+			    img.onerror=function(){alert("img load error!")};  
+
 //				window.open('//www.baidu.com','_blank');//会被浏览器拦截
 				var arr=document.getElementsByTagName("img");
 				for(var i=0;i<arr.length;i++){
@@ -30,6 +37,11 @@
 					img1.addEventListener("click",imgclick);
 					setTimeout(img1.removeEventListener("click",function(){}),3000);
 				}
+			}
+			
+			function changeimg(obj){
+				//调用预加载的图片
+				obj.src="../Unslider/t (1).jpg";
 			}
 			
 			function denyrightclick(){
@@ -434,7 +446,7 @@
 			ondragenter="imgdragenter()" ondragover="imgdragover()" ondragleave="imgdragleave()" 
 			/><br />
 		<img src="../agile/assets/app/img/slide3.jpg" /><br />
-		<img src="../agile/assets/app/img/slide3.jpg" />
+		<img src="../agile/assets/app/img/slide3.jpg" onmouseover="changeimg(this);" />
 		<!--onbeforepaste的返回值是无效的-->
 		<textarea name="area" oncut="return false" onbeforepaste="return false;" onpaste="return false">
 			testtesttesttesttesttesttesttesttesttesttesttesttest
