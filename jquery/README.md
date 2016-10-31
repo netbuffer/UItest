@@ -19,7 +19,7 @@
 * jquery.blockUI jquery弹窗插件
 * jquery.animatedModal全屏弹层插件
 * jqcloud.js 不规则文字渲染
-* FlipClock.js 倒计时插件
+* FlipClock.js 倒计时插件`/jquery.countdown`/`jquery.countdown-2.1.0`
 * fakeLoader.js loading层
 * director.js页面路由插件
 * datetime jquery时间选择插件
