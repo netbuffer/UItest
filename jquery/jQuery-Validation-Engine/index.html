@@ -16,7 +16,17 @@
 		</style>
 		<script>
 			$(document).ready(function() {
-
+//				动态操作placeholder
+				$("#placeholder_test").on({
+				    focus: function() {
+				        $(this).data("placeholder",$(this).attr("placeholder"));
+				        $(this).attr("placeholder","")
+				    },
+				    blur: function() {
+				        $(this).attr("placeholder",$(this).data("placeholder"))
+				    }
+				});
+				
 				$('#file').on('change',function(){
 					alert('值已改变'+$(this).val());
 					$('#testhiddenfile').val($(this).val()).trigger("change");
@@ -214,6 +224,9 @@
 					<p>
 						<input value="" class="validate[groupRequired[payments]]" type="text" name="creditcard" id="creditcard" />
 						<input class="validate[groupRequired[payments]]" type="text" id="paypal" name="paypal" />
+					</p>
+					<p>
+						placeholder: <input value="" class="" type="text" placeholder="2342342342342423432" name="placeholder_test" id="placeholder_test" />
 					</p>
 					<p>
 						<a href="#" onclick="$('#legendid').validationEngine('showPrompt', 'This a custom msg', 'load')">Show prompt</a>
