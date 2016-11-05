@@ -1,92 +1,45 @@
-var myScroll, pullDownEl, pullDownOffset, pullUpEl, pullUpOffset, generatedCount = 0;
+var myScroll;
+var position;
+var update = false;
 
-/**
- * 下拉刷新 （自定义实现此方法）
- */
-function pullDownAction() {
-	setTimeout(function() {
-		for(i = 0; i < 3; i++) {
-			$ele = $("<div style='color:#0092DC;'>" + Math.random() + "</div>");
-			$("#showlist").append($ele);
+function loaded () {
+	position = document.getElementById('position');
+
+	myScroll = new IScroll('#wrapper', { probeType: 2, interactiveScrollbars: true, startY:-40 });
+
+	myScroll.on('scroll', function () {
+		if((this.y>>0) > 10 && update == false){
+			update = true;
+			$('.pull-to-refresh .pull-text').html('松开刷新')
+			$('.pull-to-refresh .pull-indicator').addClass('arrow-rotate-180');
 		}
-		myScroll.refresh(); //数据加载完成后，调用界面更新方法 
-	}, 1000);
-}
-
-/**
- * 滚动翻页 （自定义实现此方法）
- */
-function pullUpAction() {
-	setTimeout(function() {
-		for(i = 0; i < 3; i++) {
-			$ele = $("<div style='color:#0092DC;'>" + Math.random() + "</div>");
-			$("#showlist").append($ele);
-		}
-		myScroll.refresh(); //数据加载完成后，调用界面更新方法
-	}, 1000);
-}
-
-/**
- * 初始化iScroll控件
- */
-function loaded() {
-	pullDownEl = document.getElementById('pullDown');;
-	pullDownOffset = pullDownEl.offsetHeight;
-	pullUpEl = document.getElementById('pullUp');
-	pullUpOffset = pullUpEl.offsetHeight;
-
-	myScroll = new IScroll("wrapper", {
-//		scrollbarClass: 'myScrollbar',
-		useTransition: false,
-		topOffset: pullDownOffset
-		onRefresh: function() {
-			if(pullDownEl.className.match('loading')) {
-				pullDownEl.className = '';
-				pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
-			} else if(pullUpEl.className.match('loading')) {
-				pullUpEl.className = '';
-				pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
-			}
-		},
-		onScrollMove: function() {
-			if(this.y > 5 && !pullDownEl.className.match('flip')) {
-				pullDownEl.className = 'flip';
-				pullDownEl.querySelector('.pullDownLabel').innerHTML = '松手开始更新...';
-				this.minScrollY = 0;
-			} else if(this.y < 5 && pullDownEl.className.match('flip')) {
-				pullDownEl.className = '';
-				pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
-				this.minScrollY = -pullDownOffset;
-			} else if(this.y < (this.maxScrollY - 5) && !pullUpEl.className.match('flip')) {
-				pullUpEl.className = 'flip';
-				pullUpEl.querySelector('.pullUpLabel').innerHTML = '松手开始更新...';
-				this.maxScrollY = this.maxScrollY;
-			} else if(this.y > (this.maxScrollY + 5) && pullUpEl.className.match('flip')) {
-				pullUpEl.className = '';
-				pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
-				this.maxScrollY = pullUpOffset;
-			}
-		},
-		onScrollEnd: function() {
-			if(pullDownEl.className.match('flip')) {
-				pullDownEl.className = 'loading';
-				pullDownEl.querySelector('.pullDownLabel').innerHTML = '加载中...';
-				pullDownAction();
-			} else if(pullUpEl.className.match('flip')) {
-				pullUpEl.className = 'loading';
-				pullUpEl.querySelector('.pullUpLabel').innerHTML = '加载中...';
-				pullUpAction();
+	});
+	myScroll.on('scrollEnd', function () {
+		if(this.y > -40){
+			if(update == false && this.y <= 0){
+				myScroll.scrollTo(0, -40, 1000);
+				setTimeout(function () {
+			        myScroll.scrollTo(0, -40);
+			    }, 500);
+			}else{
+				$('.pull-to-refresh .pull-indicator').css('display', 'none')
+				$('.pull-to-refresh .pull-text').css('display', 'none')
+				$('.pull-to-refresh .pull-spinner').css('display', 'block')
+				setTimeout(function () {
+					update = false;
+			        myScroll.scrollTo(0, -40, 1000);
+			        $('.pull-to-refresh .pull-text').html('下拉刷新')
+			        $('.pull-to-refresh .pull-indicator').removeClass('arrow-rotate-180');
+			        $('.pull-to-refresh .pull-spinner').css('display', 'none')
+			        $('.pull-to-refresh .pull-indicator').css('display', 'inline-block')
+					$('.pull-to-refresh .pull-text').css('display', 'inline-block');
+					for(var i=0;i<5;i++){
+						$("#scroller ul li:eq(0)").before("<li>动态生成节点:"+Math.random()+"</li>");
+					}
+			    }, 2000);
 			}
 		}
 	});
-
-	setTimeout(function() {
-		document.getElementById('wrapper').style.left = '0';
-	}, 800);
 }
 
-//初始化绑定iScroll控件
-document.addEventListener('touchmove', function(e) {
-	e.preventDefault();
-}, false);
-document.addEventListener('DOMContentLoaded', loaded, false);
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);

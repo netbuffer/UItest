@@ -5,6 +5,16 @@
 		<title>dom</title>
 		<script src="//cdn.bootcss.com/randomcolor/0.4.4/randomColor.min.js"></script>
 		<script type="text/javascript">
+			function test(a){
+				console.log("方法1");
+				console.log(a);
+			}
+			function test(a,b){
+				console.log("方法2");
+				console.log(a+b);
+			}
+			test(1);
+			test(1,2);
 			//出现js错误的处理
 			window.onerror=function(){
 				console.log("系统发生错误");
