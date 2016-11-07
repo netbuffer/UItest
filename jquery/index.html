@@ -28,7 +28,13 @@
 					alert("回调");
 				}
 				setTimeout(callback,2000);
+				setInterval("fade()",1000);
 			});
+			function fade(){
+				$("#test").fadeOut(1000,function(){
+					$(this).fadeIn(1000);
+				});
+			}
 		</script>
 	</head>
 	<body>
