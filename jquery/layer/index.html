@@ -46,10 +46,20 @@
 			function a(){
 				layer.alert('酷毙了', {icon: 1,offset: '-50px'});
 			}
+			
+			function alertskin() {
+				layer.alert('请输入正确的充值金额!', {
+					skin: 'layui-layer-lan',
+					closeBtn: 0,
+					shift: 0
+				}, function(index) {
+					layer.close(index);
+				});
+			}
 		</script>
 	</head>
 	<body>
-		<button onclick="test();">test1</button>&emsp;<button onclick="a();">layer.alert</button>
+		<button onclick="test();">test1</button>&emsp;<button onclick="a();">layer.alert</button>&emsp;<button onclick="alertskin();">alert带有皮肤效果</button>
 		<hr />
 		<div id="h" style="width:100px;height: 100px;background-color: #285E8E;margin: 100px;"></div>
 	</body>
