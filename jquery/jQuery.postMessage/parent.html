@@ -14,6 +14,15 @@
 				  },
 				  'http://127.0.0.1:8020'
 				);
+//				接收多个域名消息
+//				$.receiveMessage(
+//				  function(e){
+//				    alert(e.data);
+//				    $("#show").text(e.data);
+//				  },
+//				  ['http://example.com','http://test.example.com','http://127.0.0.1:8020']
+//				);
+				
 			});
 			var iframe=$("#testframe").get(0);
 			
@@ -27,6 +36,9 @@
 		</script>
 	</head>
 	<body>
+		<a href="http://www.ibm.com/developerworks/cn/web/1301_jiangjj_html5message/" target="_blank">postMessage</a>&emsp;
+		<a href="https://html.spec.whatwg.org/multipage/comms.html#crossDocumentMessages" target="_blank">postMessage</a>&emsp;
+		<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage" target="_blank">postMessage</a>
 		<a href="http://benalman.com/code/projects/jquery-postmessage/docs/files/jquery-ba-postmessage-js.html" target="_blank">
 			<h1>http://benalman.com/code/projects/jquery-postmessage/docs/files/jquery-ba-postmessage-js.html</h1>
 		</a>
