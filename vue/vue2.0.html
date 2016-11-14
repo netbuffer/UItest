@@ -6,6 +6,9 @@
 		<script src="//cdn.bootcss.com/vue/2.0.5/vue.min.js"></script>
 	</head>
 	<body>
+		<pre>
+			vue中重要的3个元素data、methods、watch
+		</pre>
 		<div id="app">
 		  {{ message }}
 		</div>
@@ -176,7 +179,7 @@
 		    <input v-model="question">
 		  </p>
 		  <p>{{ answer }}</p>
-		  <img src="{{ a_img }}" />
+		  <img v-bind:src="result_img" />
 		</div>
 		<!-- Since there is already a rich ecosystem of ajax libraries    -->
 		<!-- and collections of general-purpose utility methods, Vue core -->
@@ -190,7 +193,7 @@
 		  data: {
 		    question: '',
 		    answer: 'I cannot give you an answer until you ask a question!',
-		    a_img:'aa'
+		    result_img:''
 		  },
 		  watch: {
 		    // 如果 question 发生改变，这个函数就会运行
@@ -216,8 +219,8 @@
 		        axios.get('https://yesno.wtf/api')
 		          .then(function (response) {
 		            vm.answer = _.capitalize(response.data.answer);
-		            vm.a_img=response.data.image;
-		            console.log("vm.a_img:%s",vm.a_img);
+		            vm.result_img=response.data.image;
+		            console.log("vm.result_img:%s",vm.result_img);
 		          })
 		          .catch(function (error) {
 		            vm.answer = 'Error! Could not reach the API. ' + error
@@ -257,7 +260,7 @@
 			      // `this` 在方法里指当前 Vue 实例
 			      alert('Hello ' + this.name + '!')
 			      // `event` 是原生 DOM 事件
-			      alert(event.target.tagName)
+//			      alert(event.target.tagName)
 			    }
 			  }
 			})
