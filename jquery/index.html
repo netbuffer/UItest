@@ -8,7 +8,7 @@
 		<script src="fn/jquery.mytooltip.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(function(){
-				console.log("document.domain:%s",document.domain)
+				console.log("document.domain:%s",document.domain);
 				$("#test").myfn({'location': 'right'}).css("font-size","30px");
 				//调用init方法
 				$('tt').mytooltip();
@@ -25,15 +25,27 @@
 				$('tt').mytooltip('update', 'This is the new tooltip content!');
 				function callback(){
 					console.log("回调");
-					alert("回调");
+//					alert("回调");
 				}
 				setTimeout(callback,2000);
 				setInterval("fade()",1000);
+				$("body").append("<div id='d' style='width:200px;height:200px;background-color:#00CCCC;'>test</div>");
+				setInterval("ani()",5000);
 			});
 			function fade(){
 				$("#test").fadeOut(1000,function(){
 					$(this).fadeIn(1000);
 				});
+			}
+			function ani(){
+				$("#d").animate({"width":"20px","height":"20px"},3000,"linear",
+					function(){
+						console.log("animate1");
+						$(this).animate({"width":"200px","height":"200px"},3000,"swing",function(){
+							console.log("animate2");
+						});
+					}
+				);
 			}
 		</script>
 	</head>
