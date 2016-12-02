@@ -12,3 +12,6 @@
 * vconsole
 * laytpl
 * [layui](https://github.com/sentsin/layui/)
+
+> ## github:[https://github.com/netbuffer/UItest](https://github.com/netbuffer/UItest)
+> ## git@osc:[http://git.oschina.net/gradle/UItest](http://git.oschina.net/gradle/UItest)
