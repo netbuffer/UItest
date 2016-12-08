@@ -8,6 +8,15 @@
 		<script src="fn/jquery.mytooltip.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(function(){
+				$(document).on({
+					"mousedown":function(e){
+						console.log("e.clientX:"+e.clientX+",e.clientY:"+e.clientY);
+					},
+					"mousemove":function(e){
+						console.log("e.clientX:"+e.clientX+",e.clientY:"+e.clientY);
+						$("#gensui").css("position","absolute").css("left",e.clientX-30+"px").css("top",e.clientY-10+"px");
+					}
+				});
 				console.log("document.domain:%s",document.domain);
 				$("#test").myfn({'location': 'right'}).css("font-size","30px");
 				//调用init方法
@@ -75,6 +84,7 @@
 		</script>
 	</head>
 	<body>
+		<img src="../agile/assets/app/img/top.png" id="gensui"/>
 		<p id="test"></p>
 		<div id="tt"></div>
 		<a href="http://www.baidu.com">go</a>
