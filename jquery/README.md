@@ -30,3 +30,4 @@
 * log4javascript js日志框架使用
 * mousetrap.html 键盘事件监听，快捷键库
 * iscroll iscroll.js下拉刷新、上拉加载
+* lightbox jquery图片放大插件/图片放大浏览/图片相册插件
