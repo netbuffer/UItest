@@ -32,3 +32,4 @@
 * iscroll iscroll.js下拉刷新、上拉加载
 * lightbox jquery图片放大插件/图片放大浏览/图片相册插件
 * jquery.viewer 支持鼠标滚轮缩放相册插件
+* jquery-autocomplete jquery自动完成插件,可以自定义模板样式

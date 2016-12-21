@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery-autocomplete</title>
+		<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<link href="//cdn.bootcss.com/jquery-autocomplete/1.0.7/jquery.auto-complete.min.css" rel="stylesheet">
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="//cdn.bootcss.com/jquery-autocomplete/1.0.7/jquery.auto-complete.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$("#auto").autoComplete({
+					minChars: 1,
+					source:function(term, response){
+						console.log("term:%s",term);
+//						$.getJSON('/some/ajax/url/', { q: term }, function(data){ response(data); });
+						var choices = ['ActionScript', 'AppleScript', 'Asp','java'];
+				        var matches = [];
+				        for (i=0; i<choices.length; i++){
+				        	if (~choices[i].toLowerCase().indexOf(term)){
+				        		matches.push(choices[i]);	
+				        	}
+				        }
+				        response(matches);
+					},
+					renderItem:function (item, search){
+					    search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+					    var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
+					    return '<div class="autocomplete-suggestion" data-val="' + item + '"><img src="https://img6.bdstatic.com/img/image/smallpic/weiju1220.jpg"/>'+ item.replace(re, "<b>$1</b>") + '</div>';
+					}
+				});
+			});
+//			http://img6.bdstatic.com/img/image/smallpic/duorou1220.jpg
+		</script>
+	</head>
+
+	<body>
+		<div class="container">
+			<a href="https://github.com/Pixabay/jQuery-autoComplete">
+				<h1>jQuery-autoComplete</h1>
+			</a>&emsp;
+			<a href="https://goodies.pixabay.com/jquery/auto-complete/demo.html">https://goodies.pixabay.com/jquery/auto-complete/demo.html</a>
+			<input class="form-control" type="text" autocomplete="off" name="name" id="auto" />
+		</div>
+	</body>
+</html>
