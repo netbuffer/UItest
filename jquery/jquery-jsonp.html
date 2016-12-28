@@ -69,6 +69,29 @@
 				alert(str);
 				alert($.param({a:"testa",b:"testb"}));
 			}
+			
+			function testAjaxAsync(){
+				var data={};
+				$.ajax({
+                    async : false,
+                    type : "GET",
+                    url :"data.json",
+                    data:{
+                        "type":1
+                    },
+                    success:function (d, textStatus, jqXHR) {
+                        console.log("data：%o",data);
+                        console.log("textStatus：%o",textStatus);
+                        console.log("jqXHR：%o",jqXHR);
+                        data=d;
+                        console.log(JSON.stringify(data));
+                    },
+                    error:function () {
+                        alert("请重试");
+                    }
+                });
+                alert(JSON.stringify(data));
+			}
 		</script>
 	</head>
 	<body>

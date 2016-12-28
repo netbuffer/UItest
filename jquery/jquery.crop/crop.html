@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="x5-orientation" content="portrait">
+		<title>首页</title>
+		<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.bootcss.com/cropper/2.3.4/cropper.min.js"></script>
+		<script src="https://cdn.bootcss.com/Buttons/2.0.0/js/buttons.min.js"></script>
+		<link href="https://cdn.bootcss.com/cropper/2.3.4/cropper.min.css" type="text/css" rel="stylesheet" />
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="https://cdn.bootcss.com/Buttons/2.0.0/css/buttons.min.css" rel="stylesheet">
+		<style>
+			@-webkit-keyframes rotation {
+				10% {
+					transform: rotate(90deg);
+					-webkit-transform: rotate(90deg)
+				}
+				50%,
+				60% {
+					transform: rotate(0deg);
+					-webkit-transform: rotate(0deg)
+				}
+				90% {
+					transform: rotate(90deg);
+					-webkit-transform: rotate(90deg)
+				}
+				100% {
+					transform: rotate(90deg);
+					-webkit-transform: rotate(90deg)
+				}
+			}
+			
+			@keyframes rotation {
+				10% {
+					transform: rotate(90deg);
+					-webkit-transform: rotate(90deg)
+				}
+				50%,
+				60% {
+					transform: rotate(0deg);
+					-webkit-transform: rotate(0deg)
+				}
+				90% {
+					transform: rotate(90deg);
+					-webkit-transform: rotate(90deg)
+				}
+				100% {
+					transform: rotate(90deg);
+					-webkit-transform: rotate(90deg)
+				}
+			}
+			
+			#orientLayer {
+				display: none
+			}
+			
+			@media screen and (min-aspect-ratio:12/10) {
+				#orientLayer {
+					display: block
+				}
+			}
+			
+			.mod-orient-layer {
+				display: none;
+				position: fixed;
+				height: 100%;
+				width: 100%;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				background: #333;
+				z-index: 9997
+			}
+			
+			.mod-orient-layer__content {
+				position: absolute;
+				width: 100%;
+				top: 45%;
+				margin-top: -75px;
+				text-align: center
+			}
+			
+			.mod-orient-layer__icon-orient {
+				background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIYAAADaCAMAAABU68ovAAAAXVBMVEUAAAD29vb////x8fH////////x8fH5+fn29vby8vL////5+fn39/f6+vr////x8fH////////+/v7////09PT////x8fH39/f////////////////////x8fH///+WLTLGAAAAHXRSTlMAIpML+gb4ZhHWn1c2gvHBvq1uKJcC6k8b187lQ9yhhboAAAQYSURBVHja7d3blpowFIDhTUIAOchZDkre/zE7ycySrbUUpsRN2/1fzO18KzEqxEVgTiZNfgmmtxRc8iaR8HNe8x4BtjQePKayYCIoyBSgvNNE1AkNSHqZyLqk97EgUCCHBzZ5mkg7ScvIJuIyOyXBRFxgpqWZyGsAZLB1KjsJi8nutHU4JCRbFRH8tmirI9k8Jx2sqNs8K/m0LQkrktO2crgcgXGB4AiTEsB0hJfo9MGgX7CGcYiYwQxmMOOvZwRhBG8tCoMXjBDeXvWCEcHbi14wgCBmMIMZzGAGM5jxETNwzMAxA8cMHDNwzMAxA8cMHDNwzMAxA8cMHDNwzMAxY6E2rUQxnH2tz9cirlJFwFBJedaPnUv0M7++egPDE8iAJcIDmxwH5wwv9vUviw2kLbVO3TJU5uul/EyB0FoLp4x60PdGUd3qPurrWyjGGTc05u+1dcgI7/+tCCPARWGhH7o5Y7RCf+bH9ctXLp6v2BVDxfqz0oPXeSVaNtINo/1SXDv4dck8IIkbhtC2ol+iouEonTBCbYvVMnXOjxww6s/RFrBUpXHh/gw1rHj5d/qhYn9Gpk2FWh6xRBRX5Oj3Znh2Sq49/L6+y8pB26q9GbE2dbA2mVbx6I+7MfBglLCttm73ZQi7AD3iL4HqjFYJHSPRppqaUaJ3ATpGa+ckpGak2hRRMyqjGMkvl+xyFeSMwjAqcsZgGDdyhl0oNTnDN4yenJGZFGxNChP5/Y3efh6SM2rDOJMzboYxkDMqwyjIGcIw6F+io2FU1IxIm1JqRmgXSkvNKNCXeTpGrU0JNSO2c6LIGPgCS8AuDHz9ta0SXWDtxoDRH+MqlbC2Dt2G2JFRadtQZt2qq/orGowdGb2euxYiqWEpVWhTBnszoNAPdStuQwxqf0aocdWKW4Z+DfszIh8pxJqbuCE4YAC+4bm0evtipjpgJHeFnyyt1Ku2xa0bhjxr27p75rECNwyI9ZwvXkHq+7aTaMEV44YYy/spfgjgjNHaWW+GeUhGEX7tLlVinIFDDSgnOwhi1V6bU0b6tVS9eAERe863g4dRrtiHdc6o+nn5vtyVVgR79Cqt4uL6gfHPQyGqtP2vf7HADGbcYwaOGThm4JiBYwaOGThm4JiBYwaOGThm4JiBYwaOGThm4JiBYwaOGThm4JjhtOM+J/AgT008yDMkN/dPP9hzS8zAMQN3OEYeekp5YU7KOKXwVXqiY+QS7smcinGKABWdiBgpPJTSMHJ4KidhhPBUSMLw4CmPhKHgKUXCkHsygum71ftNSgCX6bsl8FQyfbcL5EdYsDk0R3j7aiA5wpt5AjKg/2gLJEBD/0Hf2OOf/vRrj6z/7GtP4B3nMKyjHA12kIPSjnJs3FEO0TvKkYJHOWCR+rjJH0Vn6fI5PjNbAAAAAElFTkSuQmCC);
+				display: inline-block;
+				width: 67px;
+				height: 109px;
+				transform: rotate(90deg);
+				-webkit-transform: rotate(90deg);
+				-webkit-animation: rotation infinite 1.5s ease-in-out;
+				animation: rotation infinite 1.5s ease-in-out;
+				-webkit-background-size: 67px;
+				background-size: 67px
+			}
+			
+			.mod-orient-layer__desc {
+				margin-top: 20px;
+				font-size: 15px;
+				color: #fff
+			}
+			/*.cropper-point {*/
+			/*-moz-border-radius: 10px;*/
+			/*-webkit-border-radius: 10px;*/
+			/*width: 20px;*/
+			/*height: 20px;*/
+			/*background-color: #69f;*/
+			/*filter: alpha(opacity=60);*/
+			/*opacity: .60;*/
+			/*}*/
+			
+			.cropper-point.point-se {
+				-moz-border-radius: 10px;
+				-webkit-border-radius: 10px;
+				right: -10px;
+				bottom: -10px;
+				width: 20px;
+				height: 20px;
+				border: 1px #666 solid;
+				background-color: #FFF;
+				/*filter: alpha(opacity=60);*/
+				/*opacity: .60;*/
+			}
+			
+			.cropper-view-box {
+				outline: #FFF solid 1px;
+				outline-color: rgba(255, 255, 255, 0.75);
+			}
+			
+			.cropper-line,
+			.cropper-point {
+				background-color: #FFF
+			}
+		</style>
+	</head>
+
+	<body style="background-color: #333">
+		<div id="orientLayer" class="mod-orient-layer">
+			<div class="mod-orient-layer__content">
+				<i class="icon mod-orient-layer__icon-orient">
+        		</i>
+				<div class="mod-orient-layer__desc">
+					为了更好的体验，请使用竖屏浏览
+				</div>
+			</div>
+		</div>
+		<div id="viewArea">
+			<img id="image" style="max-width: 100%" src="https://fengyuanchen.github.io/cropper/img/picture.jpg">
+			<!--<img id="image" style="max-width: 100%" src="http://123.57.250.176/cms/upload/page/80896.jpg">-->
+		</div>
+		<div>
+			<button class="button button-large button-plain button-border button-circle" style="display: none;" onclick="rotateImgLeft()"><i class="fa fa-undo"></i></button>
+			<button class="button button-large button-plain button-border button-circle" style="display: none;" onclick="rotateImgRight()"><i class="fa fa-repeat"></i></button>
+			<button class="button button-large button-plain button-border button-circle" style="display: none" onclick="zoomToOrignal(-1)"><i class="fa fa-check"></i></button>
+			<button class="button button-large button-plain button-border button-circle" style="display: none" onclick="zoomToOrignal(1)"><i class="fa fa-check"></i></button>
+			<button class="button button-large button-plain button-border button-circle" style="display: none" onclick="showCropData()"><i class="fa fa-trash"></i></button>
+		</div>
+		<script>
+			function rotateImgLeft() {
+				$("#image").cropper('clear');
+				$("#image").cropper('rotate', -90);
+				$("#image").cropper('crop');
+				var canvasData = $("#image").cropper('getCanvasData');
+				$(".cropper-container").height(viewWidth * (canvasData.height / canvasData.width));
+				zoomToOrignal(-100);
+			}
+
+			function rotateImgRight() {
+				$("#image").cropper('clear');
+				$("#image").cropper('rotate', 90);
+				$("#image").cropper('crop');
+				var canvasData = $("#image").cropper('getCanvasData');
+				$(".cropper-container").height(viewWidth * (canvasData.height / canvasData.width));
+				zoomToOrignal(-100);
+			}
+
+			function showCropData() {
+				var containerData = $("#image").cropper('getContainerData');
+				var canvasData = $("#image").cropper('getCanvasData');
+				alert("cantainer: w:" + containerData.width + " h:" + containerData.height + "\n" + "canvas: w:" + canvasData.width + " h:" + canvasData.height);
+			}
+
+			function zoomToOrignal(rat) {
+				$("#image").cropper('zoom', rat);
+			}
+			var viewWidth = 0;
+			var viewHeight = 0;
+			$(function() {
+				$('#image').cropper({
+					//        aspectRatio: 16 / 9,
+					viewMode: 2,
+					center: false,
+					background: false,
+					toggleDragModeOnDblclick: false,
+					minCropBoxWidth: 35,
+					minCropBoxHeight: 35,
+					autoCropArea: 0.6,
+					zoomable: true,
+					zoomOnTouch: false,
+					zoomOnWheel: false,
+					movable: false,
+					checkCrossOrigin: false,
+					built: function() {
+						$(".button-circle").show();
+						//                showCropData();
+						var containerData = $(this).cropper('getContainerData');
+						var canvasData = $(this).cropper('getCanvasData');
+						viewWidth = containerData.width;
+						viewHeight = containerData.height;
+						alert("cantainer: w:" + containerData.width + " h:" + containerData.height + "\n" + "canvas: w:" + canvasData.width + " h:" + canvasData.height);
+					},
+					crop: function(e) {
+						// Output the result data for cropping image.
+						console.log(e.x);
+						console.log(e.y);
+						console.log(e.width);
+						console.log(e.height);
+						console.log(e.rotate);
+						console.log(e.scaleX);
+						console.log(e.scaleY);
+					}
+				});
+			});
+			//    $(".point-se").html('<i class="fa fa-arrows" aria-hidden="true"></i>');
+		</script>
+	</body>
+
+</html>
