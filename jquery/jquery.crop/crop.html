@@ -138,6 +138,7 @@
 	</head>
 
 	<body style="background-color: #333">
+		<a href="https://github.com/fengyuanchen/cropper#table-of-contents">https://github.com/fengyuanchen/cropper#table-of-contents</a>
 		<div id="orientLayer" class="mod-orient-layer">
 			<div class="mod-orient-layer__content">
 				<i class="icon mod-orient-layer__icon-orient">
@@ -157,7 +158,8 @@
 			<button class="button button-large button-plain button-border button-circle" style="display: none" onclick="zoomToOrignal(-1)"><i class="fa fa-check"></i></button>
 			<button class="button button-large button-plain button-border button-circle" style="display: none" onclick="zoomToOrignal(1)"><i class="fa fa-check"></i></button>
 			<button class="button button-large button-plain button-border button-circle" style="display: none" onclick="showCropData()"><i class="fa fa-trash"></i></button>
-		</div>
+		</div><hr /><br /><br /><br />
+		<!--<div id="preview" style="width: 300px;height: 300px;"></div>-->
 		<script>
 			function rotateImgLeft() {
 				$("#image").cropper('clear');
@@ -189,8 +191,13 @@
 			var viewWidth = 0;
 			var viewHeight = 0;
 			$(function() {
+//				minContainerWidth
+//				minContainerHeight
+//				minCanvasWidth
+//				minCanvasHeight
 				$('#image').cropper({
 					//        aspectRatio: 16 / 9,
+					preview:"#preview",
 					viewMode: 2,
 					center: false,
 					background: false,
@@ -214,13 +221,13 @@
 					},
 					crop: function(e) {
 						// Output the result data for cropping image.
-						console.log(e.x);
-						console.log(e.y);
-						console.log(e.width);
-						console.log(e.height);
-						console.log(e.rotate);
-						console.log(e.scaleX);
-						console.log(e.scaleY);
+						console.log("e.x:%s",e.x);
+						console.log("e.y:%s",e.y);
+						console.log("e.width:%s",e.width);
+						console.log("e.height:%s",e.height);
+						console.log("e.rotate:%s",e.rotate);
+						console.log("e.scaleX:%s",e.scaleX);
+						console.log("e.scaleY:%s",e.scaleY);
 					}
 				});
 			});
