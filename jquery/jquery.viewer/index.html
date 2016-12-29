@@ -12,6 +12,12 @@
 			$(function() {
 				$(".row").viewer();
 			});
+			function add_image(){
+				var $div=$("<div></div>");
+				$div.addClass("col-xs-6").addClass("col-md-3").html("<img style=\"height: 180px; width: 100%; display: block;\" src=\"../../bootstrap/img/cocacola.png\"/>");
+				$("#imagelist .row:eq(0)").append($div);
+				$(".row").viewer("update");
+			}
 		</script>
 	</head>
 
@@ -21,7 +27,7 @@
 				<h1>viewer</h1>
 			</a>&emsp;
 			<a href="https://fengyuanchen.github.io/viewer/">https://fengyuanchen.github.io/viewer//</a>
-			<div class="bs-example">
+			<div class="bs-example" id="imagelist">
 				<div class="row">
 					<div class="col-xs-6 col-md-3">
 						<div style="border:2px solid green;width:90%;height:180px;position:absolute;background-color:rgba(00,33,99,0.4);"></div>
@@ -36,6 +42,11 @@
 					<div class="col-xs-6 col-md-3">
 						<img style="height: 180px; width: 100%; display: block;" src="../../mui/hello-mui/images/shuijiao.jpg">
 					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<button class="btn btn-primary btn-sm" onclick="add_image();">动态添加一幅图片</button>
 				</div>
 			</div>
 		</div>

@@ -167,7 +167,8 @@
 				$("#image").cropper('crop');
 				var canvasData = $("#image").cropper('getCanvasData');
 				$(".cropper-container").height(viewWidth * (canvasData.height / canvasData.width));
-				zoomToOrignal(-100);
+//				zoomToOrignal(-100);
+				$("#image").cropper("setCanvasData",{width:$(".cropper-container").width()});
 			}
 
 			function rotateImgRight() {
