@@ -18,6 +18,11 @@
 				console.log("%o",$("div>col-md-4	"));
 			}
 			
+			function setattrs(){
+				//多个attr
+				$("button:first").attr({"style":"background-color:blue;","alt":"第一个button"})
+			}
+			
 		</script>
 	</head>
 	<body>
@@ -35,6 +40,7 @@
 			</div>
 			<div class="test">
 				<p>test</p>
+				<button class="btn btn-primary">button</button>
 			</div>
 		</div>
 	</body>
