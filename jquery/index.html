@@ -14,7 +14,7 @@
 					},
 					"mousemove":function(e){
 						console.log("e.clientX:"+e.clientX+",e.clientY:"+e.clientY);
-						$("#gensui").css("position","absolute").css("left",e.clientX-30+"px").css("top",e.clientY-10+"px");
+//						$("#gensui").css("position","absolute").css("left",e.clientX-30+"px").css("top",e.clientY-10+"px");
 					}
 				});
 				console.log("document.domain:%s",document.domain);
@@ -89,5 +89,7 @@
 		<div id="tt"></div>
 		<a href="http://www.baidu.com">go</a>
 		<button onclick="askuser();">绑定onbeforeunload</button>&emsp;<button onclick="window.onbeforeunload=null;">解除onbeforeunload</button>
+		<hr/><button onclick="$('#div_toggle').toggle();">toggle_div</button>
+		<div style="width: 100px;height: 100px;background-color: #0092DC;" id="div_toggle">toggle</div>
 	</body>
 </html>
