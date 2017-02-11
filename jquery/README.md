@@ -34,3 +34,5 @@
 * jquery.viewer 支持鼠标滚轮缩放相册插件
 * jquery-autocomplete jquery自动完成插件,可以自定义模板样式
 * clipboard.js 剪贴板复制/粘贴
+* marquee 测试滚动插件
+* swiper 轮播、滚动插件
