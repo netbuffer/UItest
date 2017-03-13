@@ -5,10 +5,25 @@
 		<title>js-》function使用</title>
 		<script type="text/javascript">
 			var sayHello=new Function("name","alert(name);console.log(name);");
-			sayHello("haha");
+//			sayHello("haha");
+			name="windows";
+			var obj={
+				"name":"hello obj",
+				get_name:function(){
+//					name="aa";
+					var name="bb";
+					return function(){
+						//在父作用域，上层中找不到name就会从window作用域中找
+						return name;
+					};
+				}
+			}
+			alert(obj.name);
+			alert(obj.get_name());
+			alert(obj.get_name()());
 		</script>
 	</head>
 	<body>
-		function使用
+		function使用/闭包使用
 	</body>
 </html>
