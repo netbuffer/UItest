@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js-object</title>
+		<script>
+			/**
+			 * 第一种对象封装方式
+			 * @param {Object} name
+			 * @param {Object} age
+			 */
+//			function User(name,age){
+//				this.name=name;
+//				this.age=age;
+//				this.introduce=function(){
+//					console.log("我是："+this.name+",今年："+this.age);
+//				};
+//				this.run=function(){
+//					console.log("run");
+//				};
+//			}
+//			var jack=new User("jack",1);
+//			console.log(jack.name);
+//			console.log(jack.age);
+//			jack.introduce();
+//			jack.run();
+
+		/**
+		 * 第二种对象封装方式
+		 */
+		function User(name,age){
+			this.name="对象属性name:"+name;
+			User.prototype.age="对象属性age:"+age;
+//			this.age=age;
+			var privatePro="私有属性";
+			this.introduce=function(){
+				console.log("对象方法introduce");
+			};
+			User.prototype.run=function(){
+				console.log("对象方法run");
+			};
+
+		}
+		User.language="类属性language";
+		User.sex=function(){
+			return "xx";
+		}
+		console.log(User.language);
+		var user=new User();
+		try{
+			console.log(user.name);
+			console.log(user.age);
+			console.log(user.language);
+			console.log(User.language);
+			console.log(user.introduce());
+			console.log(user.run());
+			console.log(User.sex());
+			console.log(user.sex());
+		}catch(e){
+			console.error(e.message);
+		}
+		
+		function Student(name,age){
+			User.apply(this, [name,age]);
+			this.introduce=function(){
+				console.log("Student-name:"+this.name);
+			}
+		}
+		Student.prototype=new User();
+		
+		function Teacher(name,age){
+			this.name=name;
+			this.age=age;
+			this.introduce=function(){
+				console.log("Teacher-name:"+this.name);
+			}
+		}
+		Teacher.prototype=new User();
+		
+		var jack=new Student("jack",12);
+		try{
+			console.log(jack.name);
+			//只有设置了Student.prototype=new User();，才能调用原型中定义的
+			console.log(jack.age);
+			jack.introduce();
+			jack.run();
+			console.log(jack);
+		}catch(e){
+			console.error(e);
+		}
+		
+		var teacher=new Teacher("xiaoming",30);
+		try{
+			teacher.introduce();
+		}catch(e){
+			console.error(e);
+		}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
