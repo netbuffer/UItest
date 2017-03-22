@@ -15,5 +15,5 @@
 
 > ## github:[https://github.com/netbuffer/UItest](https://github.com/netbuffer/UItest)  
 > ## git@osc:[http://git.oschina.net/gradle/UItest](http://git.oschina.net/gradle/UItest)
-> ## github demo:[http://ttblog.com.cn/UItest/index.html](http://ttblog.com.cn/UItest/index.html)  
+> ## github demo:[http://netbuffer.github.io/UItest/index.html](http://netbuffer.github.io/UItest/index.html)  
 > ## oschina demo:[http://gradle.oschina.io/uitest/](http://gradle.oschina.io/uitest/)
