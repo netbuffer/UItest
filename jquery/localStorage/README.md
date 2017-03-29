@@ -1,0 +1,1 @@
+### localstorage测试，在a/b两个页面测试key值变化
