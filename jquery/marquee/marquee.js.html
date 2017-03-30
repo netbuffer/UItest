@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Marquee.js</title>
+		<script src="../../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="marquee.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#marquee_slide').marquee({
+		            auto: true,
+		            interval: 3000,
+		            speed: 500,
+		            showNum: 1,
+		            stepLen: 1
+		        });
+			});
+		</script>
+	</head>
+	<body>
+		<div id="marquee_slide" style="">
+		    <ul>
+		        <li>1neirong1neirong1neirong1neirong1neirong1neirong</li>
+		        <li>21neirong</li>
+		        <li>31neirong</li>
+		        <li>4</li>
+		        <li>51neirong</li>
+		        <li>61neirong</li>
+		        <li>71neirong</li>
+		        <li>81neirong</li>
+		        <li>9</li>
+		    </ul>
+		</div>
+	</body>
+</html>

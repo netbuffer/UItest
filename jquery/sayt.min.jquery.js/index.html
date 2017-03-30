@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单参数保持</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+		<script src="sayt.min.jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#form_id').sayt();
+			})
+		</script>
+	</head>
+	<body>
+		<form id="form_id" class="form" method="post">
+			<p class="name">
+				<input type="text" name="name[]" id="sname" />
+				<label for="name">Name</label>
+			</p>
+			<p class="email">
+				<input type="text" name="email[]" id="semail" />
+				<label for="email">E-mail</label>
+			</p>
+			<p class="web">
+				<input type="text" name="web[]" id="sweb" />
+				<label for="web">Website</label>
+			</p>
+			<p class="submit">
+				<input type="submit" value="Save" />
+			</p>
+			<p class="submit">
+				<select name="sel">
+					<option value="a">a</option>
+					<option value="b">b</option>
+					<option value="b">c</option>
+				</select>
+			</p>
+		</form>
+		<a href="http://www.baidu.com">跳转</a>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery-mockjax</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="//cdn.bootcss.com/jquery-mockjax/1.6.2/jquery.mockjax.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$.mockjax({
+					url: "/restful/fortune",
+					responseText: {
+						status: "success",
+						fortune: "Are you a mock turtle?"
+					}
+				});
+			})
+			function test() {
+				$.getJSON("/restful/fortune", function(response) {
+					if(response.status == "success") {
+						$("#fortune").html("Your fortune is: " + response.fortune);
+					} else {
+						$("#fortune").html("Things do not look good, no fortune was told");
+					}
+				});
+			}
+		</script>
+	</head>
+
+	<body>
+		<a href="https://github.com/jakerella/jquery-mockjax">https://github.com/jakerella/jquery-mockjax</a>
+		<hr /><button onclick="test();">test</button>
+		<div id="fortune"></div>
+	</body>
+
+</html>

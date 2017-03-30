@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>clipboard</title>
+		<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+		<script src="//cdn.bootcss.com/clipboard.js/1.5.16/clipboard.min.js"></script>
+		<script>
+			$(function () {
+		        var clipboard = new Clipboard('.copyurl');
+		        clipboard.on('success', function (e) {
+		            console.info('Action:', e.action);
+		            console.info('Text:', e.text);
+		            console.info('Trigger:', e.trigger);
+		            alert("复制成功!");
+		            e.clearSelection();
+		        });
+		        clipboard.on('error', function (e) {
+		            console.error('Action:', e.action);
+		            console.error('Trigger:', e.trigger);
+		        });
+		    });
+		</script>
+	</head>
+	<body>
+		<a class="copyurl" data-clipboard-text="https://www.baidu.com">
+			<div>复制百度链接</div>
+		</a>&emsp;
+		<a class="copyurl" data-clipboard-text="https://www.taobao.com">
+			<div>复制淘宝链接</div>
+		</a>
+	</body>
+</html>

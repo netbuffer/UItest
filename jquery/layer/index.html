@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>layer</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<link href="//cdn.bootcss.com/layer/2.4/skin/layer.min.css" rel="stylesheet">	
+		<script src="//cdn.bootcss.com/layer/2.4/layer.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#h").mouseenter(function(){
+					var index =layer.tips('在上面',$(this), {
+					  tips :2,
+					  time: 0,
+					  offset: '100px'
+					});	
+				}).mouseleave(function(){
+					layer.closeAll('tips');
+				});
+				
+				$.ajaxSetup({
+					layerIndex:-1,
+					beforeSend: function () {
+						this.layerIndex = layer.load(0, { shade: [0.5, '#003399'] });
+					},
+					complete: function () {
+						layindex=this.layerIndex;
+						alert(layindex);
+						setTimeout("layer.close(layindex)",2000);
+					},
+					error: function () {
+						layer.alert('...', {
+							skin: 'layui-layer-molv'
+							, closeBtn: 0
+							, shift: 4 //动画类型
+						});
+					}
+				});
+			})
+			function test(){
+				$.get("../data.txt",function(data){
+					console.log(data);
+				},"text");
+			}
+			
+			function a(){
+				layer.alert('酷毙了', {icon: 1,offset: '-50px'});
+			}
+			
+			function alertskin() {
+				layer.alert('请输入正确的充值金额!', {
+					skin: 'layui-layer-lan',
+					closeBtn: 0,
+					shift: 0
+				}, function(index) {
+					layer.close(index);
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="test();">test1</button>&emsp;<button onclick="a();">layer.alert</button>&emsp;<button onclick="alertskin();">alert带有皮肤效果</button>
+		<hr />
+		<div id="h" style="width:100px;height: 100px;background-color: #285E8E;margin: 100px;"></div>
+	</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>form-change</title>
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="style.css" />
+	</head>
+
+	<body>
+		<form class="form-horizontal" id="demoForm" onchange="c();">
+			<fieldset>
+				<!-- Form Name -->
+				<legend>测试表单</legend>
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="textinput">电话1</label>
+					<div class="col-md-4">
+						<input id="textinput1" name="pn1" placeholder="请输入电话" class="form-control input-md" required="" type="text">
+						<span class="help-block">电话号码1</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="textinput">电话2</label>
+					<div class="col-md-4">
+						<input id="textinput2" name="pn2" placeholder="请输入电话" class="form-control input-md" required="" type="text">
+						<span class="help-block">电话号码2</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="textinput">电话3</label>
+					<div class="col-md-4">
+						<input id="textinput3" name="pn3" placeholder="请输入电话" class="form-control input-md" required="" type="text">
+						<span class="help-block">电话号码3</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="textinput">电话4</label>
+					<div class="col-md-4">
+						<input id="textinput4" name="pn4" placeholder="请输入电话" class="form-control input-md" required="" type="text">
+						<span class="help-block">电话号码4</span>
+					</div>
+				</div>
+				
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="测试">提交</label>
+					<div class="col-md-4">
+						<button id="check" name="测试" class="btn btn-primary" disabled="">提交</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+		<script src="vendor/jquery-1.10.0.js"></script>
+		<script>
+			function c(){
+				console.log("form中表单值change");
+			}
+		</script>
+	</body>
+
+</html>

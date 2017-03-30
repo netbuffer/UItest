@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>a</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<script type="text/javascript">
+			function add(){
+				var name=document.getElementById("name").value;
+				alert(name);
+				localStorage.name=name;
+			}
+		</script>
+	</head>
+	<body>
+		name:<input name="name" id="name" value="" /><button id="add" onclick="add();">添加</button>
+	</body>
+</html>

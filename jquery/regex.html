@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>regex</title>
+		<link href="//cdn.bootcss.com/highlight.js/9.5.0/styles/darkula.min.css" rel="stylesheet">
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="//cdn.bootcss.com/highlight.js/9.5.0/highlight.min.js"></script>
+		<script type="text/javascript">
+			hljs.initHighlightingOnLoad();
+		</script>
+		<script type="text/javascript">
+			console.log("%c regex test！","height:25px; line-height:25px;font-weight:bolder;font-size:25px;");
+			console.log("%c1，正则表达式测试\n"
+				+"2，console.log对象使用测试\n"
+				+"3，test3\n","color:green;line-height:25px;");
+			console.log("/\(?0\d{2}[) -]?\d{8}/.test(\"(010)88886666\"):%s",/\(?0\d{2}[) -]?\d{8}/.test("(010)88886666"));
+			console.log(/\(?0\d{2}[) -]?\d{8}/.test("(01088886666"));
+			console.log(/\(?0\d{2}[) -]?\d{8}/.test("010)88886666"));
+//			字符（%s）、整数（%d或%i）、浮点数（%f）和对象（%o）
+			//打印对象
+			console.log( " Body tag is %o " , document.body);
+			//http://www.360doc.com/content/14/0917/16/14663225_410219222.shtml console用法
+			$(function(){
+				console.time("jq");
+				$("#code").html($("script").last().html())
+				//统计jq消耗时间
+				console.timeEnd("jq");
+				//调用堆栈
+				console.trace();
+			});
+			//表格方式打印
+			console.table([{"name":"t1","sex":"男"},{"name":"t2","sex":"女"}]);
+			//输出对象的所有属性
+			console.dir(document);
+//			console.clear(); //清屏
+			console.dirxml(document.getElementsByName("pre"));
+//			console.count（这个方法非常实用哦）当你想统计代码被执行的次数
+		</script>
+	</head>
+	<body>
+		<a href="http://www.mamicode.com/info-detail-611316.html" target="_blank"><h1>console对象使用</h1></a>
+		<h1>正则表达式30分钟入门:<a href="http://deerchao.net/tutorials/regex/regex.htm#mission" target="_blank">http://deerchao.net/tutorials/regex/regex.htm#mission</a></h1>
+		<pre><code id="code"></code></pre>
+		<pre>
+			<code>
+分枝条件
+不幸的是，刚才那个表达式也能匹配010)12345678或(022-87654321这样的“不正确”的格式。要解决这个问题，我们需要用到分枝条件。正则表达式里的分枝条件指的是有几种规则，
+如果满足其中任意一种规则都应该当成匹配，具体方法是用|把不同的规则分隔开。听不明白？没关系，看例子：0\d{2}-\d{8}|0\d{3}-\d{7}这个表达式能匹配两种以连字号分隔的电话号码：
+一种是三位区号，8位本地号(如010-12345678)，一种是4位区号，7位本地号(0376-2233445)。\(?0\d{2}\)?[- ]?\d{8}|0\d{2}[- ]?\d{8}这个表达式匹配3位区号的电话号码，
+其中区号可以用小括号括起来，也可以不用，区号与本地号间可以用连字号或空格间隔，也可以没有间隔。你可以试试用分枝条件把这个表达式扩展成也支持4位区号的。
+\d{5}-\d{4}|\d{5}这个表达式用于匹配美国的邮政编码。美国邮编的规则是5位数字，或者用连字号间隔的9位数字。之所以要给出这个例子是因为它能说明一个问题：
+使用分枝条件时，要注意各个条件的顺序。如果你把它改成\d{5}|\d{5}-\d{4}的话，那么就只会匹配5位的邮编(以及9位邮编的前5位)。原因是匹配分枝条件时，
+将会从左到右地测试每个条件，如果满足了某个分枝的话，就不会去再管其它的条件了。	
+			</code>
+		</pre>
+	</body>
+</html>

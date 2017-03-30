@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>parent</title>
+		<script src="//cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
+		<script src="jquery.ba-postmessage.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$.receiveMessage(
+				  function(e){
+				    alert(e.data);
+				    $("#show").text(e.data);
+				  },
+				  'http://127.0.0.1:8020'
+				);
+//				接收多个域名消息
+//				$.receiveMessage(
+//				  function(e){
+//				    alert(e.data);
+//				    $("#show").text(e.data);
+//				  },
+//				  ['http://example.com','http://test.example.com','http://127.0.0.1:8020']
+//				);
+				
+			});
+			var iframe=$("#testframe").get(0);
+			
+			function send(){
+				$.postMessage(
+				  'hello world to iframe！',
+				  'http://127.0.0.1:8020',
+				   window.frames[0]
+				);
+			}
+		</script>
+	</head>
+	<body>
+		<a href="http://www.ibm.com/developerworks/cn/web/1301_jiangjj_html5message/" target="_blank">postMessage</a>&emsp;
+		<a href="https://html.spec.whatwg.org/multipage/comms.html#crossDocumentMessages" target="_blank">postMessage</a>&emsp;
+		<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage" target="_blank">postMessage</a>
+		<a href="http://benalman.com/code/projects/jquery-postmessage/docs/files/jquery-ba-postmessage-js.html" target="_blank">
+			<h1>http://benalman.com/code/projects/jquery-postmessage/docs/files/jquery-ba-postmessage-js.html</h1>
+		</a>
+		<div id="show" style="color:#044062">
+			
+		</div>
+		<iframe src="iframe.html" width="" height="" id="testframe"></iframe>
+		<button onclick="send();">send</button>
+	</body>
+</html>

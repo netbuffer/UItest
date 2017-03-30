@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery.scrollTo.js</title>
+		<!--测试发现不支持1.7.2以下-->
+		<!--<script src="//cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>-->
+		<script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+		<!--<script src="//cdn.bootcss.com/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>-->
+		<script src="jquery-scrollto.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body{
+				width: 1000px;
+				margin: 0 auto;
+				
+			}
+
+			#top1{
+				width: 600px;
+				height: 600px;
+				background-color: #333399;
+			}
+			#top2{
+				width: 600px;
+				height: 600px;
+				background-color:#33CCCC;
+			}
+			#top3{
+				width: 600px;
+				height: 600px;
+				background-color:#6699CC;
+			}
+		</style>
+		<script type="text/javascript">
+			function scrollToTop(s){
+				$('#'+s).ScrollTo({
+				    duration: 300,
+				    easing: 'linear'
+				});
+			}
+			
+			function testtop(){
+				$("#top1_txt").scrollTop();
+			}
+			//http://blog.csdn.net/wmsjlihuan/article/details/11974047 滚动到指定元素
+			function mScroll(id) {
+				$("html,body").stop(true);
+				$("html,body").animate({
+					scrollTop: $("#" + id).offset().top
+				}, 1000);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="top1">
+			<span id="top1_txt">txt</span><br /><br /><br /><br />
+			<span id="top2_txt">txt</span><br /><br /><br /><br />
+		</div>
+		<div id="top2"></div>
+		<div id="top3">
+			<button onclick="scrollToTop('top2_txt');">scroll</button>
+		</div>
+	</body>
+</html>

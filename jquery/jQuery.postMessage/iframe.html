@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>iframe</title>
+		<script src="//cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
+		<script src="jquery.ba-postmessage.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$.receiveMessage(
+				  function(e){
+				    alert(e.data);
+				    $("#showi").text(e.data);
+				  },
+				  'http://127.0.0.1:8020'
+				);
+			});
+			function pm(){
+				$.postMessage(
+				  'hello world',
+				  //要写上父页面的完整路径包括querystring
+				  'http://127.0.0.1:8020/UItest/jquery/jQuery.postMessage/parent.html',
+				  parent
+				);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="">
+			<div id="showi"></div>
+			<button onclick="pm();">发送信息</button>
+		</div>
+	</body>
+</html>

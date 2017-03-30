@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery-backstretch</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="//cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+		<script type="text/javascript">
+		  $(function(){
+		  	  // To attach Backstrech as the body's background
+//			  $.backstretch("https://aecpm.alicdn.com/simba/img/TB1.W_gLXXXXXXfaXXXSutbFXXX.jpg");
+			  $.backstretch([
+				      "http://dl.dropbox.com/u/515046/www/outside.jpg"
+				    , "http://dl.dropbox.com/u/515046/www/garfield-interior.jpg"
+				    , "http://dl.dropbox.com/u/515046/www/cheers.jpg"
+			  ], {duration: 3000, fade: 750});
+			  
+			  // You may also attach Backstretch to a block-level element
+	//		  $(".foo").backstretch("https://aecpm.alicdn.com/simba/img/TB1.W_gLXXXXXXfaXXXSutbFXXX.jpg");
+	//		  // Or, to start a slideshow, just pass in an array of images
+//			  $(".foo").backstretch([
+//			    "https://aecpm.alicdn.com/simba/img/TB1.W_gLXXXXXXfaXXXSutbFXXX.jpg",
+//			    "https://aecpm.alicdn.com/simba/img/TB1i7YJKpXXXXcrXXXXSutbFXXX.jpg",
+//			    "https://aecpm.alicdn.com/simba/img/TB18UTWLXXXXXX0XXXXSutbFXXX.jpg"    
+//			  ], {duration: 4000});
+			  
+		  });
+		</script>
+	</head>
+	<body>
+		<div class="foo" style="width: 500px;height:500px;"></div>
+		jquery-backstretch
+	</body>
+</html>

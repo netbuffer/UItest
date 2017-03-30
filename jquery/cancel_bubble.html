@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js事件冒泡测试</title>
+		<script type="text/javascript">
+			/**
+			 * 阻止事件冒泡 http://blog.csdn.net/a497785609/article/details/7994829
+			 */
+			//得到事件
+			function getEvent(){
+			     if(window.event)    {return window.event;}
+			     func=getEvent.caller;
+			     while(func!=null){
+			         var arg0=func.arguments[0];
+			         if(arg0){
+			             if((arg0.constructor==Event || arg0.constructor ==MouseEvent
+			                || arg0.constructor==KeyboardEvent)
+			                ||(typeof(arg0)=="object" && arg0.preventDefault
+			                && arg0.stopPropagation)){
+			                 return arg0;
+			             }
+			         }
+			         func=func.caller;
+			     }
+			     return null;
+			}
+			//阻止冒泡
+			function cancelBubble()
+			{
+			    var e=getEvent();
+			    if(window.event){
+			        //e.returnValue=false;//阻止自身行为
+			        e.cancelBubble=true;//阻止冒泡
+			     }else if(e.preventDefault){
+			        //e.preventDefault();//阻止自身行为
+			        e.stopPropagation();//阻止冒泡
+			     }
+			}
+			
+			function a(obj){
+				var that=obj;
+				alert(that);
+			}
+			function del(obj){
+				cancelBubble();
+				var that=obj;
+				alert(that);
+			}
+		</script>
+	</head>
+	<body>
+		<a id="id" href="javascript:void(0)" onclick="a(this);">
+			<span id="a_txt"><span class='add_span'>超链接</span>&emsp;<em class='add_del' onclick="del(this);">&times;</em></span>
+		</a>
+	</body>
+</html>

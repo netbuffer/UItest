@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery</title>
+		<script src="../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+			});
+			function getDataD(id){
+				alert($("#"+id).data("d"));
+				return $("#"+id).data("d");
+			}
+			function getAttrDataD(id){
+				alert($("#"+id).attr("data-d"));
+				return $("#"+id).attr("data-d");
+			}
+			
+			function setDataD(val){
+				$("#jd").data("d",val);
+			}
+			function setDataAttrD(val){
+				$("#jd").attr("data-d",val);
+			}
+		</script>
+	</head>
+	<body>
+		<button data-d="test" id="jd">1节点</button>
+		&emsp;<button onclick="getDataD('jd');">data获取1节点的data-d值</button>
+		&emsp;<button onclick="getAttrDataD('jd');">attr获取1节点的data-d值</button>
+		&emsp;<button onclick="setDataD('aaa');">通过jq的data方法设置1节点的data-d值</button>
+		&emsp;<button onclick="setDataAttrD('bbb');">通过jq的attr方法设置1节点的data-d值</button>
+	</body>
+</html>

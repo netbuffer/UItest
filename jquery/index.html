@@ -8,6 +8,16 @@
 		<script src="fn/jquery.mytooltip.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(function(){
+				$(document).on({
+					"mousedown":function(e){
+						console.log("e.clientX:"+e.clientX+",e.clientY:"+e.clientY);
+					},
+					"mousemove":function(e){
+						console.log("e.clientX:"+e.clientX+",e.clientY:"+e.clientY);
+//						$("#gensui").css("position","absolute").css("left",e.clientX-30+"px").css("top",e.clientY-10+"px");
+					}
+				});
+				console.log("document.domain:%s",document.domain);
 				$("#test").myfn({'location': 'right'}).css("font-size","30px");
 				//调用init方法
 				$('tt').mytooltip();
@@ -24,14 +34,62 @@
 				$('tt').mytooltip('update', 'This is the new tooltip content!');
 				function callback(){
 					console.log("回调");
-					alert("回调");
+//					alert("回调");
 				}
 				setTimeout(callback,2000);
+				setInterval("fade()",1000);
+				$("body").append("<div id='d' style='width:200px;height:200px;background-color:#00CCCC;'>test</div>");
+				setInterval("ani()",5000);
+				/* OR jQuery >= 1.7 */
+//				$(document).on("keydown", disableF5);
 			});
+
+			function fade(){
+				$("#test").fadeOut(1000,function(){
+					$(this).fadeIn(1000);
+				});
+			}
+			
+			function ani(){
+				$("#d").animate({"width":"20px","height":"20px"},3000,"linear",
+					function(){
+						console.log("animate1");
+						$(this).animate({"width":"200px","height":"200px"},3000,"swing",function(){
+							console.log("animate2");
+						});
+					}
+				);
+			}
+			/**
+			 * onunload、onbeforeunload事件详解 http://www.asheep.cn/skill/onunload.html  
+			 * https://developer.mozilla.org/zh-CN/docs/Web/API/Window/onbeforeunload
+			 */
+			function askuser(){
+				window.onbeforeunload = function(e) {
+					e = e || window.event; 
+					// 兼容IE8和Firefox 4之前的版本 
+					if (e) { 
+						e.returnValue = 'leave tip'; 
+					}
+					// Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+ 
+					return 'leave tip'; 
+				};
+			}
+			
+			function disableF5(e) {
+				if ((e.which || e.keyCode) == 116) 
+				e.preventDefault(); 
+			};
+			$(document).off("keydown", disableF5);
 		</script>
 	</head>
 	<body>
+		<img src="../agile/assets/app/img/top.png" id="gensui"/>
 		<p id="test"></p>
 		<div id="tt"></div>
+		<a href="http://www.baidu.com">go</a>
+		<button onclick="askuser();">绑定onbeforeunload</button>&emsp;<button onclick="window.onbeforeunload=null;">解除onbeforeunload</button>
+		<hr/><button onclick="$('#div_toggle').toggle();">toggle_div</button>
+		<div style="width: 100px;height: 100px;background-color: #0092DC;" id="div_toggle">toggle</div>
 	</body>
 </html>
