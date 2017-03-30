@@ -17,11 +17,17 @@
 			}
 			function handle_storage(e) {
 				console.log("key:"+e.key+",value:"+e.newValue);
+				document.getElementById("l_key").innerHTML=e.key;
+				document.getElementById("l_val").innerHTML=e.newValue;
 				console.log(e);
 			}
 		</script>
 	</head>
 	<body>
-		
+		<a href="a.html" target="_blank">修改数据</a>
+		<div>
+			数据键:<span id="l_key"></span><br />
+			数据值:<span id="l_val"></span><br />
+		</div>
 	</body>
 </html>

@@ -7,12 +7,13 @@
 		<script type="text/javascript">
 			function add(){
 				var name=document.getElementById("name").value;
-				alert(name);
+				console.log("name:%s",name);
 				localStorage.name=name;
 			}
 		</script>
 	</head>
 	<body>
+		<a href="b.html" target="_blank">打开页面监听此数据</a>
 		name:<input name="name" id="name" value="" /><button id="add" onclick="add();">添加</button>
 	</body>
 </html>
