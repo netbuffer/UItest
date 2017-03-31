@@ -22,6 +22,24 @@
 			function setDataAttrD(val){
 				$("#jd").attr("data-d",val);
 			}
+			var data=new Array();
+			data.push({"name":"t1"});
+			data.push({"name":"t2"});
+			function test(){
+				/**
+				 * 在使用jquery的each方法时，return false相当于break，是跳出each循环，
+				 * return true相当于continue，是继续循环，如果要跳出方法，不能这样使用
+				 */
+				$.each(data,function(index,item){
+	                console.log("index:%s,item:%o",index,item);
+	                if(item.name=="t1"){
+	                	return ;
+	                }
+	            });
+	            //即使上面return依然执行alert
+	            alert("aaa");
+			}
+			test();
 		</script>
 	</head>
 	<body>
