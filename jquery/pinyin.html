@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>中文转拼音</title>
+		<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+		<script src="pinyin.js"></script>
+		<script>
+			$(function () {
+				$("input[name='name']").on("input",function(){
+					var zw=pinyin.getFullChars($(this).val());
+					$("#name_pinyin").text(zw.toLowerCase());	
+				});
+		    });
+		</script>
+	</head>
+	<body>
+		输入中文:<input name="name" />&emsp;<p id="name_pinyin"></p>
+	</body>
+</html>
