@@ -1,4 +1,4 @@
-###注释
+### 注释
 ---
 * flexslider jquery.flexslider.js轮播图
 * jQuery-Validation-Engine校验插件
@@ -37,3 +37,4 @@
 * marquee 测试滚动插件
 * swiper 轮播、滚动插件
 * `function.html`- js function使用、闭包使用
+* `pinyin.html` pinyin.js使用中文转汉语拼音
