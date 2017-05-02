@@ -1,0 +1,19 @@
+{
+  "title": "相册1", 
+  "id": 123, 
+  "start": 0, 
+  "data": [   
+    {
+      "alt": "多肉植物",
+      "pid": 1, 
+      "src": "https://img6.bdstatic.com/img/image/smallpic/h5.jpg", 
+      "thumb": "https://img6.bdstatic.com/img/image/smallpic/h5.jpg" 
+    },
+    {
+      "alt": "PPT模板",
+      "pid": 2, 
+      "src": "https://img6.bdstatic.com/img/image/smallpic/h10.jpg", 
+      "thumb": "https://img6.bdstatic.com/img/image/smallpic/h10.jpg" 
+    }
+  ]
+}

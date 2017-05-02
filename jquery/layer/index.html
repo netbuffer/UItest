@@ -4,8 +4,8 @@
 		<meta charset="UTF-8">
 		<title>layer</title>
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-		<link href="//cdn.bootcss.com/layer/2.4/skin/layer.min.css" rel="stylesheet">	
-		<script src="//cdn.bootcss.com/layer/2.4/layer.min.js"></script>
+		<link href="https://cdn.bootcss.com/layer/3.0.1/skin/default/layer.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/layer/3.0.1/layer.min.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				$("#h").mouseenter(function(){
@@ -56,11 +56,61 @@
 					layer.close(index);
 				});
 			}
+			
+			function gallery_1(){
+				$.getJSON("gallery_1.json",function(json){
+					layer.photos({
+					    photos: json
+					    ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+					});
+				});
+			}
+			
+			function gallery_2(){
+				$.getJSON("gallery_2.json",function(json){
+					layer.photos({
+					    photos: json
+					    ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+					});
+				});
+			}
 		</script>
 	</head>
 	<body>
 		<button onclick="test();">test1</button>&emsp;<button onclick="a();">layer.alert</button>&emsp;<button onclick="alertskin();">alert带有皮肤效果</button>
 		<hr />
-		<div id="h" style="width:100px;height: 100px;background-color: #285E8E;margin: 100px;"></div>
+		<div id="h" style="width:100px;height: 100px;background-color: #285E8E;margin: 100px;"></div><hr />
+		<button onclick="gallery_1();">相册1</button>&emsp;<button onclick="gallery_2();">相册2</button>
+		<pre>
+			{
+			  //相册标题
+			  "title": "相册1", 
+			  //相册id
+			  "id": 123, 
+			  //初始显示的图片序号，默认0
+			  "start": 0, 
+			  //相册包含的图片，数组格式
+			  "data": [   
+			    {
+			      "alt": "微距摄影",
+			      //图片id
+			      "pid": 1, 
+			      //原图地址
+			      "src": "https://img6.bdstatic.com/img/image/smallpic/h1.jpg", 
+			      //缩略图地址
+			      "thumb": "https://img6.bdstatic.com/img/image/smallpic/h1.jpg" 
+			    },
+			    {
+			      "alt": "宠物",
+			      //图片id
+			      "pid": 2, 
+			      //原图地址
+			      "src": "https://img6.bdstatic.com/img/image/smallpic/h2.jpg", 
+			      //缩略图地址
+			      "thumb": "https://img6.bdstatic.com/img/image/smallpic/h2.jpg" 
+			    }
+			  ]
+			}
+		</pre>
 	</body>
 </html>
