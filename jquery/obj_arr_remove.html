@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery</title>
+		<script src="../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var arr=new Array();
+				for(var i=0;i<10;i++){
+					var obj={};
+					obj.a="a"+i;
+					arr.push(obj);
+				}
+				console.log("before remove:%o,size:%s",arr,arr.length);
+				arr.splice(0,1);
+				console.log("after remove:%o,size:%s",arr,arr.length);
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+			$(function(){
+				var arr=new Array();
+				for(var i=0;i<10;i++){
+					var obj={};
+					obj.a="a"+i;
+					arr.push(obj);
+				}
+				console.log("before remove:%o,size:%s",arr,arr.length);
+				arr.splice(0,1);
+				console.log("after remove:%o,size:%s",arr,arr.length);
+			});
+		</pre>
+	</body>
+</html>
