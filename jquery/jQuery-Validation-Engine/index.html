@@ -149,6 +149,23 @@
 				console.log("document.forms[0].elements[\"username\"]:%o",document.forms[0].elements["username"]);
 			}
 			
+			//用momentjs校验时间大小
+			function check_end_time(field, rules, i, options) {
+	            var flag=false;
+	            var end=new Date(moment(field.val())).getTime();
+	            var start=new Date(moment($("#beginTime").val())).getTime();
+	            if(start!=undefined&&start!=null&&start>0){
+	                if((end-start)>0){
+	                    flag=true;
+	                }
+	            }else {
+	                flag=true;
+	            }
+	            if(!flag) {
+	                return "结束时间必须大于开始时间";
+	            }
+	        }
+			
 		</script>
 	</head>
 
