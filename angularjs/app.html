@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>angular控制器</title>
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	</head>
+	<body>
+		<div ng-app="myApp" ng-controller="myCtrl">
+			名: <input type="text" ng-model="firstName" placeholder="请输入"><br>
+			姓: <input type="text" ng-model="lastName" placeholder="请输入"><br>
+			年龄:{{age}}<br />
+			<button ng-click="say()">say</button>
+			<br>
+			姓名: {{firstName + " " + (lastName|uppercase)}}&emsp;reverse:{{firstName|reverse}}
+		</div>
+		<script>
+			var app = angular.module('myApp', []);
+			app.service('hexafy', function() {
+			    this.myFunc = function (x) {
+			        return x.toString(16);
+			    }
+			});
+			//http://www.runoob.com/angularjs/angularjs-http.html http请求
+			app.controller('myCtrl', function($scope,$rootScope,$location,$http,hexafy) {
+			    $scope.firstName= "John";
+			    $scope.lastName= "Doe";
+			    $rootScope.age=10;
+			    //暴露方法
+			    $scope.say=function(){
+			    	alert($scope.firstName+"  "+$scope.lastName);
+			    }
+			    console.log("location:%s,myservice-func:%s",$location,hexafy.myFunc(255));
+			    $http.get("welcome.htm").then(function (response) {
+			        $scope.myWelcome = response.data;
+			    });
+			});
+			//自定义过滤器
+			app.filter('reverse', function() { //可以注入依赖
+			    return function(text) {
+			        return text.split("").reverse().join("");
+			    }
+			});
+		</script>
+	</body>
+</html>
