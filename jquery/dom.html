@@ -438,6 +438,8 @@
 		</script>
 	</head>
 	<body onunload="alert('onunload');" oncopy="return denycopy();" onbeforecopy="return denycopy();" onselectstart="alert('选择操作');">
+		<!-- void操作中传递的是表达式 -->
+		<a href="javascript:void(alert('a'))">javascript:void(alert('a'))</a><br />
 		<a href="log4javascript.html" target="_blank">log4javascript</a>
 		<script type="text/javascript">
 			document.writeln("<h1>hello</h1>");
