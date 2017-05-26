@@ -3,45 +3,59 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Mousetrap键盘快捷键监听</title>
-		<script src="//cdn.bootcss.com/mousetrap/1.4.6/mousetrap.min.js"></script>
+		<script src="https://cdn.bootcss.com/mousetrap/1.6.1/mousetrap.min.js"></script>
+		<script src="//cdn.bootcss.com/jquery/2.1.3/jquery.js"></script>
 		<script>
-		    // single keys
-		    Mousetrap.bind('4', function() { console.log('4'); });
-		    Mousetrap.bind("?", function() { console.log('show shortcuts!'); });
-		    Mousetrap.bind('esc', function() { console.log('escape'); }, 'keyup');
-		    // combinations
-		    Mousetrap.bind('command+shift+k', function() { console.log('command shift k'); });
-		    Mousetrap.bind('n', function(e) { 
-		    	alert("n");
-		   	});
-		    Mousetrap.bind('ctrl+n', function(e) {
-		    	console.log('禁止新建窗口');
-		   	});
-		    Mousetrap.bind('ctrl+s', function(e) {
-		    	alert("ctrl+s");
-			   console.log("ctrl+s");
-			});
-		    // map multiple combinations to the same callback
-		    Mousetrap.bind(['command+k', 'ctrl+k'], function() {
-		        console.log('command k or control k');
-		
-		        // return false to prevent default browser behavior
-		        // and stop event from bubbling
-		        return false;
-		    });
-		    // gmail style sequences
-		    Mousetrap.bind('g i', function() { console.log('go to inbox'); });
-		    Mousetrap.bind('* a', function() { console.log('select all'); });
-		    // konami code!
-		    Mousetrap.bind('up up down down left right left right b a enter', function() {
-		        console.log('konami code');
-		    });
+		    $(function(){
+		    	// single keys
+			    Mousetrap.bind('4', function() { console.log('4'); });
+			    Mousetrap.bind("?", function() { console.log('show shortcuts!'); });
+			    Mousetrap.bind('esc', function() { console.log('escape'); }, 'keyup');
+			    // combinations
+			    Mousetrap.bind('command+shift+k', function() { console.log('command shift k'); });
+			    Mousetrap.bind('n', function(e) { 
+			    	alert("n");
+			   	});
+			    Mousetrap.bind('ctrl+n', function(e) {
+			    	console.log('禁止新建窗口');
+			   	});
+			    Mousetrap.bind('ctrl+s', function(e) {
+			    	alert("ctrl+s");
+				   console.log("ctrl+s");
+				});
+			    // map multiple combinations to the same callback
+			    Mousetrap.bind(['command+k', 'ctrl+k'], function() {
+			        console.log('command k or control k');
+			
+			        // return false to prevent default browser behavior
+			        // and stop event from bubbling
+			        return false;
+			    });
+			    // gmail style sequences
+			    Mousetrap.bind('g i', function() { console.log('go to inbox'); });
+			    Mousetrap.bind('* a', function() { console.log('select all'); });
+			    // konami code!
+			    Mousetrap.bind('up up down down left right left right b a enter', function() {
+			    	alert(this);
+			        console.log('konami code');
+			    });
+		    	Mousetrap($("#name").get(0)).bind('enter', function() {
+			        try{
+	//		        	alert($(this).val());
+		        		alert($("#name").val());	
+			        }catch(e){
+			        	console.error(e);
+			        }
+			        
+			    });	
+		    })
 		</script>
 	</head>
 	<body>
 		<a href="https://github.com/ccampbell/mousetrap" target="_blank">
 			<h1>Mousetrap</h1>
 		</a>
-		<a href="https://craig.is/killing/mice" target="_blank">文档</a>
+		<a href="https://craig.is/killing/mice" target="_blank">文档</a><hr />
+		<input type="text" name="name" id="name" placeholder="回车回显输入值"/>
 	</body>
 </html>
