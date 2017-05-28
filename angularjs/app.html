@@ -4,13 +4,17 @@
 		<meta charset="UTF-8">
 		<title>angular控制器</title>
 		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	</head>
 	<body>
-		<div ng-app="myApp" ng-controller="myCtrl">
+		<div ng-app="myApp" ng-controller="myCtrl" class="container-fluid">
+			<div class="page-header">
+				<h1>angular测试<small>-特性测试</small></h1>
+			</div>
 			名: <input type="text" ng-model="firstName" placeholder="请输入"><br>
 			姓: <input type="text" ng-model="lastName" placeholder="请输入"><br>
 			年龄:{{age}}<br />
-			<button ng-click="say()">say</button>
+			<button ng-click="say()" >say</button>
 			<br>
 			姓名: {{firstName + " " + (lastName|uppercase)}}&emsp;reverse:{{firstName|reverse}}<br />
 			<!--
@@ -20,7 +24,24 @@
             -->
 			select:<select ng-init="selectedName = names[1]" ng-model="selectedName" ng-options="x for x in names"></select>
 			<select><option ng-repeat="x in names">{{x}}</option></select>
-			<div runoob-directive></div>
+			<div runoob-directive></div><hr />
+			<table ng-show="users.length>0" class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>姓名</th>
+						<th>性别</th>
+						<th>年龄</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="user in users">
+						<td>{{user.name}}</td>
+						<td>{{user.sex}}</td>
+						<td>{{user.age}}</td>
+					</tr>					
+				</tbody>
+			</table>
+			<div ng-include="'include.html'"></div>
 		</div>
 		<script>
 			var app = angular.module('myApp', []);
@@ -49,6 +70,16 @@
 			        url: 'http://www.runoob.com/try/angularjs/data/sites.php'
 			    }).then(function successCallback(response) {
 			            console.log("success response:%o",response);
+			        }, function errorCallback(response) {
+			            // 请求失败执行代码
+		            	console.log("error response:%o",response);
+			    });
+			    $http({
+			        method: 'GET',
+			        url: 'table.json'
+			    }).then(function successCallback(response) {
+			    		$scope.users=response.data;
+			            console.log("table.json response:%o",response);
 			        }, function errorCallback(response) {
 			            // 请求失败执行代码
 		            	console.log("error response:%o",response);
