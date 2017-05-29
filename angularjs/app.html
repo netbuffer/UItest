@@ -48,13 +48,28 @@
 		</div>
 		<script>
 			var app = angular.module('myApp', ['ngAnimate','angular-loading-bar']);
-			app.service('hexafy', function() {
+			//注入值
+			app.value("defaultInput", 5);
+			//注入函数
+			app.factory('MathService', function() {
+			   var factory = {};
+			   factory.multiply = function(a, b) {
+			      return a * b;
+			   }
+			   return factory;
+			}); 
+			app.service('myservice', function(MathService) {
 			    this.myFunc = function (x) {
 			        return x.toString(16);
 			    }
+			    this.multiply=function(a,b){
+			    	console.log("MathService.multiply(1*1):%s",MathService.multiply(a,b));
+			    }
 			});
 			//http://www.runoob.com/angularjs/angularjs-http.html http请求
-			app.controller('myCtrl', function($scope,$rootScope,$location,$http,hexafy) {
+			app.controller('myCtrl', function($scope,$rootScope,$location,$http,myservice,defaultInput) {
+				console.log("defaultinput:%s",defaultInput);
+				myservice.multiply(1,1);
 			    $scope.firstName= "John";
 			    $scope.lastName= "Doe";
 			    $rootScope.age=10;
@@ -63,7 +78,7 @@
 			    $scope.say=function(){
 			    	alert($scope.firstName+"  "+$scope.lastName);
 			    }
-			    console.log("location:%s,myservice-func:%s",$location,hexafy.myFunc(255));
+			    console.log("location:%s,myservice-func:%s",$location,myservice.myFunc(255));
 			    $http.get("welcome.htm").then(function (response) {
 			        $scope.myWelcome = response.data;
 			    });
