@@ -11,7 +11,9 @@
 				var mySwiper = new Swiper ('#swpiper', {
 				    direction: 'horizontal',
 				    loop: true,
-				    autoplay:2000
+				    autoplay:2000,
+				    //如果设置为false，用户操作swiper之后自动切换不会停止，每次都会重新启动autoplay。操作包括触碰，拖动，点击pagination等
+				    autoplayDisableOnInteraction:false
 				  })        
 			});
 		</script>
