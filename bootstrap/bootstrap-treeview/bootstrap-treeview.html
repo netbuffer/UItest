@@ -65,14 +65,17 @@
 				});
 				$("body").on("click","#sub2",function(){
 					var parent_node=$('#tree').treeview('getSelected');
+					if(parent_node[0]){
+						if($("#sub2_sub").length>0){
+							return;							
+						}
+					}
 					if(parent_node[0]&&parent_node[0].nodes){
+						
 						console.log("parent_node:%o,sub_nodes:%o",parent_node[0],);
 						$('#tree').treeview('removeNode', [ parent_node[0].nodes, { silent: true } ]);
 					}
 					if(parent_node[0]){
-						if($("#sub2_sub").length>0){
-							return;
-						}
 						var add_node={
 							id:"sub2_sub",
 					        text: "动态添加的分类"
