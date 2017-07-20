@@ -14,19 +14,20 @@
 				var data= [
 					  {
 					  	id:"100",
-					    text: "父级",
+					    text: "父级1",
 					    color:"green",
 					    href:"http://www.baidu.com",
 					    tags:["a","b"],
 					    nodes: [
 					      {
-					        text: "子级",
+					      	id:"sub1",
+					        text: "子级别1",
 					        nodes: [
 					          {
-					            text: "sub"
+					            text: "sub1-1"
 					          },
 					          {
-					            text: "sub2"
+					            text: "sub1-2"
 					          }
 					        ]
 					      },
@@ -69,8 +70,11 @@
 						$('#tree').treeview('removeNode', [ parent_node[0].nodes, { silent: true } ]);
 					}
 					if(parent_node[0]){
+						if($("#sub2_sub").length>0){
+							return;
+						}
 						var add_node={
-							id:"subsub3",
+							id:"sub2_sub",
 					        text: "动态添加的分类"
 						}
 						$("#tree").treeview("addNode", [add_node,parent_node[0]]);
