@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>面向对象编程</title>
+		<!--<script type="text/javascript">
+			//工厂方法创建对象(没有new问题，重复创建函数问题造成开销)
+			function create_person(name,age){
+				var obj=new Object();
+				obj.name=name;
+				obj.age=age;
+				obj.say=function(){
+					alert("my name is:"+this.name+",my age is:"+this.age);
+				}
+				return obj;
+			}
+			var per1=create_person("test",100);
+			per1.say();
+			var per2=create_person("test2",101);
+			per2.say();
+			//两者不相等，重复创建函数开销
+			alert(per1.say==per2.say);
+		</script>-->
+		
+		<!--<script type="text/javascript">
+			//构造函数创建对象
+			function person(name,age){
+				//内部自己创建this对象指向当前new实例
+				this.name=name;
+				this.age=age;
+				this.say=function(){
+					alert("my name is:"+this.name+",my age is:"+this.age);
+				}
+				//最后会返回this引用
+			}
+			var per1=new person("test",100);
+			per1.say();
+			var per2=new person("test2",101);
+			per2.say();
+			//两者不相等，重复创建函数开销
+			alert(per1.say==per2.say);
+		</script>-->
+
+		<!--<script type="text/javascript">
+			//给数组原型添加sum方法,所有数组实例都可以调用sum
+			Array.prototype.sum=function(){
+				var sum=0;
+				for(i=0;i<this.length;i++){
+					sum+=this[i];
+				}
+				return sum;
+			}
+			var arr1=new Array(1,2,3,4,5);
+			alert(arr1.sum());
+			var arr2=new Array(3,4,5);
+			alert(arr2.sum())
+		</script>-->
+		
+		<script type="text/javascript">
+			//构造函数封装属性
+			function person(name,age){
+				this.name=name;
+				this.age=age;
+			}
+			//原型封装方法
+			person.prototype.say=function(){
+				alert("my name is:"+this.name+",my age is:"+this.age);
+			}
+			var per1=new person("test",100);
+			per1.say();
+			var per2=new person("test2",101);
+			per2.say();
+			//两者相等，共享同一份函数
+			alert(per1.say==per2.say);
+		</script>
+	</head>
+	<body>
+		<h1>JS面向对象</h1>
+	</body>
+</html>
