@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js继承测试</title>
+		<!--<script type="text/javascript">
+			function Animal(name){
+				this.name=name;
+			}
+			Animal.prototype.say=function(){
+				alert("my name is:"+this.name);
+			}
+			
+			function Cat(name){
+				Animal.call(this,name);
+			}
+			//会导致Animal也有run方法
+			Cat.prototype=Animal.prototype;
+			Cat.prototype.run=function(){
+				alert(this.name+":run");
+			}
+			var a=new Animal("a");
+			a.say();
+			a.run();
+			var c=new Cat("cat");
+			c.say();
+			c.run();
+		</script>-->
+		
+		<script type="text/javascript">
+			function Animal(name){
+				this.name=name;
+			}
+			Animal.prototype.say=function(){
+				alert("my name is:"+this.name);
+			}
+			
+			function Cat(name){
+				Animal.call(this,name);
+			}
+			for(var i in Animal.prototype){
+				//只给Cat原型添加Animal原型中的方法
+				Cat.prototype[i]=Animal.prototype[i];
+			}
+			//Animal中不会有run方法
+			Cat.prototype.run=function(){
+				alert(this.name+":run");
+			}
+			var a=new Animal("a");
+			a.say();
+			try{
+				a.run();	
+			}catch(err){
+				console.error("err:%s",err);
+			}
+			var c=new Cat("cat");
+			c.say();
+			c.run();
+		</script>
+		
+	</head>
+	<body>
+	</body>
+</html>
