@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>简单json对象</title>
+		<script type="text/javascript">
+			//简单json对象，无法重用，适合页面中只有这一个对象，也可用作命名空间，将js函数分门别类存放，防止命名冲突
+			var json={
+				name:"test",
+				age:10,
+				say:function(){
+					alert("name is:"+this.name+",age is:"+this.age);
+				}
+			}
+			json.say();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
