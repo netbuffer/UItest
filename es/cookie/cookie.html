@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>cookie</title>
+		<script src="cookie.js"></script>
+		<script type="text/javascript">
+			function print_cookies(){
+				document.getElementById("cookies").innerHTML=document.cookie;
+			}
+			window.onload=print_cookies;
+		</script>
+	</head>
+	<body>
+		<div>
+			<button onclick="print_cookies();">打印cookie</button><br />
+			<span>cookie:</span>
+			<p id="cookies"></p>
+		</div>
+	</body>
+</html>
