@@ -1,4 +1,11 @@
 Cookie=function(){}
+/**
+ * 每调用document.cookie=会在浏览器中新增cookie值而不会擦掉之前写过的cookie值
+ * expires过期时间是给浏览器用的，直接打印document.cookie看不到这些信息
+ * @param {Object} name
+ * @param {Object} value
+ * @param {Object} exp
+ */
 Cookie.add=function(name,value,exp){
 	var arglength= arguments.length;
 	if(arglength<2){
@@ -18,6 +25,10 @@ Cookie.add=function(name,value,exp){
 		}
 	}
 }
+/**
+ * 移除cookie,设置cookie键为一个过期时间就会删除cookie了
+ * @param {Object} name
+ */
 Cookie.remove=function(name){
 	if(typeof name=="string"){
 		var current=new Date();
