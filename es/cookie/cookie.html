@@ -9,11 +9,52 @@
 				document.getElementById("cookies").innerHTML=document.cookie;
 			}
 			window.onload=print_cookies;
+			function add_cookies(){
+				try{
+					var cookie_name=document.getElementById("add_cookie_name").value;
+					var cookie_value=document.getElementById("add_cookie_value").value;
+					var cookie_date=document.getElementById("add_cookie_date").value;
+					cookie_date=parseInt(cookie_date);
+					if(!isNaN(cookie_date)&&typeof cookie_date=="number"){
+						var current=new Date();
+						current.setDate(current.getDate()+cookie_date);
+						Cookie.add(cookie_name,cookie_value,current);
+					}else{
+						Cookie.add(cookie_name,cookie_value);
+					}
+					alert("添加成功");
+				}catch(err){
+					alert(err);
+				}
+			}
+			
+			function remove_cookies(){
+				try{
+					var cookie_name=document.getElementById("add_cookie_name").value;
+					Cookie.remove(cookie_name);
+					alert("删除成功");
+				}catch(err){
+					alert(err);
+				}
+			}
+			
+			function get_cookies(){
+				try{
+					var cookie_name=document.getElementById("add_cookie_name").value;
+					alert(Cookie.get(cookie_name));
+				}catch(err){
+					alert(err);
+				}
+			}
 		</script>
 	</head>
 	<body>
 		<div>
 			<button onclick="print_cookies();">打印cookie</button><br />
+			<button onclick="add_cookies();">添加cookie</button>&emsp;<button onclick="get_cookies();">读取cookie</button>&emsp;<button onclick="remove_cookies();">删除cookie</button><br />
+			<input id="add_cookie_name" type="text" placeholder="添加cookie-name" /><br />
+			<input id="add_cookie_value" type="text" placeholder="添加cookie-value" /><br />
+			<input id="add_cookie_date" type="text" placeholder="添加cookie过期时间,整型值(标识多少天后过期)" /><br />
 			<span>cookie:</span>
 			<p id="cookies"></p>
 		</div>
