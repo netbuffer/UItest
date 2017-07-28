@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>js for/in循环使用</title>
 		<script type="text/javascript">
 			var arr=["a","b","c"];
 			for(var i in arr){
@@ -21,5 +21,21 @@
 		</script>
 	</head>
 	<body>
+		<pre>
+			var arr=["a","b","c"];
+			for(var i in arr){
+				console.log("索引为:%s,元素为:%s",i,arr[i]);
+			}
+			var obj={
+				name:"a",
+				age:10,
+				say:function(){
+					alert("test");
+				}
+			}
+			for(var i in obj){
+				console.log("对象属性:%s,对象值:%o",i,obj[i]);
+			}
+		</pre>
 	</body>
 </html>
