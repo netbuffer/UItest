@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>mouse</title>
+		<script type="text/javascript">
+			window.onload=function(){
+				var follow_mouse_tip=document.getElementById("follow_mouse_tip");
+				document.onmousemove=function(e){
+					var event=e||event;
+					var scrollleft = document.documentElement.scrollLeft || document.body.scrollLeft;
+  					var scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+					follow_mouse_tip.style.left=event.clientX+scrollleft+"px";
+					follow_mouse_tip.style.top=event.clientY+scrolltop+"px";
+					if(scrolltop>0){
+						alert("a");
+					}
+					console.log("event.clientX:%s,event.clientY:%s,scrollleft:%s,scrolltop:%s",event.clientX,event.clientY,scrollleft,scrolltop);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="follow_mouse_tip" style="width: 50px;height: 50px;border-radius: 50%;position:absolute;background: #00DDFF;">follow</div>
+	</body>
+</html>
