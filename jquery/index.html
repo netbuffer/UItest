@@ -8,6 +8,10 @@
 		<script src="fn/jquery.mytooltip.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(function(){
+				console.log("jquery version:%s",$.fn.jquery);
+				for(var j in $.fn){
+					console.log("j:%s,j:%o",j,$.fn[j]);
+				}
 				$(document).on({
 					"mousedown":function(e){
 						console.log("e.clientX:"+e.clientX+",e.clientY:"+e.clientY);
