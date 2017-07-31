@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery插件开发</title>
+		<script src="../../agile/assets/third/jquery/jquery-2.1.3.min.js"></script>
+		<script type="text/javascript">
+			jQuery.fntest=function(msg){
+				alert("提示:"+msg);
+			};
+			$.fntest("测试");
+			jQuery.extend({
+				fntest1:function(msg){
+					alert("1.提示:"+msg);
+				},
+				fntest2:function(msg){
+					alert("2.提示:"+msg);
+				}
+			});
+			$.fntest1("a");
+			$.fntest2("b");
+		</script>
+		<script type="text/javascript">
+			var pre=document.createElement("pre");
+			var scriptContent=document.getElementsByTagName("script");
+			if(scriptContent&&scriptContent.length>0){
+				pre.innerHTML=scriptContent[1].innerHTML;	
+			}
+			//报错 document.body is null,因为这时候body还没有被渲染
+//			document.body.appendChild(pre);
+		</script>
+	</head>
+	<body>
+	</body>
+		<script type="text/javascript">
+			document.body.appendChild(pre);
+		</script>
+</html>
