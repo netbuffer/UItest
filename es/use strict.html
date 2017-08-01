@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js严格模式</title>
+		<script type="text/javascript">
+//			启用严格模式
+//			"use strict";
+//			assignment to undeclared variable a
+			a=1;//启用严格模式下，a未声明会出现错误
+			(function(){
+				alert(a);
+			})();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
