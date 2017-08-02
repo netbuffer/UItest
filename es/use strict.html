@@ -126,27 +126,54 @@
 			//正常模式下，如果函数有多个重名的参数，可以用arguments[i]读取。严格模式下，这属于语法错误。
 			(function() {
 				"use strict";　　
-//				function f(a, a, b) { // 语法错误
-//					return;　　
-//				}	
+				//				function f(a, a, b) { // 语法错误
+				//					return;　　
+				//				}	
 			})();
-			
+
 			//正常模式下，整数的第一位如果是0，表示这是八进制数，比如0100等于十进制的64。严格模式禁止这种表示法，整数第一位为0，将报错
-			function _Hex(){
+			function _Hex() {
 				"use strict";
-//　　			var n = 0100; // 语法错误	
+				//　　			var n = 0100; // 语法错误	
 			}
-			
+
 			//rguments是函数的参数对象，严格模式对它的使用做了限制。不允许对它赋值
-			function _args(){
-				　"use strict";
-　　arguments++; // 语法错误
-　　var obj = { set p(arguments) { } }; // 语法错误
-　　try { } catch (arguments) { } // 语法错误
-　　function arguments() { } // 语法错误
-　　var f = new Function("arguments", "'use strict'; return 17;"); // 语法错误
+			function _args() {　
+				"use strict";　　
+				//				arguments++; // 语法错误
+				//				　　
+				//				var obj = {
+				//					set p(arguments) {}
+				//				}; // 语法错误
+				//				　　
+				//				try {} catch(arguments) {} // 语法错误
+				//				　　
+				//				function arguments() {} // 语法错误
+				//				　　
+				//				var f = new Function("arguments", "'use strict'; return 17;"); // 语法错误
 			}
-			
+
+			/**
+			 * 在一个函数调用另一个函数时，被调用函数会自动生成一个caller属性，
+			 * 指向调用它的函数对象。如果该函数当前未被调用，或并非被其他函数调用，则caller为null
+			 */
+			function target_method() {
+				alert("a");
+				var caller = target_method.caller;
+				console.log("caller:%o", caller);
+				/**
+				 * 当函数被调用时，它的arguments.callee对象就会指向自身，也就是一个对自己的引用。
+				 * 由于arguments在函数被调用时才有效，因此arguments.callee在函数未调用时
+				 * 是不存在的（即null.callee），且解引用它会产生异常
+				 */
+				console.log("arguments.callee:%o", arguments.callee);
+			}
+
+			function start_call_method() {
+				target_method();
+			}
+
+			start_call_method();
 		</script>
 	</head>
 
