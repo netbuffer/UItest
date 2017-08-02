@@ -11,8 +11,36 @@
 			(function(){
 				alert(a);
 			})();
+			function strict(){
+		　　　　"use strict";
+				//会抛错
+				test=1;
+		　　　　return "这是严格模式。";
+		　　}
+		
+		　　function notStrict() {
+				//正常执行
+				test=1;
+		　　　　return "这是正常模式。";
+		　　}
+			(function (){
+		　　　　"use strict";
+		　　　　// some code here
+		　　 })();
 		</script>
 	</head>
 	<body>
+		<a target="_blank" href="http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html">http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html</a>
+		<ul>
+			<li>不允许使用with</li>
+			<li>不允许未声明的变量被赋值</li>
+			<li>arguments变为参数的静态副本</li>
+			<li>delete参数、函数名报错</li>
+			<li>delete不可配置的属性报错</li>
+			<li>对象字面量重复属性名报错</li>
+			<li>禁止八进制字面量</li>
+			<li>eval,arguments变为关键字，不能作为变量、函数名</li>
+			<li>eval独立作用域</li>
+		</ul>
 	</body>
 </html>
