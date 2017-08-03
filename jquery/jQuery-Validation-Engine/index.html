@@ -81,6 +81,16 @@
 					return "该输入必须大于0";
 				}
 			}
+			
+			/**
+			 *校验两位小数 
+			 */
+			var decimal_num_two_format=/^\d+([.]{1}\d{1,2})?$/;
+			function check_decimal_num(field, rules, i, options) {
+				if(!decimal_num_two_format.test(field.val())){
+					return "最多两位小数";
+				}
+			}
 
 			function checkDomain(field, rules, i, options) {
 				if(!validDomain(field.val())) {
@@ -219,6 +229,11 @@
 					<p>
 						<label for="num">自定义函数验证</label>
 						<input id="num" type="text" class="form-control validate[required,custom[number],funcCall[checkNum],min[1],max[100.05]]" name="num" />
+					</p>
+					<p>
+					<p>
+						<label for="decimal_num">两位小数校验</label>
+						<input id="decimal_num" type="text" class="form-control validate[required,custom[number],funcCall[check_decimal_num]]" name="decimal_num" />
 					</p>
 					<p>
 						<label for="file">文件</label>
