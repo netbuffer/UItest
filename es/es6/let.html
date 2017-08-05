@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>let块级作用域</title>
+		<script type="text/javascript">
+			for(var i=0;i<10;i++){
+				console.log("i:%s",i);
+			}
+			console.log("after for.. i is:%s",i);
+			for(let j=0;j<10;j++){
+				console.log("j:%s",j);
+			}
+			//会报错 j未定义，let定义的变量具有块级作用域，即在{}之间的代码中生效
+//			console.log("after for.. j is:%s",j);
+			if(true){
+				let a=1;
+				console.log("a is:%s",a);
+			}
+			//报错
+			console.log(a);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
