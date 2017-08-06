@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>箭头函数使用</title>
+		<script type="text/javascript">
+			// (参数)=>方法体
+			var func1=(a,b=8)=>a+b;
+			alert(func1(1,1));
+			alert(func1(1));
+			var func2=(a,b=8)=>{
+				//剪头函数中不能使用arguments
+//				console.log("input arguments:%o",arguments);
+				return a*b;
+			};
+			alert(func2(1));
+			var func3=(...args)=>{
+				console.log("input args:%o",args);
+			};
+			func3(3,'1','a',"b");
+			function count(sum){
+				console.log("input arguments:%o",arguments);
+				return sum;
+			}
+			alert(count(1));
+			var obj={
+				message:"",
+				say:function(msg){
+					//this 指向 obj
+					console.log("this object is:%o,input:%s",this,msg);
+				},
+				arrow_test:(msg)=>{
+//					this指向的是window
+					console.log("this object is:%o,arrow input:%s",this,msg);
+				},
+				arrow_test2:function(msg){
+					this.message=msg;
+					setTimeout(function(){
+						//this指向window导致拿不到message
+						console.log("this object is:%o,arrow function execute msg:%s",this,this.message);
+					},100);
+					setTimeout(()=>{
+						console.log("this object is:%o,arrow function execute msg:%s",this,this.message);
+					},100);
+				}
+			}
+			obj.say('a');
+			obj.arrow_test('a');
+			obj.arrow_test2('a');
+		</script>
+	</head>
+	<body>
+		剪头函数中的this对象，是定义时所在的对象，而不是使用时所在的对象。
+	</body>
+</html>
