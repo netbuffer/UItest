@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>class类定义使用</title>
+		<script type="text/javascript">
+			class Animal{
+				constructor(name){
+					this.name=name;
+				}
+				say(){
+					alert(`animal:my name is ${this.name}`);
+				}
+				static echo(){
+					console.log("this:%o,static method!",this);
+				}
+			}
+			var a=new Animal("cat");
+			a.say();
+			Animal.echo();
+			class Cat extends Animal{
+				constructor(name){
+					super(name);
+				}
+				hi(){
+					console.log("hi");
+				}
+			}
+			var cat=new Cat("mao");
+			cat.say();
+			Cat.echo();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
