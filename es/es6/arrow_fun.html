@@ -47,6 +47,11 @@
 			obj.say('a');
 			obj.arrow_test('a');
 			obj.arrow_test2('a');
+			//箭头函数中一个参数可以省略()
+			var f1=time=>{
+				console.log("time is:%s",time);
+			}
+			setTimeout("f1(`${new Date()}`)",1000);
 		</script>
 	</head>
 	<body>
