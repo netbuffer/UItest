@@ -56,7 +56,7 @@
 			alert(arr2.sum())
 		</script>-->
 		
-		<script type="text/javascript">
+		<!--<script type="text/javascript">
 			//构造函数封装属性
 			function person(name,age){
 				this.name=name;
@@ -65,6 +65,25 @@
 			//原型封装方法
 			person.prototype.say=function(){
 				alert("my name is:"+this.name+",my age is:"+this.age);
+			}
+			var per1=new person("test",100);
+			per1.say();
+			var per2=new person("test2",101);
+			per2.say();
+			//两者相等，共享同一份函数
+			alert(per1.say==per2.say);
+		</script>-->
+		<script type="text/javascript">
+			//构造函数封装属性
+			function person(name,age){
+				this.name=name;
+				this.age=age;
+			}
+			//原型封装方法
+			person.prototype={
+				say:function(){
+					alert("my name is:"+this.name+",my age is:"+this.age);
+				}
 			}
 			var per1=new person("test",100);
 			per1.say();
