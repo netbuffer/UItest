@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>call&apply</title>
+		<script type="text/javascript">
+			window.onload=function(){
+				var domNodes=document.getElementsByTagName("div");
+				var domNodesArray = Array.prototype.slice.call(domNodes);
+				console.log("dom nodes:%o,dom nodes array:%o",domNodes,domNodesArray);
+				domNodesArray.push("a");
+				console.log("dom nodes:%o,dom nodes array:%o",domNodes,domNodesArray);
+				//会报错，不存在push方法，不是数组
+//				domNodes.push("b");
+			}
+			var func1=function(a,b){
+				console.log("this:%o",this);
+				alert(a+b);
+			}
+			func1(1,1);
+			var obj={
+				a:"a"
+			}
+			//call和apply就是为了改变函数内部的this指向
+			func1.call(obj,1,1);
+			func1.apply(obj,[1,1]);
+		</script>
+	</head>
+	<body>
+		<h1>call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里</h1>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+	</body>
+</html>
