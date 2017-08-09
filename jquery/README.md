@@ -36,6 +36,7 @@
 * clipboard.js 剪贴板复制/粘贴
 * marquee 测试滚动插件
 * swiper 轮播、滚动插件
+* Unslider 图片轮播插件
 * `function.html`- js function使用、闭包使用
 * `pinyin.html` pinyin.js使用中文转汉语拼音
 * `fn/jquery.fn.html` jquery插件测试
