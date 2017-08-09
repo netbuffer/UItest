@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<title>jquery-cloneya克隆表单</title>
 		<meta charset="utf-8" />
@@ -9,11 +8,15 @@
 		<script type="text/javascript">
 			$(function() {
 				$('#simple-clone').cloneya();
+				$('#clone_test').cloneya({
+					minimum: 0,
+            		maximum:3
+				});
 			});
 		</script>
 	</head>
-
 	<body>
+		<a href="https://github.com/Yapapaya/jquery-cloneya" target="_blank">https://github.com/Yapapaya/jquery-cloneya</a>
 		<div id="simple-clone" class="demo-wrap">
 			<form class="form" method="post">
 				<div class="toclone">
@@ -37,6 +40,26 @@
 				</p>
 			</form>
 		</div>
+		<hr />
+		<div id="clone_test">
+			<form class="form" method="post">
+				<div class="toclone">
+					<p class="name">
+						<input type="text" name="name[]" id="sname" />
+						<label for="name">Name1</label>
+					</p>
+					<p class="email">
+						<input type="text" name="email[]" id="semail" />
+						<label for="email">E-mail1</label>
+					</p>
+					<p class="web">
+						<input type="text" name="web[]" id="sweb" />
+						<label for="web">Website1</label>
+					</p>
+					<a href="#" class="clone">clone</a>
+					<a href="#" class="delete">delete</a>
+				</div>
+			</form>
+		</div>
 	</body>
-
 </html>
