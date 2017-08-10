@@ -12,6 +12,13 @@
 					minimum: 0,
             		maximum:3
 				});
+				//克隆后会依次增加input的id值
+				$("#clone_test").on('form_input.cloneya', function (event, input, toClone, newClone) {
+				    console.log("event:%o",event);
+				    console.log("input:%o",input);
+				    console.log("toClone:%o",toClone);
+				    console.log("newClone:%o",newClone);
+				});
 			});
 		</script>
 	</head>
