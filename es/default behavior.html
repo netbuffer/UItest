@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>浏览器默认行为</title>
+		<script src="//cdn.bootcss.com/randomcolor/0.4.4/randomColor.min.js"></script>
+		<script type="text/javascript">
+			window.onload=function(){
+				document.oncontextmenu=function(e){
+					var ev=e||event;
+					context_menu.style.position="absolute";
+					context_menu.style.display="block";
+					context_menu.style.left=ev.clientX+"px";
+					context_menu.style.top=ev.clientY+"px";
+					context_menu.style.backgroundColor=randomColor();
+					context_menu.style.border="2px dashed "+randomColor();
+					context_menu.style.color=randomColor();
+					return false;
+				}
+				document.onclick=function(e){
+					context_menu.style.display="none";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>浏览器右键默认菜单</li>
+		</ul>
+		<div id="context_menu" style="display: none;">
+			<ul style="list-style: none;margin: 0;padding: 0;">
+				<li>操作1</li>
+				<li>操作2</li>
+			</ul>
+		</div>
+	</body>
+</html>

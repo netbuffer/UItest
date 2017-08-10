@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>angular控制器</title>
+		<link href="https://cdn.bootcss.com/angular-loading-bar/0.9.0/loading-bar.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<script src="https://cdn.bootcss.com/angular.js/1.6.4/angular.min.js"></script>
+		<script src="https://cdn.bootcss.com/angular-loading-bar/0.9.0/loading-bar.min.js"></script>
+		<script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-animate.min.js"></script>
+	</head>
+	<body>
+		<div ng-app="myApp" ng-controller="myCtrl" class="container-fluid">
+			<div class="page-header">
+				<h1>angular测试<small>-特性测试</small></h1>
+			</div>
+			名: <input type="text" ng-model="firstName" placeholder="请输入"><br>
+			姓: <input type="text" ng-model="lastName" placeholder="请输入"><br>
+			年龄:{{age}}<br />
+			<button ng-click="say()" >say</button>
+			<br>
+			姓名: {{firstName + " " + (lastName|uppercase)}}&emsp;reverse:{{firstName|reverse}}<br />
+			<!--
+            	作者：javawiki@163.com
+            	时间：2017-05-23
+            	描述：默认先选中names[1]->Runoob
+            -->
+			select:<select ng-init="selectedName = names[1]" ng-model="selectedName" ng-options="x for x in names"></select>
+			<select><option ng-repeat="x in names">{{x}}</option></select>
+			<div runoob-directive></div><hr />
+			<table ng-show="users.length>0" class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>姓名</th>
+						<th>性别</th>
+						<th>年龄</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="user in users">
+						<td>{{user.name}}</td>
+						<td>{{user.sex}}</td>
+						<td>{{user.age}}</td>
+					</tr>					
+				</tbody>
+			</table>
+			<div ng-include="'include.html'"></div>
+		</div>
+		<script>
+			var app = angular.module('myApp', ['ngAnimate','angular-loading-bar']);
+			//注入值
+			app.value("defaultInput", 5);
+			//注入函数
+			app.factory('MathService', function() {
+			   var factory = {};
+			   factory.multiply = function(a, b) {
+			      return a * b;
+			   }
+			   return factory;
+			}); 
+			app.service('myservice', function(MathService) {
+			    this.myFunc = function (x) {
+			        return x.toString(16);
+			    }
+			    this.multiply=function(a,b){
+			    	console.log("MathService.multiply(1*1):%s",MathService.multiply(a,b));
+			    }
+			});
+			//http://www.runoob.com/angularjs/angularjs-http.html http请求
+			app.controller('myCtrl', function($scope,$rootScope,$location,$http,myservice,defaultInput) {
+				console.log("defaultinput:%s",defaultInput);
+				myservice.multiply(1,1);
+			    $scope.firstName= "John";
+			    $scope.lastName= "Doe";
+			    $rootScope.age=10;
+			    $scope.names = ["Google", "Runoob", "Taobao"];
+			    //暴露方法
+			    $scope.say=function(){
+			    	alert($scope.firstName+"  "+$scope.lastName);
+			    }
+			    console.log("location:%s,myservice-func:%s",$location,myservice.myFunc(255));
+			    $http.get("welcome.htm").then(function (response) {
+			        $scope.myWelcome = response.data;
+			    });
+			    //https://docs.angularjs.org/api/ng/service/$http $http使用
+			    $http({
+			        method: 'GET',
+			        url: 'http://www.runoob.com/try/angularjs/data/sites.php'
+			    }).then(function successCallback(response) {
+			            console.log("success response:%o",response);
+			        }, function errorCallback(response) {
+			            // 请求失败执行代码
+		            	console.log("error response:%o",response);
+			    });
+			    $http({
+			        method: 'GET',
+			        url: 'table.json'
+			    }).then(function successCallback(response) {
+			    		$scope.users=response.data;
+			            console.log("table.json response:%o",response);
+			        }, function errorCallback(response) {
+			            // 请求失败执行代码
+		            	console.log("error response:%o",response);
+			    });
+			});
+			//自定义过滤器
+			app.filter('reverse', function() { //可以注入依赖
+			    return function(text) {
+			        return text.split("").reverse().join("");
+			    }
+			});
+			//自定义指令
+			app.directive("runoobDirective", function() {
+			    return {
+			        template : "我在指令构造器中创建!"
+			    };
+			});
+		</script>
+	</body>
+</html>

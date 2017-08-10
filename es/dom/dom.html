@@ -24,7 +24,7 @@
 				//预加载图片
 				var img=new Image();  
 			    img.id="img-not-bad";
-				img.src="../Unslider/t (1).jpg";
+				img.src="../../jquery/Unslider/t1.jpg";
 			    img.onload=function(){alert("img is loaded")};
 			    img.onerror=function(){alert("img load error!")};  
 
@@ -438,6 +438,8 @@
 		</script>
 	</head>
 	<body onunload="alert('onunload');" oncopy="return denycopy();" onbeforecopy="return denycopy();" onselectstart="alert('选择操作');">
+		<!-- void操作中传递的是表达式 -->
+		<a href="javascript:void(alert('a'))">javascript:void(alert('a'))</a><br />
 		<a href="log4javascript.html" target="_blank">log4javascript</a>
 		<script type="text/javascript">
 			document.writeln("<h1>hello</h1>");
@@ -447,20 +449,20 @@
 			document.writeln("document.lastModified:"+document.lastModified+"<br/>");
 			document.writeln("document.fileSize:"+document.fileSize+"<br/>");        
 			document.writeln("document.readyState:"+document.readyState+"<br/>");
-			document.writeln("<iframe src=\"adapter.html\" width=\"100%\" height=\"200\"></iframe>");
+			document.writeln("<iframe src=\"../adapter.html\" width=\"100%\" height=\"200\"></iframe>");
 		</script>
 		<button onclick="getimgstate()">getimgstate</button><br />
 		<button onclick="createdocument()">createdocument</button><br />
-		<img id="img1" src="../agile/assets/app/img/slide3.jpg" 
+		<img id="img1" src="../../agile/assets/app/img/slide3.jpg" 
 			ondrag="imgdrag();" ondragend="imgdragend();" ondragstart="imgdragstart();"
 			ondragenter="imgdragenter()" ondragover="imgdragover()" ondragleave="imgdragleave()" 
 			/><br />
-		<img src="../agile/assets/app/img/slide3.jpg" /><br />
-		<img src="../agile/assets/app/img/slide3.jpg" onmouseover="changeimg(this);" />
+		<img src="../../agile/assets/app/img/slide3.jpg" /><br />
+		<img src="../../agile/assets/app/img/slide3.jpg" onmouseover="changeimg(this);" />
 		<!--onbeforepaste的返回值是无效的-->
 		<textarea name="area" oncut="return false" onbeforepaste="return false;" onpaste="return false">
 			testtesttesttesttesttesttesttesttesttesttesttesttest
 		</textarea>
 	</body>
-	<script src="js/statistics_dom.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="statistics_dom.min.js" type="text/javascript" charset="utf-8"></script>
 </html>

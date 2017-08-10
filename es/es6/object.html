@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Object新特性</title>
+		<script type="text/javascript">
+//			"use strict";
+			var a="a";
+			var b=function(b){
+				alert(b);
+			}
+			var obj={
+				a,
+				b,
+				d(d){
+					alert(d);
+				},
+				_age:0,
+				//get/set访问器
+				get age (){
+					console.log("get age");
+					alert(this._age);
+			        return this._age;
+			    },
+			    set age (value){
+			    	console.log("set age,current:%s,new:%s",this._age,value);
+			        if(value > 100) this._age= new Date().getFullYear() - value;
+			        else this._age = value;
+			    }
+			}
+			console.log(obj);
+			//获取属性集合
+			console.log("Object.keys(obj):%o",Object.keys(obj));
+//			https://segmentfault.com/a/1190000007434923
+//			Object.defineProperty(obj,"test",{
+//			    configurable:true | false,
+//			    enumerable:true | false,
+//			    value:任意类型的值,
+//			    writable:true | false
+//			});
+			
+			Object.defineProperty(obj,"c",{
+				value:function(c){
+					alert(c);
+				},
+				writable:false
+			})
+			obj.c("c");
+			//严格模式下，赋值操作会报错
+			obj.c="c";
+			obj.d("d");
+			obj.age;
+			obj.age=1;
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

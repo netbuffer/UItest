@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>angular-route</title>
+		<link href="https://cdn.bootcss.com/angular-loading-bar/0.9.0/loading-bar.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<script src="https://cdn.bootcss.com/angular.js/1.6.4/angular.min.js"></script>
+		<script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-route.min.js"></script>
+		<script src="https://cdn.bootcss.com/angular-loading-bar/0.9.0/loading-bar.min.js"></script>
+		<script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-animate.min.js"></script>
+	</head>
+	<body ng-app='routingDemoApp'>
+		<div class="page-header">
+			<h2>AngularJS 路由应用<small> route</small></h2>	
+		</div>
+        <ul class="breadcrumb">
+            <li><a href="#/">首页</a></li>
+            <li><a href="#/computers">电脑</a></li>
+            <li><a href="#/printers">打印机</a></li>
+            <li><a href="#/blabla">其他</a></li>
+            <li><a href="#/bootstrap">bootstrap</a></li>
+        </ul>
+        <div class="container-fluid" ng-view></div>
+        <script>
+            var app=angular.module('routingDemoApp',['ngRoute','ngAnimate','angular-loading-bar']);
+//          https://segmentfault.com/q/1010000008222425 angularjs 1.6路由问题
+            app.config(function($locationProvider){
+			    $locationProvider.hashPrefix('');
+			});
+            app.config(['$routeProvider', function($routeProvider){
+                $routeProvider
+                .when('/',{template:'这是首页页面'})
+                .when('/computers',{template:'这是电脑分类页面'})
+                .when('/printers',{template:'这是打印机页面'})
+                .when('/bootstrap',{
+                	templateUrl:"tpl.html",
+                	controller:"tpl-controller"
+                })
+                .otherwise({redirectTo:'/'});
+            }]);
+            app.controller('tpl-controller', function($scope,$rootScope,$location,$http) {
+				$scope.btn=function(){
+					alert("click");
+				};
+			});
+        </script>
+	</body>
+</html>

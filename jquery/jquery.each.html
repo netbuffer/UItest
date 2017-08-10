@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery</title>
+		<script src="../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			"use strict";
+			var arr=[1,2,3,4,5];
+			$.each(arr,function(index,item){
+				//直接return;无法跳出循环
+//				if(index>3){
+//					return ;
+//				}
+//				if(item>3){
+//					//无法跳出循环
+//					alert("exit");
+//					return 1;
+//				}
+				//退出for循环正确方法
+				if(item>3){
+					alert("退出循环");
+					return false;
+				}
+				console.log("index:%s,item:%o",index,item);
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

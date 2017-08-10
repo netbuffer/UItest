@@ -11,6 +11,8 @@
 		</script>
 	</head>
 	<body>
+		<input name="content" id="content"/><button onclick="alert(btoa(document.getElementById('content').value))">base64encode</button><br />
+		<input name="contentd" id="contentd"/><button onclick="alert(atob(document.getElementById('contentd').value))">base64decode</button><br />
 		<div id="" style="overflow:hidden; white-space: nowrap;text-overflow:ellipsis;height:30px;width:50px;">
 			<span>测试内容测试内容测试内容测试内容测试</span><span>内容测试内容测试内容测试内容测试内容测试</span><span>内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容</span>
 		</div>
