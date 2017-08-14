@@ -19,12 +19,17 @@
 //				    console.log("input:%o",input);
 //				    console.log("toClone:%o",toClone);
 //				    console.log("newClone:%o",newClone);
-				}).on('before_append.cloneya',function(toClone,newClone){
-					console.log("toClone:%o",toClone);
-					console.log("newClone:%o",newClone);
-//					console.log("toclone html:%s",$(toClone).html());
-//					console.log("newClone html:%s",$(newClone).html());
-//					$(toClone).children("p[class='name']").remove();
+				}).on('before_clone.cloneya',function(event,toClone){
+					console.log("before:%s",$(toClone).html());
+				}).on('after_clone.cloneya',function(event,toClone,newClone){
+					console.log("after:%s",$(toClone).html());
+					console.log("after-newClone:%s",$(newClone).html());
+				}).on('before_append.cloneya',function(event,toClone,newClone){
+					console.log("before_append-newClone:%s",$(newClone).html());
+				}).on('after_append.cloneya',function(event,toClone,newClone){
+					console.log("after_append-newClone:%s",$(newClone).html());
+					//在这里可以修改要插入的节点值
+					$(newClone).children("p[class='name']").remove();
 				});
 			});
 		</script>
