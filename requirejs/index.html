@@ -14,12 +14,30 @@
 					$(obj).text("requirejs").css('color', 'white').css("background-color","black");
 				});
 			}
+			function simple_require(obj){
+				//会去js/lib目录下加载util.js文件
+				require(["util"],function(util){
+					util.a();
+				});
+			}
+			function custom_require(obj){
+				//会去js/lib目录下加载ua.js文件,找不到出错
+//				require(["ua"],function(ua){
+//					ua.showua();
+//				});
+				//会去js/lib上级目录js/下加载ua.js文件
+				require(["../ua"],function(ua){
+					ua.showua();
+				});	
+			}
 		</script>
 	</head>
 	<body>
 		<a href="https://github.com/Wscats/requirejs-demo" target="_blank">
 			<h1>https://github.com/Wscats/requirejs-demo</h1>	
 		</a>
-		<button onclick="click_to_change(this)">click</button>
+		<button onclick="click_to_change(this)">click</button><br />
+		<button onclick="simple_require(this)">直接require模块使用(js文件在基准路径baseUrl下)</button><br />
+		<button onclick="custom_require(this)">require模块(js文件不在基准路径baseUrl下)</button><br />
 	</body>
 </html>
