@@ -30,7 +30,12 @@
 					console.log("after_append-newClone:%s",$(newClone).html());
 					//在这里可以修改要插入的节点值
 					$(newClone).children("p[class='name']").remove();
-				}).on('after_delete.cloneya',function(){
+				}).on('before_delete.cloneya',function(toDelete,cloneCount){
+	                console.log("todelete:%o",toDelete);
+	                child=$(cloneCount).find("[class='email']").children();
+	                console.log("deleteContent:%o,child[0]:%o,child[1]:%o",child,child[0],child[1]);
+	                alert("删除:"+$(child[0]).attr("id"));
+            	}).on('after_delete.cloneya',function(){
 	                console.log("deleted");
             	});
 			});
