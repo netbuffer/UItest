@@ -11,7 +11,33 @@
 				$('#clone_test').cloneya({
 					minimum: 0,
             		maximum:3
-				});
+				}).on('clone.cloneya', function (event, toClone) {
+				    console.log("clone");
+				}).on('form_input.cloneya', function (event, input, toClone, newClone) {
+					//克隆后会依次增加input的id值
+//				    console.log("event:%o",event);
+//				    console.log("input:%o",input);
+//				    console.log("toClone:%o",toClone);
+//				    console.log("newClone:%o",newClone);
+				}).on('before_clone.cloneya',function(event,toClone){
+					console.log("before:%s",$(toClone).html());
+				}).on('after_clone.cloneya',function(event,toClone,newClone){
+					console.log("after:%s",$(toClone).html());
+					console.log("after-newClone:%s",$(newClone).html());
+				}).on('before_append.cloneya',function(event,toClone,newClone){
+					console.log("before_append-newClone:%s",$(newClone).html());
+				}).on('after_append.cloneya',function(event,toClone,newClone){
+					console.log("after_append-newClone:%s",$(newClone).html());
+					//在这里可以修改要插入的节点值
+					$(newClone).children("p[class='name']").remove();
+				}).on('before_delete.cloneya',function(toDelete,cloneCount){
+	                console.log("todelete:%o",toDelete);
+	                child=$(cloneCount).find("[class='email']").children();
+	                console.log("deleteContent:%o,child[0]:%o,child[1]:%o",child,child[0],child[1]);
+	                alert("删除:"+$(child[0]).attr("id"));
+            	}).on('after_delete.cloneya',function(){
+	                console.log("deleted");
+            	});
 			});
 		</script>
 	</head>
@@ -41,25 +67,23 @@
 			</form>
 		</div>
 		<hr />
-		<div id="clone_test">
-			<form class="form" method="post">
-				<div class="toclone">
-					<p class="name">
-						<input type="text" name="name[]" id="sname" />
-						<label for="name">Name1</label>
-					</p>
-					<p class="email">
-						<input type="text" name="email[]" id="semail" />
-						<label for="email">E-mail1</label>
-					</p>
-					<p class="web">
-						<input type="text" name="web[]" id="sweb" />
-						<label for="web">Website1</label>
-					</p>
-					<a href="#" class="clone">clone</a>
-					<a href="#" class="delete">delete</a>
-				</div>
-			</form>
-		</div>
+		<form id="clone_test" class="form" method="post">
+			<div class="toclone">
+				<p class="name">
+					<input type="text" name="name[]" id="sname" />
+					<label for="name">Name1</label>
+				</p>
+				<p class="email">
+					<input type="text" name="email[]" id="semail" />
+					<label for="email">E-mail1</label>
+				</p>
+				<p class="web">
+					<input type="text" name="web[]" id="sweb" />
+					<label for="web">Website1</label>
+				</p>
+				<a href="#" class="clone">clone</a>
+				<a href="#" class="delete">delete</a>
+			</div>
+		</form>
 	</body>
 </html>

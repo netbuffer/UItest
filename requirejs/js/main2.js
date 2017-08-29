@@ -1,0 +1,17 @@
+console.log("requirejs配置,自定义的依赖，css文件的加载");
+require.config({
+	baseUrl:'js/lib',
+	paths:{
+		"css":"//cdn.bootcss.com/require-css/0.1.10/css.min",
+		"jQuery":["//cdn.bootcss.com/jquery/3.2.1/jquery.min","jquery1.11.3.min"],
+		"bootstrap":"//cdn.bootcss.com/bootstrap/3.3.1/js/bootstrap.min"
+	},
+	shim:{
+		//定义依赖关系
+		"bootstrap":{
+			"deps":["jQuery","css!//cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css"]
+		}
+	}
+});
+require(["bootstrap"],function(){
+});
