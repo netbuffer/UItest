@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery-serialize-object,将html form表单序列化成js对象</title>
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/jquery-serialize-object/2.5.0/jquery.serialize-object.min.js"></script>
+		<script type="text/javascript">
+			function serialize_form(){
+				alert(JSON.stringify($("form").serializeObject()));
+			}
+			function serialize_form_extra(){
+				var obj=$("form").serializeObject();
+				obj.id=111;
+				obj.name="aaa";
+				obj["address.name"]="lllll";
+				alert(JSON.stringify(obj));
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="serialize_form();">序列化</button>&emsp;<button onclick="serialize_form_extra();">序列化附加参数</button>&emsp;
+		<form>
+			<input name="title" placeholder="标题" /><br />
+			<input name="age" placeholder="年龄" /><br />
+			<input name="birthday" placeholder="生日" /><br />
+			<input name="mobile" placeholder="手机" /><br />
+		</form>
+	</body>
+</html>
