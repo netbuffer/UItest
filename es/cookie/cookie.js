@@ -64,3 +64,20 @@ Cookie.remove=function(name){
 		Cookie.add(name,"",current);
 	}
 }
+/**
+ * https://stackoverflow.com/questions/179355/clearing-all-cookies-with-javascript
+ * https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
+ * 1.It will not delete cookies with HttpOnly flag set, as the HttpOnly flag disables Javascript's access to the cookie
+ * 2.It will not delete cookies that have been set with a Path value. (This is despite the fact that those cookies will appear 
+ * 	in document.cookie, but you can't delete it without specifying the same Path value with which it was set
+ */
+Cookie.clear=function(){
+	var cookies = document.cookie.split(";");
+	var cookies_size=cookies.length;
+    for (var i = 0; i < cookies_size; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}

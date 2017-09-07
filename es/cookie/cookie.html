@@ -46,12 +46,31 @@
 					alert(err);
 				}
 			}
+			
+			function clear_cookies(){
+				Cookie.clear();
+				alert("已经清空所有cookie!");
+				location.href=location.href;
+			}
+			
+			function test_judge(){
+				if(""){
+					alert("\"\"字符串是true");
+				}else{
+					alert("\"\"字符串是false");
+				}
+				if("false"){
+					alert("false字符串是true");
+				}
+				
+			}
 		</script>
 	</head>
 	<body>
 		<div>
 			<button onclick="print_cookies();">打印cookie</button><br />
-			<button onclick="add_cookies();">添加cookie</button>&emsp;<button onclick="get_cookies();">读取cookie</button>&emsp;<button onclick="remove_cookies();">删除cookie</button><br />
+			<button onclick="add_cookies();">添加cookie</button>&emsp;<button onclick="get_cookies();">读取cookie</button>&emsp;
+			<button onclick="remove_cookies();">删除cookie</button>&emsp;<button onclick="clear_cookies();">清空cookie</button><br />
 			<input id="add_cookie_name" type="text" placeholder="添加cookie-name" /><br />
 			<input id="add_cookie_value" type="text" placeholder="添加cookie-value" /><br />
 			<input id="add_cookie_date" type="text" placeholder="添加cookie过期时间,整型值(标识多少天后过期)" /><br />
