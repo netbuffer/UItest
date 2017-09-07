@@ -25,6 +25,10 @@
 			function clear_sels(){
 				$("#sels").empty();	
 			}
+			function set_radio(val){
+				console.log("radio:%o",$(".form-group input[name='enable']"));
+				$(".form-group input[name='enable'][value="+val+"]").prop("checked",true);
+			}
 		</script>
 	</head>
 	<body>
@@ -51,6 +55,15 @@
 				<p>test</p>
 				<button class="btn btn-primary">button</button>
 			</div>
+			<br /><button class="btn btn-default" onclick="set_radio(1);">设置选中</button>
+			<div class="form-group">
+	            <label class="radio-inline">
+	                <input type="radio" name="enable" value="1"> 启用
+	            </label>
+	            <label class="radio-inline">
+	                <input type="radio" name="enable" value="0"> 禁用
+	            </label>
+	        </div>
 		</div>
 	</body>
 </html>
