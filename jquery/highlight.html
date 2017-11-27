@@ -13,6 +13,9 @@
 				window.opener.location.reload();
 				window.close();
 			}
+			$(function(){
+				hljs.highlightBlock($("#guide").get(0));
+			})
 		</script>
 		<!--<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/solarized_dark.min.css">
 		<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
@@ -25,6 +28,7 @@
 				&lt;link rel="stylesheet" href="https://obgudq4u6.qnssl.com/wp-content/monokai_sublime.min.css"/&gt;
 				&lt;script class="loading" src="https://www.iteblog.com/pic/placeholder.png" data-original="https://obgudq4u6.qnssl.com/wp-content/highlight.min.js"&gt;&lt;/script&gt;
 				&lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
+				&lt;a href=&quot;要跳转的地址&quot;&gt;连接中展示的文字&lt;/a&gt;
 			</code>
 		</pre>
 		  
@@ -148,6 +152,11 @@
 				}
 			</code>
 		</pre>
+		
+		<code class="html hljs xml" id="guide">
+	        连接写法：&lt;a href=&quot;要跳转的地址&quot;&gt;连接中展示的文字&lt;/a&gt;
+	        ,&emsp;比如要添加个百度的跳转连接,就写成：&lt;a href=&quot;http://www.baidu.com&quot;&gt;百度&lt;/a&gt;
+	    </code>
 
 	</body>
 </html>
