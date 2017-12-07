@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Function 对象</title>
+		<script type="text/javascript">
+			var sayHello=new Function("name","alert(name);console.log(name);");
+			// sayHello("haha");
+			name="windows";
+			var obj={
+				"name":"hello obj",
+				get_name:function(){
+//					name="aa";
+					var name="bb";
+					return function(){
+						//this指向的是window
+						return this.name;
+					};
+				}
+			}
+			alert(obj.name);
+			alert(obj.get_name());
+			alert(obj.get_name()());
+		</script>
+	</head>
+	<body>
+		function使用/闭包使用
+	</body>
+</html>
