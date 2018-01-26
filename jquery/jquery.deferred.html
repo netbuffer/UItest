@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery.deferred</title>
+    <script type="text/javascript" src="../agile/www/assets/third/jquery/jquery-2.1.3.min.js"></script>
+    <!--<script type="text/javascript" src="lib/jquery.3.3.1.min.js"></script>-->
+</head>
+<body>
+<script type="text/javascript">
+    window.onerror = function (error) {
+        console.log("error:%o", error);
+    };
+    function simple_deferred() {
+        var wait=function(){
+            var tasks=function(){
+                alert("执行完毕！");
+            };
+            setTimeout(tasks,5000);
+        };
+        //会先执行done再执行tasks中的内容
+        $.when(wait())
+            .done(function(){alert("success");})
+            .fail(function(){alert("error")});
+    };
+    // simple_deferred();
+    function wait_deferred(){
+        var dtd=$.Deferred();
+        var wait=function(dtd){
+            var tasks=function(){
+                alert("执行完毕！");
+                dtd.resolve();
+            };
+            setTimeout(tasks,5000);
+            return dtd;
+        };
+        $.when(wait(dtd))
+            .done(function(){alert("success");})
+            .fail(function(){alert("error")});
+    }
+    // wait_deferred();
+    function deferred_promise() {
+        var wait=function(){
+            var dtd=$.Deferred();
+            var tasks=function(){
+                alert("执行完毕！");
+                dtd.resolve();
+            };
+            setTimeout(tasks,5000);
+            return dtd.promise();
+        };
+        var d=wait();
+        alert(typeof d);
+        try {
+            d.resolve();//resolve不会启作用
+        }catch (err){
+            console.log("d.resolve:%s",err);
+        }
+        $.when(d)
+            .done(function(){alert("success");})
+            .fail(function(){alert("error")});
+    }
+    deferred_promise();
+    // var deferred = $.Deferred();
+    // deferred
+    //     .then(function () {
+    //         throw new Error('An error');
+    //         // console.log("exec1");
+    //     })
+    //     .then(
+    //         function () {
+    //             console.log('Success 1');
+    //         },
+    //         function () {
+    //             console.log('Failure 1');
+    //         }
+    //     )
+    //     .then(
+    //         function () {
+    //             console.log('Success 2');
+    //         },
+    //         function () {
+    //             console.log('Failure 2');
+    //         }
+    //     );
+    //
+    // deferred.resolve();
+</script>
+</body>
+</html>
