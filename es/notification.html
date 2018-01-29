@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>h5-Notification</title>
+    <script type="text/javascript">
+        "use strict";
+        var WebNotification = {
+            isSupported: 'Notification' in window,
+            isAllowed: function () {
+                return Notification.permission === 'granted';
+            },
+            requestPermission: function () {
+                if (!this.isSupported) {
+                    console.log('the current browser does not support Notification API');
+                    return;
+                }
+
+                Notification.requestPermission(function (status) {
+                    //status:granted用户允许 default 未操作 denied拒绝授权
+                    console.log('status: ' + status);
+                    var permission = Notification.permission;
+                    console.log('permission: ' + permission);
+                });
+            },
+            showNotification: function (data) {
+                if (!this.isSupported) {
+                    console.log('the current browser does not support Notification API');
+                    return;
+                }
+                if (!this.isAllowed()) {
+                    console.log('the current page has not been granted for notification');
+                    return;
+                }
+                if (!data) {
+                    data = {
+                        "title": "title",
+                        "content": "content"
+                    }
+                } else {
+                    if (!data.title) {
+                        data.title = "title";
+                    }
+                    if (!data.content) {
+                        data.content = "content";
+                    }
+                }
+
+                var n = new Notification(data.title, {
+                    icon: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3873086676,3875977536&fm=27&gp=0.jpg',
+                    body: data.desc
+                });
+
+                n.onshow = function () {
+                    console.log("show");
+                };
+
+                n.onclick = function () {
+                    console.log("click");
+                };
+
+                n.onerror = function (err) {
+                    console.log('error:%o', err);
+                };
+
+                n.onclose = function () {
+                    console.log('close');
+                };
+            }
+        };
+        document.addEventListener('load', function () {
+            WebNotification.requestPermission();
+        });
+
+        function show(data) {
+            WebNotification.showNotification(data);
+        }
+    </script>
+</head>
+<body>
+<button onclick="show({title:'内容',desc:'描述'});">click</button>
+</body>
+</html>
