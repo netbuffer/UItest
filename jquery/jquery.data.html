@@ -1,52 +1,53 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>jquery</title>
-		<script src="../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">
-			$(function(){
-			});
-			function getDataD(id){
-				alert($("#"+id).data("d"));
-				return $("#"+id).data("d");
-			}
-			function getAttrDataD(id){
-				alert($("#"+id).attr("data-d"));
-				return $("#"+id).attr("data-d");
-			}
-			
-			function setDataD(val){
-				$("#jd").data("d",val);
-			}
-			function setDataAttrD(val){
-				$("#jd").attr("data-d",val);
-			}
-			var data=new Array();
-			data.push({"name":"t1"});
-			data.push({"name":"t2"});
-			function test(){
-				/**
-				 * 在使用jquery的each方法时，return false相当于break，是跳出each循环，
-				 * return true相当于continue，是继续循环，如果要跳出方法，不能这样使用
-				 */
-				$.each(data,function(index,item){
-	                console.log("index:%s,item:%o",index,item);
-	                if(item.name=="t1"){
-	                	return ;
-	                }
-	            });
-	            //即使上面return依然执行alert
-	            alert("aaa");
-			}
-			test();
-		</script>
-	</head>
-	<body>
-		<button data-d="test" id="jd">1节点</button>
-		&emsp;<button onclick="getDataD('jd');">data获取1节点的data-d值</button>
-		&emsp;<button onclick="getAttrDataD('jd');">attr获取1节点的data-d值</button>
-		&emsp;<button onclick="setDataD('aaa');">通过jq的data方法设置1节点的data-d值</button>
-		&emsp;<button onclick="setDataAttrD('bbb');">通过jq的attr方法设置1节点的data-d值</button>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <title>jquery</title>
+    <script src="../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(function () {
+            jq_data();
+        });
+
+        function getDataD(id) {
+            alert($("#" + id).data("d"));
+            return $("#" + id).data("d");
+        }
+
+        function getAttrDataD(id) {
+            alert($("#" + id).attr("data-d"));
+            return $("#" + id).attr("data-d");
+        }
+
+        function setDataD(val) {
+            $("#jd").data("d", val);
+        }
+
+        function setDataAttrD(val) {
+            $("#jd").attr("data-d", val);
+        }
+
+        function jq_data() {
+            console.log("user-Id:%s", $("#jqdata").data("user-Id"));
+            console.log("user-id:%s", $("#jqdata").data("user-id"));
+            console.log("userId:%s", $("#jqdata").data("userId"));
+            console.log("userid:%s", $("#jqdata").data("userid"));
+            console.log("=======================================")
+            console.log("userName:%s", $("#jqdata").data("userName"));
+            console.log("username:%s", $("#jqdata").data("username"));
+            console.log("user-Name:%s", $("#jqdata").data("user-Name"));
+            console.log("user-name:%s", $("#jqdata").data("user-name"));
+        }
+
+    </script>
+</head>
+<body>
+<button data-d="test" id="jd">1节点</button>
+&emsp;<button onclick="getDataD('jd');">data获取1节点的data-d值</button>
+&emsp;<button onclick="getAttrDataD('jd');">attr获取1节点的data-d值</button>
+&emsp;<button onclick="setDataD('aaa');">通过jq的data方法设置1节点的data-d值</button>
+&emsp;<button onclick="setDataAttrD('bbb');">通过jq的attr方法设置1节点的data-d值</button>
+<div id="jqdata" data-user-Id="uesrid" data-userName="username"
+     style="border:1px solid red;border-radius: 50%;width:200px;height: 200px;"></div>
+</body>
 </html>
