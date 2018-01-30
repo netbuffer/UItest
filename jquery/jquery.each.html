@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>jquery</title>
-		<script src="../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">
-			"use strict";
-			var arr=[1,2,3,4,5];
-			$.each(arr,function(index,item){
-				//直接return;无法跳出循环
-//				if(index>3){
-//					return ;
-//				}
-//				if(item>3){
-//					//无法跳出循环
-//					alert("exit");
-//					return 1;
-//				}
-				//退出for循环正确方法
-				if(item>3){
-					alert("退出循环");
-					return false;
-				}
-				console.log("index:%s,item:%o",index,item);
-			});
-		</script>
-	</head>
-	<body>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <title>jquery</title>
+    <script src="../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        var data = new Array();
+        data.push({"name": "t1"});
+        data.push({"name": "t2"});
+        data.push({"name": "t3"});
+        $(function () {
+            // $("body").html(test_jq_each());
+            // $("body").html(test_jq_each("t1"));
+            $("body").html(test_jq_each("t1",false));
+        });
+
+        function test_jq_each(skipname, skip) {
+            /**
+             * 在使用jquery的each方法时，return false相当于break，是跳出each循环，
+             * return true相当于continue，是继续循环，如果要跳出方法，不能这样使用
+             */
+            $.each(data, function (index, item) {
+                console.log("index:%s,item:%o", index, item);
+                if (item.name == skipname) {
+                    if(skip===false){
+                        console.log("终止循环");
+                    }
+                    return skip;
+                }
+            });
+            //即使上面return依然执行下面代码
+            return "html";
+        }
+
+    </script>
+</head>
+<body>
+</body>
 </html>
