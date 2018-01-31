@@ -36,11 +36,24 @@
 			for(var item of arr){
 			    console.log("item:%o",item);
 			}
+
+			function test_assign(){
+                // 解构赋值
+				let [a,b]=[1,2];
+				console.log("a:%s,b:%s",a,b);
+				[a,b]=[b,a];
+                console.log("after a:%s,b:%s",a,b);
+                let o1,o2;
+                [o1,o2]=[{a:1},{b:2}];
+                console.log("o1:%o,o2:%o",o1,o2);
+                [o1,o2]=[o2,o1];
+                console.log("after o1:%o,o2:%o",o1,o2);
+            }
 		</script>
 	</head>
 	<body>
 		学习链接:<a href="http://mp.weixin.qq.com/s/wxxGavmw5mH-Rhe4i7e8LA" target="_blank">http://mp.weixin.qq.com/s/wxxGavmw5mH-Rhe4i7e8LA</a><br />
 		<button onclick="say()">无参数</button>&emsp;<button onclick="say('hello')">传递参数</button><br />
-		<button onclick="tpl_render('world')">模板字符串</button>&emsp;<button onclick="tpl_render_multi('这是标题')">多行模板字符串</button>&emsp;
+		<button onclick="tpl_render('world')">模板字符串</button>&emsp;<button onclick="tpl_render_multi('这是标题')">多行模板字符串</button>&emsp;<button onclick="test_assign()">解构赋值</button>
 	</body>
 </html>
