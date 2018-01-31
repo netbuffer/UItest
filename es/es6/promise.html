@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise</title>
+</head>
+<body>
+<script type="text/javascript">
+    var func = function () {
+        var pro = new Promise(function (resolve, reject) {
+            console.log("resolve:%o,reject:%o", resolve, reject);
+            console.log("success");
+            resolve();
+        });
+        return pro;
+    }
+    func().then(function () {
+        console.log("exec1");
+    }).then(function () {
+        console.log("exec2");
+    })
+</script>
+</body>
+</html>
