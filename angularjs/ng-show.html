@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ng-show</title>
+    <link href="https://cdn.bootcss.com/angular-loading-bar/0.9.0/loading-bar.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular-loading-bar/0.9.0/loading-bar.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-animate.min.js"></script>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl" class="container-fluid">
+    <div class="page-header" ng-show="is_show">
+        <h1>ng-show
+            <small>-test</small>
+        </h1>
+    </div>
+    <button class="btn btn-sm" ng-click="ng_show()">show</button>&emsp;<button class="btn btn-sm" ng-click="ng_hide()">
+    hide
+</button>
+</div>
+<script type="text/javascript">
+    var app = angular.module('myApp', ['ngAnimate', 'angular-loading-bar']);
+    app.controller('myCtrl', function ($scope, $rootScope, $location, $http) {
+        $scope.is_show = true;
+        $scope.ng_show = function () {
+            $scope.is_show = true;
+        };
+        $scope.ng_hide = function () {
+            $scope.is_show = false;
+        };
+    });
+</script>
+</body>
+</html>
