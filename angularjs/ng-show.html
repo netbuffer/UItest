@@ -19,10 +19,14 @@
     <button class="btn btn-sm" ng-click="ng_show()">show</button>&emsp;
     <button class="btn btn-sm" ng-click="ng_hide()">hide</button>
     <hr/>
-    is_show:{{is_show}}
+    is_show:{{is_show}}<br/>
+    message:{{message}}
+    <input ng-model="message"/>
 </div>
 <script type="text/javascript">
     var app = angular.module('myApp', ['ngAnimate', 'angular-loading-bar']);
+    var obj={
+    };
     app.controller('myCtrl', function ($scope, $rootScope, $location, $http) {
         $scope.is_show = true;
         $scope.ng_show = function () {
@@ -30,6 +34,14 @@
         };
         $scope.ng_hide = function () {
             $scope.is_show = false;
+        };
+        $scope.message="init";
+        obj.func=function(v){
+            // $scope.message=v;
+            // $scope.$apply();
+            $scope.$apply(function () {
+                $scope.message=v;
+            });
         };
     });
 </script>
