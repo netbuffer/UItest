@@ -5,20 +5,56 @@
     <title>promise</title>
 </head>
 <body>
+<a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank">http://es6.ruanyifeng.com/#docs/promise</a>
 <script type="text/javascript">
     var func = function () {
-        var pro = new Promise(function (resolve, reject) {
-            console.log("resolve:%o,reject:%o", resolve, reject);
-            console.log("success");
-            resolve();
+        //resolve reject由JavaScript引擎传入
+        const pro = new Promise(function (resolve, reject) {
+            // console.log("resolve:%o,reject:%o", resolve, reject);
+            console.log("exec promise code");
+            // const ret=1;
+            const ret = 2;
+            /**
+             * resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），
+             * 在异步操作成功时调用，并将异步操作的结果，作为参数传递出去
+             */
+            if (ret === 1) {
+                return resolve(ret);
+            } else if (ret === 2) {
+                /**
+                 * reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），
+                 * 在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去
+                 */
+                return reject({
+                    err_code: -1,
+                    err: "err"
+                });
+            } else {
+                return resolve(ret);
+            }
         });
         return pro;
-    }
-    func().then(function () {
-        console.log("exec1");
-    }).then(function () {
-        console.log("exec2");
+    };
+    func().then(function (ret) {
+        //ret即为promise对象resolve中返回的结果
+        console.log("exec1 result:%s", ret);
+        /**
+         * 返回结果在下一个then方法中使用
+         */
+        return "next then value";
+    }, function (err) {
+        console.log("exec1 err:%o", err);
+        return err;
+        // throw new Error(err);
     })
+    /**
+     * then方法返回的是一个新的Promise实例（注意，不是原来那个Promise实例）。因此可以采用链式写法，即then方法后面再调用另一个then方法
+     */
+        .then(function (ret) {
+            console.log("exec2 ret:%o", ret);
+        },function(err){
+            console.log("exec2 err:%o",err);
+        });
 </script>
 </body>
 </html>
