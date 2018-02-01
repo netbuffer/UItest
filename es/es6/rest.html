@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rest param</title>
+    <link href="//cdn.bootcss.com/highlight.js/9.5.0/styles/darkula.min.css" rel="stylesheet">
+    <script src="../../jquery/lib/jquery.3.3.1.min.js"></script>
+    <script src="//cdn.bootcss.com/highlight.js/9.5.0/highlight.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $c=$("#code_container");
+            $c.html($("#code").html());
+            hljs.highlightBlock($c.get(0));
+        });
+    </script>
+</head>
+<body>
+<script id="code" type="text/javascript">
+    function sum(...x) {
+        var sum = 0;
+        for (var i in x) {
+            sum += x[i];
+        }
+        return sum;
+    }
+    console.log("sum(1,2,3):%o", sum(1, 2, 3))
+</script>
+<pre>
+    <code id="code_container"></code>
+</pre>
+</body>
+</html>
