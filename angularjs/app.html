@@ -63,13 +63,13 @@
 			        return x.toString(16);
 			    }
 			    this.multiply=function(a,b){
-			    	console.log("MathService.multiply(1*1):%s",MathService.multiply(a,b));
+			    	console.log("MathService.multiply(%s*%s):%s",a,b,MathService.multiply(a,b));
 			    }
 			});
 			//http://www.runoob.com/angularjs/angularjs-http.html http请求
 			app.controller('myCtrl', function($scope,$rootScope,$location,$http,myservice,defaultInput) {
 				console.log("defaultinput:%s",defaultInput);
-				myservice.multiply(1,1);
+				myservice.multiply(2,3);
 			    $scope.firstName= "John";
 			    $scope.lastName= "Doe";
 			    $rootScope.age=10;
