@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>random.js</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/random-js/1.0.8/random.min.js"></script>
+    <script type="text/javascript">
+        var r = new Random(Random.engines.mt19937().autoSeed());
+        var arr = ["aaa", "bbb", "ccc", "ddd"];
+        console.log("r.integer(1,2):%s", r.integer(1, 2))
+        console.log("from arr random value:%s", r.pick(arr))
+        var shuffle_arr = r.shuffle(arr);
+        console.log("arr:%s,r.shuffle(arr):%s,type(shuffle_arr):%s", arr, shuffle_arr, typeof shuffle_arr)
+        console.log("r.string(10):%s",r.string(10))
+        console.log("r.date(new Date(\"2017-10-22 12:20:03\"),new Date(\"2018-10-22 12:00:00\")):%o",r.date(new Date("2017-10-22 12:20:03"),new Date("2018-10-22 12:00:00")))
+    </script>
+</head>
+<body>
+    <a href="http://www.bootcdn.cn/random-js/readme/" target="_blank">http://www.bootcdn.cn/random-js/readme/</a>
+</body>
+</html>
