@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>set</title>
+    <script type="text/javascript">
+        let s=new Set();
+        s.add(1);
+        s.add(2);
+        s.add(3);
+        s.add(1);
+        console.log("set[s]:%o,size:%s",s,s.size);
+        console.log("has 1:%s,has 5:%s",s.has(1),s.has(5));
+        s.delete(1);
+        console.log("after delete:%o",s);
+        s.clear();
+        console.log("after clear:%o",s);
+        let arr=[1,2,3,3,2,1];
+        let set_from_arr=new Set(arr);
+        console.log("set_from_arr:%o",set_from_arr);
+        let set_to_arr=Array.from(set_from_arr);
+        console.log("set_to_arr:%o",set_to_arr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
