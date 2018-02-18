@@ -8,7 +8,8 @@
 			var a="a";
 			var b=function(b){
 				alert(b);
-			}
+			};
+			var key="dynamic_key";
 			var obj={
 				a,
 				b,
@@ -26,7 +27,10 @@
 			    	console.log("set age,current:%s,new:%s",this._age,value);
 			        if(value > 100) this._age= new Date().getFullYear() - value;
 			        else this._age = value;
-			    }
+			    },
+				[key]:function(msg="hello world!"){
+				    alert(msg);
+				}
 			}
 			console.log(obj);
 			//获取属性集合
