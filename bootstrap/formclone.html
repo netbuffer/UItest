@@ -50,40 +50,7 @@
 					     }
 				 	}
 				 });
-<<<<<<< HEAD
-<<<<<<< HEAD
-			});
-			function formser(){
-				alert(JSON.stringify($("#simple-clone").serializeJSON()));
-			}
-			function formval(){
-				$("#simple-clone").valid();
-			}
-		</script>
-	</head>
 
-	<body>
-		<div class="container">
-			<div class="page-header">
-				<h1>Bootstrap-form</h1>
-			</div>
-			<button class="btn btn-primary" onclick="formser();">form序列化</button>&emsp;<button class="btn btn-primary" onclick="formval();">form校验</button>
-			<form class="form-inline" id="simple-clone">
-				<div class="toclone">
-					<a href="#" class="clone">clone</a>
-                  <a href="#" class="delete">delete</a>
-				  <div class="form-group">
-				    <label for="exampleInputName2">Name</label>
-				    <input type="text" class="form-control" name="user[0].name" id="exampleInputName2" placeholder="Jane Doe">
-				  </div>
-				  <div class="form-group">
-				    <label for="exampleInputEmail2">Email</label>
-				    <input type="email" class="form-control" name="user[0].email"  id="exampleInputEmail2" placeholder="jane.doe@example.com">
-				  </div>
-			  </div>
-			</form>
-=======
-				 
 				$("#test_samename").validate({
 					rules:{
 				 		"foo_1":{
@@ -117,7 +84,7 @@
 			        }
 			        return false;
 			    });
-				 
+
 			});
 			function formser(){
 				alert(JSON.stringify($("#simple-clone").serializeJSON()));
@@ -149,98 +116,16 @@
 			  </div>
 			</form>
 			<hr />
-			
+
 			<form action="#" id="test_samename">
 			  <input type="text" name="foo_1" class="required" />
 			  <input type="text" name="foo_2" class="required" />
 			  <input type="text" name="foo_3" class="required" />
 			  <input type="submit" />
 			</form>
-			
-			
->>>>>>> refs/heads/master
+
+
 		</div>
 	</body>
 
 </html>
-=======
-				 
-				$("#test_samename").validate({
-					rules:{
-				 		"foo_1":{
-				 			required: true
-				 		},
-				 		"foo_2":{
-				 			required: true
-				 		},
-						"foo_3":{
-				 			required: true
-				 		}
-				 	},
-				 	messages:{
-				 		"foo_1":{
-				 			required: "must"
-				 		},
-				 		"foo_2":{
-				 			required:  "must"
-				 		},
-						"foo_3":{
-				 			required:  "must"
-				 		}
-				 	}
-				});
-				$('#test_samename input[type=submit]').click(function() {
-			        if ($('#test_samename').valid()) {
-			            $('#test_samename input[name^=foo_]').each(function() {
-			                $(this).attr('name', 'foo');
-			            });
-			            return true;
-			        }
-			        return false;
-			    });
-				 
-			});
-			function formser(){
-				alert(JSON.stringify($("#simple-clone").serializeJSON()));
-			}
-			function formval(){
-				$("#simple-clone").valid();
-			}
-		</script>
-	</head>
-
-	<body>
-		<div class="container">
-			<div class="page-header">
-				<h1>Bootstrap-form</h1>
-			</div>
-			<button class="btn btn-primary" onclick="formser();">form序列化</button>&emsp;<button class="btn btn-primary" onclick="formval();">form校验</button>
-			<form class="form-inline" id="simple-clone">
-				<div class="toclone">
-					<a href="#" class="clone">clone</a>
-                  <a href="#" class="delete">delete</a>
-				  <div class="form-group">
-				    <label for="exampleInputName2">Name</label>
-				    <input type="text" class="form-control" name="user[0].name" id="exampleInputName2" placeholder="Jane Doe">
-				  </div>
-				  <div class="form-group">
-				    <label for="exampleInputEmail2">Email</label>
-				    <input type="email" class="form-control" name="user[0].email"  id="exampleInputEmail2" placeholder="jane.doe@example.com">
-				  </div>
-			  </div>
-			</form>
-			<hr />
-			
-			<form action="#" id="test_samename">
-			  <input type="text" name="foo_1" class="required" />
-			  <input type="text" name="foo_2" class="required" />
-			  <input type="text" name="foo_3" class="required" />
-			  <input type="submit" />
-			</form>
-			
-			
-		</div>
-	</body>
-
-</html>
->>>>>>> refs/heads/master

@@ -3790,18 +3790,9 @@ else if (typeof define === 'function' && define.amd) {
   $.fn.swiper = function(params) {
     return this.each(function() {
       if(!this) return;
-<<<<<<< HEAD
-      return new Swiper(this, $.extend({}, defaults, params)); 
-    });
-  }
-
-  defaults = $.fn.swiper.prototype.defaults = {
-    pagination: ".swiper-pagination"
-  };
-=======
       var $this = $(this);
       var swiper = $this.data("swiper");
-      if(!swiper) $this.data("swiper", new Swiper(this, $.extend({}, defaults, params))); 
+      if(!swiper) $this.data("swiper", new Swiper(this, $.extend({}, defaults, params)));
       return swiper;
     });
   }
@@ -4012,7 +4003,7 @@ else if (typeof define === 'function' && define.amd) {
     onDoubleClick: function () {
       this.gestureImage = this.container.find('.swiper-slide').eq(this.activeIndex).find('img');
       this.currentScale = this.currentScale > 1 ? 1 : 2;
-      this.doImageTransform(200); 
+      this.doImageTransform(200);
       this.adjust();
     },
 
@@ -4159,9 +4150,4 @@ else if (typeof define === 'function' && define.amd) {
   $.photoBrowser = function(params) {
     return new Photos(params);
   }
-<<<<<<< HEAD
->>>>>>> refs/heads/master
-
-=======
->>>>>>> refs/heads/master
 }($);
