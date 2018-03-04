@@ -22,12 +22,14 @@
     <button class="btn" onclick="save_image(this,'png.png')">点击保存图片</button>
 </div>
 <script type="text/javascript">
-    node = $(".container").get(0);
+    node = $(".container");
+    node = node.get(0);
     domtoimage.toPng(node)
         .then(function (dataUrl) {
             var img = new Image();
             img.src = dataUrl;
-            document.body.appendChild(img);
+            // document.body.appendChild(img);
+            $(".container").empty().append("<img src='" + dataUrl + "'/>");
         })
         .catch(function (error) {
             console.error('oops, something went wrong!', error);
