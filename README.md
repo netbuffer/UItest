@@ -14,6 +14,6 @@
 * [layui](https://github.com/sentsin/layui/)
 
 > ## github:[https://github.com/netbuffer/UItest](https://github.com/netbuffer/UItest)  
-> ## git@osc:[http://git.oschina.net/gradle/UItest](http://git.oschina.net/gradle/UItest)
+> ## git@osc:[http://gitee.com/netbuffer/UItest](http://gitee.com/netbuffer/UItest)
 > ## github demo:[http://netbuffer.github.io/UItest/index.html](http://netbuffer.github.io/UItest/index.html)  
-> ## oschina demo:[http://gradle.gitee.io/uitest/](http://gradle.gitee.io/uitest/)
+> ## oschina demo:[http://netbuffer.gitee.io/uitest/](http://netbuffer.gitee.io/uitest/)
