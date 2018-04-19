@@ -1,4 +1,4 @@
-!/.gitignore
-/.classpath
-/.project
-/.idea/
+.classpath
+.project
+.idea
+*.iml
