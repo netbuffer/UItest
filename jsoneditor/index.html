@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsoneditor</title>
+    <link href="//cdn.bootcss.com/jsoneditor/5.16.0/jsoneditor.min.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/jsoneditor/5.16.0/jsoneditor.min.js"></script>
+</head>
+<body>
+<a href="https://github.com/josdejong/jsoneditor" target="_blank">https://github.com/josdejong/jsoneditor</a><br/><br/>
+<button onclick="alert(JSON.stringify(editor.get()))">editor.get()</button>&emsp;
+<button onclick="editor.set(json)">editor.set()</button>&emsp;
+<button onclick="editor.expandAll()">editor.expandAll()</button>&emsp;
+<div id="jsoneditor" style="width: 400px; height: 400px;"></div>
+
+<script>
+    // create the editor
+    var container = document.getElementById("jsoneditor");
+    var options = {
+        onChange() {
+            console.log(this.arguments);
+        }
+    };
+    var editor = new JSONEditor(container, options);
+    // set json data
+    var json = {
+        "Array": [1, 2, 3],
+        "Boolean": true,
+        "Null": null,
+        "Number": 123,
+        "Object": {"a": "b", "c": "d"},
+        "String": "Hello World"
+    };
+</script>
+</body>
+</html>
