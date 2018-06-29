@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery.serializeJSON</title>
+</head>
+<body>
+<a href="https://github.com/marioizquierdo/jquery.serializeJSON" target="_blank">https://github.com/marioizquierdo/jquery.serializeJSON</a>
+<hr/>
+<form id="json_div">
+    <input name="first[value]" type="text" value="" placeholder="first[value]"/>
+    <input name="first[color]" type="text" value="" placeholder="first[color]"/>
+    <div style="display: none;">
+        <input name="first[size]" value="" placeholder="first[size]"/>
+        <input name="first[hidden]" value="" type="hidden" placeholder="first[hidden]"/>
+    </div>
+</form>
+<button id="serialize_json_btn">serializeJSON</button>
+<script src="//cdn.bootcss.com/jquery/2.1.3/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.serializeJSON/2.9.0/jquery.serializejson.min.js"></script>
+<script>
+    $(function () {
+        $("#serialize_json_btn").click(function () {
+            alert(JSON.stringify($("#json_div").serializeJSON()));
+        });
+    });
+</script>
+</body>
+</html>
