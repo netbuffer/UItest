@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery-serializeForm</title>
+    <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="jquery-serializeForm.min.js"></script>
+</head>
+<body>
+<a href="https://github.com/danheberden/jquery-serializeForm" target="_blank">https://github.com/danheberden/jquery-serializeForm</a>
+<hr/>
+<button onclick="serialize_form()">serialize_form</button>
+<br/>
+<div id="test">
+    <input name="text1" value="txt-one"/><br/>
+    top[child][1]:<input type="checkbox" name="top[child][]" value="1" checked="checked"/><br/>
+    top[child][2]:<input type="checkbox" name="top[child][]" value="2" checked="checked"/><br/>
+    top[child][3]:<input type="checkbox" name="top[child][]" value="3" checked="checked"/><br/>
+    <select name="another[select]">
+        <option value="opt1">1</option>
+        <option value="opt2">2</option>
+        <option value="opt3">3</option>
+    </select>
+</div>
+<script>
+    function serialize_form() {
+        alert(JSON.stringify($('#test').serializeForm()));
+    }
+</script>
+</body>
+</html>
