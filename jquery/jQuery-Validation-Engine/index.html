@@ -1,64 +1,64 @@
 <!DOCTYPE html>
 <html>
 
-	<head lang="en">
-		<meta charset="UTF-8">
-		<title>jquery.validationEngine</title>
-		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
-		<link href="//cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/validationEngine.jquery.min.css" rel="stylesheet">
-		<script src="../../agile/assets/third/jquery/jquery-2.1.3.js"></script>
-		<script src="//cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/languages/jquery.validationEngine-zh_CN.min.js"></script>
-		<script src="//cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/jquery.validationEngine.min.js"></script>
-		<script src="../js/autoMail.1.0.min.js"></script>
-		<style type="text/css">
-			.formError .formErrorContent {
-				background-color: #00ABA9;
-			}
-		</style>
-		<script>
-			$(document).ready(function() {
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>jquery.validationEngine</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link href="//cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/validationEngine.jquery.min.css" rel="stylesheet">
+    <script src="../../agile/assets/third/jquery/jquery-2.1.3.js"></script>
+    <script src="//cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/languages/jquery.validationEngine-zh_CN.min.js"></script>
+    <script src="//cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/jquery.validationEngine.min.js"></script>
+    <script src="../js/autoMail.1.0.min.js"></script>
+    <style type="text/css">
+        .formError .formErrorContent {
+            background-color: #00ABA9;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
 
-			    $("#email").on("input",function () {
-					console.log("email:%s",$(this).val());
-                });
+            $("#email").on("input", function () {
+                console.log("email:%s", $(this).val());
+            });
 
-				$('#email,#email2,#email3,#email4,#email5,#email6').autoMail({
-				    emails:['qq.com','163.com','126.com','sina.com','sohu.com','yahoo.cn','gmail.com','hotmail.com','live.cn']
-				});
+            $('#email,#email2,#email3,#email4,#email5,#email6').autoMail({
+                emails: ['qq.com', '163.com', '126.com', 'sina.com', 'sohu.com', 'yahoo.cn', 'gmail.com', 'hotmail.com', 'live.cn']
+            });
 //				动态操作placeholder
-				$("#placeholder_test").on({
-				    focus: function() {
-				        $(this).data("placeholder",$(this).attr("placeholder"));
-				        $(this).attr("placeholder","")
-				    },
-				    blur: function() {
-				        $(this).attr("placeholder",$(this).data("placeholder"))
-				    }
-				});
-				
-				$('#file').on('change',function(){
-					alert('值已改变'+$(this).val());
-					$('#testhiddenfile').val($(this).val()).trigger("change");
-				});
-		 
-		 		$('#testhiddenfile').on('change',function(){
-					alert('hidden值已改变'+$(this).val());
-				});
-		 		
-				$("#demoForm").validationEngine('attach', {
-					showOneMessage: false,
-					"custom_error_messages": {
-						"#email": {
-							'required': {
-								'message': "邮件必填"
-							},
-							'custom[email]': {
-								'message': "邮件格式错误"
-							}
-						}
-					},
-					promptPosition: "top",
-					scroll: false
+            $("#placeholder_test").on({
+                focus: function () {
+                    $(this).data("placeholder", $(this).attr("placeholder"));
+                    $(this).attr("placeholder", "")
+                },
+                blur: function () {
+                    $(this).attr("placeholder", $(this).data("placeholder"))
+                }
+            });
+
+            $('#file').on('change', function () {
+                alert('值已改变' + $(this).val());
+                $('#testhiddenfile').val($(this).val()).trigger("change");
+            });
+
+            $('#testhiddenfile').on('change', function () {
+                alert('hidden值已改变' + $(this).val());
+            });
+
+            $("#demoForm").validationEngine('attach', {
+                showOneMessage: false,
+                "custom_error_messages": {
+                    "#email": {
+                        'required': {
+                            'message': "邮件必填"
+                        },
+                        'custom[email]': {
+                            'message': "邮件格式错误"
+                        }
+                    }
+                },
+                promptPosition: "top",
+                scroll: false
 //					onValidationComplete: function(form, status) {
 //						//可以通过这里阻止表单提交
 //						console.log("The form status is: " + status + ", it will never submit");
@@ -69,227 +69,251 @@
 //							return false;
 //						}
 //					}
-				});
-				//				$("#demoForm").validationEngine().css({border : "2px solid green"})
-				$("#check").click(function() {
-					console.log($("#demoForm").validationEngine('validate'));
-				});
-				$("#hideTip").click(function() {
-					$('#demoForm').validationEngine('hide');
-				});
-				console.log("typeof($(\"#username\").attr(\"disabled\"))==\"undefined\"：%s",typeof($("#username").attr("disabled"))=="undefined");
-				console.log("typeof($(\"#email\").attr(\"disabled\"))==\"undefined\"：%s",typeof($("#email").attr("disabled"))=="undefined");
-				$("#maxcheck1").change(function(){
-					alert($(this).prop("checked"));
-				});
-			});
+            });
+            //				$("#demoForm").validationEngine().css({border : "2px solid green"})
+            $("#check").click(function () {
+                console.log($("#demoForm").validationEngine('validate'));
+            });
+            $("#hideTip").click(function () {
+                $('#demoForm').validationEngine('hide');
+            });
+            console.log("typeof($(\"#username\").attr(\"disabled\"))==\"undefined\"：%s", typeof($("#username").attr("disabled")) == "undefined");
+            console.log("typeof($(\"#email\").attr(\"disabled\"))==\"undefined\"：%s", typeof($("#email").attr("disabled")) == "undefined");
+            $("#maxcheck1").change(function () {
+                alert($(this).prop("checked"));
+            });
+        });
 
-			function checkNum(field, rules, i, options) {
-				if(field.val() < 0) {
-					return "该输入必须大于0";
-				}
-			}
-			
-			/**
-			 *校验两位小数 
-			 */
-			var decimal_num_two_format=/^\d+([.]{1}\d{1,2})?$/;
-			function check_decimal_num(field, rules, i, options) {
-				if(!decimal_num_two_format.test(field.val())){
-					return "最多两位小数";
-				}
-			}
+        function checkNum(field, rules, i, options) {
+            if (field.val() < 0) {
+                return "该输入必须大于0";
+            }
+        }
 
-			function checkDomain(field, rules, i, options) {
-				if(!validDomain(field.val())) {
-					return "请输入正确的domain";
-				}
-			}
+        /**
+         *校验两位小数
+         */
+        var decimal_num_two_format = /^\d+([.]{1}\d{1,2})?$/;
 
-			function CheckIsValidDomain(domain) {
-				return /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain);
-			}
+        function check_decimal_num(field, rules, i, options) {
+            if (!decimal_num_two_format.test(field.val())) {
+                return "最多两位小数";
+            }
+        }
 
-			//检测域名 www.baidu.com格式
-			function validDomain(domain) {
+        function checkDomain(field, rules, i, options) {
+            if (!validDomain(field.val())) {
+                return "请输入正确的domain";
+            }
+        }
+
+        function CheckIsValidDomain(domain) {
+            return /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain);
+        }
+
+        //检测域名 www.baidu.com格式
+        function validDomain(domain) {
 //				/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{1,})+$/
-				if(/^[a-zA-Z0-9-]{1,61}(?:\.[a-zA-Z]{1,})+$/.test(domain)) {
+            if (/^[a-zA-Z0-9-]{1,61}(?:\.[a-zA-Z]{1,})+$/.test(domain)) {
 //					console.log("Valid Domain Name");
-					return true;
-				} else {
+                return true;
+            } else {
 //					console.log("Enter Valid Domain Name");
-					return false;
-				}
-			}
+                return false;
+            }
+        }
 
-			function getHostName(url) {
-				var match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
-				if(match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) {
-					return match[2];
-				} else {
-					return null;
-				}
-			}
+        function getHostName(url) {
+            var match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
+            if (match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) {
+                return match[2];
+            } else {
+                return null;
+            }
+        }
 
-			function getDomain(url) {
-				var hostName = getHostName(url);
-				var domain = hostName;
+        function getDomain(url) {
+            var hostName = getHostName(url);
+            var domain = hostName;
 
-				if(hostName != null) {
-					var parts = hostName.split('.').reverse();
+            if (hostName != null) {
+                var parts = hostName.split('.').reverse();
 
-					if(parts != null && parts.length > 1) {
-						domain = parts[1] + '.' + parts[0];
+                if (parts != null && parts.length > 1) {
+                    domain = parts[1] + '.' + parts[0];
 
-						if(hostName.toLowerCase().indexOf('.co.uk') != -1 && parts.length > 2) {
-							domain = parts[2] + '.' + domain;
-						}
-					}
-				}
+                    if (hostName.toLowerCase().indexOf('.co.uk') != -1 && parts.length > 2) {
+                        domain = parts[2] + '.' + domain;
+                    }
+                }
+            }
 
-				return domain;
-			}
-			
-			function checkField(id){
-				console.log("校验结果:%s",$("#"+id).validationEngine('validate'));
-			}
-			
-			function testform(){
-				console.log("document.forms[0]:%o",document.forms[0]);
-				console.log("document.forms.demoForm:%o",document.forms.demoForm);
-				console.log("document.demoForm:%o",document.demoForm);
-				console.log("document.getElementById(\"demoForm\"):%o",document.getElementById("demoForm"));
-			}
-			
-			function testinput(){
-				console.log("document.forms[0].username:%o",document.forms[0].username);
-				console.log("document.forms[0].elements[0]):%o",document.forms[0].elements[0]);
-				console.log("document.forms[0].elements[\"username\"]:%o",document.forms[0].elements["username"]);
-			}
-			
-			//用momentjs校验时间大小
-			function check_end_time(field, rules, i, options) {
-	            var flag=false;
-	            var end=new Date(moment(field.val())).getTime();
-	            var start=new Date(moment($("#beginTime").val())).getTime();
-	            if(start!=undefined&&start!=null&&start>0){
-	                if((end-start)>0){
-	                    flag=true;
-	                }
-	            }else {
-	                flag=true;
-	            }
-	            if(!flag) {
-	                return "结束时间必须大于开始时间";
-	            }
-	        }
-			
-		</script>
-	</head>
+            return domain;
+        }
 
-	<body>
-		<a href="http://posabsolute.github.io/jQuery-Validation-Engine/#custom_error_messages" target="_blank">
-			<h1>http://posabsolute.github.io/jQuery-Validation-Engine/#custom_error_messages</h1>
-		</a>
-		<!--文档地址:http://posabsolute.github.io/jQuery-Validation-Engine/#custom_error_messages-->
-		<div class="container">
-			<form id="demoForm" name="demoForm" action="http://127.0.0.1" class="form-control" method="get">
-				<fieldset>
-					<fieldset>
-						<legend id="legendid">Email</legend>
-						<a href="#" onclick="$('#legendid').validationEngine('showPrompt', 'This a custom msg', 'load')">Show prompt</a>
-					</fieldset>
-					<legend>用户登录</legend>
-					<p id="info"></p>
-					<p id="info2" style="display: none">输入错误</p>
-					<p>
-						<label for="username">用户名</label>
-						<input type="text" id="username" disabled="disabled" class="form-control validate[required]" name="username" />
-					</p>
+        function checkField(id) {
+            console.log("校验结果:%s", $("#" + id).validationEngine('validate'));
+        }
 
-					<p>
-						<label for="password">密码</label>
-						<input type="password"  onpaste="return false;" oncontextmenu="return false;" oncopy="return false;" oncut="return false;"
-							 id="password" class="form-control validate[required]" name="password" />
-					</p>
+        function testform() {
+            console.log("document.forms[0]:%o", document.forms[0]);
+            console.log("document.forms.demoForm:%o", document.forms.demoForm);
+            console.log("document.demoForm:%o", document.demoForm);
+            console.log("document.getElementById(\"demoForm\"):%o", document.getElementById("demoForm"));
+        }
 
-					<p>
-						<label for="confirm-password">确认密码</label>
-						<input type="password" onpaste="return false;" oncontextmenu="return false;" oncopy="return false;" oncut="return false;" 
-							id="confirm-password" class="form-control validate[required,equals[password]]" name="confirm-password" />
-					</p>
+        function testinput() {
+            console.log("document.forms[0].username:%o", document.forms[0].username);
+            console.log("document.forms[0].elements[0]):%o", document.forms[0].elements[0]);
+            console.log("document.forms[0].elements[\"username\"]:%o", document.forms[0].elements["username"]);
+        }
 
-					<p>
-						<label for="email">邮件</label>
-						<input id="email" type="text" class="form-control validate[required,custom[email],minSize[3],maxSize[10]]" name="email" />
-					</p>
+        //用momentjs校验时间大小
+        function check_end_time(field, rules, i, options) {
+            var flag = false;
+            var end = new Date(moment(field.val())).getTime();
+            var start = new Date(moment($("#beginTime").val())).getTime();
+            if (start !== undefined && start != null && start > 0) {
+                if ((end - start) > 0) {
+                    flag = true;
+                }
+            } else {
+                flag = true;
+            }
+            if (!flag) {
+                return "结束时间必须大于开始时间";
+            }
+        }
 
-					<p>
-						<label for="phone">手机</label>
-						<input id="phone" type="text" class="form-control validate[required,custom[phone],minSize[11],maxSize[11]]" maxlength="11" name="phone" />
-					</p>
-					
-					<p>
-						<label for="phonecode">手机验证码</label>
-						<input id="phonecode" type="text" class="form-control validate[required,custom[onlyLetterNumber],minSize[6],maxSize[6]]" maxlength="6" name="phonecode" />
-					</p>
+    </script>
+</head>
 
-					<p>
-						<label for="num">自定义函数验证</label>
-						<input id="num" type="text" class="form-control validate[required,custom[number],funcCall[checkNum],min[1],max[100.05]]" name="num" />
-					</p>
-					<p>
-					<p>
-						<label for="decimal_num">两位小数校验</label>
-						<input id="decimal_num" type="text" class="form-control validate[required,custom[number],funcCall[check_decimal_num]]" name="decimal_num" />
-					</p>
-					<p>
-						<label for="file">文件</label>
-						<input id="file" type="file" class="form-control validate[required,custom[number],funcCall[checkNum],min[1],max[100.05]]" name="file" />
-						<input type="hidden" value="" id="testhiddenfile" />
-					</p>
-					<p>
-						<label for="domain">domain</label>
-						<input type="text" class="form-control validate[required,funcCall[checkDomain]]" id="domain" name="domain" />
-						<a class="btn btn-warning" onclick="checkField('domain');">手动验证该字段</a>
-					</p>
-					<p>
-						<label for="weight">权重值</label>
-						<input type="number" class="form-control validate[required,min[0],custom[integer]]" name="weight" id="weight" placeholder="权重值越高,相同时间条件下优先生效" />
-						<a class="btn btn-warning" onclick="checkField('weight');">手动验证该字段</a>
-					</p>
-					<p>
-						<label for="domain">textarea</label>
-						<textarea name="textarea" id="textarea" class="form-control validate[required,minSize[1],maxSize[10]]"></textarea>
-					</p>
-					<p>
-						minCheckbox:
-						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck1" value="5" />
-						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck2" value="3" />
-						<input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck3" value="9" />
-						<hr /> condrequired(两者需要同时填写/或者不写):
-						<input value="" type="text" name="creditcard" class="validate[condRequired[ccv]]" id="creditcard" />
-						<input class="validate[condRequired[creditcard]]" type="text" id="ccv" name="ccv" />
-					</p>
-					<p>
-						<button id="check" class="btn btn-default">检查表单</button>&emsp;<a id="hideTip" class="btn btn-default">隐藏所有校验提示</a>&emsp;
-					</p>
-					<p>
-						groupRequired1:<input value="" class="validate[groupRequired[payments]]" type="text" name="creditcard" id="creditcard" />
-						groupRequired2:<input class="validate[groupRequired[payments]]" type="text" id="paypal" name="paypal" />
-					</p>
-					<p>
-						placeholder: <input value="" class="" type="text" placeholder="2342342342342423432" name="placeholder_test" id="placeholder_test" />
-					</p>
-					<p>
-						<a href="#" onclick="$('#legendid').validationEngine('showPrompt', 'This a custom msg', 'load')">Show prompt</a>
-						<input type="submit" class="btn btn-default" value="登录" />
-						<input type="button" class="btn btn-default" value="获取表单" onclick="testform();"/>
-						<input type="button" class="btn btn-default" value="获取表单域" onclick="testinput();"/>
-					</p>
-				</fieldset>
-			</form>
-		</div>
-	</body>
-	<script src="../js/statistics_dom.min.js" type="text/javascript" charset="utf-8"></script>
+<body>
+<a href="http://posabsolute.github.io/jQuery-Validation-Engine/#custom_error_messages" target="_blank">
+    <h1>http://posabsolute.github.io/jQuery-Validation-Engine/#custom_error_messages</h1>
+</a>
+<!--文档地址:http://posabsolute.github.io/jQuery-Validation-Engine/#custom_error_messages-->
+<div class="container">
+    <form id="demoForm" name="demoForm" action="http://127.0.0.1" class="form-control" method="get">
+        <fieldset>
+            <fieldset>
+                <legend id="legendid">Email</legend>
+                <a href="#" onclick="$('#legendid').validationEngine('showPrompt', 'This a custom msg', 'load')">Show
+                    prompt</a>
+            </fieldset>
+            <legend>用户登录</legend>
+            <p id="info"></p>
+            <p id="info2" style="display: none">输入错误</p>
+            <p>
+                <label for="username">用户名</label>
+                <input type="text" id="username" disabled="disabled" class="form-control validate[required]"
+                       name="username"/>
+            </p>
+
+            <p>
+                <label for="password">密码</label>
+                <input type="password" onpaste="return false;" oncontextmenu="return false;" oncopy="return false;"
+                       oncut="return false;"
+                       id="password" class="form-control validate[required]" name="password"/>
+            </p>
+
+            <p>
+                <label for="confirm-password">确认密码</label>
+                <input type="password" onpaste="return false;" oncontextmenu="return false;" oncopy="return false;"
+                       oncut="return false;"
+                       id="confirm-password" class="form-control validate[required,equals[password]]"
+                       name="confirm-password"/>
+            </p>
+
+            <p>
+                <label for="email">邮件</label>
+                <input id="email" type="text"
+                       class="form-control validate[required,custom[email],minSize[3],maxSize[10]]" name="email"/>
+            </p>
+
+            <p>
+                <label for="phone">手机</label>
+                <input id="phone" type="text"
+                       class="form-control validate[required,custom[phone],minSize[11],maxSize[11]]" maxlength="11"
+                       name="phone"/>
+            </p>
+
+            <p>
+                <label for="phonecode">手机验证码</label>
+                <input id="phonecode" type="text"
+                       class="form-control validate[required,custom[onlyLetterNumber],minSize[6],maxSize[6]]"
+                       maxlength="6" name="phonecode"/>
+            </p>
+
+            <p>
+                <label for="num">自定义函数验证</label>
+                <input id="num" type="text"
+                       class="form-control validate[required,custom[number],funcCall[checkNum],min[1],max[100.05]]"
+                       name="num"/>
+            </p>
+            <p>
+            <p>
+                <label for="decimal_num">两位小数校验</label>
+                <input id="decimal_num" type="text"
+                       class="form-control validate[required,custom[number],funcCall[check_decimal_num]]"
+                       name="decimal_num"/>
+            </p>
+            <p>
+                <label for="file">文件</label>
+                <input id="file" type="file"
+                       class="form-control validate[required,custom[number],funcCall[checkNum],min[1],max[100.05]]"
+                       name="file"/>
+                <input type="hidden" value="" id="testhiddenfile"/>
+            </p>
+            <p>
+                <label for="domain">domain</label>
+                <input type="text" class="form-control validate[required,funcCall[checkDomain]]" id="domain"
+                       name="domain"/>
+                <a class="btn btn-warning" onclick="checkField('domain');">手动验证该字段</a>
+            </p>
+            <p>
+                <label for="weight">权重值</label>
+                <input type="number" class="form-control validate[required,min[0],custom[integer]]" name="weight"
+                       id="weight" placeholder="权重值越高,相同时间条件下优先生效"/>
+                <a class="btn btn-warning" onclick="checkField('weight');">手动验证该字段</a>
+            </p>
+            <p>
+                <label for="domain">textarea</label>
+                <textarea name="textarea" id="textarea"
+                          class="form-control validate[required,minSize[1],maxSize[10]]"></textarea>
+            </p>
+            <p>
+                minCheckbox:
+                <input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck1" value="5"/>
+                <input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck2" value="3"/>
+                <input class="validate[minCheckbox[2]]" type="checkbox" name="group1" id="maxcheck3" value="9"/>
+            <hr/>
+            condrequired(两者需要同时填写/或者不写):
+            <input value="" type="text" name="creditcard" class="validate[condRequired[ccv]]" id="creditcard"/>
+            <input class="validate[condRequired[creditcard]]" type="text" id="ccv" name="ccv"/>
+            </p>
+            <p>
+                <button id="check" class="btn btn-default">检查表单</button>&emsp;<a id="hideTip" class="btn btn-default">隐藏所有校验提示</a>&emsp;
+            </p>
+            <p>
+                groupRequired1:<input value="" class="validate[groupRequired[payments]]" type="text" name="creditcard"
+                                      id="creditcard"/>
+                groupRequired2:<input class="validate[groupRequired[payments]]" type="text" id="paypal" name="paypal"/>
+            </p>
+            <p>
+                placeholder: <input value="" class="" type="text" placeholder="2342342342342423432"
+                                    name="placeholder_test" id="placeholder_test"/>
+            </p>
+            <p>
+                <a href="#" onclick="$('#legendid').validationEngine('showPrompt', 'This a custom msg', 'load')">Show
+                    prompt</a>
+                <input type="submit" class="btn btn-default" value="登录"/>
+                <input type="button" class="btn btn-default" value="获取表单" onclick="testform();"/>
+                <input type="button" class="btn btn-default" value="获取表单域" onclick="testinput();"/>
+            </p>
+        </fieldset>
+    </form>
+</div>
+</body>
+<script src="../js/statistics_dom.min.js" type="text/javascript" charset="utf-8"></script>
 </html>
