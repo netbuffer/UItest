@@ -15,12 +15,13 @@
             obj.id = 111;
             obj.name = "aaa";
             obj["address.name"] = "lllll";
-            alert(JSON.stringify(obj));
+            alert(JSON.stringify(obj,null,4));
         }
     </script>
 </head>
 <body>
-<a href="https://github.com/macek/jquery-serialize-object" target="_blank">https://github.com/macek/jquery-serialize-object</a>
+<a href="https://github.com/macek/jquery-serialize-object" target="_blank">https://github.com/macek/jquery-serialize-object</a><br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify" target="_blank">JSON.stringify</a>
 <hr/>
 <button onclick="serialize_form();">序列化</button>&emsp;<button onclick="serialize_form_extra();">序列化附加参数</button>&emsp;
 <form>
