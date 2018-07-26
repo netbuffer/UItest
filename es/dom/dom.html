@@ -1,468 +1,497 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>dom</title>
-		<script src="//cdn.bootcss.com/randomcolor/0.4.4/randomColor.min.js"></script>
-		<script type="text/javascript">
-			function test(a){
-				console.log("方法1");
-				console.log(a);
-			}
-			function test(a,b){
-				console.log("方法2");
-				console.log(a+b);
-			}
-			test(1);
-			test(1,2);
-			//出现js错误的处理
-			window.onerror=function(){
-				console.log("系统发生错误");
-				return true;
-			}
-			window.onload=function(){
-				//预加载图片
-				var img=new Image();  
-			    img.id="img-not-bad";
-				img.src="../../jquery/Unslider/t1.jpg";
-			    img.onload=function(){alert("img is loaded")};
-			    img.onerror=function(){alert("img load error!")};  
+<head>
+    <meta charset="UTF-8">
+    <title>dom</title>
+    <script src="//cdn.bootcss.com/randomcolor/0.4.4/randomColor.min.js"></script>
+    <script type="text/javascript">
+        function test(a) {
+            console.log("方法1");
+            console.log(a);
+        }
+
+        function test(a, b) {
+            console.log("方法2");
+            console.log(a + b);
+        }
+
+        test(1);
+        test(1, 2);
+        //出现js错误的处理
+        window.onerror = function (error) {
+            console.log("系统发生错误:%o", error);
+            return true;
+        }
+        window.onload = function () {
+
+            //预加载图片
+            var img = new Image();
+            img.id = "img-not-bad";
+            img.src = "../../jquery/Unslider/t1.jpg";
+            img.onload = function () {
+                alert("img is loaded")
+            };
+            img.onerror = function () {
+                alert("img load error!")
+            };
 
 //				window.open('//www.baidu.com','_blank');//会被浏览器拦截
-				var arr=document.getElementsByTagName("img");
-				for(var i=0;i<arr.length;i++){
-				  console.log(arr[i].outerHTML);
-				  console.log(arr[i].src);
-				}
-				document.onmousedown=mouseev;
-				document.onkeydown=keybind;
-				document.oncontextmenu=denyrightclick;
-				document.linkColor="black";
-				document.vlinkColor="black";
-				document.alinkColor="black";
-				if(typeof img1.attachEvent=="function"){
-					img1.attachEvent("onclick",imgclick);
-					setTimeout(img1.detachEvent("onclick",function(){}),3000);
-				}else{
-					img1.addEventListener("click",imgclick);
-					setTimeout(img1.removeEventListener("click",function(){}),3000);
-				}
-			}
-			
-			function changeimg(obj){
-				//调用预加载的图片
-				obj.src="../Unslider/t (1).jpg";
-			}
-			
-			function denyrightclick(){
-				var e=getEvent();
-				e.returnValue=false;
-				alert("屏蔽右键");
-				return false;
-			}
-			
-			/**
-			 * 有的浏览器有默认的冲突快捷键，js这里拿不到通知，就不会执行了...
-			 */
-			function keybind(){
-				var e=getEvent();
-				var kc=e.keyCode;
-				console.log(e);
-				console.log("event对象:%s",e.srcElement?e.srcElement.tagName:e.target.tagName);
-				if(e.ctrlKey){
-					console.log("ctrl键%s",e.keyCode);
-				}else if(e.altKey){
-					console.log("alt键%s",e.keyCode);
-				}else if(e.shiftKey){
-					console.log("shift键%s",e.keyCode);
-				}
-				console.log("键盘键位:%s",kc);
-				if(e.ctrlKey&&e.keyCode==78){
-					e.returnValue=false;
-					alert("当前设置不允许使用CTRL+N新建窗口");
-				}
-				if(e.shiftKey&&e.keyCode==65){
-					e.returnValue=false;
-					alert("当前设置不允许使用SHIFT+A");
-				}
-				switch (kc){
-					case 8:
-						alert("当前设置不允许使用退格");
-						e.keyCode=0;
-						e.returnValue=false;
-						break;
-					case 13:
-						alert("当前设置不允许使用回车");
-						e.keyCode=0;
-						e.returnValue=false;
-						break;
-					case 116:
-						alert("当前设置不允许使用F5刷新");
-						e.keyCode=0;
-						e.returnValue=false;
-						break;
-					case 37:
-						if(e.altKey){
-							alert("当前设置不允许使用ALT+方向键");
-							e.returnValue=false;
-							break;
-						}
-					case 38:
-						if(e.altKey){
-							alert("当前设置不允许使用ALT+方向键");
-							e.returnValue=false;
-							break;
-						}
-					case 39:
-						if(e.altKey){
-							alert("当前设置不允许使用ALT+方向键");
-							e.returnValue=false;
-							break;
-						}
-					case 40:
-						if(e.altKey){
-							alert("当前设置不允许使用ALT+方向键");
-							e.returnValue=false;
-							break;
-						}
-					default:
-						break;
-				}
-			}
-			
-			function imgclick(){
-				alert("单击图片");	
-			}
-			
-			function newWin(url, id) {
-              var a = document.createElement('a');
-              a.setAttribute('href', url);
-              a.setAttribute('target', '_blank');
-              a.setAttribute('id', id);
-              // 防止反复添加
-              if(!document.getElementById(id)) {                     
-                  document.body.appendChild(a);
-              }
-              a.click();
-  			}
-			
-			function change_bg_color(){
-				var color=randomColor();
-				console.log("change color:%s",color); 
-				document.getElementsByTagName('body')[0].style["background-color"]=color;
-			}
-//			setInterval("change_bg_color()",3000);
-			
-			function testtypeof(){
-				var i_a=1;
-				var s_s="s";
-				var b_b=true;
-				var o_curdate=new Date;
-				var f_f=change_bg_color;
-				//typeof返回值是字符串类型
-				console.log("typeof i_a:%s",typeof i_a);
-				console.log("typeof s_s:%s",typeof s_s);
-				console.log("typeof b_b:%s",typeof b_b);
-				console.log("typeof o_curdate:%s",typeof o_curdate);
-				console.log("typeof f_f:%s",typeof f_f);
-				console.log("(typeof typeof f_f):%s",(typeof typeof f_f));
-			}
-			
-			function getEvent(){
-			     if(window.event)    {return window.event;}
-			     func=getEvent.caller;
-			     while(func!=null){
-			         var arg0=func.arguments[0];
-			         if(arg0){
-			             if((arg0.constructor==Event || arg0.constructor ==MouseEvent
-			                || arg0.constructor==KeyboardEvent)
-			                ||(typeof(arg0)=="object" && arg0.preventDefault
-			                && arg0.stopPropagation)){
-			                 return arg0;
-			             }
-			         }
-			         func=func.caller;
-			     }
-			     return null;
-			}
-			
-			function mouseev(){
-				var event=getEvent();
-				console.log("event:%s",JSON.stringify(event));
-				if(event.button==2){
-					event.returnValue=false;
-					alert("禁止右键");
-					console.log("禁止右键");
-				}				
-			}
-			//递归函数计算阶乘
-			function j(num){
-				if(num<=1){
-					return 1;
-				}
-				return j(num-1)*num;
-			}
-			
-			/**
-			 * 测试string
-			 */
-			function teststr(){
-				var hlo="hello world!";
-				console.log("hlo.match(\"wor\"):%s",hlo.match("wor"));
-				console.log("hlo.search(\"llo\"):%s",hlo.search("llo"));
-				console.log("hlo.replace(\"hello\",\"hi\"):%s",hlo.replace("hello","hi"));
-				var str="123,aaa";
-				console.log(str+".replace(/\d*/,\"number\"):%s",str.replace(/\d*/,"number"));
-				console.log("str.split(\"\"):%s",str.split(""));
-				console.log("str.split(\" \"):%s",str.split(" "));
-				console.log("str.split(\",\"):%s",str.split(","));
-				console.log("str.split(\"\",3):%s",str.split("",3));	
-			}
-			
-			/**
-			 * 测试number
-			 */
-			function testnum(){
-				var num=new Number(123);
-				console.log("num.toString():%s",num.toString());
-				console.log("Number.MAX_INTEGER:%s",Number.MAX_INTEGER);
-				console.log("Number.MIN_SAFE_INTEGER:%s",Number.MIN_SAFE_INTEGER);
-				console.log("Number.MAX_SAFE_INTEGER:%s",Number.MAX_SAFE_INTEGER);
-				console.log("Number.MAX_VALUE:%s",Number.MAX_VALUE);
-				console.log("Number.MIN_VALUE:%s",Number.MIN_VALUE);
-				console.log("Number.NEGATIVE_INFINITY:%s",Number.NEGATIVE_INFINITY);
-				console.log("Number.POSITIVE_INFINITY:%s",Number.POSITIVE_INFINITY);
-				//十进制、二进制、八进制、十六进制
-				console.log("num.toString(10):%s",num.toString(10));
-				console.log("num.toString(2):%s",num.toString(2));
-				console.log("num.toString(8):%s",num.toString(8));
-				console.log("num.toString(16):%s",num.toString(16));
-				console.log("num.toLocaleString():%s",num.toLocaleString());
-				console.log("num.toFixed(0):%s",num.toFixed(0));
-				console.log("num.toFixed(1):%s",num.toFixed(1));
-				console.log("num.toFixed(2):%s",num.toFixed(2));
-				console.log("num.toFixed(3):%s",num.toFixed(3));
-				console.log("num.toExponential(0):%s",num.toExponential(0));
-				console.log("num.toExponential(1):%s",num.toExponential(1));
-				console.log("num.toExponential(2):%s",num.toExponential(2));
-				console.log("num.toExponential(3):%s",num.toExponential(3));
-				console.log("num.toPrecision(2):%s",num.toPrecision(2));	
-			}
-			
-			/**
-			 * 测试boolean类型数据
-			 */
-			function testboolean(){
-				var bool=new Boolean(2);
-				console.log("bool.constructor:%s",bool.constructor);
-				console.log("bool.constructor==Boolean:%s",bool.constructor==Boolean);
-				Boolean.prototype.echo=function(){
-					console.log("echo boolean");
-				};
-				bool.echo();
-				console.log("bool.toString():%s",bool.toString());
-				console.log("typeof bool.toString():%s",typeof bool.toString());
-				console.log("bool.valueOf():%s",bool.valueOf());
-				console.log("typeof bool.valueOf():%s",typeof bool.valueOf());
-			}
-			
-			function testdate(){
-				var date=new Date();
-				console.log("date:%s",date);
-				console.log("date.constructor:%s",date.constructor);
-				Date.prototype.echo=function(){
-					console.log("echo date");
-				}
-				console.log("date.constructor:%s",date.constructor);
-				date.echo();
-				console.log("date.constructor==Date:%s",date.constructor==Date);
-				console.log("typeof date.constructor:%s",typeof date.constructor);
-			}
-			
-			function testArr(){
-				var arr=new Array(3);
-				arr[0]=1;
-				arr[1]=2;
-				arr[2]=3;
-				arr[3]=4;
-				console.log("arr:%s",arr);
-				var arr2=new Array(1,2,3,"a","b");
-				arr2[5]="c";
-				console.log("arr2:%s",arr2);
-				console.log("arr.length:%s",arr.length);
-				Array.prototype.echo=function(){
-					console.log(this.join("^_^"));
-				}
-				arr2.echo();
-				console.log("arr2.concat(\"test1\",\"test2\"):%s",arr2.concat("test1","test2"));
-				console.log("arr.reverse():%s",arr.reverse());//逆序排列
-				arr2.sort();
-				console.log("arr2-sort:%s",arr2);
-//				arr2.length=10;				
-				console.log("arr2.length:%s",arr2.length);
-				console.log("arr2.shift():%s",arr2.shift());
-				console.log("arr2.pop():%s",arr2.pop());
-				console.log("arr2.unshift(\"ui\",\"test\"):%s",arr2.unshift("ui","test"));
-				console.log("arr2.push(4):%s",arr2.push(4));
-				console.log("arr2.push(4,5,6):%s",arr2.push(4,5,6));
-				console.log("arr2.toString():%s",arr2.toString());
-				console.log("arr2.toLocaleString():%s",arr2.toLocaleString());
-				console.log("arr2.join(\"-\"):%s",arr2.join("-"));
-				console.log("arr2.splice(2):%s",arr2.splice(2));
-				console.log("arr2:%s",arr2);
-			}
-			
-			function getimgstate(){
-				var img1=document.getElementById("img1");
-				alert(img1.readyState);
-			}
-			
-			function createdocument(){
-				var dw=window.open();
-				dw.document.open();
-				dw.document.writeln("test<br/>");
-				console.log(dw.opener);
-				dw.document.writeln(dw.opener);
-				dw.document.close();
-			}
-			
-			function testerror(){
-				var i;
-				try{
-					i=1/0;
-					k
-				}catch(e){
-					console.log(e);
-					throw new Error(e);
-				}finally{
-					console.log("finally");					
-				}
-			}
-			
-			function testwindow(){
-				/**
-				 * Window是不需要使用new运算符创建的对象。因此，在使用Window对象时，只要直接使用"window"来引用Window对象即可
-				 */
-				console.log("parent:%s",parent);
-				console.log("self:%s",self);
-				oper_win=openwin("highlight.html","高亮显示代码页面","width="+screen.availWidth/2+",height="+screen.availHeight/2+",top=10,left=20,scrollbars,resizable,toolbar,menubar,status,location,directories,copyhistory");
-				console.log("oper_win：%s",oper_win);
-				setTimeout("window.moveTo(300,500)",1000);
-				setTimeout(closewin(oper_win),2000);
+            var arr = document.getElementsByTagName("img");
+            for (var i = 0; i < arr.length; i++) {
+                console.log(arr[i].outerHTML);
+                console.log(arr[i].src);
+            }
+            document.onmousedown = mouseev;
+            document.onkeydown = keybind;
+            document.oncontextmenu = denyrightclick;
+            document.linkColor = "black";
+            document.vlinkColor = "black";
+            document.alinkColor = "black";
+            if (typeof img1.attachEvent == "function") {
+                img1.attachEvent("onclick", imgclick);
+                setTimeout(img1.detachEvent("onclick", function () {
+                }), 3000);
+            } else {
+                img1.addEventListener("click", imgclick);
+                setTimeout(img1.removeEventListener("click", function () {
+                }), 3000);
+            }
+        }
+
+        function changeimg(obj) {
+            //调用预加载的图片
+            obj.src = "../Unslider/t (1).jpg";
+        }
+
+        function denyrightclick() {
+            var e = getEvent();
+            e.returnValue = false;
+            alert("屏蔽右键");
+            return false;
+        }
+
+        /**
+         * 有的浏览器有默认的冲突快捷键，js这里拿不到通知，就不会执行了...
+         */
+        function keybind() {
+            var e = getEvent();
+            var kc = e.keyCode;
+            console.log(e);
+            console.log("event对象:%s", e.srcElement ? e.srcElement.tagName : e.target.tagName);
+            if (e.ctrlKey) {
+                console.log("ctrl键%s", e.keyCode);
+            } else if (e.altKey) {
+                console.log("alt键%s", e.keyCode);
+            } else if (e.shiftKey) {
+                console.log("shift键%s", e.keyCode);
+            }
+            console.log("键盘键位:%s", kc);
+            if (e.ctrlKey && e.keyCode == 78) {
+                e.returnValue = false;
+                alert("当前设置不允许使用CTRL+N新建窗口");
+            }
+            if (e.shiftKey && e.keyCode == 65) {
+                e.returnValue = false;
+                alert("当前设置不允许使用SHIFT+A");
+            }
+            switch (kc) {
+                case 8:
+                    alert("当前设置不允许使用退格");
+                    e.keyCode = 0;
+                    e.returnValue = false;
+                    break;
+                case 13:
+                    alert("当前设置不允许使用回车");
+                    e.keyCode = 0;
+                    e.returnValue = false;
+                    break;
+                case 116:
+                    alert("当前设置不允许使用F5刷新");
+                    e.keyCode = 0;
+                    e.returnValue = false;
+                    break;
+                case 37:
+                    if (e.altKey) {
+                        alert("当前设置不允许使用ALT+方向键");
+                        e.returnValue = false;
+                        break;
+                    }
+                case 38:
+                    if (e.altKey) {
+                        alert("当前设置不允许使用ALT+方向键");
+                        e.returnValue = false;
+                        break;
+                    }
+                case 39:
+                    if (e.altKey) {
+                        alert("当前设置不允许使用ALT+方向键");
+                        e.returnValue = false;
+                        break;
+                    }
+                case 40:
+                    if (e.altKey) {
+                        alert("当前设置不允许使用ALT+方向键");
+                        e.returnValue = false;
+                        break;
+                    }
+                default:
+                    break;
+            }
+        }
+
+        function imgclick() {
+            alert("单击图片");
+        }
+
+        function newWin(url, id) {
+            var a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('target', '_blank');
+            a.setAttribute('id', id);
+            // 防止反复添加
+            if (!document.getElementById(id)) {
+                document.body.appendChild(a);
+            }
+            a.click();
+        }
+
+        function change_bg_color() {
+            var color = randomColor();
+            console.log("change color:%s", color);
+            document.getElementsByTagName('body')[0].style["background-color"] = color;
+        }
+
+        //			setInterval("change_bg_color()",3000);
+
+        function testtypeof() {
+            var i_a = 1;
+            var s_s = "s";
+            var b_b = true;
+            var o_curdate = new Date;
+            var f_f = change_bg_color;
+            //typeof返回值是字符串类型
+            console.log("typeof i_a:%s", typeof i_a);
+            console.log("typeof s_s:%s", typeof s_s);
+            console.log("typeof b_b:%s", typeof b_b);
+            console.log("typeof o_curdate:%s", typeof o_curdate);
+            console.log("typeof f_f:%s", typeof f_f);
+            console.log("(typeof typeof f_f):%s", (typeof typeof f_f));
+        }
+
+        function getEvent() {
+            if (window.event) {
+                return window.event;
+            }
+            func = getEvent.caller;
+            while (func != null) {
+                var arg0 = func.arguments[0];
+                if (arg0) {
+                    if ((arg0.constructor == Event || arg0.constructor == MouseEvent
+                        || arg0.constructor == KeyboardEvent)
+                        || (typeof(arg0) == "object" && arg0.preventDefault
+                            && arg0.stopPropagation)) {
+                        return arg0;
+                    }
+                }
+                func = func.caller;
+            }
+            return null;
+        }
+
+        function mouseev() {
+            var event = getEvent();
+            console.log("event:%s", JSON.stringify(event));
+            if (event.button == 2) {
+                event.returnValue = false;
+                alert("禁止右键");
+                console.log("禁止右键");
+            }
+        }
+
+        //递归函数计算阶乘
+        function j(num) {
+            if (num <= 1) {
+                return 1;
+            }
+            return j(num - 1) * num;
+        }
+
+        /**
+         * 测试string
+         */
+        function teststr() {
+            var hlo = "hello world!";
+            console.log("hlo.match(\"wor\"):%s", hlo.match("wor"));
+            console.log("hlo.search(\"llo\"):%s", hlo.search("llo"));
+            console.log("hlo.replace(\"hello\",\"hi\"):%s", hlo.replace("hello", "hi"));
+            var str = "123,aaa";
+            console.log(str + ".replace(/\d*/,\"number\"):%s", str.replace(/\d*/, "number"));
+            console.log("str.split(\"\"):%s", str.split(""));
+            console.log("str.split(\" \"):%s", str.split(" "));
+            console.log("str.split(\",\"):%s", str.split(","));
+            console.log("str.split(\"\",3):%s", str.split("", 3));
+        }
+
+        /**
+         * 测试number
+         */
+        function testnum() {
+            var num = new Number(123);
+            console.log("num.toString():%s", num.toString());
+            console.log("Number.MAX_INTEGER:%s", Number.MAX_INTEGER);
+            console.log("Number.MIN_SAFE_INTEGER:%s", Number.MIN_SAFE_INTEGER);
+            console.log("Number.MAX_SAFE_INTEGER:%s", Number.MAX_SAFE_INTEGER);
+            console.log("Number.MAX_VALUE:%s", Number.MAX_VALUE);
+            console.log("Number.MIN_VALUE:%s", Number.MIN_VALUE);
+            console.log("Number.NEGATIVE_INFINITY:%s", Number.NEGATIVE_INFINITY);
+            console.log("Number.POSITIVE_INFINITY:%s", Number.POSITIVE_INFINITY);
+            //十进制、二进制、八进制、十六进制
+            console.log("num.toString(10):%s", num.toString(10));
+            console.log("num.toString(2):%s", num.toString(2));
+            console.log("num.toString(8):%s", num.toString(8));
+            console.log("num.toString(16):%s", num.toString(16));
+            console.log("num.toLocaleString():%s", num.toLocaleString());
+            console.log("num.toFixed(0):%s", num.toFixed(0));
+            console.log("num.toFixed(1):%s", num.toFixed(1));
+            console.log("num.toFixed(2):%s", num.toFixed(2));
+            console.log("num.toFixed(3):%s", num.toFixed(3));
+            console.log("num.toExponential(0):%s", num.toExponential(0));
+            console.log("num.toExponential(1):%s", num.toExponential(1));
+            console.log("num.toExponential(2):%s", num.toExponential(2));
+            console.log("num.toExponential(3):%s", num.toExponential(3));
+            console.log("num.toPrecision(2):%s", num.toPrecision(2));
+        }
+
+        /**
+         * 测试boolean类型数据
+         */
+        function testboolean() {
+            var bool = new Boolean(2);
+            console.log("bool.constructor:%s", bool.constructor);
+            console.log("bool.constructor==Boolean:%s", bool.constructor == Boolean);
+            Boolean.prototype.echo = function () {
+                console.log("echo boolean");
+            };
+            bool.echo();
+            console.log("bool.toString():%s", bool.toString());
+            console.log("typeof bool.toString():%s", typeof bool.toString());
+            console.log("bool.valueOf():%s", bool.valueOf());
+            console.log("typeof bool.valueOf():%s", typeof bool.valueOf());
+        }
+
+        function testdate() {
+            var date = new Date();
+            console.log("date:%s", date);
+            console.log("date.constructor:%s", date.constructor);
+            Date.prototype.echo = function () {
+                console.log("echo date");
+            }
+            console.log("date.constructor:%s", date.constructor);
+            date.echo();
+            console.log("date.constructor==Date:%s", date.constructor == Date);
+            console.log("typeof date.constructor:%s", typeof date.constructor);
+        }
+
+        function testArr() {
+            var arr = new Array(3);
+            arr[0] = 1;
+            arr[1] = 2;
+            arr[2] = 3;
+            arr[3] = 4;
+            console.log("arr:%s", arr);
+            var arr2 = new Array(1, 2, 3, "a", "b");
+            arr2[5] = "c";
+            console.log("arr2:%s", arr2);
+            console.log("arr.length:%s", arr.length);
+            Array.prototype.echo = function () {
+                console.log(this.join("^_^"));
+            }
+            arr2.echo();
+            console.log("arr2.concat(\"test1\",\"test2\"):%s", arr2.concat("test1", "test2"));
+            console.log("arr.reverse():%s", arr.reverse());//逆序排列
+            arr2.sort();
+            console.log("arr2-sort:%s", arr2);
+//				arr2.length=10;
+            console.log("arr2.length:%s", arr2.length);
+            console.log("arr2.shift():%s", arr2.shift());
+            console.log("arr2.pop():%s", arr2.pop());
+            console.log("arr2.unshift(\"ui\",\"test\"):%s", arr2.unshift("ui", "test"));
+            console.log("arr2.push(4):%s", arr2.push(4));
+            console.log("arr2.push(4,5,6):%s", arr2.push(4, 5, 6));
+            console.log("arr2.toString():%s", arr2.toString());
+            console.log("arr2.toLocaleString():%s", arr2.toLocaleString());
+            console.log("arr2.join(\"-\"):%s", arr2.join("-"));
+            console.log("arr2.splice(2):%s", arr2.splice(2));
+            console.log("arr2:%s", arr2);
+        }
+
+        function getimgstate() {
+            var img1 = document.getElementById("img1");
+            alert(img1.readyState);
+        }
+
+        function createdocument() {
+            var dw = window.open();
+            dw.document.open();
+            dw.document.writeln("test<br/>");
+            console.log(dw.opener);
+            dw.document.writeln(dw.opener);
+            dw.document.close();
+        }
+
+        function testerror() {
+            var i;
+            try {
+                i = 1 / 0;
+                k
+            } catch (e) {
+                console.log(e);
+                throw new Error(e);
+            } finally {
+                console.log("finally");
+            }
+        }
+
+        function testwindow() {
+            /**
+             * Window是不需要使用new运算符创建的对象。因此，在使用Window对象时，只要直接使用"window"来引用Window对象即可
+             */
+            console.log("parent:%s", parent);
+            console.log("self:%s", self);
+            oper_win = openwin("highlight.html", "高亮显示代码页面", "width=" + screen.availWidth / 2 + ",height=" + screen.availHeight / 2 + ",top=10,left=20,scrollbars,resizable,toolbar,menubar,status,location,directories,copyhistory");
+            console.log("oper_win：%s", oper_win);
+            setTimeout("window.moveTo(300,500)", 1000);
+            setTimeout(closewin(oper_win), 2000);
 //				window.scroll(300,400);
 //				window.scrollTo(300,400)
 //				window.scrollBy(30,40)
 //				window.showModalDialog("highlight.html",window,"dialogHeight:100px;center:yes;help:no;resizable:yes;status:yes");
-			}
-			
-			function closewin(operwin){
-				operwin.close();
+        }
+
+        function closewin(operwin) {
+            operwin.close();
 //				return function(){
 //					console.log("close_win:%s",operwin);
 //					operwin.close();
 //				}
-			}
-			
-			function testhistory(){
-				console.log("history:%s",history);
+        }
+
+        function testhistory() {
+            console.log("history:%s", history);
 //				history.back();
 //				history.forward();
 //				history.go(history.length);
-			}
-			
-			function openwin(url,title,param){
-				return window.open(url,title,param);
-			}
-			
-			function testscreen(){
-				console.log("screen.width:%s",screen.width);
-				console.log("screen.height:%s",screen.height);
-				console.log("屏幕可用高度screen.availHeight:%s",screen.availHeight);
-				console.log("screen.availTop:%s",screen.availTop);
-				console.log("screen.availLeft:%s",screen.availLeft);
-				console.log("屏幕可用宽度screen.availWidth:%s",screen.availWidth);
-				console.log("screen.pixelDepth:%s",screen.pixelDepth);
-				console.log("屏幕色深screen.colorDepth:%s",screen.colorDepth);
-			}
-			
-//			testtypeof();
-//			teststr();
-//			testnum();
-//			testboolean();
-//			testdate();
-//			testArr();
-//			testerror();
-//			testscreen();
-			testwindow();
-			
-			function denycopy(){
-				alert('禁止复制!'); 
-				return false;
-			}
-			
-			function drag_change_title(){
-				var event=getEvent();
-				document.title=event.type;
-			}
-			
-			function imgdragstart(){
-				console.log("dragstart");
-				var event=getEvent();
-				document.title=event.type;
-			}
-			
-			function imgdragend(){
-				console.log("dragend");
-				drag_change_title();
-			}
-			
-			function imgdrag(){
-				console.log("drag");
-				drag_change_title();
-			}
-			
-			function imgdragenter(){
-				console.log("dragenter");
-				drag_change_title();
-			}
-			function imgdragover(){
-				console.log("dragover");
-				drag_change_title();
-			}
-			function imgdragleave(){
-				console.log("dragleave");
-				drag_change_title();
-			}
-			
-			
-		</script>
-	</head>
-	<body onunload="alert('onunload');" oncopy="return denycopy();" onbeforecopy="return denycopy();" onselectstart="alert('选择操作');">
-		<!-- void操作中传递的是表达式 -->
-		<a href="javascript:void(alert('a'))">javascript:void(alert('a'))</a><br />
-		<a href="log4javascript.html" target="_blank">log4javascript</a>
-		<script type="text/javascript">
-			document.writeln("<h1>hello</h1>");
-			document.writeln("<h1>world</h1>");
-			document.writeln("document.fileCreatedDate:"+document.fileCreatedDate+"<br/>");
-			document.writeln("document.fileModifiedDate："+document.fileModifiedDate+"<br/>");
-			document.writeln("document.lastModified:"+document.lastModified+"<br/>");
-			document.writeln("document.fileSize:"+document.fileSize+"<br/>");        
-			document.writeln("document.readyState:"+document.readyState+"<br/>");
-			document.writeln("<iframe src=\"../adapter.html\" width=\"100%\" height=\"200\"></iframe>");
-		</script>
-		<button onclick="getimgstate()">getimgstate</button><br />
-		<button onclick="createdocument()">createdocument</button><br />
-		<img id="img1" src="../../agile/assets/app/img/slide3.jpg" 
-			ondrag="imgdrag();" ondragend="imgdragend();" ondragstart="imgdragstart();"
-			ondragenter="imgdragenter()" ondragover="imgdragover()" ondragleave="imgdragleave()" 
-			/><br />
-		<img src="../../agile/assets/app/img/slide3.jpg" /><br />
-		<img src="../../agile/assets/app/img/slide3.jpg" onmouseover="changeimg(this);" />
-		<!--onbeforepaste的返回值是无效的-->
-		<textarea name="area" oncut="return false" onbeforepaste="return false;" onpaste="return false">
-			testtesttesttesttesttesttesttesttesttesttesttesttest
-		</textarea>
-	</body>
-	<script src="statistics_dom.min.js" type="text/javascript" charset="utf-8"></script>
+        }
+
+        function openwin(url, title, param) {
+            return window.open(url, title, param);
+        }
+
+        function testscreen() {
+            console.log("screen.width:%s", screen.width);
+            console.log("screen.height:%s", screen.height);
+            console.log("屏幕可用高度screen.availHeight:%s", screen.availHeight);
+            console.log("screen.availTop:%s", screen.availTop);
+            console.log("screen.availLeft:%s", screen.availLeft);
+            console.log("屏幕可用宽度screen.availWidth:%s", screen.availWidth);
+            console.log("screen.pixelDepth:%s", screen.pixelDepth);
+            console.log("屏幕色深screen.colorDepth:%s", screen.colorDepth);
+        }
+
+        //			testtypeof();
+        //			teststr();
+        //			testnum();
+        //			testboolean();
+        //			testdate();
+        //			testArr();
+        //			testerror();
+        //			testscreen();
+        testwindow();
+
+        function denycopy() {
+            alert('禁止复制!');
+            return false;
+        }
+
+        function drag_change_title() {
+            var event = getEvent();
+            document.title = event.type;
+        }
+
+        function imgdragstart() {
+            console.log("dragstart");
+            var event = getEvent();
+            document.title = event.type;
+        }
+
+        function imgdragend() {
+            console.log("dragend");
+            drag_change_title();
+        }
+
+        function imgdrag() {
+            console.log("drag");
+            drag_change_title();
+        }
+
+        function imgdragenter() {
+            console.log("dragenter");
+            drag_change_title();
+        }
+
+        function imgdragover() {
+            console.log("dragover");
+            drag_change_title();
+        }
+
+        function imgdragleave() {
+            console.log("dragleave");
+            drag_change_title();
+        }
+
+        function img_onload(name) {
+            alert(name + "加载了");
+        }
+
+    </script>
+</head>
+<body onunload="alert('onunload');" oncopy="return denycopy();" onbeforecopy="return denycopy();"
+      onselectstart="alert('选择操作');">
+<!-- void操作中传递的是表达式 -->
+<a href="javascript:void(alert('a'))">javascript:void(alert('a'))</a><br/>
+<a href="log4javascript.html" target="_blank">log4javascript</a>
+<script type="text/javascript">
+    document.writeln("<h1>hello</h1>");
+    document.writeln("<h1>world</h1>");
+    document.writeln("document.fileCreatedDate:" + document.fileCreatedDate + "<br/>");
+    document.writeln("document.fileModifiedDate：" + document.fileModifiedDate + "<br/>");
+    document.writeln("document.lastModified:" + document.lastModified + "<br/>");
+    document.writeln("document.fileSize:" + document.fileSize + "<br/>");
+    document.writeln("document.readyState:" + document.readyState + "<br/>");
+    document.writeln("<iframe src=\"../adapter.html\" width=\"100%\" height=\"200\"></iframe>");
+</script>
+<button onclick="getimgstate()">getimgstate</button>
+<br/>
+<button onclick="createdocument()">createdocument</button>
+<br/>
+<img id="img1" src="../../agile/assets/app/img/slide3.jpg" onload="img_onload('img1')"
+     ondrag="imgdrag();" ondragend="imgdragend();" ondragstart="imgdragstart();"
+     ondragenter="imgdragenter()" ondragover="imgdragover()" ondragleave="imgdragleave()"
+/>
+<script>
+    // var img1 = document.getElementById("img1");
+    // console.log("img1 bind onload event:%o", img1);
+    // img1.onload = function () {
+    //     alert("img1加载完成");
+    // };
+</script>
+<br/>
+<img src="../../agile/assets/app/img/slide3.jpg"/><br/>
+<img src="../../agile/assets/app/img/slide3.jpg" onmouseover="changeimg(this);"/>
+<!--onbeforepaste的返回值是无效的-->
+<textarea name="area" oncut="return false" onbeforepaste="return false;" onpaste="return false">
+    testtesttesttesttesttesttesttesttesttesttesttesttest
+</textarea>
+</body>
+<script src="statistics_dom.min.js" type="text/javascript" charset="utf-8"></script>
 </html>
