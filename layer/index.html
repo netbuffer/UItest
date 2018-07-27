@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>layer</title>
-		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<link href="https://cdn.bootcss.com/layer/3.0.1/skin/default/layer.css" rel="stylesheet">
-		<script src="https://cdn.bootcss.com/layer/3.0.1/layer.min.js"></script>
+		<script src="//cdn.bootcss.com/layer/3.0.1/layer.min.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				$("#h").mouseenter(function(){
@@ -13,11 +13,11 @@
 					  tips :2,
 					  time: 0,
 					  offset: '100px'
-					});	
+					});
 				}).mouseleave(function(){
 					layer.closeAll('tips');
 				});
-				
+
 				$.ajaxSetup({
 					layerIndex:-1,
 					beforeSend: function () {
@@ -42,11 +42,11 @@
 					console.log(data);
 				},"text");
 			}
-			
+
 			function a(){
 				layer.alert('酷毙了', {icon: 1,offset: '-50px'});
 			}
-			
+
 			function alertskin() {
 				layer.alert('请输入正确的充值金额!', {
 					skin: 'layui-layer-lan',
@@ -56,7 +56,7 @@
 					layer.close(index);
 				});
 			}
-			
+
 			function gallery_1(){
 				$.getJSON("gallery_1.json",function(json){
 					layer.photos({
@@ -65,7 +65,7 @@
 					});
 				});
 			}
-			
+
 			function gallery_2(){
 				$.getJSON("gallery_2.json",function(json){
 					layer.photos({
@@ -84,30 +84,30 @@
 		<pre>
 			{
 			  //相册标题
-			  "title": "相册1", 
+			  "title": "相册1",
 			  //相册id
-			  "id": 123, 
+			  "id": 123,
 			  //初始显示的图片序号，默认0
-			  "start": 0, 
+			  "start": 0,
 			  //相册包含的图片，数组格式
-			  "data": [   
+			  "data": [
 			    {
 			      "alt": "微距摄影",
 			      //图片id
-			      "pid": 1, 
+			      "pid": 1,
 			      //原图地址
-			      "src": "https://img6.bdstatic.com/img/image/smallpic/h1.jpg", 
+			      "src": "https://img6.bdstatic.com/img/image/smallpic/h1.jpg",
 			      //缩略图地址
-			      "thumb": "https://img6.bdstatic.com/img/image/smallpic/h1.jpg" 
+			      "thumb": "https://img6.bdstatic.com/img/image/smallpic/h1.jpg"
 			    },
 			    {
 			      "alt": "宠物",
 			      //图片id
-			      "pid": 2, 
+			      "pid": 2,
 			      //原图地址
-			      "src": "https://img6.bdstatic.com/img/image/smallpic/h2.jpg", 
+			      "src": "https://img6.bdstatic.com/img/image/smallpic/h2.jpg",
 			      //缩略图地址
-			      "thumb": "https://img6.bdstatic.com/img/image/smallpic/h2.jpg" 
+			      "thumb": "https://img6.bdstatic.com/img/image/smallpic/h2.jpg"
 			    }
 			  ]
 			}

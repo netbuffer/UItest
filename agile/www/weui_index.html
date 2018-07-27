@@ -7,7 +7,7 @@
 		<title>Agile Lite</title>
 		<link rel="stylesheet" href="assets/agile/css/agile.layout.css">
 		<link rel="stylesheet" href="assets/agile/css/weui/agile.weui.css">
-		<link rel="stylesheet" href="http://weui.github.io/weui/weui.css">
+		<link rel="stylesheet" href="//weui.github.io/weui/weui.css">
 	</head>
 	<body>
 		<div id="section_container">
@@ -96,13 +96,13 @@
 				</article>
 			</section>
 		</div>
-		
+
 		<!--- third --->
 		<script src="assets/third/zepto/zepto.min.js"></script>
 		<script src="assets/third/iscroll/iscroll-probe.js"></script>
-		<script src="assets/third/arttemplate/template-native.js"></script>	
+		<script src="assets/third/arttemplate/template-native.js"></script>
 		<!-- agile -->
-		<script type="text/javascript" src="assets/agile/js/agile.js"></script>		
+		<script type="text/javascript" src="assets/agile/js/agile.js"></script>
 		<!--- bridge --->
 		<script type="text/javascript" src="assets/bridge/exmobi.js"></script>
 		<script type="text/javascript" src="assets/bridge/agile.exmobi.js"></script>
@@ -123,7 +123,7 @@
 		        }, 5000);
 		    });
 		});
-		
+
 		$(document).on('sectionload', '#weui_dialog_section', function(){
 			$('#showDialog1').on(A.options.clickEvent, function () {
 		        $('#dialog1').show();
@@ -138,7 +138,7 @@
 		        });
 		    });
 		});
-		
+
 		(function(){
 			function hideActionSheet(weuiActionsheet, mask) {
 		        weuiActionsheet.removeClass('weui_actionsheet_toggle');
@@ -149,7 +149,7 @@
 		            mask.hide();
 		        })
 		    }
-		    
+
 		    $(document).on('sectionload', '#weui_actionSheet_section', function(){
 				$('#showActionSheet').on(A.options.clickEvent, function () {
 			        var mask = $('#mask');
@@ -164,9 +164,9 @@
 			        weuiActionsheet.unbind('transitionend').unbind('webkitTransitionEnd');
 			    });
 			});
-		    
+
 		})();
-			
+
 		</script>
 	</body>
 </html>

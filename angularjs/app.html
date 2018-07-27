@@ -4,10 +4,10 @@
 		<meta charset="UTF-8">
 		<title>angular控制器</title>
 		<link href="https://cdn.bootcss.com/angular-loading-bar/0.9.0/loading-bar.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
-		<script src="https://cdn.bootcss.com/angular.js/1.6.4/angular.min.js"></script>
-		<script src="https://cdn.bootcss.com/angular-loading-bar/0.9.0/loading-bar.min.js"></script>
-		<script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-animate.min.js"></script>
+		<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<script src="//cdn.bootcss.com/angular.js/1.6.4/angular.min.js"></script>
+		<script src="//cdn.bootcss.com/angular-loading-bar/0.9.0/loading-bar.min.js"></script>
+		<script src="//cdn.bootcss.com/angular.js/1.6.4/angular-animate.min.js"></script>
 	</head>
 	<body>
 		<div ng-app="myApp" ng-controller="myCtrl" class="container-fluid">
@@ -41,7 +41,7 @@
 						<td>{{user.name}}</td>
 						<td>{{user.sex}}</td>
 						<td>{{user.age}}</td>
-					</tr>					
+					</tr>
 				</tbody>
 			</table>
 			<div ng-include="'include.html'"></div>
@@ -57,7 +57,7 @@
 			      return a * b;
 			   }
 			   return factory;
-			}); 
+			});
 			app.service('myservice', function(MathService) {
 			    this.myFunc = function (x) {
 			        return x.toString(16);

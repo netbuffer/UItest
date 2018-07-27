@@ -24,7 +24,7 @@
 			}
 			setInterval("changemsg()",1000);
 		</script>
-		
+
 		<div id="app-2">
 		  <span v-bind:title="message" v-bind:onclick="c">
 		    Hover your mouse over me for a few seconds to see my dynamically bound title!
@@ -39,7 +39,7 @@
 			  }
 			})
 		</script>
-		
+
 		<div id="app-3">
 		  <p v-if="seen">Now you see me</p>
 		</div>
@@ -51,7 +51,7 @@
 			  }
 			})
 		</script>
-		
+
 		<div id="app-4">
 		  <ol>
 		    <li v-for="todo in todos">
@@ -71,7 +71,7 @@
 			  }
 			});
 		</script>
-		
+
 		<div id="app-5">
 		  <p>{{ message }}</p>
 		  <button v-on:click="reverseMessage">Reverse Message</button>
@@ -120,7 +120,7 @@
 			  props: ['todo'],
 			  template: '<li>{{ todo.text }}</li>'
 			});
-			
+
 			var app7 = new Vue({
 			  el: '#app-7',
 			  data: {
@@ -172,7 +172,7 @@
 			  }
 			})
 		</script>
-		
+
 		<div id="watch-example">
 		  <p>
 		    Ask a yes/no question:
@@ -185,8 +185,8 @@
 		<!-- and collections of general-purpose utility methods, Vue core -->
 		<!-- is able to remain small by not reinventing them. This also   -->
 		<!-- gives you the freedom to just use what you're familiar with. -->
-		<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
-		<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+		<script src="//unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+		<script src="//unpkg.com/lodash@4.13.1/lodash.min.js"></script>
 		<script>
 		var watchExampleVM = new Vue({
 		  el: '#watch-example',
@@ -292,7 +292,7 @@
 			<!-- 缩写语法 -->
 			<input @keyup.enter="submit">
 			<!-- 只有在 keyCode 是 13 时调用 vm.submit() -->
-			<input v-on:keyup.13="submit">	
+			<input v-on:keyup.13="submit">
 		</div>
 		<script type="text/javascript">
 			new Vue({
@@ -305,4 +305,4 @@
 			})
 		</script>
 	</body>
-</html>	
+</html>

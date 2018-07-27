@@ -3,20 +3,20 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>jquery.blockUI</title>
-		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<script src="//cdn.bootcss.com/jquery.blockUI/2.70.0-2014.11.23/jquery.blockUI.min.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				$.blockUI({ overlayCSS: { backgroundColor: '#00f' } }); setTimeout($.unblockUI, 2000);
 			});
-			
+
 			$(document).ready(function() {
 		    	$('#demo1').click(function() {
 			        $.blockUI({ message: $('#loginForm') });
 			        setTimeout($.unblockUI, 2000);
 			    });
 			});
-			        
+
 			$(document).ready(function() {
 			    $('#demo2').click(function() {
 			        $.blockUI({ css: {
@@ -28,36 +28,36 @@
 			            opacity: .5,
 			            color: '#fff'
 			        } });
-			
+
 			        setTimeout($.unblockUI, 2000);
 			    });
 			});
-			        
-			
-//			Blue Overlay 	
+
+
+//			Blue Overlay
 			$(document).ready(function() {
 			    $('#demo3').click(function() {
 			        $.blockUI({ overlayCSS: { backgroundColor: '#00f' } });
-			
+
 			        setTimeout($.unblockUI, 2000);
 			    });
 			});
-			        
-			
-//			Tall Content 	
+
+
+//			Tall Content
 			$(document).ready(function() {
 			    $('#demo4').click(function() {
 			        $.blockUI({
 			            message: $('#tallContent'),
 			            css: { top: '20%' }
 			        });
-			
+
 			        setTimeout($.unblockUI, 2000);
 			    });
 			});
-			        
-			
-//			Image Box 	
+
+
+//			Image Box
 			$(document).ready(function() {
 			    $('#demo5').click(function() {
 			        $.blockUI({
@@ -68,44 +68,44 @@
 			                width: '400px'
 			            }
 			        });
-			
+
 			        setTimeout($.unblockUI, 2000);
 			    });
 			});
-			        
-			
-//			Non-centered message 	
+
+
+//			Non-centered message
 			$(document).ready(function() {
 			    $('#demo6').click(function() {
 			        $.blockUI({
 			            centerY: 0,
 			            css: { top: '10px', left: '', right: '10px' }
 			        });
-			
+
 			        setTimeout($.unblockUI, 2000);
 			    });
 			});
-			        
-			
+
+
 //			Blocking without a message
-//			(pass null as message) 	
+//			(pass null as message)
 			$(document).ready(function() {
 			    $('#demo7').click(function() {
 			        $.blockUI({ message: null });
-			
+
 			        setTimeout($.unblockUI, 2000);
 			    });
 			});
-			        
-			
+
+
 //			onUnblock callback
 //			(useful when using fadeOut option
 //			as it is invoked when all
-//			the blocking elements have been removed) 	
+//			the blocking elements have been removed)
 			$(document).ready(function() {
 			    $('#demo8').click(function() {
 			        $.blockUI();
-			
+
 			        setTimeout(function() {
 			            $.unblockUI({
 			                onUnblock: function(){ alert('onUnblock'); }
@@ -113,20 +113,20 @@
 			        }, 2000);
 			    });
 			});
-			        
-			
+
+
 //			Click overlay to unblock
-//			(This demo will not automatically unblock, you must click the overlay.) 	
+//			(This demo will not automatically unblock, you must click the overlay.)
 			$(document).ready(function() {
 			    $('#demo9').click(function() {
 			        $.blockUI();
 			        $('.blockOverlay').attr('title','Click to unblock').click($.unblockUI);
 			    });
 			});
-			        
-			
+
+
 //			Auto-Unblock
-//			Sets a timer to unblock after a specified timeout. 	
+//			Sets a timer to unblock after a specified timeout.
 			$(document).ready(function() {
 			    $('#demo10').click(function() {
 			        $.blockUI({
@@ -135,9 +135,9 @@
 			        });
 			    });
 			});
-			        
-			
-//			Growl (the hard way) 	
+
+
+//			Growl (the hard way)
 			$(document).ready(function() {
 			    $('#demo11').click(function() {
 			        $.blockUI({
@@ -163,26 +163,26 @@
 			        });
 			    });
 			});
-			        
-			
-//			Growl (the easy way) 	
+
+
+//			Growl (the easy way)
 			$(document).ready(function() {
 			   $('#demo12').click(function() {
 			       $.growlUI('Growl Notification', 'Have a nice day!');
 			   });
 			});
-			       
-			
+
+
 //			The two growl examples above also make use of the following external CSS:
 //			div.growlUI { background: url(check48.png) no-repeat 10px 10px }
 //			div.growlUI h1, div.growlUI h2 {
 //			    color: white; padding: 5px 5px 5px 75px; text-align: left
 //			}
-			    
-			
+
+
 //			Note: For a more full-featured "growl" implementation, check out the excellent jGrowl plugin by Stan Lemon.
 //			jQuery UI Theme
-//			Use jQuery UI themes to style the messaege 	
+//			Use jQuery UI themes to style the messaege
 			$(document).ready(function() {
 			    $('#demo13').click(function() {
 			        $.blockUI({
@@ -191,12 +191,12 @@
 			            message:  '<p>This is your message.</p>',
 			            timeout:   2000
 			        });
-			    });   
+			    });
 			});
-			       
-			
+
+
 //			For more details on using this feature see theme.html
-//			onBlock callback 	
+//			onBlock callback
 			$(document).ready(function() {
 			    $('#demo14').click(function() {
 			        $.blockUI({
@@ -206,17 +206,17 @@
 			                alert('Page is now blocked; fadeIn complete');
 			            }
 			        });
-			    });   
+			    });
 			});
-			       
-			
+
+
 //			onOverlayClick callback 	Click overlay to unblock.
 			$(document).ready(function() {
 			    $('#demo15').click(function() {
 			        $.blockUI({
 			            onOverlayClick: $.unblockUI
 			        });
-			    });   
+			    });
 			});
 			$(document).on('click', '#myButton', function() { $.blockUI(); });
 		</script>

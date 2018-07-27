@@ -6,11 +6,11 @@
 		<!--<link href="//cdn.bootcss.com/log4javascript/1.4.9/main.min.css" rel="stylesheet">-->
 		<script src="//cdn.bootcss.com/log4javascript/1.4.9/log4javascript.min.js"></script>
 		<script type="text/javascript">
-			
+
 			function initdefaultlog(){
 				log = log4javascript.getDefaultLogger();
 			}
-			
+
 			function initpagelog(){
 				log = log4javascript.getLogger("main");
 				appender = new log4javascript.InPageAppender();
@@ -18,7 +18,7 @@
 				log.debug("This is a debugging message from the log4javascript in-page page");
 				consoleVisible = true;
 			}
-			
+
 			function togglepagelog(){
 				if (consoleVisible) {
 					appender.hide();
@@ -28,27 +28,27 @@
 					consoleVisible = true;
 				}
 			}
-			
+
 			function testdebug(){
 				log.debug("debug信息");
 			}
-			
+
 			function testinfo(){
 				log.info("info信息");
 			}
-			
+
 			function testwarn(){
 				log.warn("warn信息");
 			}
-			
+
 			function testerror(){
 				log.error("error信息");
 			}
-			
+
 		</script>
 	</head>
 	<body>
-		<a href="http://log4javascript.org/docs/quickstart.html" target="_blank"><h1>log4javascript</h1></a>
+		<a href="//log4javascript.org/docs/quickstart.html" target="_blank"><h1>log4javascript</h1></a>
 		<button onclick="initdefaultlog();">initdefaultlog</button><br />
 		<button onclick="initpagelog();">initpagelog</button>&emsp;<button onclick="togglepagelog();">toggle-log</button><br />
 		<button onclick="testdebug();">debug</button><br />

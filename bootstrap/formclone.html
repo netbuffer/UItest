@@ -3,11 +3,11 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>测试form添加、序列化</title>
-		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
-		<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.js"></script>
+		<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<script src="//cdn.bootcss.com/jquery/2.1.3/jquery.js"></script>
 		<script src="//cdn.bootcss.com/jquery-validate/1.15.0/jquery.validate.min.js"></script>
 		<script src="//cdn.bootcss.com/jquery-validate/1.15.0/additional-methods.min.js"></script>
-		<!--<script src="http://cdn.bootcss.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
+		<!--<script src="//cdn.bootcss.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
 		<script src="js/bootbox.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="//cdn.bootcss.com/jquery.serializeJSON/2.7.2/jquery.serializejson.min.js"></script>
 		<script src="js/jquery-cloneya.min.js" type="text/javascript" charset="utf-8"></script>
@@ -21,7 +21,7 @@
 						$(item).attr("user[1].name")
                     });
                	}).on('after_clone.cloneya', function (event, toclone, newclone) {
-                   console.log("完成克隆");   
+                   console.log("完成克隆");
                 }).on('after_append.cloneya', function (event, toclone, newclone) {
                     $("input[name='name']").each(function(){
 				     $(this).rules("add", {
@@ -29,7 +29,7 @@
 				       messages: {
 				         required: "用户名"
 				       }
-				     });   
+				     });
 				   });
                 });
 				 $("#simple-clone").validate({

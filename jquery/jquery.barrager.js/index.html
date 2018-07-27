@@ -5,7 +5,7 @@
 		<title>jquery.barrager.js</title>
 		<link href="//cdn.bootcss.com/highlight.js/9.5.0/styles/darkula.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="barrager.css"/>
-		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<script src="jquery.barrager.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="//cdn.bootcss.com/highlight.js/9.5.0/highlight.min.js"></script>
 		<script type="text/javascript">
@@ -14,18 +14,18 @@
 				var data=[];
 				for(i=0;i<100;i++){
 					var item={
-					   img:'../../agile/assets/app/img/logo-exmobi.png', //图片 
-					   info:'弹幕文字信息'+i, //文字 
-					   href:'http://www.yaseng.org', //链接 
-					   close:true, //显示关闭按钮 
-					   speed:1, //延迟,单位秒,默认6 
-//					   bottom:i+10, //距离底部高度,单位px,默认随机 
-					   color:'#fff', //颜色,默认白色 
-					   old_ie_color:'#000000', //ie低版兼容色,不能与网页背景相同,默认黑色 
+					   img:'../../agile/assets/app/img/logo-exmobi.png', //图片
+					   info:'弹幕文字信息'+i, //文字
+					   href:'http://www.yaseng.org', //链接
+					   close:true, //显示关闭按钮
+					   speed:1, //延迟,单位秒,默认6
+//					   bottom:i+10, //距离底部高度,单位px,默认随机
+					   color:'#fff', //颜色,默认白色
+					   old_ie_color:'#000000', //ie低版兼容色,不能与网页背景相同,默认黑色
 					 }
 					data.push(item);
 				}
-				
+
 				//每条弹幕发送间隔
 				var looper_time=3*1000;
 				var items=data;
@@ -40,7 +40,7 @@
 				function  barrager(){
 				  if(run_once){
 				      //如果是首次执行,则设置一个定时器,并且把首次执行置为false
-				      looper=setInterval(barrager,looper_time);                
+				      looper=setInterval(barrager,looper_time);
 				      run_once=false;
 				  }
 				  //发布一个弹幕
@@ -49,7 +49,7 @@
 				  index++;
 				  //所有弹幕发布完毕，清除计时器。
 				  if(index == total){
-				 
+
 				      clearInterval(looper);
 				      return false;
 				  }
@@ -59,20 +59,20 @@
 		</script>
 	</head>
 	<body>
-		<a href="http://yaseng.org/jquery.barrager.js/">
-			<h1>http://yaseng.org/jquery.barrager.js/</h1>	
+		<a href="//yaseng.org/jquery.barrager.js/">
+			<h1>http://yaseng.org/jquery.barrager.js/</h1>
 		</a>
 		<pre>
 			<code>
 				var item={
-				   img:'static/heisenberg.png', //图片 
-				   info:'弹幕文字信息', //文字 
-				   href:'http://www.yaseng.org', //链接 
-				   close:true, //显示关闭按钮 
-				   speed:6, //延迟,单位秒,默认6 
-				   bottom:70, //距离底部高度,单位px,默认随机 
-				   color:'#fff', //颜色,默认白色 
-				   old_ie_color:'#000000', //ie低版兼容色,不能与网页背景相同,默认黑色 
+				   img:'static/heisenberg.png', //图片
+				   info:'弹幕文字信息', //文字
+				   href:'http://www.yaseng.org', //链接
+				   close:true, //显示关闭按钮
+				   speed:6, //延迟,单位秒,默认6
+				   bottom:70, //距离底部高度,单位px,默认随机
+				   color:'#fff', //颜色,默认白色
+				   old_ie_color:'#000000', //ie低版兼容色,不能与网页背景相同,默认黑色
 				 }
 				$('body').barrager(item);
 			</code>

@@ -6,7 +6,7 @@
 		<script type="text/javascript">
 //			函数默认值
 			function say(name='default'){
-				alert(name);	
+				alert(name);
 			}
 //			模板字符渲染
 			function tpl_render(name){
@@ -14,10 +14,10 @@
 			}
 			//多行字符串渲染
 			function tpl_render_multi(title){
-				var htmlStr = ` 
-					<div> 
+				var htmlStr = `
+					<div>
 						<h2>${ title }</h2>
-						<p>This is a paragraph.</p> 
+						<p>This is a paragraph.</p>
 					</div>
 				`;
 				alert(htmlStr);
@@ -25,10 +25,10 @@
 			//箭头函数
 			let func1 = (arg1, arg2, arg3) => { return arg1 + arg2 + arg3;
 			}
-			
+
 			let func2 = arg => { console.log(arg)
 			}
-			
+
 			let func3 = () => { console.log(`This is an arrow function.`)
 			}
 			// for of使用
@@ -52,7 +52,7 @@
 		</script>
 	</head>
 	<body>
-		学习链接:<a href="http://mp.weixin.qq.com/s/wxxGavmw5mH-Rhe4i7e8LA" target="_blank">http://mp.weixin.qq.com/s/wxxGavmw5mH-Rhe4i7e8LA</a><br />
+		学习链接:<a href="//mp.weixin.qq.com/s/wxxGavmw5mH-Rhe4i7e8LA" target="_blank">http://mp.weixin.qq.com/s/wxxGavmw5mH-Rhe4i7e8LA</a><br />
 		<button onclick="say()">无参数</button>&emsp;<button onclick="say('hello')">传递参数</button><br />
 		<button onclick="tpl_render('world')">模板字符串</button>&emsp;<button onclick="tpl_render_multi('这是标题')">多行模板字符串</button>&emsp;<button onclick="test_assign()">解构赋值</button>
 	</body>

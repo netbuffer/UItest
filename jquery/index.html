@@ -25,15 +25,15 @@
 				$("#test").myfn({'location': 'right'}).css("font-size","30px");
 				//调用init方法
 				$('tt').mytooltip();
-				 
+
 				//调用init方法
 				$('tt').mytooltip({
 				    foo: 'bar'
 				});
-				 
+
 				// 调用hide方法
 				$('tt').mytooltip('hide');
-				 
+
 				//调用Update方法
 				$('tt').mytooltip('update', 'This is the new tooltip content!');
 				function callback(){
@@ -53,7 +53,7 @@
 					$(this).fadeIn(1000);
 				});
 			}
-			
+
 			function ani(){
 				$("#d").animate({"width":"20px","height":"20px"},3000,"linear",
 					function(){
@@ -65,27 +65,27 @@
 				);
 			}
 			/**
-			 * onunload、onbeforeunload事件详解 http://www.asheep.cn/skill/onunload.html  
+			 * onunload、onbeforeunload事件详解 http://www.asheep.cn/skill/onunload.html
 			 * https://developer.mozilla.org/zh-CN/docs/Web/API/Window/onbeforeunload
 			 */
 			function askuser(){
 				window.onbeforeunload = function(e) {
-					e = e || window.event; 
-					// 兼容IE8和Firefox 4之前的版本 
-					if (e) { 
-						e.returnValue = 'leave tip'; 
+					e = e || window.event;
+					// 兼容IE8和Firefox 4之前的版本
+					if (e) {
+						e.returnValue = 'leave tip';
 					}
-					// Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+ 
-					return 'leave tip'; 
+					// Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+
+					return 'leave tip';
 				};
 			}
-			
+
 			function disableF5(e) {
-				if ((e.which || e.keyCode) == 116) 
-				e.preventDefault(); 
+				if ((e.which || e.keyCode) == 116)
+				e.preventDefault();
 			};
 			$(document).off("keydown", disableF5);
-			
+
 			function switch_test(str){
 				switch(str){
 					case "1":
@@ -105,7 +105,7 @@
 		<img src="../agile/assets/app/img/top.png" id="gensui"/>
 		<p id="test"></p>
 		<div id="tt"></div>
-		<a href="http://www.baidu.com">go</a>
+		<a href="//www.baidu.com">go</a>
 		<button onclick="askuser();">绑定onbeforeunload</button>&emsp;<button onclick="window.onbeforeunload=null;">解除onbeforeunload</button>
 		<hr/><button onclick="$('#div_toggle').toggle();">toggle_div</button>
 		<div style="width: 100px;height: 100px;background-color: #0092DC;" id="div_toggle">toggle</div>

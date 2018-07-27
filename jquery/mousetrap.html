@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Mousetrap键盘快捷键监听</title>
-		<script src="https://cdn.bootcss.com/mousetrap/1.6.1/mousetrap.min.js"></script>
+		<script src="//cdn.bootcss.com/mousetrap/1.6.1/mousetrap.min.js"></script>
 		<script src="//cdn.bootcss.com/jquery/2.1.3/jquery.js"></script>
 		<script>
 		    $(function(){
@@ -13,7 +13,7 @@
 			    Mousetrap.bind('esc', function() { console.log('escape'); }, 'keyup');
 			    // combinations
 			    Mousetrap.bind('command+shift+k', function() { console.log('command shift k'); });
-			    Mousetrap.bind('n', function(e) { 
+			    Mousetrap.bind('n', function(e) {
 			    	alert("n");
 			   	});
 			    Mousetrap.bind('ctrl+n', function(e) {
@@ -26,7 +26,7 @@
 			    // map multiple combinations to the same callback
 			    Mousetrap.bind(['command+k', 'ctrl+k'], function() {
 			        console.log('command k or control k');
-			
+
 			        // return false to prevent default browser behavior
 			        // and stop event from bubbling
 			        return false;
@@ -42,12 +42,12 @@
 		    	Mousetrap($("#name").get(0)).bind('enter', function() {
 			        try{
 	//		        	alert($(this).val());
-		        		alert($("#name").val());	
+		        		alert($("#name").val());
 			        }catch(e){
 			        	console.error(e);
 			        }
-			        
-			    });	
+
+			    });
 		    })
 		</script>
 	</head>

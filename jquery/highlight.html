@@ -5,7 +5,7 @@
 		<title>highlight.js</title>
 		<!--<link href="//cdn.bootcss.com/highlight.js/9.5.0/styles/default.min.css" rel="stylesheet">-->
 		<link href="//cdn.bootcss.com/highlight.js/9.5.0/styles/darkula.min.css" rel="stylesheet">
-		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<script src="//cdn.bootcss.com/highlight.js/9.5.0/highlight.min.js"></script>
 		<script type="text/javascript">
 			hljs.initHighlightingOnLoad();
@@ -17,21 +17,21 @@
 				hljs.highlightBlock($("#guide").get(0));
 			})
 		</script>
-		<!--<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/solarized_dark.min.css">
-		<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+		<!--<link rel="stylesheet" href="//yandex.st/highlightjs/8.0/styles/solarized_dark.min.css">
+		<script src="//yandex.st/highlightjs/8.0/highlight.min.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>-->
-		
+
 	<body>
 		<button onclick="parentWin();">parentWin</button>
 		<pre>
 			<code class="html hljs xml">
 				&lt;link rel="stylesheet" href="https://obgudq4u6.qnssl.com/wp-content/monokai_sublime.min.css"/&gt;
-				&lt;script class="loading" src="https://www.iteblog.com/pic/placeholder.png" data-original="https://obgudq4u6.qnssl.com/wp-content/highlight.min.js"&gt;&lt;/script&gt;
+				&lt;script class="loading" src="//www.iteblog.com/pic/placeholder.png" data-original="https://obgudq4u6.qnssl.com/wp-content/highlight.min.js"&gt;&lt;/script&gt;
 				&lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
 				&lt;a href=&quot;要跳转的地址&quot;&gt;连接中展示的文字&lt;/a&gt;
 			</code>
 		</pre>
-		  
+
 		<pre>
 			<code>
 				package spark
@@ -50,13 +50,13 @@
 				      println(arr(1) + "\t " + arr(0))
 				      (arr(1), arr(0))
 				    }).groupByKey().collectAsMap()
-				
+
 				    println(map)
 				  }
 				}
 			</code>
 		</pre>
-		
+
 		<pre>
 			<code class="nohighlight">
 				<pre>
@@ -65,12 +65,12 @@
 						 * Created by www.iteblog.com on 2015/04/17.
 						 */
 						package l2f.gameserver.model;
-						
+
 						import java.util.ArrayList;
-						
+
 						public abstract class L2Character extends L2Object {
 						  public static final Short ABNORMAL_EFFECT_BLEEDING = 0x0_0_0_1; // not sure
-						
+
 						  public void moveTo(int x, int y, int z) {
 						    _ai = null;
 						    _log.warning("Should not be called");
@@ -78,14 +78,14 @@
 						      return;
 						    }
 						  }
-						
+
 						  /** Task of AI notification */
 						  @SuppressWarnings( { "nls", "unqualified-field-access", "boxing" })
 						  public class NotifyAITask implements Runnable {
 						    private final CtrlEvent _evt;
-						
+
 						    List mList = new ArrayList()
-						
+
 						    public void run() {
 						      try {
 						        getAI().notifyEvent(_evt, _evt.class, null);
@@ -102,13 +102,13 @@
 		<pre>
 			<code>
 				---
-				
+
 				header 1 | header 2
 				---|---
 				row 1 col 1 | row 1 col 2
 				row 2 col 1 | row 2 col 2
-				
-				
+
+
 				metrics | @Timed
 				---|---
 				![metrics-servlet](src/main/webapp/image/metrics.png) | ![metrics-servlet](src/main/webapp/image/@Timed.png)
@@ -120,12 +120,12 @@
 				 * Created by www.iteblog.com on 2015/04/17.
 				 */
 				package l2f.gameserver.model;
-				
+
 				import java.util.ArrayList;
-				
+
 				public abstract class L2Character extends L2Object {
 				  public static final Short ABNORMAL_EFFECT_BLEEDING = 0x0_0_0_1; // not sure
-				
+
 				  public void moveTo(int x, int y, int z) {
 				    _ai = null;
 				    _log.warning("Should not be called");
@@ -133,14 +133,14 @@
 				      return;
 				    }
 				  }
-				
+
 				  /** Task of AI notification */
 				  @SuppressWarnings( { "nls", "unqualified-field-access", "boxing" })
 				  public class NotifyAITask implements Runnable {
 				    private final CtrlEvent _evt;
-				
+
 				    List mList = new ArrayList()
-				
+
 				    public void run() {
 				      try {
 				        getAI().notifyEvent(_evt, _evt.class, null);
@@ -152,7 +152,7 @@
 				}
 			</code>
 		</pre>
-		
+
 		<code class="html hljs xml" id="guide">
 	        连接写法：&lt;a href=&quot;要跳转的地址&quot;&gt;连接中展示的文字&lt;/a&gt;
 	        ,&emsp;比如要添加个百度的跳转连接,就写成：&lt;a href=&quot;http://www.baidu.com&quot;&gt;百度&lt;/a&gt;

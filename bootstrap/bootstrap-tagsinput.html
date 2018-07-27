@@ -4,36 +4,36 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>bootstrap-tagsinput-demo</title>
-		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
 		<link href="//cdn.bootcss.com/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet">
-		<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.js"></script>
-		<script src="http://cdn.bootcss.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		<script src="//cdn.bootcss.com/jquery/2.1.3/jquery.js"></script>
+		<script src="//cdn.bootcss.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 		<script src="//cdn.bootcss.com/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 		<script src="//cdn.bootcss.com/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
 		<script type="text/javascript">
 			$(function(){
-				var elt = $("#setobj"); 
-				elt.tagsinput({ 
-					typeahead: { 
-						afterSelect: function(val) { 
-							this.$element.val(""); 
-						}, 
-						source: function(query) { 
-							/*var result = null; 
-							$.ajax({ 
-								url: "URL/TO/JSON/SOURCE&term="+query, 
-								type: "get", 
-								dataType: "html", 
-								async: false, 
-								success: function(data) { 
-									result = data; 
-								} }); 
-								console.log(result); 
-								return JSON.parse(result); 
+				var elt = $("#setobj");
+				elt.tagsinput({
+					typeahead: {
+						afterSelect: function(val) {
+							this.$element.val("");
+						},
+						source: function(query) {
+							/*var result = null;
+							$.ajax({
+								url: "URL/TO/JSON/SOURCE&term="+query,
+								type: "get",
+								dataType: "html",
+								async: false,
+								success: function(data) {
+									result = data;
+								} });
+								console.log(result);
+								return JSON.parse(result);
 							);*/
 							return ["test1","test2"];
-						} 
-					} 
+						}
+					}
 				});
 			});
 			function getvalue(){
@@ -43,7 +43,7 @@
 			function removevalue(){
 				$('.tagsinput').tagsinput('removeAll');
 			}
-				
+
 		</script>
 	</head>
 
@@ -52,7 +52,7 @@
 			<div class="page-header">
 				<h1>bootstrap-tagsinput
 					<small>
-						<a href="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/examples/" target="_blank">http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/examples/</a>
+						<a href="//bootstrap-tagsinput.github.io/bootstrap-tagsinput/examples/" target="_blank">http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/examples/</a>
 					</small>
 				</h1>
 			</div>
@@ -64,7 +64,7 @@
 			<p class="text-info">
 				bootstrap3 tagsinput结合bootstrap3 typeahead使用问题
 				<a href="https://github.com/bassjobsen/Bootstrap-3-Typeahead/issues/40" target="_blank">
-					https://github.com/bassjobsen/Bootstrap-3-Typeahead/issues/40	
+					https://github.com/bassjobsen/Bootstrap-3-Typeahead/issues/40
 				</a>
 			</p>
 		</div>

@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 		<title>iScroll demo: infinite scrolling</title>
-		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<script src="//cdn.bootcss.com/iScroll/5.2.0/iscroll-infinite.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="infinite_scroll_util.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
@@ -14,11 +14,11 @@
 				-moz-box-sizing: border-box;
 				box-sizing: border-box;
 			}
-			
+
 			html {
 				-ms-touch-action: none;
 			}
-			
+
 			body,
 			ul,
 			li {
@@ -26,14 +26,14 @@
 				margin: 0;
 				border: 0;
 			}
-			
+
 			body {
 				font-size: 12px;
 				font-family: ubuntu, helvetica, arial;
 				overflow: hidden;
 				/* this is important to prevent the whole page to bounce */
 			}
-			
+
 			#wrapper {
 				position: absolute;
 				z-index: 1;
@@ -44,7 +44,7 @@
 				background: #ccc;
 				overflow: hidden;
 			}
-			
+
 			#scroller {
 				position: absolute;
 				z-index: 1;
@@ -66,7 +66,7 @@
 				-o-text-size-adjust: none;
 				text-size-adjust: none;
 			}
-			
+
 			#scroller ul {
 				list-style: none;
 				padding: 0;
@@ -74,7 +74,7 @@
 				width: 100%;
 				text-align: left;
 			}
-			
+
 			#scroller li {
 				padding: 0 10px;
 				height: 40px;
@@ -84,12 +84,12 @@
 				background-color: #fafafa;
 				font-size: 14px;
 			}
-			
+
 			#monitor {
 				position: absolute;
 				left: 51%;
 			}
-			
+
 			.triangle-down {
 				width: 0;
 				height: 0;
@@ -99,7 +99,7 @@
 				margin-left: auto;
 				margin-right: auto;
 			}
-			
+
 			.arrow-body {
 				width: 4px;
 				height: 10px;
@@ -113,12 +113,12 @@
 				border-top-left-radius: 3px;
 				border-top-right-radius: 3px;
 			}
-			
+
 			.arrow-rotate-180 {
 				-webkit-transform: translate3d(0px, -2px, 0px) rotate(-180deg) !important;
 				-webkit-transition: -webkit-transform 300ms ease !important;
 			}
-			
+
 			.pull-spinner {
 				height: 25px;
 				width: 25px;
@@ -133,7 +133,7 @@
 				border-top: 4px solid rgba(202, 202, 202, .9);
 				border-radius: 100%;
 			}
-			
+
 			@-webkit-keyframes rotation {
 				from {
 					-webkit-transform: rotate(0deg);
@@ -142,7 +142,7 @@
 					-webkit-transform: rotate(359deg);
 				}
 			}
-			
+
 			@-moz-keyframes rotation {
 				from {
 					-moz-transform: rotate(0deg);
@@ -151,7 +151,7 @@
 					-moz-transform: rotate(359deg);
 				}
 			}
-			
+
 			@-o-keyframes rotation {
 				from {
 					-o-transform: rotate(0deg);
@@ -160,7 +160,7 @@
 					-o-transform: rotate(359deg);
 				}
 			}
-			
+
 			@keyframes rotation {
 				from {
 					transform: rotate(0deg);
@@ -169,7 +169,7 @@
 					transform: rotate(359deg);
 				}
 			}
-			
+
 			.pull-to-refresh {
 				height: 40px;
 				width: 100%;
@@ -178,7 +178,7 @@
 				display: inline-block;
 				overflow: hidden;
 			}
-			
+
 			.refresh-wrap {
 				height: 32px;
 				margin: 0 auto;
@@ -186,7 +186,7 @@
 				width: 50%;
 				margin-top: 8px;
 			}
-			
+
 			.pull-indicator {
 				display: inline-block;
 				width: 20px;
@@ -196,7 +196,7 @@
 				-webkit-transform: translate3d(0px, 0px, 0px) rotate(0deg);
 				-webkit-transition: -webkit-transform 300ms ease;
 			}
-			
+
 			.pull-text {
 				display: inline-block;
 				font-size: 15px;
@@ -209,7 +209,7 @@
 
 		<div id="wrapper">
 			<div id="scroller" style="transition: 0ms cubic-bezier(0.1, 0.57, 0.1, 1); -webkit-transition: 0ms cubic-bezier(0.1, 0.57, 0.1, 1); transform: translate(0px, 0px) translateZ(0px);">
-				
+
 				<div class="pull-to-refresh" style="clear: both;">
 					<div class="refresh-wrap">
 						<span class="pull-indicator">

@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<title>mobile</title>
 		<link rel="stylesheet" type="text/css" href="mobile/layer.css" />
-		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<script src="mobile/layer.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			function testInfo() {
@@ -16,7 +16,7 @@
 			}
 
 			function testTip() {
-				//2秒后自动关闭 
+				//2秒后自动关闭
 				layer.open({
 					content: 'hello layer',
 					skin: 'msg',
@@ -25,7 +25,7 @@
 			}
 
 			function testAsk() {
-				//询问框 
+				//询问框
 				layer.open({
 					content: '您确定要刷新一下本页面吗？',
 					btn: ['刷新', '不要'],
@@ -37,7 +37,7 @@
 			}
 
 			function bottomAskTip() {
-				//底部对话框 
+				//底部对话框
 				layer.open({
 					content: '这是一个底部弹出的询问提示',
 					btn: ['删除', '取消'],
@@ -51,7 +51,7 @@
 			}
 
 			function bottomTip() {
-				//底部提示 
+				//底部提示
 				layer.open({
 					content: '一个没有任何按钮的底部提示',
 					skin: 'footer'
@@ -59,22 +59,22 @@
 			}
 
 			function custom() {
-				//自定义标题风格 
+				//自定义标题风格
 				layer.open({
 					title: ['我是标题', 'background-color: #FF4351; color:#fff;'],
 					content: '标题风格任你定义。'
 				});
 			}
-			
+
 			function testhtml(){
-				//页面层 
+				//页面层
 				layer.open({ type: 1 ,content: '可传入任何内容，支持html。一般用于手机页面中' ,anim: 'up' ,style: 'position:fixed; bottom:0; left:0; width: 100%; height: 200px; padding:10px 0; border:none;' });
 			}
 			function loading(){
 				layer.open({type: 2,time: 3});
 			}
 			function loadingtxt(){
-				//loading带文字 
+				//loading带文字
 				layer.open({ type: 2 ,content: '加载中' ,time: 3});
 			}
 		</script>
