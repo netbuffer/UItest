@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>draggabilly.js</title>
+    <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/draggabilly/2.2.0/draggabilly.pkgd.min.js"></script>
+    <script>
+        $(function () {
+            $('.draggable').draggabilly({
+                containment: "#draggable"
+            });
+        })
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #draggable {
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+            border: 2px solid gray;
+        }
+    </style>
+</head>
+<body>
+<a href="https://draggabilly.desandro.com/" target="_blank">https://draggabilly.desandro.com/</a>
+<div id="draggable">
+    <button style="width:50px;height: 50px;border:1px solid red;border-radius:50%;position: relative;top:275px;left: 375px;">
+        中心
+    </button>
+    <button class="draggable">按钮1</button>
+    <button class="draggable">按钮2</button>
+</div>
+</body>
+</html>
