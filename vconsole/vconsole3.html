@@ -2,19 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>vconsole3.0.0</title>
+    <title>vconsole3</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-    <script src="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/3.0.0/vconsole.min.js"></script>
+    <script src="//cdn.bootcss.com/vConsole/3.2.0/vconsole.min.js"></script>
     <script>
         // init vConsole
         var vConsole = new VConsole();
         console.log('Hello world');
+
         function trigger_error() {
             throw new Error("new error");
         }
     </script>
 </head>
 <body>
-    <button onclick="trigger_error()">fire_err</button>
+<button onclick="trigger_error()">fire_err</button>
 </body>
 </html>
