@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test-js-load-seq</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script>
+        $.get("", function (data) {
+            a()
+        });
+
+        function a() {
+            alert("a");
+        }
+    </script>
+</head>
+<body>
+浏览器解析顺序兼容性问题
+<!--<script>-->
+<!--function a() {-->
+<!--alert("a");-->
+<!--}-->
+<!--</script>-->
+
+<script type="text/javascript">
+    //会报错Fn未定义
+    Fn();
+</script>
+<script type="text/javascript">
+    function Fn() {
+        alert("Hello World!");
+    }
+</script>
+</body>
+</html>
