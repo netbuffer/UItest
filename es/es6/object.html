@@ -1,62 +1,69 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Object新特性</title>
-		<script type="text/javascript">
-//			"use strict";
-			var a="a";
-			var b=function(b){
-				alert(b);
-			};
-			var key="dynamic_key";
-			var obj={
-				a,
-				b,
-				d(d){
-					alert(d);
-				},
-				_age:0,
-				//get/set访问器
-				get age (){
-					console.log("get age");
-					alert(this._age);
-			        return this._age;
-			    },
-			    set age (value){
-			    	console.log("set age,current:%s,new:%s",this._age,value);
-			        if(value > 100) this._age= new Date().getFullYear() - value;
-			        else this._age = value;
-			    },
-				[key]:function(msg="hello world!"){
-				    alert(msg);
-				}
-			}
-			console.log(obj);
-			//获取属性集合
-			console.log("Object.keys(obj):%o",Object.keys(obj));
-//			https://segmentfault.com/a/1190000007434923
-//			Object.defineProperty(obj,"test",{
-//			    configurable:true | false,
-//			    enumerable:true | false,
-//			    value:任意类型的值,
-//			    writable:true | false
-//			});
-			
-			Object.defineProperty(obj,"c",{
-				value:function(c){
-					alert(c);
-				},
-				writable:false
-			})
-			obj.c("c");
-			//严格模式下，赋值操作会报错
-			obj.c="c";
-			obj.d("d");
-			obj.age;
-			obj.age=1;
-		</script>
-	</head>
-	<body>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <title>Object新特性</title>
+    <script type="text/javascript">
+        //			"use strict";
+        var a = "a";
+        var b = function (b) {
+            alert(b);
+        };
+        var key = "dynamic_key";
+        var obj = {
+            a,
+            b,
+            d(d) {
+                alert(d);
+            },
+            _age: 0,
+            //get/set访问器
+            get age() {
+                console.log("get age");
+                alert(this._age);
+                return this._age;
+            },
+            set age(value) {
+                console.log("set age,current:%s,new:%s", this._age, value);
+                if (value > 100) this._age = new Date().getFullYear() - value;
+                else this._age = value;
+            },
+            [key]: function (msg = "hello world!") {
+                alert(msg);
+            }
+        }
+        console.log(obj);
+        //获取属性集合
+        console.log("Object.keys(obj):%o", Object.keys(obj));
+        //			https://segmentfault.com/a/1190000007434923
+        //			Object.defineProperty(obj,"test",{
+        //			    configurable:true | false,
+        //			    enumerable:true | false,
+        //			    value:任意类型的值,
+        //			    writable:true | false
+        //			});
+
+        Object.defineProperty(obj, "c", {
+            value: function (c) {
+                alert(c);
+            },
+            writable: false
+        })
+        obj.c("c");
+        //严格模式下，赋值操作会报错
+        obj.c = "c";
+        obj.d("d");
+        obj.age;
+        obj.age = 1;
+        var target = {a: 1}; //目标对象
+        var source1 = {b: 2}; //源对象1
+        var source2 = {c: 3}; //源对象2
+        var source3 = {c: 4}; //源对象3，和source2中的对象有同名属性c
+        Object.assign(target, source1, source2, source3);
+        console.log("after Object.assig target:%o", target);
+    </script>
+</head>
+<body>
+Object.assign用来合并对象,将source合并到target对象中,如果source中有同名属性方法，则后者覆盖前者
+</body>
 </html>
