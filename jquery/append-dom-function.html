@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>append-dom-function</title>
+    <script src="../jquery/lib/jquery.3.3.1.min.js"></script>
+    <script>
+        value = {
+            id: "test_123",
+            pic: "pic"
+        };
+
+        function fn(id, pic) {
+            console.log("id:%o,pic:%o", id, pic);
+        }
+
+        // fn正确调用写法
+        // var html = "<a href='#' onclick='fn(&#39;" + value.id + "&#39;,&#39;" + value.pic + "&#39;)'>href</a>";
+        // fn错误调用
+        var html = "<a href='#' onclick='fn(" + value.id + ",&#39;" + value.pic + "&#39;)'>href</a>";
+        $(function () {
+            $("#append-dom").click(function () {
+                $(this).after(html);
+            });
+        });
+    </script>
+</head>
+<body>
+<button id="append-dom">append-dom-function</button>
+动态拼接dom函数调用参数写法测试
+</body>
+</html>
