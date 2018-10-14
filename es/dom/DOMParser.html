@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOMParser</title>
+    <script type="text/javascript">
+        let parser = new DOMParser();
+        let doc = parser.parseFromString(`
+        <html>
+            <head>
+            <title>dom-parse</title>
+            </head>
+            <body><div id="content">html-content</div></body>
+        </html>
+        `, "application/xml");
+        console.log("content:%s", doc.getElementById("content").innerHTML);
+    </script>
+</head>
+<body>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/DOMParser" target="_blank">https://developer.mozilla.org/zh-CN/docs/Web/API/DOMParser</a>
+<p>js解析html字符串</p>
+</body>
+</html>
