@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <title>WeixinJSBridge</title>
     <script>
         document.addEventListener("WeixinJSBridgeReady", function (e) {
-            alert(JSON.stringify(e));
+            console.log("e:%o", e);
+            alert("WeixinJSBridgeReady");
         })
     </script>
 </head>
