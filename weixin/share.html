@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <title>手机网页调起分享</title>
     <script type="text/javascript" src="http://image.bitautoimg.com/uimg/wap/js/jquery-1.8.0.min.js"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/m/common/commonOpenApp2_4.js"></script>
-    <script type="text/javascript" src="http://img1.bitautoimg.com/M/Index/2016/js/m.share.js?v=20180621.1"></script>
+    <script type="text/javascript" src="m.share.js"></script>
 </head>
 <body>
 <div id="popup_share" class="leftPopup share-bottom popup-share popup-share1" data-back="mark2" style="">
@@ -24,13 +23,12 @@
     </div>
 </div>
 <script>
-    $.openApp.init();
     var share_config = {
         url: window.location.href,// 分享的网页链接
-        title: "title",// 标题
-        desc: "desc",// 描述
-        img: "imageurl",// 图片
-        img_title: "imagetitle",// 图片标题
+        title: "分享内容",// 标题
+        desc: "分享描述",// 描述
+        img: "http://img1.bitautoimg.com/newsimg_630_w0_1_q50/bitauto/2018/10/14/456a7b04-cb29-4a9d-9b87-329d1a0cad4e_630_w0.jpg",// 图片
+        img_title: "图片名称",// 图片标题
         from: 'test' // 来源
     };
 
