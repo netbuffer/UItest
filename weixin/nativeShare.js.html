@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>nativeShare.js Demo</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta name="description" content="demo"/>
+    <link rel="stylesheet" href="./nativeShare.css"/>
+    <script src="./nativeShare.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+<body>
+<div id="nativeShare" style="position: fixed;bottom: 0;left: 0;right: 0;">
+    <div class="label">分享到</div>
+    <div class="list clearfix">
+        <span data-app="sinaWeibo" class="nativeShare weibo"><i></i>新浪微博</span>
+        <span data-app="QZone" class="nativeShare qzone"><i></i>QQ空间</span>
+    </div>
+</div>
+
+<script>
+    var config = {
+        url: 'https://github.com/netbuffer',
+        title: 'netbuffer',
+        desc: 'https://github.com/netbuffer',
+        img: 'https://avatars3.githubusercontent.com/u/7599915?s=460&v=4',
+        img_title: 'https://github.com/netbuffer',
+        from: 'https://github.com/netbuffer'
+    };
+    var share_config = new nativeShare('nativeShare', config);
+    $(function () {
+        //新浪分享
+        $('.weibo').click(function (ev) {
+            ev.preventDefault();
+            const share = {
+                title: share_config.title,
+                image_url: share_config.img,
+                share_url: share_config.url
+            };
+            document.location = ('https:' == document.location.protocol ? "https:" : "http:") + '//service.weibo.com/share/share.php?url=' + encodeURIComponent(share.share_url) + '&title=' + share.title + '&pic=' + share.image_url + '&searchPic=true';
+
+
+        });
+        //QQ空间分享
+        $('.qzone').click(function (ev) {
+            ev.preventDefault();
+            const share = {
+                title: share_config.title,
+                desc: share_config.desc,
+                image_url: [share_config.img],
+                share_url: share_config.url
+            };
+            let image_urls = share.image_url.map(function (image) {
+                return encodeURIComponent(image);
+            });
+            document.location = ('https:' == document.location.protocol ? "https:" : "http:") + '//sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(share.share_url) + '&title=' + share.title + '&pics=' + image_urls.join('|') + '&summary=' + share.desc;
+        });
+    });
+</script>
+</body>
+</html>
