@@ -97,7 +97,8 @@ var nativeShare = function (elementNode, config) {
             '<span data-app="QQ" class="nativeShare qq"><i></i>QQ好友</span>'+
             '<span data-app="QZone" class="nativeShare qzone"><i></i>QQ空间</span>'+
             '<span data-app="" class="nativeShare more"><i></i>更多</span>'+
-            '</div>';
+            '</div>'+
+            '<div style="text-align: center;font-size: 13px;cursor:pointer;padding: 10px;" onclick="$(\'#nativeShare\').css(\'display\', \'none\');">取消</div>';
         position.innerHTML = html;
     };
 
