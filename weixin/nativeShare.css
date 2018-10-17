@@ -5,6 +5,7 @@
  */
 #nativeShare {
     font-size: 13px;
+    background-color: white;
 }
 
 #nativeShare .label {
@@ -17,7 +18,6 @@
 #nativeShare .list {
     margin: 0 auto;
     width: 100%;
-    background-color: white;
 }
 
 #nativeShare .list span {
