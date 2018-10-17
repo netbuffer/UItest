@@ -10,15 +10,18 @@
 #nativeShare .label {
     font-size: 20px;
     padding-left: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid lightgray;
 }
 
 #nativeShare .list {
-    width: 90%;
     margin: 0 auto;
+    width: 100%;
+    background-color: white;
 }
 
 #nativeShare .list span {
-    width: 30%;
+    width: 33.33%;
     display: inline-block;
     text-align: center;
     margin: 10px 0;
