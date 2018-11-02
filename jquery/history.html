@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>history</title>
+    <script src="../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(function () {
+            var options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric'
+            };
+            $("#content").text(new Date().toLocaleDateString('zh-CN', options));
+        });
+    </script>
+</head>
+<body>
+<input name="name" placeholder="name"/>
+<div id="content"></div>
+<a href="../index.html">index.html</a>
+</body>
+</html>
