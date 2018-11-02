@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>history</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <script src="../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/eruda/1.5.4/eruda.min.js"></script>
     <script type="text/javascript">
+        eruda.init();
+        var name = "history";
+        console.log("name:%s", name);
         $(function () {
             var options = {
                 weekday: 'long',
@@ -15,7 +20,10 @@
                 minute: 'numeric',
                 second: 'numeric'
             };
-            $("#content").text(new Date().toLocaleDateString('zh-CN', options));
+            var date = new Date().toLocaleDateString('zh-CN', options);
+            $("#content").text(date);
+            name += date;
+            console.log("after name:%s", name);
         });
     </script>
 </head>
