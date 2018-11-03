@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jquery</title>
+    <script src="../agile/assets/third/jquery/jquery-2.1.3.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.pin/1.0.1/jquery.pin.min.js"></script>
+    <style type="text/css">
+        .pinned {
+            font-size: 24px;
+            border: 1px dashed cyan;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $(".pinned").pin()
+        });
+    </script>
+</head>
+<body>
+<div class="pinned">pinned</div>
+<div style="margin-top:1000px;">
+    content<br/>
+    content<br/>
+    content<br/>
+    content<br/>
+</div>
+</body>
+</html>
