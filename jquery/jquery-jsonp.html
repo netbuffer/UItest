@@ -75,7 +75,8 @@
 				$.ajax({
                     async : false,
                     type : "GET",
-                    url :"data.json",
+                    // url :"data.json",
+                    url :"data.jsonaaa",
                     data:{
                         "type":1
                     },
@@ -86,11 +87,15 @@
                         data=d;
                         console.log(JSON.stringify(data));
                     },
-                    error:function () {
-                        alert("请重试");
+                    error: function (xhr, status, err) {
+                        console.log("xhr:%o", xhr);
+                        console.log("status:%o", status);
+                        console.log("err:%o", err);
                     }
                 });
-                alert(JSON.stringify(data));
+				if(Object.keys(data).length>0){
+                	alert(JSON.stringify(data));
+				}
 			}
 		</script>
 	</head>
