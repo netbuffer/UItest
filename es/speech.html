@@ -4,9 +4,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <meta charset="UTF-8">
     <title>speech</title>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-<div class="no-browser-support"></div>
+<div class="no-browser-support hide">当前浏览器暂不支持语音朗读</div>
 <div class="app">
     <textarea id="message" placeholder="输入文字朗读" style="width: 100%;height: 100px;"></textarea>
     <button style="display: block;width:100%;height: 30px;" onclick="reading_aloud();">朗读</button>
@@ -18,13 +23,15 @@
      * @type {jQuery.fn.init|jQuery|HTMLElement}
      */
     var $message = $("#message");
-    try {
-        speech = new SpeechSynthesisUtterance();
-    } catch (e) {
-        console.error(e);
-        $('.no-browser-support').show();
-        $('.app').hide();
-    }
+    $(function () {
+        try {
+            speech = new SpeechSynthesisUtterance();
+        } catch (e) {
+            console.error(e);
+            $('.no-browser-support').show();
+            $('.app').hide();
+        }
+    })
 
     function reading_aloud() {
         var speech = new SpeechSynthesisUtterance();
