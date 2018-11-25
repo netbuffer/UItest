@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>intense-images</title>
+    <script src="https://cdn.bootcss.com/intense-images/1.0.7/intense.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .images {
+            display: flex;
+            cursor: pointer;
+        }
+
+        .intense {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="images">
+    <img src="../jquery/Unslider/t1.jpg" class="intense"/>
+    <img src="../jquery/Unslider/t2.jpg" class="intense"/>
+    <img src="../jquery/Unslider/t3.jpg" class="intense"/>
+</div>
+<p>点击图片全屏浏览</p>
+<script>
+    window.onload = function () {
+        // Intensify all images with the 'intense' classname.
+        var elements = document.querySelectorAll('.intense');
+        Intense(elements);
+    }
+</script>
+</body>
+</html>
