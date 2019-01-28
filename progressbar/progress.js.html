@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>progress.js</title>
+    <link href="https://cdn.bootcss.com/progress.js/0.1.0/progressjs.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/progress.js/0.1.0/progress.min.js"></script>
+    <script type="text/javascript">
+        function start(target) {
+            if (target) {
+                progressJs(target).start();
+            } else {
+                progressJs().start();
+            }
+        }
+
+        function set(target, n) {
+            if (target) {
+                progressJs(target).set(n);
+            } else {
+                progressJs().set(n);
+            }
+        }
+
+        function end(target) {
+            if (target) {
+                progressJs(target).end();
+            } else {
+                progressJs().end();
+            }
+        }
+    </script>
+</head>
+<body>
+<div>
+    <a href="http://usablica.github.io/progress.js/" target="_blank">http://usablica.github.io/progress.js/</a>&emsp;
+    <a href="https://github.com/usablica/progress.js" target="_blank">https://github.com/usablica/progress.js</a>&emsp;
+    <a href="https://github.com/usablica/progress.js/wiki/API"
+       target="https://github.com/usablica/progress.js/wiki/API">https://github.com/usablica/progress.js/wiki/API</a>
+</div>
+<div>
+    <button onclick="start()">start</button>&emsp;
+    <button onclick="start('#progress');">start-progress-div</button>&emsp;
+    <button onclick="set(null,20)">set-progress</button>&emsp;
+    <button onclick="set('#progress',20)">set-progress-div</button>&emsp;
+    <button onclick="end()">end</button>&emsp;
+    <button onclick="end('#progress')">end-div</button>&emsp;
+</div>
+<div id="progress" style="margin-top:200px;"></div>
+</body>
+</html>
