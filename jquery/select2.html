@@ -3,22 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>select2.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
     <link href="//cdn.bootcss.com/select2/4.0.6-rc.1/css/select2.min.css" rel="stylesheet">
     <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/select2/4.0.6-rc.1/js/select2.min.js"></script>
 </head>
 <body>
-select:
-<select id="select2" style="width:200px;">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-</select>
+<div>
+    select:
+    <select id="select2" style="width:200px;">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+</div>
+<div style="margin-top:50px;">
+    <button onclick="destroy('#select_method_test')">destroy</button>&emsp;
+    <button onclick="reinit('#select_method_test')">reinit</button>&emsp;
+    <button onclick="clear_options('#select_method_test')">clear-options</button>&emsp;
+    <br/>
+    <select id="select_method_test" style="width:200px;"></select>
+</div>
 <script type="text/javascript">
+
+    function clear_options(target) {
+        $(target).html('').select2({data: [{id: '', text: ''}]});
+    }
+
+    function destroy(target) {
+        $(target).select2("destroy");
+    }
+
+    function reinit(target) {
+        $(target).select2();
+    }
+
     $(function () {
         $("#select2").select2({
             placeholder: '请选择选项'
         });
+        $("#select_method_test").select2({
+            placeholder: '请选择...',
+            data: [
+                {"id": "a", "text": "aaa"},
+                {"id": "b", "text": "bbb"},
+                {"id": "c", "text": "ccc"},
+                {"id": "d", "text": "ddd"},
+                {"id": "e", "text": "eee"},
+                {"id": "f", "text": "fff"}
+            ]
+        });
+
     })
 </script>
 </body>
