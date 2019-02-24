@@ -30,8 +30,7 @@
 * log4javascript js日志框架使用
 * mousetrap.html 键盘事件监听，快捷键库
 * iscroll iscroll.js下拉刷新、上拉加载
-* lightbox jquery图片放大插件/图片放大浏览/图片相册插件
-* `jquery.viewer/viewerjs/viewer.js` 支持鼠标滚轮缩放相册插件,js图片画廊插件
+* `lightbox`/`jquery.swipebox`/`baguettebox.js`/`jquery.viewer/viewerjs/viewer.js` jquery图片放大插件/图片放大浏览/图片相册插件,js图片画廊插件
 * jquery-autocomplete jquery自动完成插件,可以自定义模板样式
 * clipboard.js 剪贴板复制/粘贴
 * marquee 测试滚动插件
