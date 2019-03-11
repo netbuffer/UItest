@@ -143,6 +143,16 @@
             var compiled = _.template(tpl);
             $("#template_html").html(compiled({"data":data}));
         }
+
+        //render_data_placeholder("lodash_tpl4",[{id:1,name:"test1"},{id:3,name:"test2"}])
+        function render_data_placeholder(tplid, data) {
+            // 自定义模板引擎分隔符,占位符
+            _.templateSettings.escape = /{{#([\s\S]+?)#}}/g;//插值用
+            _.templateSettings.evaluate = /{{([\s\S]+?)}}/g;//语言界定
+            var tpl=$("#" + tplid).html();
+            var compiled = _.template(tpl);
+            $("#template_html").html(compiled({"data":data}));
+        }
     </script>
 </head>
 <body>
@@ -211,6 +221,20 @@
             <%
             });
             %>
+        </ul>
+    </script>
+
+    <script id="lodash_tpl4" type="text/html">
+        <ul class="list-group">
+            {{
+            _.forEach(data, function(value,index) {
+            }}
+            <li class="list-group-item">
+                {{#index#}}:{{#value.id#}}:{{#value.name#}}
+            </li>
+            {{
+            });
+            }}
         </ul>
     </script>
 
