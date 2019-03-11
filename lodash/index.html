@@ -135,6 +135,14 @@
             var compiled = _.template($("#" + tplid).html());
             $("#template_html").html(compiled({'users': ['fred', 'barney']}));
         }
+
+        // render_data("lodash_tpl3",[{id:1,name:"test1"},{id:3,name:"test2"}])
+        function render_data(tplid, data) {
+            _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
+            var tpl=$("#" + tplid).html();
+            var compiled = _.template(tpl);
+            $("#template_html").html(compiled({"data":data}));
+        }
     </script>
 </head>
 <body>
@@ -180,16 +188,29 @@
     <script id="lodash_tpl2" type="text/html">
         <ul class="list-group">
             <%
-            for(var i=0;i
-            <users.length
-                    ;i++){
-                    %>
+                for(var i=0;i<users.length ;i++){
+            %>
                 <li class="list-group-item">
                     user<%= i %>:<%- users[i] %>
                 </li>
-                <%
+            <%
                 }
-                %>
+            %>
+        </ul>
+    </script>
+
+
+    <script id="lodash_tpl3" type="text/html">
+        <ul class="list-group">
+            <%
+            _.forEach(data, function(value,index) {
+            %>
+            <li class="list-group-item">
+                <%-index%>:<%-value.id%>:<%-value.name%>
+            </li>
+            <%
+            });
+            %>
         </ul>
     </script>
 
