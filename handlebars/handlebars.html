@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>handlebars</title>
+</head>
+<body>
+<a href="https://github.com/wycats/handlebars.js" target="_blank">https://github.com/wycats/handlebars.js</a>
+<script id="tpl" type="text/html">
+    <p>Hello, my name is {{name}}. I am from {{hometown}}. I have{{kids.length}} kids:</p>
+    <ul>
+        {{#kids}}
+        <li>{{name}} is {{age}}</li>
+        {{/kids}}
+    </ul>
+</script>
+<script src="https://cdn.bootcss.com/handlebars.js/4.1.0/handlebars.min.js"></script>
+<script>
+    var template = Handlebars.compile(document.querySelector("#tpl").innerHTML);
+    var data = {
+        "name": "Alan", "hometown": "Somewhere, TX",
+        "kids": [
+            {"name": "Jimmy", "age": "12"},
+            {"name": "Sally", "age": "4"}
+        ]
+    };
+    var result = template(data);
+    console.log("render result:%o", result);
+</script>
+</body>
+</html>
