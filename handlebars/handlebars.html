@@ -6,26 +6,84 @@
 </head>
 <body>
 <a href="https://github.com/wycats/handlebars.js" target="_blank">https://github.com/wycats/handlebars.js</a>
-<script id="tpl" type="text/html">
+<script id="tpl_single" type="text/html">
     <p>Hello, my name is {{name}}. I am from {{hometown}}. I have{{kids.length}} kids:</p>
     <ul>
         {{#kids}}
-        <li>{{name}} is {{age}}</li>
+        <li>{{@index}} : {{name}} is {{age}}</li>
         {{/kids}}
     </ul>
 </script>
-<script src="https://cdn.bootcss.com/handlebars.js/4.1.0/handlebars.min.js"></script>
+<script id="tpl_many" type="text/html">
+    {{#each this}}
+    <div>
+        <p>Hello, my name is {{name}}. I am from {{hometown}}. I have{{kids.length}} kids:</p>
+        <ul>
+            {{#kids}}
+            <li>{{@../index}} {{@index}} : {{name}} is {{formatage age}}</li>
+            {{/kids}}
+        </ul>
+    </div>
+    {{/each}}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.min.js"></script>
 <script>
-    var template = Handlebars.compile(document.querySelector("#tpl").innerHTML);
-    var data = {
-        "name": "Alan", "hometown": "Somewhere, TX",
-        "kids": [
-            {"name": "Jimmy", "age": "12"},
-            {"name": "Sally", "age": "4"}
-        ]
-    };
-    var result = template(data);
-    console.log("render result:%o", result);
+
+    Handlebars.registerHelper('formatage', function (value) {
+        return value + "岁";
+    });
+
+    function render_single() {
+        var tpl = document.querySelector("#tpl_single");
+        var template = Handlebars.compile(tpl.innerHTML);
+        var data = {
+            "name": "Alan",
+            "hometown": "Somewhere, TX",
+            "kids": [
+                {"name": "Jimmy", "age": "12"},
+                {"name": "Sally", "age": "4"}
+            ]
+        };
+        var result = template(data);
+        console.log("render result:%o", result);
+        var div = document.createElement("div");
+        div.id = "div";
+        div.innerHTML = result;
+        document.body.append(div);
+    }
+
+    function render_many() {
+        var tpl = document.querySelector("#tpl_many");
+        var template = Handlebars.compile(tpl.innerHTML);
+        var datas = [
+            {
+                "name": "Alan",
+                "hometown": "Somewhere, TX",
+                "kids": [
+                    {"name": "Jimmy", "age": "12"},
+                    {"name": "Sally", "age": "4"}
+                ]
+            },
+            {
+                "name": "test",
+                "hometown": "河北",
+                "kids": [
+                    {"name": "test1", "age": "1"},
+                    {"name": "test2", "age": "2"},
+                    {"name": "test3", "age": "3"}
+                ]
+            }
+        ];
+        var result = template(datas);
+        console.log("render result:%o", result);
+        var div = document.createElement("div");
+        div.id = "div";
+        div.innerHTML = result;
+        document.body.append(div);
+    }
+
+    render_single();
+    render_many();
 </script>
 </body>
 </html>
