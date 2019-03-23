@@ -3,13 +3,13 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>vue2.0</title>
-		<script src="//cdn.bootcss.com/vue/2.0.5/vue.min.js"></script>
+		<script src="//cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
 	</head>
 	<body>
 		<pre>
 			vue中重要的3个元素data、methods、watch
 		</pre>
-		<div id="app">
+		<div id="app" :style="{color:'#003399',fontWeight:'bolder'}">
 		  {{ message }}
 		</div>
 		<script type="text/javascript">
@@ -197,8 +197,9 @@
 		  },
 		  watch: {
 		    // 如果 question 发生改变，这个函数就会运行
-		    question: function (newQuestion) {
-		      this.answer = 'Waiting for you to stop typing...'
+		    question: function (newQuestion,old) {
+		    	console.log("new:%s,old:%s",newQuestion,old);
+		      this.answer = 'Waiting for you to stop typing...';
 		      this.getAnswer()
 		    }
 		  },
