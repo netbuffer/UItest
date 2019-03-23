@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>moment.js</title>
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.min.js"></script>
+    <script>
+        moment.locale('zh-cn');
+    </script>
+</head>
+<body>
+<a href="https://github.com/moment/moment" target="_blank">https://github.com/moment/moment</a>
+<script>
+    console.log("format:%s", moment(new Date()).format("MMMDo dddd"));
+    var startStr = "2019-03-23";
+    var endStr = "2019-03-24";
+    // var endStr = "2019-03-23";
+    var start = moment(startStr);
+    var end = moment(endStr);
+    console.log("%o isBefore %o:%s", startStr, endStr, start.isBefore(endStr));
+    console.log("%o isSame %o:%s", startStr, endStr, start.isSame(endStr));
+    console.log("%o %o diff:%s", startStr, endStr, end.diff(start, 'days'));
+</script>
+</body>
+</html>
