@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test-$nextTick</title>
+    <link rel="stylesheet" type="text/css" href="picker.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    {{message}}
+    <div id="choose_date" :style="{fontWeight:'bolder',width:'100%',height:'30px',textAlign:'center'}">点击选择日期</div>
+    <p id="date_str" v-if="date">{{date}}</p>
+</div>
+<script src="//cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<script src="datepicker.js"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: document.title,
+            date: null
+        },
+        created() {
+            this.$nextTick(function () {
+                var datePicker = new DatePicker({
+                    inputId: 'choose_date',
+                    success: function (arr) {
+                        app.$data.date = new Date(arr[0], arr[1] - 1, arr[2]);
+                    }
+                });
+            });
+        }
+    });
+</script>
+</body>
+</html>
