@@ -7,30 +7,55 @@
 <body>
 <a href="https://github.com/wycats/handlebars.js" target="_blank">https://github.com/wycats/handlebars.js</a>
 <script id="tpl_single" type="text/html">
-    <p>Hello, my name is {{name}}. I am from {{hometown}}. I have{{kids.length}} kids:</p>
-    <ul>
-        {{#kids}}
-        <li>{{@index}} : {{name}} is {{age}}</li>
-        {{/kids}}
-    </ul>
-</script>
-<script id="tpl_many" type="text/html">
-    {{#each this}}
-    <div>
+    <div style="border:3px solid #19e1ab;margin: 50px;padding: 5px;">
         <p>Hello, my name is {{name}}. I am from {{hometown}}. I have{{kids.length}} kids:</p>
         <ul>
             {{#kids}}
-            <li>{{@../index}} {{@index}} : {{name}} is {{formatage age}}</li>
+            <li>{{@index}} : {{name}} is {{age}}</li>
             {{/kids}}
         </ul>
+        <div>{{#if not_exist_variable}} not_exist_variable:{{not_exist_variable}}{{else}} <p>
+            没有not_exist_variable这个字段</p> {{/if}}
+        </div>
+        {{{html_str}}}
+        {{! 单行注释 }}
+        {{!-- 多行注释 --}}
+        {{#equal data1 data2}}
+        <p>{{data1}} / {{data2}}两个数相等</p>
+        {{else}}
+        <p>{{data1}} / {{data2}}不相等</p>
+        {{/equal}}
     </div>
-    {{/each}}
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.min.js"></script>
+<script id="tpl_many" type="text/html">
+    <div style="border:3px solid #e1511e;margin: 50px;padding: 5px;">
+        {{#each this}}
+        <div>
+            <p>Hello, my name is {{name}}. I am from {{hometown}}. I have{{kids.length}} kids:</p>
+            <ul>
+                {{#kids}}
+                <li>{{@../index}} {{@index}} : {{name}} is {{formatage age}}</li>
+                {{/kids}}
+            </ul>
+        </div>
+        {{/each}}
+    </div>
+</script>
+<script src="handlebars.min.js"></script>
 <script>
 
     Handlebars.registerHelper('formatage', function (value) {
         return value + "岁";
+    });
+
+    Handlebars.registerHelper("equal", function (v1, v2, options) {
+        if (v1 == v2) {
+            //满足添加继续执行
+            return options.fn(this);
+        } else {
+            //不满足条件执行{{else}}部分
+            return options.inverse(this);
+        }
     });
 
     function render_single() {
@@ -42,7 +67,10 @@
             "kids": [
                 {"name": "Jimmy", "age": "12"},
                 {"name": "Sally", "age": "4"}
-            ]
+            ],
+            "html_str": "<p style='color: #b0d8e1;font-weight: bold'>html</p>",
+            "data1": 1,
+            "data2": 2
         };
         var result = template(data);
         console.log("render result:%o", result);
