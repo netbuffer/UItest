@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset='utf-8'>
-		<title>eruda.js</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-		<meta name="format-detection" content="telephone=no">
-	</head>
-	<body>
-		<a href="https://github.com/liriliri/eruda" target="_blank">eruda前端开发调试面板</a>
-		<script src="https://cdn.bootcss.com/eruda/1.5.4/eruda.min.js"></script>
-		<script>eruda.init();</script>
-	</body>
+<head>
+    <meta charset='utf-8'>
+    <title>eruda.js</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../water.css/light.css">
+    <style>
+        button {
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<a href="https://github.com/liriliri/eruda" target="_blank">eruda前端开发调试面板</a>
+<hr/>
+<button onclick="localStorage.setItem('active-eruda',true);alert('打开成功')">打开调试</button>
+<button onclick="localStorage.setItem('active-eruda',false);alert('关闭成功')">关闭调试</button>
+<script type="text/javascript">
+    ;(function () {
+        var src = 'https://cdn.bootcss.com/eruda/1.5.4/eruda.min.js';
+        if (!/eruda=true/.test(window.location) && localStorage.getItem('active-eruda') != 'true') return;
+        document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+        document.write('<scr' + 'ipt>eruda.init();</scr' + 'ipt>');
+    })();
+</script>
+</body>
 </html>
