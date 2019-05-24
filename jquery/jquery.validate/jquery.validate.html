@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>jQuery Validation 插件</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+<!--bootstrap3表单构造器，bootstrap2表单构造器:http://bootsnipp.com/forms?version=3-->
+<form class="form-horizontal" id="demoForm">
+    <fieldset>
+        <!-- Form Name -->
+        <legend>测试表单</legend>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">电话</label>
+            <div class="col-md-4">
+                <input id="textinput" name="pn" placeholder="请输入电话" class="form-control input-md" required="" type="text">
+                <span class="help-block">电话号码</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">性别</label>
+            <div class="col-md-4">
+                <label>
+                    <input type="radio" name="sex" value="男"> 男
+                </label>
+                <label>
+                    <input type="radio" name="sex" value="女"> 女
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">喜好</label>
+            <div class="col-md-4">
+                <label>
+                    <input type="checkbox" name="like" value="1"> 1
+                </label>
+                <label>
+                    <input type="checkbox" name="like" value="2"> 2
+                </label>
+            </div>
+        </div>
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="check">提交</label>
+            <div class="col-md-4">
+                <button id="check" class="btn btn-primary">提交</button>
+                <button type="submit" class="btn btn-primary">提交表单</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<script src="vendor/jquery-1.10.0.js"></script>
+<script src="https://cdn.bootcss.com/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script src="../fn/jquery.enter-submit.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+    var validator;
+    $(document).ready(function () {
+
+        $("input[name='pn']").keypress(function (event) {
+            if (event.keyCode == 13) {
+                console.log("提交");
+            }
+        });
+
+        $.validator.setDefaults({
+            debug: true
+        });
+        //校验的表单name属性
+        validator = $("#demoForm").validate({
+            rules: {
+                "pn": {
+                    required: true,
+                    isTel: true
+                },
+                "like":{
+                    required: true
+                }
+            },
+            errorPlacement: function (error, element) {
+                console.log("element:%o",element.parent().html())
+                //指定错误信息位置
+                if (element.is(':radio') || element.is(':checkbox')) { //如果是radio或checkbox
+                    error.appendTo(element.parent().parent()); //将错误信息添加当前元素的父结点后面
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+            messages: {
+                "pn": {
+                    required: "必须填写用户名",
+                    isTel: "请填写正确的电话号码"
+                },
+                "like": {
+                    required: "请选择一项爱好"
+                }
+            },
+            submitHandler: function (form) {
+                console.log("提交表单数据:%o", $(form).serialize());
+            }
+        });
+        $.validator.addMethod("postcode", function (value, element, params) {
+            var postcode = /^[0-9]{6}$/;
+            return this.optional(element) || (postcode.test(value));
+        }, $.validator.format("请填写正确的{0}邮编！"));
+
+        $.validator.addMethod("isTel", function (value, element, params) {
+            var tel = /^\d{3,4}-?\d{7,9}$/; //电话号码格式010-12345678
+            return this.optional(element) || (tel.test(value));
+        }, $.validator.format("请正确填写您的电话号码"));
+
+        //校验表单
+        $("#check").click(function () {
+            alert($("#demoForm").valid() ? "填写正确！" : "填写错误！");
+        });
+    });
+</script>
+
+</body>
+
+</html>
