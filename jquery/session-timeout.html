@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>session-timeout</title>
+</head>
+<body>
+    <a href="https://github.com/travishorn/session-timeout" target="_blank">https://github.com/travishorn/session-timeout</a>
+<script src="js/session-timeout.js" type="text/javascript"></script>
+<script type="text/javascript">
+    sessionTimeout({
+        keepAliveMethod:"GET",
+        keepAliveUrl:"/",
+        logOutBtnText:"退出系统",
+        stayConnectedBtnText:"保持登录",
+        logOutUrl:"/logout",
+        timeOutAfter:1*60*1000,
+        warnAfter: 5*1000,
+        timeOutUrl:"/timeout",
+        message: '当前登录会话即将过期'
+    });
+</script>
+</body>
+</html>
