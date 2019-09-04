@@ -7,55 +7,67 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css"/>
 </head>
-
 <body>
-<!--bootstrap3表单构造器，bootstrap2表单构造器:http://bootsnipp.com/forms?version=3-->
-<form class="form-horizontal" id="demoForm">
-    <fieldset>
-        <!-- Form Name -->
-        <legend>测试表单</legend>
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">电话</label>
-            <div class="col-md-4">
-                <input id="textinput" name="pn" placeholder="请输入电话" class="form-control input-md" required="" type="text">
-                <span class="help-block">电话号码</span>
-            </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="https://jqueryvalidation.org/rules/#rules-%22add%22-rules" target="_blank">https://jqueryvalidation.org/rules/#rules-%22add%22-rules</a>
+            <!--bootstrap3表单构造器，bootstrap2表单构造器:http://bootsnipp.com/forms?version=3-->
+            <form class="form-horizontal" id="demoForm">
+                <fieldset>
+                    <!-- Form Name -->
+                    <legend>测试表单</legend>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">电话</label>
+                        <div class="col-md-4">
+                            <input id="textinput" name="pn" placeholder="请输入电话" class="form-control input-md" required=""
+                                   type="text">
+                            <span class="help-block">电话号码</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">性别</label>
+                        <div class="col-md-4">
+                            <label>
+                                <input type="radio" name="sex" value="男"> 男
+                            </label>
+                            <label>
+                                <input type="radio" name="sex" value="女"> 女
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">喜好</label>
+                        <div class="col-md-4">
+                            <label>
+                                <input type="checkbox" name="like" value="1"> 1
+                            </label>
+                            <label>
+                                <input type="checkbox" name="like" value="2"> 2
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">名称</label>
+                        <div class="col-md-4">
+                            <label>
+                                <input type="text" name="name" placeholder="名称"/>
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <button id="check" class="btn btn-primary">提交</button>
+            <button type="submit" class="btn btn-primary">提交表单</button>
+            <button class="btn btn-primary" id="del_rule">动态删除rule</button>
+            <button class="btn btn-primary" id="add_rule">动态添加rule</button>
         </div>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">性别</label>
-            <div class="col-md-4">
-                <label>
-                    <input type="radio" name="sex" value="男"> 男
-                </label>
-                <label>
-                    <input type="radio" name="sex" value="女"> 女
-                </label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">喜好</label>
-            <div class="col-md-4">
-                <label>
-                    <input type="checkbox" name="like" value="1"> 1
-                </label>
-                <label>
-                    <input type="checkbox" name="like" value="2"> 2
-                </label>
-            </div>
-        </div>
-        <!-- Button -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="check">提交</label>
-            <div class="col-md-4">
-                <button id="check" class="btn btn-primary">提交</button>
-                <button type="submit" class="btn btn-primary">提交表单</button>
-            </div>
-        </div>
-    </fieldset>
-</form>
+    </div>
+</div>
 <script src="vendor/jquery-1.10.0.js"></script>
-<script src="https://cdn.bootcss.com/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-validate/1.19.1/localization/messages_zh.min.js"></script>
 <script src="../fn/jquery.enter-submit.js" type="text/javascript" charset="utf-8"></script>
 
 <script>
@@ -74,16 +86,19 @@
         //校验的表单name属性
         validator = $("#demoForm").validate({
             rules: {
+                "name": {
+                    required: true
+                },
                 "pn": {
                     required: true,
                     isTel: true
                 },
-                "like":{
+                "like": {
                     required: true
                 }
             },
             errorPlacement: function (error, element) {
-                console.log("element:%o",element.parent().html())
+                console.log("element:%o", element.parent().html())
                 //指定错误信息位置
                 if (element.is(':radio') || element.is(':checkbox')) { //如果是radio或checkbox
                     error.appendTo(element.parent().parent()); //将错误信息添加当前元素的父结点后面
@@ -117,6 +132,16 @@
         //校验表单
         $("#check").click(function () {
             alert($("#demoForm").valid() ? "填写正确！" : "填写错误！");
+        });
+
+        $("#del_rule").click(function () {
+            $("input[name=name]").rules("remove", "required");
+        });
+
+        $("#add_rule").click(function () {
+            $("input[name=name]").rules("add", {
+                required: true
+            });
         });
     });
 </script>
