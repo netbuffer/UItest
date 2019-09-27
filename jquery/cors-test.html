@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>cors-test</title>
+</head>
+<body>
+<button onclick="http.get_card_info()">get_card_info</button>&emsp;<button onclick="http.refresh_token()">刷新token
+</button>
+<script src="lib/jquery.3.3.1.min.js"></script>
+<script>
+    $(function () {
+        if (!localStorage.getItem("token")) {
+            $("body").append(`<p>token不存在</p>`);
+            http.refresh_token();
+        } else {
+            $("body").append(`<p>token:<code>${localStorage.getItem("token")}</code></p>`);
+        }
+        $.ajaxSetup({
+            headers: {
+                token: localStorage.getItem("token")
+            },
+            complete: function (jqXHR, status) {
+                console.log("jqxhr:%o,status:%s,response:%s", jqXHR, status, jqXHR.responseText);
+            }
+        });
+    });
+
+    var http = {
+        get_card_info() {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:9006/api-answer-card/api/weekly/card/2",
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    $("body").append(`<p>data:${data}</p>`);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(textStatus + ":" + jqXHR.responseText);
+                }
+            });
+        },
+        refresh_token() {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:9006/api-user-acl/login/test",
+                async: false,
+                data: {id: 1},
+                dataType: "text",
+                success: function (data) {
+                    $("body").append(`<p>获取token:<code>${data}</code></p>`);
+                    localStorage.setItem("token", data);
+                    location.href = location.href;
+                }
+            });
+        }
+    }
+</script>
+</body>
+</html>
