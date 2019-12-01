@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>slidercaptcha</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.bootcss.com/font-awesome/5.7.2/css/all.min.css" rel="stylesheet"/>
+    <link href="lib/slidercaptcha.css" rel="stylesheet"/>
+</head>
+<body>
+<a href="https://gitee.com/LongbowEnterprise/SliderCaptcha" target="_blank">https://gitee.com/LongbowEnterprise/SliderCaptcha</a>
+<div id="captcha"></div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="lib/longbow.slidercaptcha.js"></script>
+<script>
+    $('#captcha').sliderCaptcha({
+        onSuccess: function () {
+            console.log("验证成功")
+        },
+        onFail: function () {
+            console.log("验证失败")
+        },
+        onRefresh: function () {
+            console.log("重新加载")
+        },
+        verify: function (arr, url) {
+            console.log("arr:%o,url:%s", arr, url);
+            var ret = false;
+            $.ajax({
+                url: url,
+                data: {arr: arr},
+                async: false,
+                cache: false,
+                type: 'GET',
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (result) {
+                    ret = result;
+                }
+            });
+            return ret;
+        },
+        // enable server verify
+        remoteUrl: "api.html",
+        // load remote images error fallback
+        localImages: function () {
+            return 'images/' + Math.round(Math.random() * 6) + '.jpg';
+        }
+    });
+</script>
+</body>
+</html>
