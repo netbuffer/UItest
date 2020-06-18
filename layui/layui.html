@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="layui/css/layui.css"/>
 </head>
 <body>
+<ul class="layui-nav" lay-filter="">
+    <li class="layui-nav-item"><a href="https://www.layui.com/" target="_blank"><img
+            src="http://t8.baidu.com/it/u=1484500186,1503043093&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1593093188&t=124c2ac7ca550c93a77e5e9505f8e225"
+            class="layui-nav-img">layui</a></li>
+    <li class="layui-nav-item layui-this"><a href="javascript:void(0);">active</a></li>
+    <li class="layui-nav-item"><a href="">simple<span class="layui-badge-dot"></span></a></li>
+    <li class="layui-nav-item">
+        <a href="javascript:;">下拉菜单</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="">item1</a></dd>
+            <dd><a href="">item2</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item"><a href="">社区</a></li>
+</ul>
 <div class="layui-container">
     常规布局（以中型屏幕桌面为例）：
     <div class="layui-row">
@@ -35,8 +50,103 @@
             移动：4/12 | 平板：5/12 | 桌面：4/12
         </div>
     </div>
+    <hr>
     <div>
-        <button type="button" class="layui-btn">一个标准的按钮</button>
+        <div class="layui-card">
+            <div class="layui-card-header layui-bg-orange">button使用</div>
+            <div class="layui-card-body">
+                <button type="button" class="layui-btn layui-btn-sm layui-btn-primary">
+                    <i class="layui-icon">&#xe678;</i>
+                </button>
+                按钮组
+                <div class="layui-btn-group">
+                    <button type="button" class="layui-btn layui-btn-normal layui-btn-sm">
+                        <i class="layui-icon">&#xe654;</i>
+                    </button>
+                    <button type="button" class="layui-btn layui-btn-normal layui-btn-sm">
+                        <i class="layui-icon">&#xe642;</i>
+                    </button>
+                    <button type="button" class="layui-btn layui-btn-normal layui-btn-sm">
+                        <i class="layui-icon">&#xe640;</i>
+                    </button>
+                    <button type="button" class="layui-btn layui-btn-normal layui-btn-sm">
+                        <i class="layui-icon">&#xe602;</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-card">
+            <div class="layui-card-header layui-bg-cyan">字体图标</div>
+            <div class="layui-card-body">
+                <button type="button" class="layui-btn"><i class="layui-icon layui-icon-face-smile" style="font-size: 30px; color: #EE0C61B5;"></i> 一个标准的按钮</button>
+                <div><i class="layui-icon layui-icon-heart" style="font-size: 30px; color: green;"></i>这是字体图标</div>
+            </div>
+        </div>
+
+        <hr/>
+
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">输入框</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码框</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">辅助文字</div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">选择框</label>
+                <div class="layui-input-block">
+                    <select name="city" lay-verify="required">
+                        <option value=""></option>
+                        <option value="0">北京</option>
+                        <option value="1">上海</option>
+                        <option value="2">广州</option>
+                        <option value="3">深圳</option>
+                        <option value="4">杭州</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">复选框</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="like[write]" title="写作">
+                    <input type="checkbox" name="like[read]" title="阅读" checked>
+                    <input type="checkbox" name="like[dai]" title="发呆">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">开关</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="switch" lay-skin="switch">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">单选框</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="sex" value="男" title="男">
+                    <input type="radio" name="sex" value="女" title="女" checked>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">文本域</label>
+                <div class="layui-input-block">
+                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 <script src="layui/layui.all.js" type="text/javascript"></script>
