@@ -14,14 +14,14 @@
 <body>
 <div id="app">
     <a href="http://mockjs.com/0.1/#" target="_blank">http://mockjs.com/0.1/#</a>
-    <textarea style="width:100%;height:500px;">{{json}}</textarea>
+    <textarea style="width:100%;height:500px;" v-model="json"></textarea>
     <button @click="mock">mock</button>
 </div>
 <script type="text/javascript">
     var app = new Vue({
         el: '#app',
         data: {
-            json: {
+            json: `{
                 "id": "@increment",
                 "name": "@name",
                 "avatar": "@image",
@@ -30,11 +30,11 @@
                 "email": "@email",
                 "region": "@region",
                 "birthday": "@date(yyyy-MM-dd)"
-            }
+            }`
         },
         methods: {
             mock: function () {
-                var mock_data = Mock.mock(this.json);
+                var mock_data = Mock.mock(JSON.parse(this.json));
                 alert(JSON.stringify(mock_data, null, 4));
             }
         }
