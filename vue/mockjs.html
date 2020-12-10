@@ -13,7 +13,8 @@
 </head>
 <body>
 <div id="app">
-    <a href="http://mockjs.com/0.1/#" target="_blank">http://mockjs.com/0.1/#</a>
+    <a href="http://mockjs.com/0.1/#" target="_blank">http://mockjs.com/0.1/#</a>&emsp;<a
+        href="https://github.com/nuysoft/Mock/wiki" target="_blank">https://github.com/nuysoft/Mock/wiki</a>
     <textarea style="width:100%;height:500px;" v-model="json"></textarea>
     <button @click="mock">mock</button>
 </div>
@@ -24,12 +25,19 @@
             json: `{
                 "id": "@increment",
                 "name": "@name",
+                "real_name": "@cname",
                 "avatar": "@image",
                 "age|1-150": 150,
                 "url": "@url",
+                "zip": "@zip",
                 "email": "@email",
                 "region": "@region",
-                "birthday": "@date(yyyy-MM-dd)"
+                "birthday": "@date(yyyy-MM-dd)",
+                "city1":"@city",
+                "city2":"@city(true)",
+                "like|1":["苹果","香蕉","桔子"],
+                "like2":"@pick(['apple','banana','orange'])",
+                "description":"@cparagraph"
             }`
         },
         methods: {
