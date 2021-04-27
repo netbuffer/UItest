@@ -5,6 +5,27 @@
 		<title>js for/in循环使用</title>
 		<script type="text/javascript">
 			var arr=["a","b","c"];
+			console.log("forEach start");
+			arr.forEach((item, index, array) => {
+				console.log("forEach item:%o",item)
+			});
+			console.log("forEach end");
+			// some当内部return true时跳出整个循环
+			arr.some(function (item) {
+				if (item == "b") {
+					return true;
+				}
+				console.log("some item:%o", item);
+			});
+			// every当内部return false时跳出整个循环
+			arr.every(function (item) {
+				if (item == "b") {
+					return false;
+				} else {
+					console.log("every item:%o", item);
+					return true;
+				}
+			});
 			for(var i in arr){
 				console.log("索引为:%s,元素为:%s",i,arr[i]);
 			}
