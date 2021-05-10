@@ -49,6 +49,19 @@
                 [o1,o2]=[o2,o1];
                 console.log("after o1:%o,o2:%o",o1,o2);
             }
+
+			var objs=[
+				{
+					"name":"test1",
+					"age":20
+				},
+				{
+					"name":"test2",
+					"age":21
+				}
+			];
+			console.log("objs find test1 %o",objs.findIndex((item)=>item.name=="test1"));
+			console.log("objs find test3 %o",objs.findIndex((item)=>item.name=="test3"));
 		</script>
 	</head>
 	<body>
