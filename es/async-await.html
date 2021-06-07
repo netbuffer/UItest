@@ -11,7 +11,7 @@
 
         console.log("timeout():%o", timeout());
 
-        const delay = timeout => new Promise(resolve => setTimeout(resolve, timeout));
+        const delay = timeoutMillisecs => new Promise(resolve => setTimeout(resolve, timeoutMillisecs));
 
         async function f() {
             await delay(1000);
@@ -23,7 +23,26 @@
             return 'done';
         }
 
-        f().then(v => console.log(v)); // 等待6s后才输出 'done'
+        function dateFormat(format, date) {
+            let ret;
+            const sections = {
+                "Y+": date.getFullYear().toString(),
+                "m+": (date.getMonth() + 1).toString(),
+                "d+": date.getDate().toString(),
+                "H+": date.getHours().toString(),
+                "M+": date.getMinutes().toString(),
+                "S+": date.getSeconds().toString()
+            };
+            for (let k in sections) {
+                ret = new RegExp("(" + k + ")").exec(format);
+                if (ret) {
+                    format = format.replace(ret[1], (ret[1].length == 1) ? (sections[k]) : (sections[k].padStart(ret[1].length, "0")))
+                }
+            }
+            return format;
+        }
+
+        f().then(value => console.log("%s %s", dateFormat("YYYY-mm-dd HH:MM:SS", new Date()), value)); // 等待6s后才输出 'done'
     </script>
 </head>
 <body>
