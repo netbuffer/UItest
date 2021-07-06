@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>array</title>
+</head>
+<body>
+<script>
+    var arr = [
+        {
+            "name": "a",
+            "total": 1
+        },
+        {
+            "name": "b",
+            "total": 2
+        },
+        {
+            "name": "c",
+            "total": 0
+        }
+    ];
+    var sum = arr.reduce(function (a, b) {
+        return a.total + b.total;
+    });
+    console.log("sum:%o", sum);
+    var sum1 = arr.reduce(function (a, b) {
+        return a + b.total;
+    },0);
+    console.log("sum1:%o", sum1);
+    const find = arr.findIndex(a => a.name == "b")
+    console.log("find[%s] index:%s", "b", find)
+</script>
+</body>
+</html>
