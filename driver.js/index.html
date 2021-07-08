@@ -12,36 +12,57 @@
 <div id="third-element-introduction" style="height: 200px;width: 200px;">third-element-introduction</div>
 <script src="driver.js"></script>
 <script type="text/javascript">
-  const driver = new Driver({
-    closeBtnText: '关闭',
-    doneBtnText: '完成',
-    nextBtnText: '下一步',
-    prevBtnText: '上一步'
-  });
-  driver.defineSteps([
-    {
-      element: '#first-element-introduction',
-      popover: {
-        title: '第一步',
-        description: '第一步骤中的内容',
-      }
-    },
-    {
-      element: '#second-element-introduction',
-      popover: {
-        title: '第二步',
-        description: '第二步骤中的内容',
-      }
-    },
-    {
-      element: '#third-element-introduction',
-      popover: {
-        title: '第三步',
-        description: '第三步骤中的内容',
-      }
-    },
-  ]);
-  driver.start();
+    const driver = new Driver({
+        closeBtnText: '关闭',
+        doneBtnText: '完成',
+        nextBtnText: '下一步',
+        prevBtnText: '上一步',
+        onHighlightStarted: (Element) => {
+            console.log("onHighlightStarted:%o",Element)
+        },
+        onHighlighted: (Element) => {
+            console.log("onHighlighted:%o",Element)
+        },
+        onDeselected: (Element) => {
+            console.log("onDeselected:%o",Element)
+        },
+        onReset: (Element) => {
+            console.log("onReset:%o",Element)
+            localStorage.setItem("guide",true);
+        },
+        onNext: (Element) => {
+            console.log("onNext:%o",Element)
+        },
+        onPrevious: (Element) => {
+            console.log("onPrevious:%o",Element)
+        }
+    });
+    if(!localStorage.getItem("guide")){
+        driver.defineSteps([
+            {
+                element: '#first-element-introduction',
+                popover: {
+                    title: '第一步',
+                    description: '第一步骤中的内容',
+                }
+            },
+            {
+                element: '#second-element-introduction',
+                popover: {
+                    title: '第二步',
+                    description: '第二步骤中的内容',
+                }
+            },
+            {
+                element: '#third-element-introduction',
+                popover: {
+                    title: '第三步',
+                    description: '第三步骤中的内容',
+                }
+            },
+        ]);
+        driver.start();
+    }
 </script>
 </body>
 </html>
