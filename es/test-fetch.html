@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fetch</title>
+</head>
+<body>
+<div>
+    Fetch API:<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch" target="_blank">https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch</a>
+</div>
+<div>
+    <button onclick="get()">get</button>
+    <button onclick="post()">post</button>
+</div>
+<script>
+    function get() {
+        var url = prompt("input url");
+        fetch(url)
+            .then(function (response) {
+                return response;
+            })
+            .then(function (response) {
+                console.log(`get url to [${url}] response ${response}`);
+            });
+    }
+
+    function post() {
+        fetch("http://www.baidu.com", {
+            body: JSON.stringify({"key": "value"}),
+            headers: {
+                'content-type': 'application/json'
+            },
+            method: 'POST'
+        })
+            .then(response => response.json())
+            .then(json => console.log("response json:%o", json))
+    }
+</script>
+</body>
+</html>
