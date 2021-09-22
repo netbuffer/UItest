@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <style type="text/css">
+        body, html, #allmap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+    </style>
+    <script type="text/javascript"
+            src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=M0YaRtU6eOm6ethAGfGjmCLjfRgNE4GI"></script>
+    <title>baidu-lbs-test</title>
+</head>
+<body>
+<a href="https://lbsyun.baidu.com/index.php?title=jspopularGL/guide/usage" target="_blank">文档</a> <a
+        href="https://lbsyun.baidu.com/index.php?title=jspopularGL/guide/geoloaction" target="_blank">定位(浏览器/IP地址)</a>
+<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+    // GL版命名空间为BMapGL
+    // 按住鼠标右键，修改倾斜角和角度
+    var map = new BMapGL.Map("allmap", {
+        enableRotate: false,
+        enableTilt: false
+    });    // 创建Map实例
+    map.centerAndZoom(new BMapGL.Point(116.280190, 40.049191), 19);  // 初始化地图,设置中心点坐标和地图级别
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    map.setHeading(64.5);
+    map.setTilt(73);
+    var scaleCtrl = new BMapGL.ScaleControl();  // 添加比例尺控件
+    map.addControl(scaleCtrl);
+    var zoomCtrl = new BMapGL.ZoomControl();  // 添加缩放控件
+    map.addControl(zoomCtrl);
+    var cityCtrl = new BMapGL.CityListControl();  // 添加城市列表控件
+    map.addControl(cityCtrl);
+
+    function handleClick(e) {
+        alert('点击的经纬度：' + e.latlng.lng + ', ' + e.latlng.lat);
+        var mercator = map.lnglatToMercator(e.latlng.lng, e.latlng.lat);
+        alert('点的墨卡托坐标：' + mercator[0] + ', ' + mercator[1]);
+    }
+
+    map.addEventListener('click', handleClick);
+    // map.removeEventListener('click', handleClick);
+    var geolocation = new BMapGL.Geolocation();
+    geolocation.getCurrentPosition(function (r) {
+        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+            var mk = new BMapGL.Marker(r.point);
+            map.addOverlay(mk);
+            map.panTo(r.point);
+            alert('您的位置：' + r.point.lng + ',' + r.point.lat);
+        } else {
+            alert('failed' + this.getStatus());
+        }
+    });
+</script>
