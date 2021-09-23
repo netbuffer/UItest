@@ -1,18 +1,42 @@
 # UItest
+> test the use of some front-end frameworks/library
 
-* bootstrap
-* amazeui
-* jquerymobile
-* sui
-* weui
-* agile
-* easyui
-* mui
-* mzui
-* vconsole
-* [layui](https://github.com/sentsin/layui/)
+* ![bootstrap](https://img.shields.io/static/v1?label=bootstrap&message=3.x&color=blue)
+* ![amazeui](https://img.shields.io/static/v1?label=amazeui&message=2.4.0&color=blue)
+* ![lazyload](https://img.shields.io/static/v1?label=lazyload&message=rgrove&color=blue)
+* ![angularjs](https://img.shields.io/static/v1?label=angularjs&message=1.6.4&color=blue)
+* ![animate.css](https://img.shields.io/static/v1?label=animate.css&message=3.7.0&color=blue)
+* ![crypto-js](https://img.shields.io/static/v1?label=crypto-js&message=3.1.2&color=blue)
+* ![dragula.js](https://img.shields.io/static/v1?label=dragula.js&message=3.7.2&color=blue)
+* ![driver.js](https://img.shields.io/static/v1?label=driver.js&message=kamranahmedse&color=blue)
+* ![easyui](https://img.shields.io/static/v1?label=easyui&message=1.4.4&color=blue)
+* ![handlebars](https://img.shields.io/static/v1?label=handlebars&message=4.1.1&color=blue)
+* ![imagehover.css](https://img.shields.io/static/v1?label=imagehover.css&message=2.0.0&color=blue)
+* ![intense.js](https://img.shields.io/static/v1?label=intense.js&message=1.0.7&color=blue)
+* ![jingle](https://img.shields.io/static/v1?label=jingle&message=0.4&color=blue)
+* ![jquery](https://img.shields.io/static/v1?label=jquery&message=and-many-plugin&color=blue)
+* ![JqueryMobile](https://img.shields.io/static/v1?label=JqueryMobile&message=1.4.5&color=blue)
+* ![layer.js](https://img.shields.io/static/v1?label=layer.js&message=3.1.0&color=blue)
+* ![layui](https://img.shields.io/static/v1?label=layui&message=2.5.6&color=blue)
+* ![laytpl](https://img.shields.io/static/v1?label=laytpl&message=1.2.0&color=blue)
+* ![lodash](https://img.shields.io/static/v1?label=lodash&message=4.17.3&color=blue)
+* ![moment.js](https://img.shields.io/static/v1?label=moment.js&message=2.24.0&color=blue)
+* ![mui](https://img.shields.io/static/v1?label=mui&message=2.9.0&color=blue)
+* ![mzui](https://img.shields.io/static/v1?label=mzui&message=1.1.6&color=blue)
+* ![progressbar](https://img.shields.io/static/v1?label=progressbar&message=0.1.0&color=blue)
+* ![requirejs](https://img.shields.io/static/v1?label=requirejs&message=2.3.4&color=blue)
+* ![slidercaptcha](https://img.shields.io/static/v1?label=slidercaptcha&message=LongbowEnterprise&color=blue)
+* ![SUI](https://img.shields.io/static/v1?label=SUI&message=0.6.2&color=blue)
+* ![vconsole](https://img.shields.io/static/v1?label=vconsole&message=3.8.0&color=blue)
+* ![eruda.js](https://img.shields.io/static/v1?label=eruda.js&message=1.5.4&color=blue)
+* ![vue.js](https://img.shields.io/static/v1?label=vue.js&message=2.6.10&color=blue)
+* ![water.css](https://img.shields.io/static/v1?label=water.css&message=2.1.1&color=blue)
+* ![weui](https://img.shields.io/static/v1?label=weui&message=0.4.3&color=blue) ![](https://img.shields.io/static/v1?label=weui&message=1.1.2&color=blue)
+* ![jquery-weui](https://img.shields.io/static/v1?label=jquery-weui&message=0.8.2&color=blue)
+* ![zepto](https://img.shields.io/static/v1?label=zepto&message=1.2.0&color=blue)
 
-> github:[https://github.com/netbuffer/UItest](https://github.com/netbuffer/UItest)  
-github demo:[http://netbuffer.github.io/UItest/index.html](http://netbuffer.github.io/UItest/index.html)    
-gitee:[http://gitee.com/netbuffer/UItest](http://gitee.com/netbuffer/UItest)  
-gitee demo:[http://netbuffer.gitee.io/uitest/](http://netbuffer.gitee.io/uitest/)
+---
+* github:[https://github.com/netbuffer/UItest](https://github.com/netbuffer/UItest)  
+* github demo:[http://netbuffer.github.io/UItest/index.html](http://netbuffer.github.io/UItest/index.html)    
+* gitee:[http://gitee.com/netbuffer/UItest](http://gitee.com/netbuffer/UItest)  
+* gitee demo:[http://netbuffer.gitee.io/uitest/](http://netbuffer.gitee.io/uitest/)
