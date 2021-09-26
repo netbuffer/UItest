@@ -22,7 +22,7 @@
 <button onclick="localStorage.setItem('active-eruda',false);alert('关闭成功')">关闭调试</button>
 <script type="text/javascript">
     ;(function () {
-        var src = 'https://cdn.bootcss.com/eruda/1.5.4/eruda.min.js';
+        var src = '//cdn.bootcdn.net/ajax/libs/eruda/2.4.1/eruda.min.js';
         if (!/eruda=true/.test(window.location) && localStorage.getItem('active-eruda') != 'true') return;
         document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
         document.write('<scr' + 'ipt>eruda.init();</scr' + 'ipt>');
