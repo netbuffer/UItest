@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>websocket-test</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<noscript>
+    <h2 style="color: #ff0000">Seems your browser doesn't support
+        Javascript! Websockets rely on Javascript being enabled. Please
+        enable Javascript and reload this page!</h2>
+</noscript>
+<script type="text/javascript">
+    var ws = new WebSocket("ws://localhost:17000/ws");
+    ws.onopen = function () {
+        console.log("Connection open ...");
+    };
+    ws.onmessage = function (r) {
+        console.log("Received Message: " + r.data);
+    };
+    ws.onclose = function () {
+        console.log("Connection closed.");
+    };
+</script>
+<input name="text" placeholder="请输入文本内容" /><button onclick="ws.send(document.querySelector('input[name=\'text\']').value)">send</button>&emsp;<button onclick="ws.close()">close</button>
+</body>
+</html>
