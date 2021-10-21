@@ -10,21 +10,34 @@
         Javascript! Websockets rely on Javascript being enabled. Please
         enable Javascript and reload this page!</h2>
 </noscript>
-<input name="text" placeholder="请输入文本内容" disabled="disabled" /><button onclick="ws.send(input.value)">send</button>&emsp;<button onclick="ws.close()">close</button>
+<input name="text" placeholder="请输入文本内容" disabled="disabled" /><button onclick="ws.send(input.value)">send</button>&emsp;<button onclick="ws.close()">close</button>&emsp;<button onclick="set_session()">set_session</button>
+<ul id="receive-msg"></ul>
 <script type="text/javascript">
     var input = document.querySelector('input[name=\'text\']');
     var ws = new WebSocket("ws://localhost:17000/ws");
+    var receive_msg = document.getElementById("receive-msg");
+
+    function add_msg_to_ul(innerHTML){
+        var child = document.createElement("li");
+        child.innerHTML = innerHTML;
+        receive_msg.appendChild(child);
+    }
+
     ws.onopen = function () {
         console.log("Connection open ...");
         input.removeAttribute("disabled");
+        add_msg_to_ul("<span style='font-style:italic;'>server connected at " + new Date() + "</span>");
     };
+
     ws.onmessage = function (r) {
         console.log("Received Message: " + r.data);
+        add_msg_to_ul(r.data + "   -    " + "<span style='font-style:italic;'>server send at " + new Date() + "</span>");
     };
     ws.onclose = function () {
         console.log("Connection closed.");
         input.setAttribute("disabled", "disabled");
     };
+
 </script>
 </body>
 </html>
