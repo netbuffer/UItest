@@ -5,6 +5,9 @@
 	<meta charset="utf-8">
 </head>
 <body>
+<div>
+    <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket" target="_blank">https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket</a>
+</div>
 <noscript>
     <h2 style="color: #ff0000">Seems your browser doesn't support
         Javascript! Websockets rely on Javascript being enabled. Please
@@ -15,6 +18,8 @@
 <script type="text/javascript">
     var input = document.querySelector('input[name=\'text\']');
     var ws = new WebSocket("ws://localhost:17000/ws");
+    // var ws = new WebSocket("ws://localhost:17000/ws?token=your-token");
+
     var receive_msg = document.getElementById("receive-msg");
 
     function add_msg_to_ul(innerHTML){
@@ -29,13 +34,17 @@
         add_msg_to_ul("<span style='font-style:italic;'>server connected at " + new Date() + "</span>");
     };
 
-    ws.onmessage = function (r) {
-        console.log("Received Message: " + r.data);
-        add_msg_to_ul(r.data + "   -    " + "<span style='font-style:italic;'>server send at " + new Date() + "</span>");
+    ws.onmessage = function (event) {
+        console.log("Received Message: " + event.data);
+        add_msg_to_ul(event.data + "   -    " + "<span style='font-style:italic;'>server send at " + new Date() + "</span>");
     };
     ws.onclose = function () {
         console.log("Connection closed.");
         input.setAttribute("disabled", "disabled");
+    };
+    ws.onerror = function (event) {
+        console.error("WebSocket error observed:", event);
+        add_msg_to_ul("<span style='font-style:italic;'>WebSocket error at " + new Date() + "</span>");
     };
 
 </script>
