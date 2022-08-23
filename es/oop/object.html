@@ -21,7 +21,7 @@
 			//两者不相等，重复创建函数开销
 			alert(per1.say==per2.say);
 		</script>-->
-		
+
 		<!--<script type="text/javascript">
 			//构造函数创建对象
 			function person(name,age){
@@ -55,7 +55,7 @@
 			var arr2=new Array(3,4,5);
 			alert(arr2.sum())
 		</script>-->
-		
+
 		<!--<script type="text/javascript">
 			//构造函数封装属性
 			function person(name,age){
@@ -83,6 +83,9 @@
 			person.prototype={
 				say:function(){
 					alert("my name is:"+this.name+",my age is:"+this.age);
+				},
+				valueOf(){
+					return this.age;
 				}
 			}
 			var per1=new person("test",100);
@@ -90,7 +93,9 @@
 			var per2=new person("test2",101);
 			per2.say();
 			//两者相等，共享同一份函数
-			alert(per1.say==per2.say);
+			alert(per1.say == per2.say);
+			console.log("per1+per2=%o+%o=%o", per1.age, per2.age, per1 + per2)
+			console.log("per1>per2=%o>%o=%o", per1.age, per2.age, per1 > per2)
 		</script>
 	</head>
 	<body>
