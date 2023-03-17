@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>EventSource</title>
+</head>
+<body>
+<div id="data"></div>
+<script>
+    // 创建一个新的 EventSource 对象，指定要监听的服务器端事件源 URL
+    let eventsource_url = "http://localhost:9100/sse/events?id=uitest";
+    const eventSource = new EventSource(eventsource_url);
+    let dataElement = document.getElementById("data");
+    // 监听服务器端消息
+    eventSource.addEventListener('message', event => {
+        // 处理服务器端发来的消息
+        console.log("receive data from server=>%s", event.data);
+        dataElement.innerHTML = dataElement.innerHTML += " " + event.data;
+    });
+
+    // 监听服务器端开启事件源
+    eventSource.addEventListener('open', event => {
+        console.log('Connection opened.');
+    });
+
+    // 监听服务器端关闭事件源
+    eventSource.addEventListener('error', event => {
+        if (event.readyState === EventSource.CLOSED) {
+            console.log('Connection closed.');
+        }
+    });
+</script>
+</body>
+</html>
