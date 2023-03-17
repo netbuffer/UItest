@@ -11,11 +11,14 @@
     let eventsource_url = "http://localhost:9100/sse/events?id=uitest";
     const eventSource = new EventSource(eventsource_url);
     let dataElement = document.getElementById("data");
+    let messageQueue = []; // 存储消息队列
+    let currentMessage = ""; // 当前正在输出的消息
+
     // 监听服务器端消息
     eventSource.addEventListener('message', event => {
         // 处理服务器端发来的消息
         console.log("receive data from server=>%s", event.data);
-        dataElement.innerHTML = dataElement.innerHTML += " " + event.data;
+        messageQueue.push(event.data);
     });
 
     // 监听服务器端开启事件源
@@ -29,6 +32,29 @@
             console.log('Connection closed.');
         }
     });
+
+    const min = 100;
+    const max = 1000;
+
+    // 逐步输出消息
+    function showNextChar() {
+        if (currentMessage.length == 0) {
+            // 如果当前消息已经输出完毕，则从消息队列中获取下一条消息
+            if (messageQueue.length > 0) {
+                currentMessage = messageQueue.shift();
+            }
+        }
+        if (currentMessage) {
+            // 如果当前消息不为空，则输出该消息的下一个字符
+            dataElement.textContent += currentMessage.charAt(0);
+            currentMessage = currentMessage.slice(1);
+            const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+            setTimeout(showNextChar, randomNum); // 设置逐字输出的时间间隔，单位为毫秒
+        }
+    }
+
+    setInterval(showNextChar, 1000);
+
 </script>
 </body>
 </html>
