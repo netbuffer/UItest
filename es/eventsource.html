@@ -2,58 +2,497 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>EventSource</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EventSource 实时消息</title>
+    <!-- 引入 PureCSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #1f8dd6;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 500;
+        }
+        .status {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .status-dot.connecting {
+            background-color: #f39c12;
+        }
+        .status-dot.connected {
+            background-color: #27ae60;
+        }
+        .status-dot.disconnected {
+            background-color: #e74c3c;
+        }
+        .message-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            min-height: 300px;
+            max-height: 500px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 6px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #1f8dd6;
+        }
+        .message-time {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        .message-content {
+            word-break: break-word;
+            display: inline-block;
+        }
+        /* 打字光标样式 */
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background-color: #333;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+            vertical-align: text-bottom;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        /* 设置面板样式 */
+        .settings-panel {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+        .settings-title {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .speed-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .speed-control label {
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        .speed-control input[type="range"] {
+            flex: 1;
+        }
+        .speed-value {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            min-width: 40px;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .button {
+            flex: 1;
+        }
+        .notification {
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        .notification.error {
+            background-color: #fdf2f2;
+            color: #c0392b;
+            border: 1px solid #fadbd8;
+        }
+        .notification.info {
+            background-color: #f4f9fd;
+            color: #2980b9;
+            border: 1px solid #d6eaf8;
+        }
+        .connection-info {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-<div id="data"></div>
+<div class="container">
+    <div class="header">
+        <h1>EventSource 实时消息接收</h1>
+    </div>
+    
+    <div class="status">
+        <div id="status-dot" class="status-dot connecting"></div>
+        <span id="status-text">正在连接...</span>
+    </div>
+    
+    <div id="notifications"></div>
+    
+    <!-- 设置面板 -->
+    <div class="settings-panel">
+        <div class="settings-title">显示设置</div>
+        <div class="speed-control">
+            <label for="typing-speed">打字速度:</label>
+            <input type="range" id="typing-speed" min="5" max="100" value="20">
+            <span id="speed-value" class="speed-value">20ms</span>
+        </div>
+        <div class="speed-control">
+            <label for="enable-typewriter">
+                <input type="checkbox" id="enable-typewriter" checked> 启用打字机效果
+            </label>
+        </div>
+    </div>
+    
+    <div class="message-container">
+        <div id="data"></div>
+    </div>
+    
+    <div class="controls">
+        <button id="connect-btn" class="pure-button pure-button-primary button">连接</button>
+        <button id="disconnect-btn" class="pure-button pure-button-danger button">断开连接</button>
+        <button id="clear-btn" class="pure-button button">清空消息</button>
+    </div>
+    
+    <div class="connection-info">
+        <div>连接地址: <span id="connection-url">http://localhost:9100/sse/events?id=uitest</span></div>
+        <div>重连次数: <span id="reconnect-count">0</span>/<span id="max-reconnects">5</span></div>
+        <div>上次活动时间: <span id="last-activity">未连接</span></div>
+    </div>
+</div>
 <script>
     // 创建一个新的 EventSource 对象，指定要监听的服务器端事件源 URL
     let eventsource_url = "http://localhost:9100/sse/events?id=uitest";
-    const eventSource = new EventSource(eventsource_url);
+    let eventSource;
     let dataElement = document.getElementById("data");
+    let notificationsElement = document.getElementById("notifications");
+    let statusDotElement = document.getElementById("status-dot");
+    let statusTextElement = document.getElementById("status-text");
+    let reconnectCountElement = document.getElementById("reconnect-count");
+    let lastActivityElement = document.getElementById("last-activity");
     let messageQueue = []; // 存储消息队列
-    let currentMessage = ""; // 当前正在输出的消息
+    let reconnectAttempts = 0;
+    const maxReconnectAttempts = 5;
+    let reconnectTimeout;
+    let isManualDisconnect = false;
 
-    // 监听服务器端消息
-    eventSource.addEventListener('message', event => {
-        // 处理服务器端发来的消息
-        console.log("receive data from server=>%s", event.data);
-        messageQueue.push(event.data);
-    });
-
-    // 监听服务器端开启事件源
-    eventSource.addEventListener('open', event => {
-        console.log('Connection opened.');
-    });
-
-    // 监听服务器端关闭事件源
-    eventSource.addEventListener('error', event => {
-        if (event.readyState === EventSource.CLOSED) {
-            console.log('Connection closed.');
-        }
-    });
-
-    const min = 100;
-    const max = 1000;
-
-    // 逐步输出消息
-    function showNextChar() {
-        if (currentMessage.length == 0) {
-            // 如果当前消息已经输出完毕，则从消息队列中获取下一条消息
-            if (messageQueue.length > 0) {
-                currentMessage = messageQueue.shift();
-            }
-        }
-        if (currentMessage) {
-            // 如果当前消息不为空，则输出该消息的下一个字符
-            dataElement.textContent += currentMessage.charAt(0);
-            currentMessage = currentMessage.slice(1);
-            const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
-            setTimeout(showNextChar, randomNum); // 设置逐字输出的时间间隔，单位为毫秒
+    // 初始化UI元素和事件监听器
+    function initUI() {
+        // 更新UI显示
+        document.getElementById("max-reconnects").textContent = maxReconnectAttempts;
+        document.getElementById("connection-url").textContent = eventsource_url;
+        
+        // 初始化打字速度显示
+        updateSpeedDisplay();
+        
+        // 控制按钮事件监听
+        document.getElementById("connect-btn").addEventListener('click', connect);
+        document.getElementById("disconnect-btn").addEventListener('click', disconnect);
+        document.getElementById("clear-btn").addEventListener('click', clearMessages);
+        
+        // 设置面板事件监听
+        document.getElementById('typing-speed').addEventListener('input', function(e) {
+            document.getElementById('speed-value').textContent = `${e.target.value}ms`;
+        });
+        document.getElementById('typing-speed').addEventListener('change', function(e) {
+            setTypingSpeed(e.target.value);
+        });
+        
+        document.getElementById('enable-typewriter').addEventListener('change', function(e) {
+            typewriterEnabled = e.target.checked;
+            addNotification(typewriterEnabled ? '打字机效果已启用' : '打字机效果已禁用');
+        });
+    }
+    
+    // 更新连接状态UI
+    function updateConnectionStatus(status) {
+        statusDotElement.className = 'status-dot ' + status;
+        
+        switch(status) {
+            case 'connecting':
+                statusTextElement.textContent = '正在连接...';
+                break;
+            case 'connected':
+                statusTextElement.textContent = '已连接';
+                break;
+            case 'disconnected':
+                statusTextElement.textContent = '已断开连接';
+                break;
         }
     }
+    
+    // 添加通知
+    function addNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = 'notification ' + type;
+        notification.textContent = message;
+        notificationsElement.appendChild(notification);
+        
+        // 3秒后自动移除通知
+        setTimeout(() => {
+            if (notification.parentNode === notificationsElement) {
+                notificationsElement.removeChild(notification);
+            }
+        }, 3000);
+    }
+    
+    // 格式化时间
+    function formatTime(date) {
+        return date.toLocaleTimeString();
+    }
+    
+    // 更新上次活动时间
+    function updateLastActivity() {
+        lastActivityElement.textContent = formatTime(new Date());
+    }
+    
+    // 打字机效果参数设置
+    let TYPEWRITER_SPEED = 20; // 每个字符的毫秒延迟
+    const TYPEWRITER_RANDOMNESS = 10; // 随机延迟范围
+    let typewriterEnabled = true; // 是否启用打字机效果
+    
+    // 更新速度设置显示
+    function updateSpeedDisplay() {
+        document.getElementById('typing-speed').value = TYPEWRITER_SPEED;
+        document.getElementById('speed-value').textContent = `${TYPEWRITER_SPEED}ms`;
+    }
+    
+    // 设置打字速度
+    function setTypingSpeed(speed) {
+        TYPEWRITER_SPEED = parseInt(speed, 10);
+        updateSpeedDisplay();
+        addNotification(`打字速度已设置为 ${TYPEWRITER_SPEED}ms`);
+    }
+    
+    // 打字机效果函数
+    function typewriterEffect(element, text, speed = TYPEWRITER_SPEED, randomness = TYPEWRITER_RANDOMNESS) {
+        return new Promise((resolve) => {
+            // 创建并添加光标元素
+            const cursorElement = document.createElement('span');
+            cursorElement.className = 'typing-cursor';
+            element.parentNode.appendChild(cursorElement);
+            
+            let index = 0;
+            
+            function typeNextChar() {
+                if (index < text.length) {
+                    // 添加下一个字符
+                    element.textContent += text.charAt(index);
+                    index++;
+                    
+                    // 平滑滚动到底部
+                    const container = document.querySelector('.message-container');
+                    container.scrollTop = container.scrollHeight;
+                    
+                    // 计算随机延迟，让效果更自然
+                    const randomDelay = Math.floor(Math.random() * (2 * randomness + 1)) - randomness;
+                    const delay = Math.max(5, speed + randomDelay); // 确保最小延迟为5ms
+                    
+                    // 递归调用，继续输入下一个字符
+                    setTimeout(typeNextChar, delay);
+                } else {
+                    // 打字完成，移除光标
+                    if (cursorElement.parentNode) {
+                        cursorElement.parentNode.removeChild(cursorElement);
+                    }
+                    // 最终滚动到底部
+                    const container = document.querySelector('.message-container');
+                    container.scrollTop = container.scrollHeight;
+                    resolve();
+                }
+            }
+            
+            // 开始打字
+            typeNextChar();
+        });
+    }
+    
+    // 添加消息到UI
+    function addMessage(message) {
+        const messageElement = document.createElement('div');
+        messageElement.className = 'message';
+        
+        const timeElement = document.createElement('div');
+        timeElement.className = 'message-time';
+        timeElement.textContent = formatTime(new Date());
+        
+        const contentElement = document.createElement('div');
+        contentElement.className = 'message-content';
+        
+        messageElement.appendChild(timeElement);
+        messageElement.appendChild(contentElement);
+        
+        dataElement.appendChild(messageElement);
+        
+        // 自动滚动到底部
+        const container = document.querySelector('.message-container');
+        container.scrollTop = container.scrollHeight;
+        
+        // 根据设置选择显示方式
+        if (typewriterEnabled) {
+            // 使用打字机效果
+            typewriterEffect(contentElement, message);
+        } else {
+            // 直接显示内容
+            contentElement.textContent = message;
+        }
+    }
+    
+    // 初始化EventSource连接
+    function initEventSource() {
+        try {
+            updateConnectionStatus('connecting');
+            
+            // 添加withCredentials参数以支持跨域凭证
+            eventSource = new EventSource(eventsource_url, { withCredentials: false });
+            
+            // 监听服务器端消息
+            eventSource.addEventListener('message', event => {
+                // 处理服务器端发来的消息
+                console.log("receive data from server=>%s", event.data);
+                addMessage(event.data);
+                updateLastActivity();
+            });
 
-    setInterval(showNextChar, 1000);
+            // 监听服务器端开启事件源
+            eventSource.addEventListener('open', event => {
+                console.log('Connection opened.');
+                updateConnectionStatus('connected');
+                // 连接成功后重置重连计数
+                reconnectAttempts = 0;
+                reconnectCountElement.textContent = reconnectAttempts;
+                
+                if (!isManualDisconnect) {
+                    addNotification('连接成功');
+                }
+                isManualDisconnect = false;
+            });
+
+            // 改进的错误处理
+            eventSource.addEventListener('error', event => {
+                if (event.readyState === EventSource.CLOSED) {
+                    console.log('Connection closed.');
+                    updateConnectionStatus('disconnected');
+                    if (!isManualDisconnect) {
+                        handleReconnect();
+                    }
+                } else if (event.readyState === EventSource.CONNECTING) {
+                    console.log('Connecting...');
+                    updateConnectionStatus('connecting');
+                } else {
+                    console.error('EventSource error:', event);
+                    addNotification('发生连接错误: ' + event.message, 'error');
+                }
+            });
+        } catch (error) {
+            console.error('Failed to initialize EventSource:', error);
+            addNotification('初始化连接失败: ' + error.message, 'error');
+            updateConnectionStatus('disconnected');
+            if (!isManualDisconnect) {
+                handleReconnect();
+            }
+        }
+    }
+    
+    // 处理重连逻辑
+    function handleReconnect() {
+        if (reconnectAttempts < maxReconnectAttempts) {
+            reconnectAttempts++;
+            reconnectCountElement.textContent = reconnectAttempts;
+            const delay = Math.min(1000 * Math.pow(2, reconnectAttempts), 30000); // 指数退避策略
+            console.log(`Attempting to reconnect in ${delay}ms (Attempt ${reconnectAttempts}/${maxReconnectAttempts})`);
+            addNotification(`连接断开，${delay/1000}秒后尝试重连 (${reconnectAttempts}/${maxReconnectAttempts})`);
+            
+            reconnectTimeout = setTimeout(() => {
+                initEventSource();
+            }, delay);
+        } else {
+            console.error('Max reconnection attempts reached. Stopping reconnection.');
+            addNotification('达到最大重连次数，请检查服务器状态后手动重连', 'error');
+        }
+    }
+    
+    // 清理资源
+    function cleanup() {
+        if (eventSource) {
+            eventSource.close();
+            eventSource = null;
+        }
+        if (reconnectTimeout) {
+            clearTimeout(reconnectTimeout);
+            reconnectTimeout = null;
+        }
+    }
+    
+    // 手动连接
+    function connect() {
+        if (!eventSource || eventSource.readyState === EventSource.CLOSED) {
+            isManualDisconnect = false;
+            cleanup();
+            initEventSource();
+        }
+    }
+    
+    // 手动断开连接
+    function disconnect() {
+        isManualDisconnect = true;
+        cleanup();
+        updateConnectionStatus('disconnected');
+        addNotification('已手动断开连接');
+    }
+    
+    // 清空消息
+    function clearMessages() {
+        dataElement.innerHTML = '';
+        messageQueue = [];
+        addNotification('消息已清空');
+    }
+    
+    // 页面卸载时清理资源，防止内存泄漏
+    window.addEventListener('beforeunload', cleanup);
+    
+    // 初始化
+    initUI();
+    initEventSource();
 
 </script>
 </body>
