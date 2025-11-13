@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LogicFlow</title>
+
+    <!-- 引入 core包和对应css -->
+    <script src="https://cdn.jsdelivr.net/npm/@logicflow/core/dist/index.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@logicflow/core/lib/style/index.min.css" rel="stylesheet">
+
+    <!--  引入 extension包和对应css（不使用插件时不需要引入） -->
+    <script src="https://cdn.jsdelivr.net/npm/@logicflow/extension/dist/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@logicflow/extension/lib/style/index.min.css"/>
+
+</head>
+<body>
+<!-- 创建画布容器 -->
+<div id="container"></div>
+
+<script>
+    // 引入继承节点，引入 core 包后，会自动挂载 window.Core
+    // const { RectNode, RectNodeModel } = Core;
+
+    // 准备图数据
+    const data = {
+        // 节点
+        nodes: [
+            {
+                id: '21',
+                type: 'rect',
+                x: 100,
+                y: 200,
+                text: 'rect node',
+            },
+            {
+                id: '50',
+                type: 'circle',
+                x: 300,
+                y: 400,
+                text: 'circle node',
+            },
+        ],
+        // 边
+        edges: [
+            {
+                type: 'polyline',
+                sourceNodeId: '50',
+                targetNodeId: '21',
+            },
+        ],
+    }
+    // Extension CDN会抛出一个包含所有插件的Extension变量，使用的插件需要从Extension中取用
+    const {Snapshot } = Extension
+    //全局维度安装控制面板插件的写法：
+    // Core.default.use(Control);
+    // Core.default.use(Menu);
+    // Core.default.use(DndPanel);
+    Core.default.use(Snapshot );
+
+    // 创建画布实例，也可以 new Core.LogicFLow
+    const lf = new Core.default({
+        container: document.querySelector('#container'),
+        width: "100%",
+        height: window.outerHeight,
+        grid: true,
+        plugins: [Snapshot ],
+    })
+
+    // 渲染画布实例
+    lf.render(data)
+</script>
+</body>
+</html>
